@@ -273,6 +273,129 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/610b28c7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/610b28c7.html" itemprop="url">Paddle生成数据集并进行图像分类</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-19T00:00:00+08:00">2020-08-19</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="images文件夹下按情绪分类的文件夹"><a href="#images文件夹下按情绪分类的文件夹" class="headerlink" title="images文件夹下按情绪分类的文件夹"></a>images文件夹下按情绪分类的文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Anger</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Disgust</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Fear</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Happy</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Neutral</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Sad</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Surprise</span><br></pre></td></tr></table></figure>
+<h3 id="生成分类需要的索引文件"><a href="#生成分类需要的索引文件" class="headerlink" title="生成分类需要的索引文件"></a>生成分类需要的索引文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">from __future__ import absolute_import</span><br><span class="line">from __future__ import division</span><br><span class="line">from __future__ import print_function</span><br><span class="line">import codecs</span><br><span class="line">import os</span><br><span class="line">import random</span><br><span class="line">import shutil</span><br><span class="line">from PIL import Image</span><br><span class="line"></span><br><span class="line">train_ratio = 4.0 / 5</span><br><span class="line"></span><br><span class="line">all_file_dir = &apos;./images&apos;</span><br><span class="line">class_list = [c for c in os.listdir(all_file_dir) if os.path.isdir(os.path.join(all_file_dir, c)) and not c.endswith(&apos;Set&apos;) and not c.startswith(&apos;.&apos;)]</span><br><span class="line">class_list.sort()</span><br><span class="line">print(class_list)</span><br><span class="line">##train_image_dir = os.path.join(all_file_dir, &quot;trainImageSet&quot;)</span><br><span class="line">##if not os.path.exists(train_image_dir):</span><br><span class="line">##    os.makedirs(train_image_dir)</span><br><span class="line">##    </span><br><span class="line">##eval_image_dir = os.path.join(all_file_dir, &quot;evalImageSet&quot;)</span><br><span class="line">##if not os.path.exists(eval_image_dir):</span><br><span class="line">##    os.makedirs(eval_image_dir)</span><br><span class="line"></span><br><span class="line">train_file = codecs.open(os.path.join(all_file_dir, &quot;train_list.txt&quot;), &apos;w&apos;)</span><br><span class="line">eval_file = codecs.open(os.path.join(all_file_dir, &quot;val_list.txt&quot;), &apos;w&apos;)</span><br><span class="line"></span><br><span class="line">with codecs.open(os.path.join(all_file_dir, &quot;labels.txt&quot;), &quot;w&quot;) as label_list:</span><br><span class="line">    label_id = 0</span><br><span class="line">    for class_dir in class_list:</span><br><span class="line">        label_list.write(&quot;&#123;0&#125;\t&#123;1&#125;\n&quot;.format(label_id, class_dir))</span><br><span class="line">        image_path_pre = os.path.join(all_file_dir, class_dir)</span><br><span class="line">        for file in os.listdir(image_path_pre):</span><br><span class="line">            try:</span><br><span class="line">                img = Image.open(os.path.join(image_path_pre, file))</span><br><span class="line">                if random.uniform(0, 1) &lt;= train_ratio:</span><br><span class="line">##                    shutil.copyfile(os.path.join(image_path_pre, file), os.path.join(train_image_dir, file))</span><br><span class="line">                    train_file.write(&quot;&#123;0&#125;\t&#123;1&#125;\n&quot;.format(os.path.join(class_dir, file), label_id))</span><br><span class="line">                else:</span><br><span class="line">##                    shutil.copyfile(os.path.join(image_path_pre, file), os.path.join(eval_image_dir, file))</span><br><span class="line">                    eval_file.write(&quot;&#123;0&#125;\t&#123;1&#125;\n&quot;.format(os.path.join(class_dir, file), label_id))</span><br><span class="line">            except Exception as e:</span><br><span class="line">                pass</span><br><span class="line">                # 存在一些文件打不开，此处需要稍作清洗</span><br><span class="line">        label_id += 1</span><br><span class="line">            </span><br><span class="line">train_file.close()</span><br><span class="line">eval_file.close()</span><br></pre></td></tr></table></figure>
+<h3 id="开始训练并生成分类模型"><a href="#开始训练并生成分类模型" class="headerlink" title="开始训练并生成分类模型"></a>开始训练并生成分类模型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">!pip install paddlex</span><br><span class="line"># 环境变量配置，用于控制是否使用GPU</span><br><span class="line"># 说明文档：https://paddlex.readthedocs.io/zh_CN/develop/appendix/parameters.html#gpu</span><br><span class="line">import os</span><br><span class="line">os.environ[&apos;CUDA_VISIBLE_DEVICES&apos;] = &apos;0,1,2,3&apos;</span><br><span class="line"></span><br><span class="line">from paddlex.cls import transforms</span><br><span class="line">import paddlex as pdx</span><br><span class="line"></span><br><span class="line"># # 下载和解压蔬菜分类数据集</span><br><span class="line"># veg_dataset = &apos;https://bj.bcebos.com/paddlex/datasets/vegetables_cls.tar.gz&apos;</span><br><span class="line"># pdx.utils.download_and_decompress(veg_dataset, path=&apos;./&apos;)</span><br><span class="line"></span><br><span class="line"># 定义训练和验证时的transforms</span><br><span class="line"># API说明https://paddlex.readthedocs.io/zh_CN/develop/apis/transforms/cls_transforms.html</span><br><span class="line">train_transforms = transforms.Compose([</span><br><span class="line">    transforms.RandomCrop(crop_size=224), transforms.RandomHorizontalFlip(),</span><br><span class="line">    transforms.Normalize()</span><br><span class="line">])</span><br><span class="line">eval_transforms = transforms.Compose([</span><br><span class="line">    transforms.ResizeByShort(short_size=256),</span><br><span class="line">    transforms.CenterCrop(crop_size=224), transforms.Normalize()</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"># 定义训练和验证所用的数据集</span><br><span class="line"># API说明：https://paddlex.readthedocs.io/zh_CN/develop/apis/datasets.html#paddlex-datasets-imagenet</span><br><span class="line">train_dataset = pdx.datasets.ImageNet(</span><br><span class="line">    data_dir=&apos;./data/data53319/images&apos;,</span><br><span class="line">    file_list=&apos;./data/data53319/images/train_list.txt&apos;,</span><br><span class="line">    label_list=&apos;./data/data53319/images/labels.txt&apos;,</span><br><span class="line">    transforms=train_transforms,</span><br><span class="line">    shuffle=True)</span><br><span class="line">eval_dataset = pdx.datasets.ImageNet(</span><br><span class="line">    data_dir=&apos;./data/data53319/images&apos;,</span><br><span class="line">    file_list=&apos;./data/data53319/images/val_list.txt&apos;,</span><br><span class="line">    label_list=&apos;./data/data53319/images/labels.txt&apos;,</span><br><span class="line">    transforms=eval_transforms)</span><br><span class="line"></span><br><span class="line"># 初始化模型，并进行训练</span><br><span class="line"># 可使用VisualDL查看训练指标，参考https://paddlex.readthedocs.io/zh_CN/develop/train/visualdl.html</span><br><span class="line">model = pdx.cls.ResNet50_vd_ssld(num_classes=len(train_dataset.labels))</span><br><span class="line"></span><br><span class="line"># API说明：https://paddlex.readthedocs.io/zh_CN/develop/apis/models/classification.html#train</span><br><span class="line"># 各参数介绍与调整说明：https://paddlex.readthedocs.io/zh_CN/develop/appendix/parameters.html</span><br><span class="line">model.train(</span><br><span class="line">    num_epochs=60,</span><br><span class="line">    train_dataset=train_dataset,</span><br><span class="line">    train_batch_size=32,</span><br><span class="line">    eval_dataset=eval_dataset,</span><br><span class="line">    lr_decay_epochs=[24, 36, 48],</span><br><span class="line">    learning_rate=0.025,</span><br><span class="line">    save_dir=&apos;output/resnet50_vd_ssld&apos;,</span><br><span class="line">    use_vdl=True)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/5ba707b1.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -871,130 +994,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/1e135d57.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/1e135d57.html" itemprop="url">paddle使用LeNet识别MNIST手写数字</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-20T00:00:00+08:00">2020-07-20</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="定义-LeNet-网络结构"><a href="#定义-LeNet-网络结构" class="headerlink" title="定义 LeNet 网络结构"></a>定义 LeNet 网络结构</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入需要的包</span></span><br><span class="line"><span class="keyword">import</span> paddle</span><br><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> paddle.fluid.dygraph.nn <span class="keyword">import</span> Conv2D, Pool2D, Linear</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义 LeNet 网络结构</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LeNet</span><span class="params">(fluid.dygraph.Layer)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, num_classes=<span class="number">1</span>)</span>:</span></span><br><span class="line">        super(LeNet, self).__init__()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建卷积和池化层块，每个卷积层使用Sigmoid激活函数，后面跟着一个2x2的池化</span></span><br><span class="line">        self.conv1 = Conv2D(num_channels=<span class="number">1</span>, num_filters=<span class="number">6</span>, filter_size=<span class="number">5</span>, act=<span class="string">'sigmoid'</span>)</span><br><span class="line">        self.pool1 = Pool2D(pool_size=<span class="number">2</span>, pool_stride=<span class="number">2</span>, pool_type=<span class="string">'max'</span>)</span><br><span class="line">        self.conv2 = Conv2D(num_channels=<span class="number">6</span>, num_filters=<span class="number">16</span>, filter_size=<span class="number">5</span>, act=<span class="string">'sigmoid'</span>)</span><br><span class="line">        self.pool2 = Pool2D(pool_size=<span class="number">2</span>, pool_stride=<span class="number">2</span>, pool_type=<span class="string">'max'</span>)</span><br><span class="line">        <span class="comment"># 创建第3个卷积层</span></span><br><span class="line">        self.conv3 = Conv2D(num_channels=<span class="number">16</span>, num_filters=<span class="number">120</span>, filter_size=<span class="number">4</span>, act=<span class="string">'sigmoid'</span>)</span><br><span class="line">        <span class="comment"># 创建全连接层，第一个全连接层的输出神经元个数为64， 第二个全连接层输出神经元个数为分类标签的类别数</span></span><br><span class="line">        self.fc1 = Linear(input_dim=<span class="number">120</span>, output_dim=<span class="number">64</span>, act=<span class="string">'sigmoid'</span>)</span><br><span class="line">        self.fc2 = Linear(input_dim=<span class="number">64</span>, output_dim=num_classes)</span><br><span class="line">    <span class="comment"># 网络的前向计算过程</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x = self.conv1(x)</span><br><span class="line">        x = self.pool1(x)</span><br><span class="line">        x = self.conv2(x)</span><br><span class="line">        x = self.pool2(x)</span><br><span class="line">        x = self.conv3(x)</span><br><span class="line">        x = fluid.layers.reshape(x, [x.shape[<span class="number">0</span>], <span class="number">-1</span>])</span><br><span class="line">        x = self.fc1(x)</span><br><span class="line">        x = self.fc2(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
-<h3 id="显示LeNet-网络结构"><a href="#显示LeNet-网络结构" class="headerlink" title="显示LeNet 网络结构"></a>显示LeNet 网络结构</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入数据形状是 [N, 1, H, W]</span></span><br><span class="line"><span class="comment"># 这里用np.random创建一个随机数组作为输入数据</span></span><br><span class="line">x = np.random.randn(*[<span class="number">3</span>,<span class="number">1</span>,<span class="number">28</span>,<span class="number">28</span>])</span><br><span class="line">x = x.astype(<span class="string">'float32'</span>)</span><br><span class="line"><span class="keyword">with</span> fluid.dygraph.guard():</span><br><span class="line">    <span class="comment"># 创建LeNet类的实例，指定模型名称和分类的类别数目</span></span><br><span class="line">    m = LeNet(num_classes=<span class="number">10</span>)</span><br><span class="line">    <span class="comment"># 通过调用LeNet从基类继承的sublayers()函数，</span></span><br><span class="line">    <span class="comment"># 查看LeNet中所包含的子层</span></span><br><span class="line">    print(m.sublayers())</span><br><span class="line">    x = fluid.dygraph.to_variable(x)</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> m.sublayers():</span><br><span class="line">        <span class="comment"># item是LeNet类中的一个子层</span></span><br><span class="line">        <span class="comment"># 查看经过子层之后的输出数据形状</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            x = item(x)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            x = fluid.layers.reshape(x, [x.shape[<span class="number">0</span>], <span class="number">-1</span>])</span><br><span class="line">            x = item(x)</span><br><span class="line">        <span class="keyword">if</span> len(item.parameters())==<span class="number">2</span>:</span><br><span class="line">            <span class="comment"># 查看卷积和全连接层的数据和参数的形状，</span></span><br><span class="line">            <span class="comment"># 其中item.parameters()[0]是权重参数w，item.parameters()[1]是偏置参数b</span></span><br><span class="line">            print(item.full_name(), x.shape, item.parameters()[<span class="number">0</span>].shape, item.parameters()[<span class="number">1</span>].shape)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 池化层没有参数</span></span><br><span class="line">            print(item.full_name(), x.shape)</span><br></pre></td></tr></table></figure>
-<h3 id="显示MNIST的图片"><a href="#显示MNIST的图片" class="headerlink" title="显示MNIST的图片"></a>显示MNIST的图片</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> paddle </span><br><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line"><span class="keyword">from</span> paddle.dataset <span class="keyword">import</span> mnist</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line">train_data = mnist.train()</span><br><span class="line">test_data = mnist.test()</span><br><span class="line"><span class="comment"># print(type(train_data))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#generator转换成list</span></span><br><span class="line">train_data = list(train_data())</span><br><span class="line">test_data = list(test_data())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(<span class="string">'train_data:'</span>,len(train_data))</span><br><span class="line">print(<span class="string">'label:'</span>,train_data[<span class="number">5</span>][<span class="number">1</span>])</span><br><span class="line">print(<span class="string">'Image:'</span>)</span><br><span class="line">plt.imshow(train_data[<span class="number">5</span>][<span class="number">0</span>].reshape(<span class="number">28</span>, <span class="number">28</span>))</span><br></pre></td></tr></table></figure>
-<h3 id="识别mnist手写数字"><a href="#识别mnist手写数字" class="headerlink" title="识别mnist手写数字"></a>识别mnist手写数字</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># LeNet 识别手写数字</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> paddle</span><br><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义训练过程</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(model)</span>:</span></span><br><span class="line">    print(<span class="string">'start training ... '</span>)</span><br><span class="line">    model.train()</span><br><span class="line">    epoch_num = <span class="number">5</span></span><br><span class="line">    opt = fluid.optimizer.Momentum(learning_rate=<span class="number">0.001</span>, momentum=<span class="number">0.9</span>, parameter_list=model.parameters())</span><br><span class="line">    <span class="comment"># 使用Paddle自带的数据读取器</span></span><br><span class="line">    train_loader = paddle.batch(paddle.dataset.mnist.train(), batch_size=<span class="number">10</span>)</span><br><span class="line">    valid_loader = paddle.batch(paddle.dataset.mnist.test(), batch_size=<span class="number">10</span>)</span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(epoch_num):</span><br><span class="line">        <span class="keyword">for</span> batch_id, data <span class="keyword">in</span> enumerate(train_loader()):</span><br><span class="line">            <span class="comment"># 调整输入数据形状和类型</span></span><br><span class="line">            x_data = np.array([item[<span class="number">0</span>] <span class="keyword">for</span> item <span class="keyword">in</span> data], dtype=<span class="string">'float32'</span>).reshape(<span class="number">-1</span>, <span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>)</span><br><span class="line">            y_data = np.array([item[<span class="number">1</span>] <span class="keyword">for</span> item <span class="keyword">in</span> data], dtype=<span class="string">'int64'</span>).reshape(<span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line">            <span class="comment"># 将numpy.ndarray转化成Tensor</span></span><br><span class="line">            img = fluid.dygraph.to_variable(x_data)</span><br><span class="line">            label = fluid.dygraph.to_variable(y_data)</span><br><span class="line">            <span class="comment"># 计算模型输出</span></span><br><span class="line">            logits = model(img)</span><br><span class="line">            <span class="comment"># 计算损失函数</span></span><br><span class="line">            loss = fluid.layers.softmax_with_cross_entropy(logits, label)</span><br><span class="line">            avg_loss = fluid.layers.mean(loss)</span><br><span class="line">            <span class="keyword">if</span> batch_id % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">                print(<span class="string">"epoch: &#123;&#125;, batch_id: &#123;&#125;, loss is: &#123;&#125;"</span>.format(epoch, batch_id, avg_loss.numpy()))</span><br><span class="line">            avg_loss.backward()</span><br><span class="line">            opt.minimize(avg_loss)</span><br><span class="line">            model.clear_gradients()</span><br><span class="line"></span><br><span class="line">        model.eval()</span><br><span class="line">        accuracies = []</span><br><span class="line">        losses = []</span><br><span class="line">        <span class="keyword">for</span> batch_id, data <span class="keyword">in</span> enumerate(valid_loader()):</span><br><span class="line">            <span class="comment"># 调整输入数据形状和类型</span></span><br><span class="line">            x_data = np.array([item[<span class="number">0</span>] <span class="keyword">for</span> item <span class="keyword">in</span> data], dtype=<span class="string">'float32'</span>).reshape(<span class="number">-1</span>, <span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>)</span><br><span class="line">            y_data = np.array([item[<span class="number">1</span>] <span class="keyword">for</span> item <span class="keyword">in</span> data], dtype=<span class="string">'int64'</span>).reshape(<span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line">            <span class="comment"># 将numpy.ndarray转化成Tensor</span></span><br><span class="line">            img = fluid.dygraph.to_variable(x_data)</span><br><span class="line">            label = fluid.dygraph.to_variable(y_data)</span><br><span class="line">            <span class="comment"># 计算模型输出</span></span><br><span class="line">            logits = model(img)</span><br><span class="line">            pred = fluid.layers.softmax(logits)</span><br><span class="line">            <span class="comment"># 计算损失函数</span></span><br><span class="line">            loss = fluid.layers.softmax_with_cross_entropy(logits, label)</span><br><span class="line">            acc = fluid.layers.accuracy(pred, label)</span><br><span class="line">            accuracies.append(acc.numpy())</span><br><span class="line">            losses.append(loss.numpy())</span><br><span class="line">        print(<span class="string">"[validation] accuracy/loss: &#123;&#125;/&#123;&#125;"</span>.format(np.mean(accuracies), np.mean(losses)))</span><br><span class="line">        model.train()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 保存模型参数</span></span><br><span class="line">    fluid.save_dygraph(model.state_dict(), <span class="string">'mnist'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 创建模型</span></span><br><span class="line">    <span class="keyword">with</span> fluid.dygraph.guard():</span><br><span class="line">        model = LeNet(num_classes=<span class="number">10</span>)</span><br><span class="line">        <span class="comment">#启动训练过程</span></span><br><span class="line">        train(model)</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1044,7 +1043,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-count">165</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

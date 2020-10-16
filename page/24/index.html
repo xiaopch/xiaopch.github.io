@@ -273,6 +273,140 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/da41945b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/da41945b.html" itemprop="url">windows操作技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-02T00:00:00+08:00">2019-03-02</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="如何解决WIN10处于通知模式的问题？"><a href="#如何解决WIN10处于通知模式的问题？" class="headerlink" title="如何解决WIN10处于通知模式的问题？"></a>如何解决WIN10处于通知模式的问题？</h2><p>电脑提示Windows许可证即将到期，于是自己就在网上找了一些教程，但是并没有激活成功，反而由即将到期变为了通知状态，尝试了各种密钥都不行，也下载了激活工具如暴风激活工具，KMS都不管用，尝试了好多方法都失败了.最后通过下面的方法终于激活成功：（此方法与之前失败方法的最大区别在于先卸载了密钥，又重新安装新密钥）<br>（1）首先，我们先查看一下Win10正式专业版系统的激活状态：按住win+r键，运行命令提示符，输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slmgr.vbs -xpr</span><br></pre></td></tr></table></figure>
+<p>点击确定，查看系统的状态是什么时候到期或者是处于通知状态。<br>（2）按住win+x键，选择“命令提示符（管理员）”点击出现界面后，在此界面中，依次输出以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">slmgr.vbs /upk （此时弹出窗口显未“已成功卸载了产品密钥”）</span><br><span class="line">slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX （弹出窗口提示：“成功的安装了产品密钥”）</span><br><span class="line">slmgr /skms zh.us.to （弹出窗口提示：“密钥管理服务计算机名成功的设置为zh.us.to”）</span><br><span class="line">slmgr /ato （此时将弹出窗口提示：“成功的激活了产品”）</span><br></pre></td></tr></table></figure>
+<p>（3）.最后就可以再次查看当前Win10正式专业版系统的激活状态啦。如图所示，表明已成功激活Win10正式专业版系统。</p>
+<h3 id="VirtualBox硬盘镜像压缩"><a href="#VirtualBox硬盘镜像压缩" class="headerlink" title="[VirtualBox硬盘镜像压缩]"></a>[VirtualBox硬盘镜像压缩]</h3><ul>
+<li>Windows 虚拟机</li>
+</ul>
+<p>1.虚拟机: 删除系统垃圾文件，运行磁盘整理程序…</p>
+<ol start="2">
+<li>下载sdelete工具, 链接: <a href="https://docs.microsoft.com/zh-cn/sysinternals/downloads/sdelete" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/sysinternals/downloads/sdelete</a> ,在虚拟机中运行: </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdelete –z c:\</span><br></pre></td></tr></table></figure>
+<p>3.物理主机: 执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage.exe modifyhd &quot;E:\......\win7.vdi&quot; --compact</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/58a438b6.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -997,158 +1131,6 @@ func main() {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/7c6c732d.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/7c6c732d.html" itemprop="url">docker-Dockerfile制作镜像</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-12T10:23:12+08:00">2018-07-12</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Dockerfile-制作镜像"><a href="#Dockerfile-制作镜像" class="headerlink" title="Dockerfile 制作镜像"></a>Dockerfile 制作镜像</h2><pre><code>FROM alpine:3.7
-MAINTAINER xiaopch
-#更新Alpine的软件源为国内（清华大学）的站点
-RUN echo https://mirror.tuna.tsinghua.edu.cn/alpine/v3.4/main/ &gt; /etc/apk/repositories
-
-RUN apk update \
-        &amp;&amp; apk upgrade \
-        &amp;&amp; apk add --no-cache bash \
-        bash-doc \
-        bash-completion \
-        &amp;&amp; rm -rf /var/cache/apk/* \
-        &amp;&amp; /bin/bash
-RUN apk add python
-RUN apk add py-pip
-
-WORKDIR /home/python
-COPY . .
-# Install Python dependencies
-RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  --upgrade pip
-RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  -r requirements.txt
-#RUN pip install -r requirements.txt
-
-RUN apk add openssh
-# Port to expose
-EXPOSE 8000
-
-# Copy entrypoint script into the image
-WORKDIR /home/python
-</code></pre><h2 id="Docker-tensorflow-tensorflow"><a href="#Docker-tensorflow-tensorflow" class="headerlink" title="Docker tensorflow/tensorflow"></a>Docker tensorflow/tensorflow</h2><pre><code>docker run -it -p 8888:8888 tensorflow/tensorflow
-
-docker run -it -v D:\docker:/notebooks/docker -p 8888:8888 tensorflow/tensorflow bash
-</code></pre><p>Go to your browser on <a href="http://localhost:8888/" target="_blank" rel="noopener">http://localhost:8888/</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1198,7 +1180,7 @@ docker run -it -v D:\docker:/notebooks/docker -p 8888:8888 tensorflow/tensorflow
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-count">165</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

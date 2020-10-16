@@ -394,6 +394,130 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/1e135d57.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/1e135d57.html" itemprop="url">paddle使用LeNet识别MNIST手写数字</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-20T00:00:00+08:00">2020-07-20</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="定义-LeNet-网络结构"><a href="#定义-LeNet-网络结构" class="headerlink" title="定义 LeNet 网络结构"></a>定义 LeNet 网络结构</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入需要的包</span></span><br><span class="line"><span class="keyword">import</span> paddle</span><br><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> paddle.fluid.dygraph.nn <span class="keyword">import</span> Conv2D, Pool2D, Linear</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义 LeNet 网络结构</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LeNet</span><span class="params">(fluid.dygraph.Layer)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, num_classes=<span class="number">1</span>)</span>:</span></span><br><span class="line">        super(LeNet, self).__init__()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建卷积和池化层块，每个卷积层使用Sigmoid激活函数，后面跟着一个2x2的池化</span></span><br><span class="line">        self.conv1 = Conv2D(num_channels=<span class="number">1</span>, num_filters=<span class="number">6</span>, filter_size=<span class="number">5</span>, act=<span class="string">'sigmoid'</span>)</span><br><span class="line">        self.pool1 = Pool2D(pool_size=<span class="number">2</span>, pool_stride=<span class="number">2</span>, pool_type=<span class="string">'max'</span>)</span><br><span class="line">        self.conv2 = Conv2D(num_channels=<span class="number">6</span>, num_filters=<span class="number">16</span>, filter_size=<span class="number">5</span>, act=<span class="string">'sigmoid'</span>)</span><br><span class="line">        self.pool2 = Pool2D(pool_size=<span class="number">2</span>, pool_stride=<span class="number">2</span>, pool_type=<span class="string">'max'</span>)</span><br><span class="line">        <span class="comment"># 创建第3个卷积层</span></span><br><span class="line">        self.conv3 = Conv2D(num_channels=<span class="number">16</span>, num_filters=<span class="number">120</span>, filter_size=<span class="number">4</span>, act=<span class="string">'sigmoid'</span>)</span><br><span class="line">        <span class="comment"># 创建全连接层，第一个全连接层的输出神经元个数为64， 第二个全连接层输出神经元个数为分类标签的类别数</span></span><br><span class="line">        self.fc1 = Linear(input_dim=<span class="number">120</span>, output_dim=<span class="number">64</span>, act=<span class="string">'sigmoid'</span>)</span><br><span class="line">        self.fc2 = Linear(input_dim=<span class="number">64</span>, output_dim=num_classes)</span><br><span class="line">    <span class="comment"># 网络的前向计算过程</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x = self.conv1(x)</span><br><span class="line">        x = self.pool1(x)</span><br><span class="line">        x = self.conv2(x)</span><br><span class="line">        x = self.pool2(x)</span><br><span class="line">        x = self.conv3(x)</span><br><span class="line">        x = fluid.layers.reshape(x, [x.shape[<span class="number">0</span>], <span class="number">-1</span>])</span><br><span class="line">        x = self.fc1(x)</span><br><span class="line">        x = self.fc2(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<h3 id="显示LeNet-网络结构"><a href="#显示LeNet-网络结构" class="headerlink" title="显示LeNet 网络结构"></a>显示LeNet 网络结构</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入数据形状是 [N, 1, H, W]</span></span><br><span class="line"><span class="comment"># 这里用np.random创建一个随机数组作为输入数据</span></span><br><span class="line">x = np.random.randn(*[<span class="number">3</span>,<span class="number">1</span>,<span class="number">28</span>,<span class="number">28</span>])</span><br><span class="line">x = x.astype(<span class="string">'float32'</span>)</span><br><span class="line"><span class="keyword">with</span> fluid.dygraph.guard():</span><br><span class="line">    <span class="comment"># 创建LeNet类的实例，指定模型名称和分类的类别数目</span></span><br><span class="line">    m = LeNet(num_classes=<span class="number">10</span>)</span><br><span class="line">    <span class="comment"># 通过调用LeNet从基类继承的sublayers()函数，</span></span><br><span class="line">    <span class="comment"># 查看LeNet中所包含的子层</span></span><br><span class="line">    print(m.sublayers())</span><br><span class="line">    x = fluid.dygraph.to_variable(x)</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> m.sublayers():</span><br><span class="line">        <span class="comment"># item是LeNet类中的一个子层</span></span><br><span class="line">        <span class="comment"># 查看经过子层之后的输出数据形状</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            x = item(x)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            x = fluid.layers.reshape(x, [x.shape[<span class="number">0</span>], <span class="number">-1</span>])</span><br><span class="line">            x = item(x)</span><br><span class="line">        <span class="keyword">if</span> len(item.parameters())==<span class="number">2</span>:</span><br><span class="line">            <span class="comment"># 查看卷积和全连接层的数据和参数的形状，</span></span><br><span class="line">            <span class="comment"># 其中item.parameters()[0]是权重参数w，item.parameters()[1]是偏置参数b</span></span><br><span class="line">            print(item.full_name(), x.shape, item.parameters()[<span class="number">0</span>].shape, item.parameters()[<span class="number">1</span>].shape)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 池化层没有参数</span></span><br><span class="line">            print(item.full_name(), x.shape)</span><br></pre></td></tr></table></figure>
+<h3 id="显示MNIST的图片"><a href="#显示MNIST的图片" class="headerlink" title="显示MNIST的图片"></a>显示MNIST的图片</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> paddle </span><br><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line"><span class="keyword">from</span> paddle.dataset <span class="keyword">import</span> mnist</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line">train_data = mnist.train()</span><br><span class="line">test_data = mnist.test()</span><br><span class="line"><span class="comment"># print(type(train_data))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#generator转换成list</span></span><br><span class="line">train_data = list(train_data())</span><br><span class="line">test_data = list(test_data())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(<span class="string">'train_data:'</span>,len(train_data))</span><br><span class="line">print(<span class="string">'label:'</span>,train_data[<span class="number">5</span>][<span class="number">1</span>])</span><br><span class="line">print(<span class="string">'Image:'</span>)</span><br><span class="line">plt.imshow(train_data[<span class="number">5</span>][<span class="number">0</span>].reshape(<span class="number">28</span>, <span class="number">28</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="识别mnist手写数字"><a href="#识别mnist手写数字" class="headerlink" title="识别mnist手写数字"></a>识别mnist手写数字</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># LeNet 识别手写数字</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> paddle</span><br><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义训练过程</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(model)</span>:</span></span><br><span class="line">    print(<span class="string">'start training ... '</span>)</span><br><span class="line">    model.train()</span><br><span class="line">    epoch_num = <span class="number">5</span></span><br><span class="line">    opt = fluid.optimizer.Momentum(learning_rate=<span class="number">0.001</span>, momentum=<span class="number">0.9</span>, parameter_list=model.parameters())</span><br><span class="line">    <span class="comment"># 使用Paddle自带的数据读取器</span></span><br><span class="line">    train_loader = paddle.batch(paddle.dataset.mnist.train(), batch_size=<span class="number">10</span>)</span><br><span class="line">    valid_loader = paddle.batch(paddle.dataset.mnist.test(), batch_size=<span class="number">10</span>)</span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(epoch_num):</span><br><span class="line">        <span class="keyword">for</span> batch_id, data <span class="keyword">in</span> enumerate(train_loader()):</span><br><span class="line">            <span class="comment"># 调整输入数据形状和类型</span></span><br><span class="line">            x_data = np.array([item[<span class="number">0</span>] <span class="keyword">for</span> item <span class="keyword">in</span> data], dtype=<span class="string">'float32'</span>).reshape(<span class="number">-1</span>, <span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>)</span><br><span class="line">            y_data = np.array([item[<span class="number">1</span>] <span class="keyword">for</span> item <span class="keyword">in</span> data], dtype=<span class="string">'int64'</span>).reshape(<span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line">            <span class="comment"># 将numpy.ndarray转化成Tensor</span></span><br><span class="line">            img = fluid.dygraph.to_variable(x_data)</span><br><span class="line">            label = fluid.dygraph.to_variable(y_data)</span><br><span class="line">            <span class="comment"># 计算模型输出</span></span><br><span class="line">            logits = model(img)</span><br><span class="line">            <span class="comment"># 计算损失函数</span></span><br><span class="line">            loss = fluid.layers.softmax_with_cross_entropy(logits, label)</span><br><span class="line">            avg_loss = fluid.layers.mean(loss)</span><br><span class="line">            <span class="keyword">if</span> batch_id % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">                print(<span class="string">"epoch: &#123;&#125;, batch_id: &#123;&#125;, loss is: &#123;&#125;"</span>.format(epoch, batch_id, avg_loss.numpy()))</span><br><span class="line">            avg_loss.backward()</span><br><span class="line">            opt.minimize(avg_loss)</span><br><span class="line">            model.clear_gradients()</span><br><span class="line"></span><br><span class="line">        model.eval()</span><br><span class="line">        accuracies = []</span><br><span class="line">        losses = []</span><br><span class="line">        <span class="keyword">for</span> batch_id, data <span class="keyword">in</span> enumerate(valid_loader()):</span><br><span class="line">            <span class="comment"># 调整输入数据形状和类型</span></span><br><span class="line">            x_data = np.array([item[<span class="number">0</span>] <span class="keyword">for</span> item <span class="keyword">in</span> data], dtype=<span class="string">'float32'</span>).reshape(<span class="number">-1</span>, <span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>)</span><br><span class="line">            y_data = np.array([item[<span class="number">1</span>] <span class="keyword">for</span> item <span class="keyword">in</span> data], dtype=<span class="string">'int64'</span>).reshape(<span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line">            <span class="comment"># 将numpy.ndarray转化成Tensor</span></span><br><span class="line">            img = fluid.dygraph.to_variable(x_data)</span><br><span class="line">            label = fluid.dygraph.to_variable(y_data)</span><br><span class="line">            <span class="comment"># 计算模型输出</span></span><br><span class="line">            logits = model(img)</span><br><span class="line">            pred = fluid.layers.softmax(logits)</span><br><span class="line">            <span class="comment"># 计算损失函数</span></span><br><span class="line">            loss = fluid.layers.softmax_with_cross_entropy(logits, label)</span><br><span class="line">            acc = fluid.layers.accuracy(pred, label)</span><br><span class="line">            accuracies.append(acc.numpy())</span><br><span class="line">            losses.append(loss.numpy())</span><br><span class="line">        print(<span class="string">"[validation] accuracy/loss: &#123;&#125;/&#123;&#125;"</span>.format(np.mean(accuracies), np.mean(losses)))</span><br><span class="line">        model.train()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 保存模型参数</span></span><br><span class="line">    fluid.save_dygraph(model.state_dict(), <span class="string">'mnist'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 创建模型</span></span><br><span class="line">    <span class="keyword">with</span> fluid.dygraph.guard():</span><br><span class="line">        model = LeNet(num_classes=<span class="number">10</span>)</span><br><span class="line">        <span class="comment">#启动训练过程</span></span><br><span class="line">        train(model)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/b3f675e4.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -867,132 +991,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/bfd017f6.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/bfd017f6.html" itemprop="url">python之yield和zip</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-19T00:00:00+08:00">2020-07-19</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="生成斐波那契数列"><a href="#生成斐波那契数列" class="headerlink" title="生成斐波那契数列"></a>生成斐波那契数列</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fab</span><span class="params">(max)</span>:</span> </span><br><span class="line">    <span class="comment">#初始化</span></span><br><span class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span> </span><br><span class="line">    <span class="keyword">while</span> n &lt; max: </span><br><span class="line">        print(b)</span><br><span class="line">        a, b = b, a + b </span><br><span class="line">        n = n + <span class="number">1</span></span><br><span class="line">fab(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="使用yield生成斐波那契数列"><a href="#使用yield生成斐波那契数列" class="headerlink" title="使用yield生成斐波那契数列"></a>使用yield生成斐波那契数列</h4><h6 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fab</span><span class="params">(max)</span>:</span> </span><br><span class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span> </span><br><span class="line">    <span class="keyword">while</span> n &lt; max: </span><br><span class="line">        <span class="keyword">yield</span> b      <span class="comment"># 使用 yield</span></span><br><span class="line">        <span class="comment"># print b </span></span><br><span class="line">        a, b = b, a + b </span><br><span class="line">        n = n + <span class="number">1</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> fab(<span class="number">5</span>): </span><br><span class="line">    print(n)</span><br></pre></td></tr></table></figure>
-<p>‘’’简单地讲，yield 的作用就是把一个函数变成一个 generator，带有 yield 的函数不再是一个普通函数，Python 解释器会将其视为一个 generator，<br>调用 fab(5) 不会执行 fab 函数，而是返回一个 iterable 对象！在 for 循环执行时，每次循环都会执行 fab 函数内部的代码，执行到 yield b 时，<br>fab 函数就返回一个迭代值，下次迭代时，代码从 yield b 的下一条语句继续执行，而函数的本地变量看起来和上次中断执行前是完全一样的，于是<br>函数继续执行，直到再次遇到 yield。’’’</p>
-<h4 id="使用next读取generator"><a href="#使用next读取generator" class="headerlink" title="使用next读取generator"></a>使用next读取generator</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">f=fab(<span class="number">5</span>)</span><br><span class="line">print(next(f))</span><br><span class="line">print(f.__next__())</span><br><span class="line">print(next(f))</span><br><span class="line">print(f.__next__())</span><br><span class="line">print(f.__next__())</span><br></pre></td></tr></table></figure>
-<h4 id="使用zip把list合并成一个元组对的列表"><a href="#使用zip把list合并成一个元组对的列表" class="headerlink" title="使用zip把list合并成一个元组对的列表"></a>使用zip把list合并成一个元组对的列表</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</span><br><span class="line">b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">c = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line">zipped = list(zip(a,b))     <span class="comment"># 打包为元组的列表</span></span><br><span class="line">print(zipped,list(zipped))</span><br><span class="line"></span><br><span class="line">print(list(zip(a,c)))              <span class="comment"># 元素个数与最短的列表一致</span></span><br><span class="line"></span><br><span class="line">print(list(zip(*zipped)))    <span class="comment"># 与 zip 相反，zip(*) 可理解为解压，返回二维矩阵式</span></span><br><span class="line"></span><br><span class="line">print(dict(zip(a, b)))</span><br></pre></td></tr></table></figure>
-<h4 id="zipfile压缩和解压文件"><a href="#zipfile压缩和解压文件" class="headerlink" title="zipfile压缩和解压文件"></a>zipfile压缩和解压文件</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#打包成zip文件</span></span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line">f = zipfile.ZipFile(<span class="string">'archive.zip'</span>,<span class="string">'w'</span>)</span><br><span class="line">f.write(<span class="string">'MusicNamer.exe'</span>)</span><br><span class="line">f.close()</span><br><span class="line"> </span><br><span class="line"><span class="comment">#从zip文件解包</span></span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line">zfile = zipfile.ZipFile(<span class="string">'archive.zip'</span>,<span class="string">'r'</span>)</span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> zfile.namelist():</span><br><span class="line">    data = zfile.read(filename)</span><br><span class="line">    file = open(filename,<span class="string">'w+b'</span>)</span><br><span class="line">    file.write(data)</span><br><span class="line">    file.close()</span><br><span class="line"> </span><br><span class="line"><span class="comment">#把整个文件夹内的文件打包</span></span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">f = zipfile.ZipFile(<span class="string">'archive2.zip'</span>,<span class="string">'w'</span>)</span><br><span class="line">startdir = <span class="string">"./download"</span></span><br><span class="line"><span class="keyword">for</span> dirpath,dirnames,filenames <span class="keyword">in</span> os.walk(startdir):</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">        f.write(os.path.join(dirpath,filename))</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1042,7 +1040,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-count">165</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

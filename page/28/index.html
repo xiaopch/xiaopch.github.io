@@ -273,6 +273,241 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2e8eee80.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/2e8eee80.html" itemprop="url">linux服务器配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T16:08:36+08:00">2018-01-15</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -sSL https://get.docker.com | sh</span><br></pre></td></tr></table></figure>
+<h3 id="安装mongodb服务器"><a href="#安装mongodb服务器" class="headerlink" title="安装mongodb服务器"></a>安装mongodb服务器</h3><p> 1.安装mongodb</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mongodb</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>启动服务</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/pi/mongod_data/</span><br><span class="line">mongod --dbpath /home/pi/mongod_data/</span><br></pre></td></tr></table></figure>
+<p>3.启动命令行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
+<p>4.修改/etc/mongodb.config</p>
+<ul>
+<li>把里面的bind=127.0.0.1 注释掉，前面加一个#即可</li>
+<li>这样其他主机也可以访问这台树莓派的mongodb服务器。</li>
+<li>修改dbpath和dblog的路径，因为默认的路径你需要root权限.</li>
+<li>然后运行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --config /etc/mongodb.config</span><br></pre></td></tr></table></figure>
+<ul>
+<li>然后远程使用mongo ip地址就可以远程连接了。 </li>
+<li><h2 id="安装redis服务器"><a href="#安装redis服务器" class="headerlink" title="安装redis服务器"></a>安装redis服务器</h2></li>
+<li>安装命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install redis-server</span><br></pre></td></tr></table></figure>
+<p>1分钟不到就安装好了而且还会自动注册服务自动启动，可以说是非常方便了。</p>
+<ul>
+<li>电脑不能访问到redis解决方案</li>
+</ul>
+<p>在/etc/redis/redis.conf里面的bind 127.0.0.1前面加上一个#，把这行注释掉就可以访问到了,端口是6379。</p>
+<h2 id="ngrok-内网穿透"><a href="#ngrok-内网穿透" class="headerlink" title="ngrok 内网穿透"></a>ngrok 内网穿透</h2><ul>
+<li><p>下载ngrok并解压缩<br><a href>https://ngrok.com/download</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip ngrok.zip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./ngrok help</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>穿透80端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./ngrok http 80</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>固定域名需要升级账户</p>
+</li>
+</ul>
+<h2 id="树莓派安装Nginx服务器"><a href="#树莓派安装Nginx服务器" class="headerlink" title="树莓派安装Nginx服务器"></a>树莓派安装Nginx服务器</h2><ul>
+<li><p>apt-get安装 (约6MB)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nginx -y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改nginx的配置文件</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/nginx/sites-available/default</span><br></pre></td></tr></table></figure>
+<p><strong>以下几个选项注意一下</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listen 8080; ## listen for ipv4;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>监听的端口号，如果与其它软件冲突，可以在这里更改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root /home/pi/public;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>nginx 默认路径html所在路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">index index.html index.htm index.php;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>nginx默认寻找的网页类型，我们可以增加一个index.php</p>
+</li>
+<li>启动nginx</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/nginx start</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>nginx的www根目录默认在 /usr/share/nginx/www中</p>
+</li>
+<li><p>启用Nginx目录浏览功能的方法,修改nginx的配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    root /home/pi/public; #指定实际目录绝对路径；</span><br><span class="line">    autoindex on; #开启目录浏览功能；</span><br><span class="line">    autoindex_exact_size off; #关闭详细文件大小统计，让文件大小显示MB，GB单位</span><br><span class="line">    autoindex_localtime on; #开启以服务器本地时区显示文件修改日期！</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="树莓派上vsftp的安装和配置，支持中文文件夹"><a href="#树莓派上vsftp的安装和配置，支持中文文件夹" class="headerlink" title="树莓派上vsftp的安装和配置，支持中文文件夹"></a>树莓派上vsftp的安装和配置，支持中文文件夹</h2><p><strong>==适合中文文件和目录的传输，传输时没有改变编码，中文支持好==</strong></p>
+<ul>
+<li><p>在树莓派安装ftp服务器，可上载＼下载文件。vsftpd是开源的轻量级的常用ftp服务器。</p>
+</li>
+<li><p>安装vsftpd服务器 (约400KB)</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vsftpd</span><br></pre></td></tr></table></figure>
+<ul>
+<li>启动ftp服务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service vsftpd start</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>编辑vsftdp的配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/vsftpd.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找到以下行，定义一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=NO #表示：不允许匿名访问</span><br><span class="line">local_enable=YES #设定本地用户可以访问。</span><br><span class="line">write_enable=YES#设定可以进行写操作</span><br><span class="line">local_umask=022#设定上传后文件的权限掩码。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>存盘退出</p>
+</li>
+<li><p>重启vsftpd服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service vsftpd restart</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试一下</p>
+</li>
+<li>通过ftp连接树莓派系统，以用户名pi登录，密码是raspberry<br>ftp的根目录是/home/pi，即pi用户的HOME目录<br>可上传或下载文件了</li>
+</ul>
+<h2 id="安装PHP模块"><a href="#安装PHP模块" class="headerlink" title="安装PHP模块"></a>安装PHP模块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install php-fpm</span><br><span class="line">sudo apt-get install php-sqlite3</span><br><span class="line">#sudo chmod -R 777 wordpress/</span><br></pre></td></tr></table></figure>
+<h2 id="安装wordpress"><a href="#安装wordpress" class="headerlink" title="安装wordpress"></a>安装wordpress</h2><ul>
+<li>安装wordpress比较简单,关键是要使它支持sqlite</li>
+<li><p>首先到官网下载wordpress安装包解压到树莓派的/var/www目录下,这是可以把树莓派的sd卡放到电脑上操作比较方便.<br><a href="http://cn.wordpress.org/" target="_blank" rel="noopener">http://cn.wordpress.org/</a></p>
+</li>
+<li><p>然后是下载sqlite插件<br><a href="http://wordpress.org/plugins/sqlite-integration/ http://wordpress.org/plugins/sqlite-integration/" target="_blank" rel="noopener">http://wordpress.org/plugins/sqlite-integration/</a></p>
+</li>
+<li><p>安装sqlite插件到wordpress</p>
+</li>
+<li>进入wordpress的根目录,把wp-config-sample.php重命名为wp-config.php,编辑wp-config.php添加:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">define(&apos;USE_MYSQL&apos;, false);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>然后解压刚才下载的插件包把解压后的包放到wp-content/plugin/</p>
+</li>
+<li><p>目录下再把包里面的db.php复制到wp-content目录下,然后就完成了.</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/3570d822.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -560,7 +795,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-count">165</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

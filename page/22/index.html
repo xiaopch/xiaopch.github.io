@@ -273,6 +273,128 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/79f1fd7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/79f1fd7.html" itemprop="url">CSharp调用dll文件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-11T10:16:04+08:00">2019-06-11</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="16进制字符串转byte数组并byte数组转double"><a href="#16进制字符串转byte数组并byte数组转double" class="headerlink" title="16进制字符串转byte数组并byte数组转double"></a>16进制字符串转byte数组并byte数组转double</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string ins_line=&quot;55 AA F6 28 5C 0F 0C B2 16 41 AF 0A 6E C9 E5 93 5C 40 30 4B 69&quot;;</span><br><span class="line">double[] result = new double[22];</span><br><span class="line">byte[] b_array = ins_line.Split(&apos; &apos;).Select(s =&gt; Convert.ToByte(s, 16)).ToArray();</span><br><span class="line">result[0] = BitConverter.ToDouble(b_array.Skip(2).Take(8).ToArray(), 0);//GPS时间</span><br></pre></td></tr></table></figure>
+<h2 id="C-调用C-的非托管的dll，传递数组"><a href="#C-调用C-的非托管的dll，传递数组" class="headerlink" title="C#调用C++的非托管的dll，传递数组"></a>C#调用C++的非托管的dll，传递数组</h2><h3 id="C-的dll的代码"><a href="#C-的dll的代码" class="headerlink" title="C++的dll的代码"></a>C++的dll的代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">extern &quot;C&quot; _declspec(dllexport)int add(int a, int b)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">	int sum = a + b;</span><br><span class="line">	return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extern &quot;C&quot; _declspec(dllexport)double * rail_inspect(double a[7], double b[7],double x[5][6])</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">	double * c = new double[7];</span><br><span class="line">	for (int i = 0; i &lt; 7; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		c[i] = a[i] + b[i];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="C-调用dll的代码"><a href="#C-调用dll的代码" class="headerlink" title="C#调用dll的代码"></a>C#调用dll的代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">//勾选-项目属性-Build-Allow Unsafe Code</span><br><span class="line"></span><br><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.ComponentModel;</span><br><span class="line">using System.Data;</span><br><span class="line">using System.Drawing;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line">using System.Threading.Tasks;</span><br><span class="line">using System.Windows.Forms;</span><br><span class="line">using System.Runtime.InteropServices;</span><br><span class="line">using ClassLibrary1;</span><br><span class="line">using System.Diagnostics;  </span><br><span class="line"></span><br><span class="line">namespace WindowsFormsApplication1</span><br><span class="line">&#123;</span><br><span class="line">    public partial class Form1 : Form</span><br><span class="line">    &#123;</span><br><span class="line">        public Form1()</span><br><span class="line">        &#123;</span><br><span class="line">            InitializeComponent();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private void button1_Click(object sender, EventArgs e)</span><br><span class="line">        &#123;</span><br><span class="line">            unsafe</span><br><span class="line">            &#123;</span><br><span class="line">                double* a = stackalloc double[7];</span><br><span class="line">                double* b = stackalloc double[7];</span><br><span class="line"></span><br><span class="line">                double[,] x = new double[5, 6];</span><br><span class="line">                for (int i = 0; i &lt; 7;i++ )</span><br><span class="line">                &#123;</span><br><span class="line">                    a[i] = i * 5;</span><br><span class="line">                    b[i] = i * 2;</span><br><span class="line">                &#125;</span><br><span class="line">                for(int i =0;i&lt;5;i++)</span><br><span class="line">                &#123;</span><br><span class="line">                    x[i, i] = i * 5;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                double* c = CPPDLL.rail_inspect(a, b, x);</span><br><span class="line">                MessageBox.Show(c[4].ToString());</span><br><span class="line">                for(int i=0;i&lt;5;i++)</span><br><span class="line">                    Debug.WriteLine(c[i].ToString());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    unsafe class CPPDLL</span><br><span class="line">    &#123;</span><br><span class="line">        [DllImport(&quot;MyDLL.dll&quot;, CallingConvention = CallingConvention.Cdecl)]</span><br><span class="line">        public static extern int add(int a, int b);</span><br><span class="line"></span><br><span class="line">        [DllImport(&quot;MyDLL.dll&quot;, CallingConvention = CallingConvention.Cdecl)]</span><br><span class="line">        public static extern  double * rail_inspect(double * a, double * b,double[,] x);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/f3630251.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -354,6 +476,132 @@
 <p><a href="/uploads/pdf/Track_inspection_knowledge.pdf">轨检知识</a></p>
 <p><a href="/uploads/pdf/rail_profile_50_60.pdf">钢轨技术参数</a></p>
 <p><br></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/eea33d6a.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/eea33d6a.html" itemprop="url">hexo中文链接解决之道</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-11T00:00:00+08:00">2019-06-11</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="使用hexo-abbrlink插件"><a href="#使用hexo-abbrlink插件" class="headerlink" title="使用hexo-abbrlink插件"></a>使用hexo-abbrlink插件</h2><h3 id="在站点根目录使用-git-bash-执行命令："><a href="#在站点根目录使用-git-bash-执行命令：" class="headerlink" title="在站点根目录使用 git bash 执行命令："></a>在站点根目录使用 <code>git bash</code> 执行命令：</h3><pre><code>npm install hexo-abbrlink --save
+</code></pre><h3 id="站点配置文件里"><a href="#站点配置文件里" class="headerlink" title="站点配置文件里:"></a>站点配置文件里:</h3><p>打开根目录下的 <code>_config.yml</code> 文件，修改如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># permalink: :year/:month/:day/:title/</span><br><span class="line"># permalink_defaults:</span><br><span class="line">permalink: posts/:abbrlink.html</span><br><span class="line">abbrlink:</span><br><span class="line">  alg: crc32  # 算法：crc16(default) and crc32</span><br><span class="line">  rep: hex    # 进制：dec(default) and hex</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">##标签名映射</span><br><span class="line">tag_map:</span><br><span class="line">      其他: other</span><br><span class="line">      串口: SerialPort</span><br><span class="line">      人生: Life</span><br><span class="line">      内存: Memory</span><br><span class="line">      分享: Share </span><br><span class="line">      接口: Interface</span><br><span class="line">      日记: Diary</span><br><span class="line">      树莓派: RaspberryPi</span><br><span class="line">      深度学习: DeepLearning</span><br></pre></td></tr></table></figure>
+<h3 id="另外可以修改scaffolds里的模版文件，修改post-md为"><a href="#另外可以修改scaffolds里的模版文件，修改post-md为" class="headerlink" title="另外可以修改scaffolds里的模版文件，修改post.md为:"></a>另外可以修改scaffolds里的模版文件，修改post.md为:</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">##comments: false</span><br><span class="line">categories:</span><br><span class="line">tags:</span><br></pre></td></tr></table></figure>
 
           
         
@@ -490,132 +738,6 @@
             </a>
           </div>
           <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/eea33d6a.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/eea33d6a.html" itemprop="url">hexo中文链接解决之道</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-11T00:00:00+08:00">2019-06-11</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="使用hexo-abbrlink插件"><a href="#使用hexo-abbrlink插件" class="headerlink" title="使用hexo-abbrlink插件"></a>使用hexo-abbrlink插件</h2><h3 id="在站点根目录使用-git-bash-执行命令："><a href="#在站点根目录使用-git-bash-执行命令：" class="headerlink" title="在站点根目录使用 git bash 执行命令："></a>在站点根目录使用 <code>git bash</code> 执行命令：</h3><pre><code>npm install hexo-abbrlink --save
-</code></pre><h3 id="站点配置文件里"><a href="#站点配置文件里" class="headerlink" title="站点配置文件里:"></a>站点配置文件里:</h3><p>打开根目录下的 <code>_config.yml</code> 文件，修改如下配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># permalink: :year/:month/:day/:title/</span><br><span class="line"># permalink_defaults:</span><br><span class="line">permalink: posts/:abbrlink.html</span><br><span class="line">abbrlink:</span><br><span class="line">  alg: crc32  # 算法：crc16(default) and crc32</span><br><span class="line">  rep: hex    # 进制：dec(default) and hex</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">##标签名映射</span><br><span class="line">tag_map:</span><br><span class="line">      其他: other</span><br><span class="line">      串口: SerialPort</span><br><span class="line">      人生: Life</span><br><span class="line">      内存: Memory</span><br><span class="line">      分享: Share </span><br><span class="line">      接口: Interface</span><br><span class="line">      日记: Diary</span><br><span class="line">      树莓派: RaspberryPi</span><br><span class="line">      深度学习: DeepLearning</span><br></pre></td></tr></table></figure>
-<h3 id="另外可以修改scaffolds里的模版文件，修改post-md为"><a href="#另外可以修改scaffolds里的模版文件，修改post-md为" class="headerlink" title="另外可以修改scaffolds里的模版文件，修改post.md为:"></a>另外可以修改scaffolds里的模版文件，修改post.md为:</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">##comments: false</span><br><span class="line">categories:</span><br><span class="line">tags:</span><br></pre></td></tr></table></figure>
-
-          
         
       
     </div>
@@ -951,127 +1073,6 @@ PHM技术还被成功应用于军事、民用航空等领域，大大提升了�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2c9ebefb.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/2c9ebefb.html" itemprop="url">Python之leveldb数据库</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-27T09:07:12+08:00">2019-05-27</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="python操作leveldb"><a href="#python操作leveldb" class="headerlink" title="python操作leveldb"></a>python操作leveldb</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">下载windows版本的python的leveldb</span><br><span class="line">https://github.com/happynear/py-leveldb-windows/</span><br><span class="line">Copy leveldb.pyd to YOUR_PYTHON_ROOT/Lib/site-packages.</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">import leveldb</span><br><span class="line"></span><br><span class="line">db = leveldb.LevelDB(&apos;./db&apos;)</span><br><span class="line"></span><br><span class="line">db.Put(&apos;hello&apos;, &apos;world&apos;) </span><br><span class="line">print(db.Get(&apos;hello&apos;))</span><br><span class="line"></span><br><span class="line">db.Delete(&apos;hello&apos;) </span><br><span class="line">print(db.Get(&apos;hello&apos;))</span><br><span class="line"></span><br><span class="line">batch = leveldb.WriteBatch() </span><br><span class="line">batch.Put(&apos;hello&apos;, &apos;world&apos;) </span><br><span class="line">batch.Put(&apos;hello again&apos;, &apos;world&apos;) </span><br><span class="line">batch.Delete(&apos;hello&apos;)</span><br><span class="line">db.Write(batch, sync = True)</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1121,7 +1122,7 @@ PHM技术还被成功应用于军事、民用航空等领域，大大提升了�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-count">165</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

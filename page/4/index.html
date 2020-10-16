@@ -273,6 +273,132 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/bfd017f6.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/bfd017f6.html" itemprop="url">python之yield和zip</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-19T00:00:00+08:00">2020-07-19</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="生成斐波那契数列"><a href="#生成斐波那契数列" class="headerlink" title="生成斐波那契数列"></a>生成斐波那契数列</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fab</span><span class="params">(max)</span>:</span> </span><br><span class="line">    <span class="comment">#初始化</span></span><br><span class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span> </span><br><span class="line">    <span class="keyword">while</span> n &lt; max: </span><br><span class="line">        print(b)</span><br><span class="line">        a, b = b, a + b </span><br><span class="line">        n = n + <span class="number">1</span></span><br><span class="line">fab(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="使用yield生成斐波那契数列"><a href="#使用yield生成斐波那契数列" class="headerlink" title="使用yield生成斐波那契数列"></a>使用yield生成斐波那契数列</h4><h6 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fab</span><span class="params">(max)</span>:</span> </span><br><span class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span> </span><br><span class="line">    <span class="keyword">while</span> n &lt; max: </span><br><span class="line">        <span class="keyword">yield</span> b      <span class="comment"># 使用 yield</span></span><br><span class="line">        <span class="comment"># print b </span></span><br><span class="line">        a, b = b, a + b </span><br><span class="line">        n = n + <span class="number">1</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> fab(<span class="number">5</span>): </span><br><span class="line">    print(n)</span><br></pre></td></tr></table></figure>
+<p>‘’’简单地讲，yield 的作用就是把一个函数变成一个 generator，带有 yield 的函数不再是一个普通函数，Python 解释器会将其视为一个 generator，<br>调用 fab(5) 不会执行 fab 函数，而是返回一个 iterable 对象！在 for 循环执行时，每次循环都会执行 fab 函数内部的代码，执行到 yield b 时，<br>fab 函数就返回一个迭代值，下次迭代时，代码从 yield b 的下一条语句继续执行，而函数的本地变量看起来和上次中断执行前是完全一样的，于是<br>函数继续执行，直到再次遇到 yield。’’’</p>
+<h4 id="使用next读取generator"><a href="#使用next读取generator" class="headerlink" title="使用next读取generator"></a>使用next读取generator</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">f=fab(<span class="number">5</span>)</span><br><span class="line">print(next(f))</span><br><span class="line">print(f.__next__())</span><br><span class="line">print(next(f))</span><br><span class="line">print(f.__next__())</span><br><span class="line">print(f.__next__())</span><br></pre></td></tr></table></figure>
+<h4 id="使用zip把list合并成一个元组对的列表"><a href="#使用zip把list合并成一个元组对的列表" class="headerlink" title="使用zip把list合并成一个元组对的列表"></a>使用zip把list合并成一个元组对的列表</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</span><br><span class="line">b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">c = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line">zipped = list(zip(a,b))     <span class="comment"># 打包为元组的列表</span></span><br><span class="line">print(zipped,list(zipped))</span><br><span class="line"></span><br><span class="line">print(list(zip(a,c)))              <span class="comment"># 元素个数与最短的列表一致</span></span><br><span class="line"></span><br><span class="line">print(list(zip(*zipped)))    <span class="comment"># 与 zip 相反，zip(*) 可理解为解压，返回二维矩阵式</span></span><br><span class="line"></span><br><span class="line">print(dict(zip(a, b)))</span><br></pre></td></tr></table></figure>
+<h4 id="zipfile压缩和解压文件"><a href="#zipfile压缩和解压文件" class="headerlink" title="zipfile压缩和解压文件"></a>zipfile压缩和解压文件</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#打包成zip文件</span></span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line">f = zipfile.ZipFile(<span class="string">'archive.zip'</span>,<span class="string">'w'</span>)</span><br><span class="line">f.write(<span class="string">'MusicNamer.exe'</span>)</span><br><span class="line">f.close()</span><br><span class="line"> </span><br><span class="line"><span class="comment">#从zip文件解包</span></span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line">zfile = zipfile.ZipFile(<span class="string">'archive.zip'</span>,<span class="string">'r'</span>)</span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> zfile.namelist():</span><br><span class="line">    data = zfile.read(filename)</span><br><span class="line">    file = open(filename,<span class="string">'w+b'</span>)</span><br><span class="line">    file.write(data)</span><br><span class="line">    file.close()</span><br><span class="line"> </span><br><span class="line"><span class="comment">#把整个文件夹内的文件打包</span></span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">f = zipfile.ZipFile(<span class="string">'archive2.zip'</span>,<span class="string">'w'</span>)</span><br><span class="line">startdir = <span class="string">"./download"</span></span><br><span class="line"><span class="keyword">for</span> dirpath,dirnames,filenames <span class="keyword">in</span> os.walk(startdir):</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">        f.write(os.path.join(dirpath,filename))</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/6d77eabc.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1392,151 +1518,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/7d791865.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/7d791865.html" itemprop="url">svm鸢尾花分类</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T00:00:00+08:00">2020-07-09</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="任务描述："><a href="#任务描述：" class="headerlink" title="任务描述："></a><strong>任务描述：</strong></h1><p>构建一个模型，根据鸢尾花的花萼和花瓣大小将其分为三种不同的品种。</p>
-<h1 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a><strong>数据集</strong></h1><p>总共包含150行数据</p>
-<p>每一行数据由 4 个特征值及一个目标值组成。</p>
-<p>4 个特征值分别为：萼片长度、萼片宽度、花瓣长度、花瓣宽度</p>
-<p>目标值为三种不同类别的鸢尾花，分别为：    Iris Setosa、Iris Versicolour、Iris Virginica</p>
-<p><strong>首先导入必要的包：</strong></p>
-<p><strong>numpy</strong>：python第三方库，用于科学计算</p>
-<p><strong>matplotlib</strong>:python第三方库，主要用于进行可视化</p>
-<p><strong>sklearn</strong>:python的重要机器学习库，其中封装了大量的机器学习算法，如：分类、回归、降维以及聚类</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np                </span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> colors     </span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm            </span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> model_selection</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br></pre></td></tr></table></figure>
-<h1 id="Step1-数据准备"><a href="#Step1-数据准备" class="headerlink" title="Step1.数据准备"></a><strong>Step1.数据准备</strong></h1><p>(1)从指定路径下加载数据</p>
-<p>(2)对加载的数据进行数据分割，x_train,x_test,y_train,y_test分别表示训练集特征、训练集标签、测试集特征、测试集标签</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#*************将字符串转为整型，便于数据加载***********************</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iris_type</span><span class="params">(s)</span>:</span></span><br><span class="line">    it = &#123;<span class="string">b'Iris-setosa'</span>:<span class="number">0</span>, <span class="string">b'Iris-versicolor'</span>:<span class="number">1</span>, <span class="string">b'Iris-virginica'</span>:<span class="number">2</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> it[s]</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#加载数据</span></span><br><span class="line">data_path=<span class="string">'iris.data'</span>          <span class="comment">#数据文件的路径</span></span><br><span class="line">data = np.loadtxt(data_path,                                <span class="comment">#数据文件路径</span></span><br><span class="line">                  dtype=float,                              <span class="comment">#数据类型</span></span><br><span class="line">                  delimiter=<span class="string">','</span>,                            <span class="comment">#数据分隔符</span></span><br><span class="line">                  converters=&#123;<span class="number">4</span>:iris_type&#125;)                 <span class="comment">#将第5列使用函数iris_type进行转换</span></span><br><span class="line">print(data.shape)                                                 <span class="comment">#data为二维数组，data.shape=(150, 5)</span></span><br><span class="line"><span class="comment">#print(data.shape)</span></span><br><span class="line"><span class="comment">#数据分割</span></span><br><span class="line">x, y = np.split(data,                                       <span class="comment">#要切分的数组</span></span><br><span class="line">                (<span class="number">4</span>,),                                       <span class="comment">#沿轴切分的位置，第5列开始往后为y</span></span><br><span class="line">                axis=<span class="number">1</span>)                                     <span class="comment">#代表纵向分割，按列分割</span></span><br><span class="line">print(x.shape,y.shape)</span><br><span class="line">x = x[:, <span class="number">0</span>:<span class="number">4</span>]                                               <span class="comment">#在X中我们取前两列作为特征，为了后面的可视化。x[:,0:4]代表第一维(行)全取，第二维(列)取0~2</span></span><br><span class="line"><span class="comment"># print(y)</span></span><br><span class="line">x_train,x_test,y_train,y_test=model_selection.train_test_split(x,              <span class="comment">#所要划分的样本特征集</span></span><br><span class="line">                                                               y,              <span class="comment">#所要划分的样本结果</span></span><br><span class="line">                                                               random_state=<span class="number">1</span>, <span class="comment">#随机数种子</span></span><br><span class="line">                                                               test_size=<span class="number">0.3</span>)  <span class="comment">#测试样本占比</span></span><br><span class="line"></span><br><span class="line">print(x_train.shape,x_test.shape,y_train.shape,y_test.shape)</span><br><span class="line">print(y_train.ravel())</span><br></pre></td></tr></table></figure>
-<h1 id="Step2-模型搭建"><a href="#Step2-模型搭建" class="headerlink" title="Step2.模型搭建"></a><strong>Step2.模型搭建</strong></h1><p>C越大，相当于惩罚松弛变量，希望松弛变量接近0，即对误分类的惩罚增大，趋向于对训练集全分对的情况，这样对训练集测试时准确率很高，但泛化能力弱。<br>C值小，对误分类的惩罚减小，允许容错，将他们当成噪声点，泛化能力较强。</p>
-<p>kernel=’linear’时，为线性核</p>
-<p>decision_function_shape=’ovr’时，为one v rest，即一个类别与其他类别进行划分，</p>
-<p>decision_function_shape=’ovo’时，为one v one，即将类别两两之间进行划分，用二分类的方法模拟多分类的结果。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#**********************SVM分类器构建*************************</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">classifier</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment">#clf = svm.SVC(C=0.8,kernel='rbf', gamma=50,decision_function_shape='ovr')</span></span><br><span class="line">    clf = svm.SVC(C=<span class="number">0.5</span>,                         <span class="comment">#误差项惩罚系数,默认值是1</span></span><br><span class="line">                  kernel=<span class="string">'linear'</span>,               <span class="comment">#线性核 kenrel="rbf":高斯核</span></span><br><span class="line">                  decision_function_shape=<span class="string">'ovr'</span>) <span class="comment">#决策函数</span></span><br><span class="line">    <span class="keyword">return</span> clf</span><br><span class="line"><span class="comment"># 2.定义模型：SVM模型定义</span></span><br><span class="line">clf = classifier()</span><br></pre></td></tr></table></figure>
-<h1 id="Step3-模型训练"><a href="#Step3-模型训练" class="headerlink" title="Step3.模型训练"></a><strong>Step3.模型训练</strong></h1><h3 id="numpy中的ravel-、flatten-、squeeze-都有将多维数组转换为一维数组的功能"><a href="#numpy中的ravel-、flatten-、squeeze-都有将多维数组转换为一维数组的功能" class="headerlink" title="numpy中的ravel()、flatten()、squeeze()都有将多维数组转换为一维数组的功能"></a>numpy中的ravel()、flatten()、squeeze()都有将多维数组转换为一维数组的功能</h3><p>区别：<br>ravel()：如果没有必要，不会产生源数据的副本<br>flatten()：返回源数据的副本<br>squeeze()：只能对维数为1的维度降维</p>
-<p>另外，reshape(-1)也可以“拉平”多维数组</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#***********************训练模型*****************************</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(clf,x_train,y_train)</span>:</span></span><br><span class="line">    clf.fit(x_train,         <span class="comment">#训练集特征向量</span></span><br><span class="line">            y_train.ravel()) <span class="comment">#训练集目标值</span></span><br><span class="line"><span class="comment"># 3.训练SVM模型</span></span><br><span class="line">train(clf,x_train,y_train)</span><br></pre></td></tr></table></figure>
-<h1 id="Step4-模型评估"><a href="#Step4-模型评估" class="headerlink" title="Step4.模型评估"></a><strong>Step4.模型评估</strong></h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#**************并判断a b是否相等，计算acc的均值*************</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_accuracy</span><span class="params">(a, b, tip)</span>:</span></span><br><span class="line">    acc = a.ravel() == b.ravel()</span><br><span class="line">    print(<span class="string">'%s Accuracy:%.3f'</span> %(tip, np.mean(acc)))</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_accuracy</span><span class="params">(clf,x_train,y_train,x_test,y_test)</span>:</span></span><br><span class="line">    <span class="comment">#分别打印训练集和测试集的准确率  score(x_train,y_train):表示输出x_train,y_train在模型上的准确率</span></span><br><span class="line">    print(<span class="string">'trianing prediction:%.3f'</span> %(clf.score(x_train, y_train)))</span><br><span class="line">    print(<span class="string">'test data prediction:%.3f'</span> %(clf.score(x_test, y_test)))</span><br><span class="line">    <span class="comment">#原始结果与预测结果进行对比   predict()表示对x_train样本进行预测，返回样本类别</span></span><br><span class="line">    show_accuracy(clf.predict(x_train), y_train, <span class="string">'traing data'</span>)</span><br><span class="line">    show_accuracy(clf.predict(x_test), y_test, <span class="string">'testing data'</span>)</span><br><span class="line">    <span class="comment">#计算决策函数的值，表示x到各分割平面的距离</span></span><br><span class="line">    print(<span class="string">'decision_function:\n'</span>, clf.decision_function(x_train))</span><br><span class="line">    </span><br><span class="line">print_accuracy(clf,x_train,y_train,x_test,y_test)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1586,7 +1567,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-count">165</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

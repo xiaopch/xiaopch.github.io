@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/7fcebc9b.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/7d5a1f78.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -292,7 +292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/7fcebc9b.html" itemprop="url">PyTorch深度学习60分钟入门教程2-自动微分</a></h1>
+                <a class="post-title-link" href="/post/7d5a1f78.html" itemprop="url">numpy标准化数据的公式</a></h1>
         
 
         <div class="post-meta">
@@ -304,7 +304,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-07T20:20:00+08:00">2020-02-07</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-20T00:00:00+08:00">2020-02-20</time>
             
 
             
@@ -343,13 +343,14 @@
       
         
           
-            <h2 id="autograd-包是-PyTorch-中所有神经网络的核心。"><a href="#autograd-包是-PyTorch-中所有神经网络的核心。" class="headerlink" title="autograd 包是 PyTorch 中所有神经网络的核心。"></a>autograd 包是 PyTorch 中所有神经网络的核心。</h2><p>首先让我们简要地介绍它，然后我们将会去训练我们的第一个神经网络。该 autograd 软件包为 Tensors 上的所有操作提供自动微分。<br>它是一个由运行定义的框架，这意味着以代码运行方式定义你的后向传播，并且每次迭代都可以不同。我们从 tensor 和 gradients 来举一些例子。</p>
-<p>1、TENSOR<br>torch.Tensor 是包的核心类。如果将其属性 .requires_grad 设置为 True，则会开始跟踪针对 tensor 的所有操作。完成计算后，您可以调用 .backward() 来自动计算所有梯度。该张量的梯度将累积到 grad 属性中。</p>
-<p>要停止 tensor 历史记录的跟踪，您可以调用 .detach()，它将其与计算历史记录分离，并防止将来的计算被跟踪。</p>
-<p>要停止跟踪历史记录（和使用内存），您还可以将代码块使用 with torch.no_grad(): 包装起来。在评估模型时，这是特别有用，因为模型在训练阶段<br>具有 requires_grad = True 的可训练参数有利于调参，但在评估阶段我们不需要梯度。</p>
-<p>还有一个类对于 autograd 实现非常重要那就是 Function。Tensor 和 Function 互相连接并构建一个非循环图，它保存整个完整的计算过程的历史信息。每个张量都有一个 grad_fn 属性保存着创建了张量的 Function 的引用，（如果用户自己创建张量，则g rad_fn 是 None ）。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果你想计算导数，你可以调用 Tensor.backward()。如果 Tensor 是标量（即它包含一个元素数据），则不需要指定任何参数backward()，</span></span><br><span class="line"><span class="comment"># 但是如果它有更多元素，则需要指定一个gradient 参数来指定张量的形状。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment"># 创建一个张量，设置 requires_grad=True 来跟踪与它相关的计算</span></span><br><span class="line"></span><br><span class="line">x = torch.ones(<span class="number">2</span>, <span class="number">2</span>, requires_grad=<span class="literal">True</span>)</span><br><span class="line">print(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 针对张量做一个操作</span></span><br><span class="line">y = x + <span class="number">2</span></span><br><span class="line">print(y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># y 作为操作的结果被创建，所以它有 grad_fn</span></span><br><span class="line">print(y.grad_fn)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 针对 y 做更多的操作：</span></span><br><span class="line">z = y * y * <span class="number">3</span></span><br><span class="line">out = z.mean()</span><br><span class="line">print(z, out)</span><br><span class="line"></span><br><span class="line"><span class="comment"># .requires_grad_( ... ) 会改变张量的 requires_grad 标记。输入的标记默认为 False ，如果没有提供相应的参数。</span></span><br><span class="line"></span><br><span class="line">a = torch.randn(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">a = ((a * <span class="number">3</span>) / (a - <span class="number">1</span>))</span><br><span class="line">print(a.requires_grad)</span><br><span class="line">a.requires_grad_(<span class="literal">True</span>)</span><br><span class="line">print(a.requires_grad)</span><br><span class="line">b = (a * a).sum()</span><br><span class="line">print(b.grad_fn)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 梯度：</span></span><br><span class="line"><span class="comment"># 我们现在后向传播，因为输出包含了一个标量，out.backward() 等同于out.backward(torch.tensor(1.))。</span></span><br><span class="line">out.backward()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印梯度  d(out)/dx</span></span><br><span class="line">print(x.grad)</span><br></pre></td></tr></table></figure>
+            <h3 id="numpy求均值，方差，标准差和数据标准化"><a href="#numpy求均值，方差，标准差和数据标准化" class="headerlink" title="numpy求均值，方差，标准差和数据标准化"></a>numpy求均值，方差，标准差和数据标准化</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"> </span><br><span class="line">arr = np.random.rand(<span class="number">10</span>)*<span class="number">10000</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 均值</span></span><br><span class="line">print(np.mean(arr))</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 方差</span></span><br><span class="line">print(np.var(arr))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 标准差</span></span><br><span class="line">print(np.std(arr))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 标准化数据的公式: (数据值 - 平均数) / 标准差</span></span><br><span class="line">norm = (arr - np.mean(arr))/np.std(arr)</span><br><span class="line">print(norm)</span><br></pre></td></tr></table></figure>
+<h3 id="pandas数据预处理之标准化数据"><a href="#pandas数据预处理之标准化数据" class="headerlink" title="pandas数据预处理之标准化数据"></a>pandas数据预处理之标准化数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">df=pd.read_excel(<span class="string">'./data.xlsx'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 一般特征之间有不同的量纲，如果不做处理，会造成数据间的差异很大，则涉及空间距离计算或者相似度计算时，需要对不同特征数据标准化</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># (1.)离差标准化：x=(x-min)/(max-min)  注意：1、当max= min 没有意义 2、min/max是否为异常值</span></span><br><span class="line">x_max = df[<span class="string">'column'</span>].max()</span><br><span class="line">x_min = df[<span class="string">'column'</span>].min()</span><br><span class="line">x = (df[<span class="string">'column'</span>] - x_min) / (x_max - x_min)</span><br><span class="line"><span class="comment"># print(x)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># (2.)标准差标准化：x=(x-mean)/std</span></span><br><span class="line">x_mean = df[<span class="string">'column'</span>].mean()</span><br><span class="line">x_std = df[<span class="string">'column'</span>].std()</span><br><span class="line">x1 = (df[<span class="string">'column'</span>] - x_mean) / x_std</span><br><span class="line"><span class="comment"># print(x1)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># (3.)小数定标标准化数据 x=x/10`k  将所有的数都化为小数</span></span><br><span class="line"><span class="comment"># 1、找到最大值 x.max()=10`k  k=log10(|x|.max()):k可能是小数，向上取整</span></span><br><span class="line">k_max = abs(df[<span class="string">'column'</span>]).max()</span><br><span class="line">k = np.ceil(np.log10(k_max))</span><br><span class="line">m = df[<span class="string">'column'</span>] / <span class="number">10</span> ** k</span><br><span class="line"><span class="comment"># print(m)</span></span><br></pre></td></tr></table></figure>
+<h3 id="one-hot编码"><a href="#one-hot编码" class="headerlink" title="one-hot编码"></a>one-hot编码</h3><p>离散特征的编码分为两种情况：</p>
+<p>1、离散特征的取值之间没有大小的意义，比如color：[red,blue],那么就使用one-hot编码<br>2、离散特征的取值有大小的意义，比如size:[X,XL,XXL],那么就使用数值的映射{X:1,XL:2,XXL:3}</p>
+<p>使用pandas可以很方便的对离散型特征进行one-hot编码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd  </span><br><span class="line">df = pd.DataFrame([  </span><br><span class="line">            [<span class="string">'green'</span>, <span class="string">'M'</span>, <span class="number">10.1</span>, <span class="string">'class1'</span>],   </span><br><span class="line">            [<span class="string">'red'</span>, <span class="string">'L'</span>, <span class="number">13.5</span>, <span class="string">'class2'</span>],  </span><br><span class="line">            [<span class="string">'red'</span>, <span class="string">'M'</span>, <span class="number">13.7</span>, <span class="string">'class2'</span>], </span><br><span class="line">            [<span class="string">'blue'</span>, <span class="string">'XL'</span>, <span class="number">15.3</span>, <span class="string">'class1'</span>]])  </span><br><span class="line">  </span><br><span class="line">df.columns = [<span class="string">'color'</span>, <span class="string">'size'</span>, <span class="string">'prize'</span>, <span class="string">'class_label'</span>]  </span><br><span class="line">  </span><br><span class="line">size_mapping = &#123;  </span><br><span class="line">           <span class="string">'XL'</span>: <span class="number">3</span>,  </span><br><span class="line">           <span class="string">'L'</span>: <span class="number">2</span>,  </span><br><span class="line">           <span class="string">'M'</span>: <span class="number">1</span>&#125;  </span><br><span class="line">df[<span class="string">'size'</span>] = df[<span class="string">'size'</span>].map(size_mapping)  </span><br><span class="line">  </span><br><span class="line">class_mapping = &#123;label:idx <span class="keyword">for</span> idx,label <span class="keyword">in</span> enumerate(set(df[<span class="string">'class_label'</span>]))&#125;  </span><br><span class="line">df[<span class="string">'class_label'</span>] = df[<span class="string">'class_label'</span>].map(class_mapping)  </span><br><span class="line">print(df)</span><br><span class="line"><span class="comment"># 说明：对于有大小意义的离散特征，直接使用映射就可以了，&#123;'XL':3,'L':2,'M':1&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="使用pandas的get-dummies进行one-hot编码"><a href="#使用pandas的get-dummies进行one-hot编码" class="headerlink" title="使用pandas的get_dummies进行one-hot编码"></a>使用pandas的get_dummies进行one-hot编码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd  </span><br><span class="line">df = pd.DataFrame([  </span><br><span class="line">            [<span class="string">'green'</span>, <span class="string">'M'</span>, <span class="number">10.1</span>, <span class="string">'class1'</span>],   </span><br><span class="line">            [<span class="string">'red'</span>, <span class="string">'L'</span>, <span class="number">13.5</span>, <span class="string">'class2'</span>],   </span><br><span class="line">            [<span class="string">'red'</span>, <span class="string">'M'</span>, <span class="number">13.7</span>, <span class="string">'class2'</span>], </span><br><span class="line">            [<span class="string">'blue'</span>, <span class="string">'XL'</span>, <span class="number">15.3</span>, <span class="string">'class1'</span>]])  </span><br><span class="line">  </span><br><span class="line">df.columns = [<span class="string">'color'</span>, <span class="string">'size'</span>, <span class="string">'prize'</span>, <span class="string">'class_label'</span>] </span><br><span class="line"><span class="comment"># Using the get_dummies will create a new column for every unique string in a certain column</span></span><br><span class="line"></span><br><span class="line">pd.get_dummies(df)</span><br></pre></td></tr></table></figure>
+<h3 id="pandas读取csv文件的数据并画图"><a href="#pandas读取csv文件的数据并画图" class="headerlink" title="pandas读取csv文件的数据并画图"></a>pandas读取csv文件的数据并画图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="keyword">import</span> torch.optim <span class="keyword">as</span> optim</span><br><span class="line"></span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">'data/rail_inspection_data.csv'</span>,low_memory= <span class="literal">False</span>)</span><br><span class="line">print(df.head(<span class="number">3</span>))</span><br><span class="line"></span><br><span class="line">y_data = df[<span class="string">'velocity_of_inspect'</span>][:<span class="number">50</span>]</span><br><span class="line">x = np.arange(len(y_data))</span><br><span class="line">y = np.array(y_data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示数据</span></span><br><span class="line">plt.figure(figsize=(<span class="number">20</span>,<span class="number">16</span>))</span><br><span class="line">fig,ax = plt.subplots()</span><br><span class="line">ax.plot(x,y,<span class="string">'-o'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'X'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Y'</span>)</span><br></pre></td></tr></table></figure>
 
           
         
@@ -483,6 +484,133 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取它的维度信息:</span></span><br><span class="line">print(x.size())</span><br><span class="line"><span class="comment"># 注意</span></span><br><span class="line"><span class="comment"># torch.Size  是一个元组，所以它支持左右的元组操作。</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 操作</span></span><br><span class="line"><span class="comment"># 在接下来的例子中，我们将会看到加法操作。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加法: 方式 1</span></span><br><span class="line">y = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x + y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加法: 方式2</span></span><br><span class="line">print(torch.add(x, y))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加法: 提供一个输出 tensor 作为参数</span></span><br><span class="line"></span><br><span class="line">result = torch.empty(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">torch.add(x, y, out=result)</span><br><span class="line">print(result)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加法: in-place</span></span><br><span class="line"><span class="comment"># adds x to y</span></span><br><span class="line">y.add_(x)</span><br><span class="line">print(y)</span><br><span class="line"><span class="comment"># 注意</span></span><br><span class="line"><span class="comment"># 任何使张量会发生变化的操作都有一个前缀 ‘_’。例如：x.copy_(y), x.t_(), 将会改变 x.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 你可以使用标准的  NumPy 类似的索引操作</span></span><br><span class="line">print(x[:, <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 改变大小：如果你想改变一个 tensor 的大小或者形状，你可以使用 torch.view:</span></span><br><span class="line">x = torch.randn(<span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">y = x.view(<span class="number">16</span>)</span><br><span class="line">z = x.view(<span class="number">-1</span>, <span class="number">8</span>)  <span class="comment"># the size -1 is inferred from other dimensions</span></span><br><span class="line">print(x.size(), y.size(), z.size())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果你有一个元素 tensor ，使用 .item() 来获得这个 value 。</span></span><br><span class="line">x = torch.randn(<span class="number">1</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x.item())</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/7fcebc9b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/7fcebc9b.html" itemprop="url">PyTorch深度学习60分钟入门教程2-自动微分</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-07T20:20:00+08:00">2020-02-07</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="autograd-包是-PyTorch-中所有神经网络的核心。"><a href="#autograd-包是-PyTorch-中所有神经网络的核心。" class="headerlink" title="autograd 包是 PyTorch 中所有神经网络的核心。"></a>autograd 包是 PyTorch 中所有神经网络的核心。</h2><p>首先让我们简要地介绍它，然后我们将会去训练我们的第一个神经网络。该 autograd 软件包为 Tensors 上的所有操作提供自动微分。<br>它是一个由运行定义的框架，这意味着以代码运行方式定义你的后向传播，并且每次迭代都可以不同。我们从 tensor 和 gradients 来举一些例子。</p>
+<p>1、TENSOR<br>torch.Tensor 是包的核心类。如果将其属性 .requires_grad 设置为 True，则会开始跟踪针对 tensor 的所有操作。完成计算后，您可以调用 .backward() 来自动计算所有梯度。该张量的梯度将累积到 grad 属性中。</p>
+<p>要停止 tensor 历史记录的跟踪，您可以调用 .detach()，它将其与计算历史记录分离，并防止将来的计算被跟踪。</p>
+<p>要停止跟踪历史记录（和使用内存），您还可以将代码块使用 with torch.no_grad(): 包装起来。在评估模型时，这是特别有用，因为模型在训练阶段<br>具有 requires_grad = True 的可训练参数有利于调参，但在评估阶段我们不需要梯度。</p>
+<p>还有一个类对于 autograd 实现非常重要那就是 Function。Tensor 和 Function 互相连接并构建一个非循环图，它保存整个完整的计算过程的历史信息。每个张量都有一个 grad_fn 属性保存着创建了张量的 Function 的引用，（如果用户自己创建张量，则g rad_fn 是 None ）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果你想计算导数，你可以调用 Tensor.backward()。如果 Tensor 是标量（即它包含一个元素数据），则不需要指定任何参数backward()，</span></span><br><span class="line"><span class="comment"># 但是如果它有更多元素，则需要指定一个gradient 参数来指定张量的形状。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment"># 创建一个张量，设置 requires_grad=True 来跟踪与它相关的计算</span></span><br><span class="line"></span><br><span class="line">x = torch.ones(<span class="number">2</span>, <span class="number">2</span>, requires_grad=<span class="literal">True</span>)</span><br><span class="line">print(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 针对张量做一个操作</span></span><br><span class="line">y = x + <span class="number">2</span></span><br><span class="line">print(y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># y 作为操作的结果被创建，所以它有 grad_fn</span></span><br><span class="line">print(y.grad_fn)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 针对 y 做更多的操作：</span></span><br><span class="line">z = y * y * <span class="number">3</span></span><br><span class="line">out = z.mean()</span><br><span class="line">print(z, out)</span><br><span class="line"></span><br><span class="line"><span class="comment"># .requires_grad_( ... ) 会改变张量的 requires_grad 标记。输入的标记默认为 False ，如果没有提供相应的参数。</span></span><br><span class="line"></span><br><span class="line">a = torch.randn(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">a = ((a * <span class="number">3</span>) / (a - <span class="number">1</span>))</span><br><span class="line">print(a.requires_grad)</span><br><span class="line">a.requires_grad_(<span class="literal">True</span>)</span><br><span class="line">print(a.requires_grad)</span><br><span class="line">b = (a * a).sum()</span><br><span class="line">print(b.grad_fn)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 梯度：</span></span><br><span class="line"><span class="comment"># 我们现在后向传播，因为输出包含了一个标量，out.backward() 等同于out.backward(torch.tensor(1.))。</span></span><br><span class="line">out.backward()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印梯度  d(out)/dx</span></span><br><span class="line">print(x.grad)</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1156,128 +1284,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2f5d98a.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/2f5d98a.html" itemprop="url">python之网络GET和POST</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-06T00:00:00+08:00">2019-12-06</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="python通过get读取数据"><a href="#python通过get读取数据" class="headerlink" title="python通过get读取数据"></a>python通过get读取数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># !/usr/bin/python</span><br><span class="line"># encoding:utf-8</span><br><span class="line">import requests</span><br><span class="line">r=requests.post(&apos;http://localhost/get&apos;)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
-<h3 id="python通过post传递数据"><a href="#python通过post传递数据" class="headerlink" title="python通过post传递数据"></a>python通过post传递数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># !/usr/bin/python</span><br><span class="line"># encoding:utf-8</span><br><span class="line">import requests</span><br><span class="line">#下面替换成您的数据</span><br><span class="line">postdata=&#123;&apos;name&apos;:&apos;xiaochong&apos;&#125;</span><br><span class="line">r=requests.post(&apos;http://localhost/post&apos;,data=postdata)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1327,7 +1333,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-count">165</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

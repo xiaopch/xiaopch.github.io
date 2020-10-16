@@ -273,6 +273,142 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2d766cb3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/2d766cb3.html" itemprop="url">nodejs操作couchdb</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T00:00:00+08:00">2019-10-15</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="nodejs连接数据库并插入数据"><a href="#nodejs连接数据库并插入数据" class="headerlink" title="nodejs连接数据库并插入数据"></a>nodejs连接数据库并插入数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const nano = require(&apos;nano&apos;)(&apos;http://localhost:5984&apos;);</span><br><span class="line">nano.db.create(&apos;alice&apos;);</span><br><span class="line">const alice = nano.use(&apos;alice&apos;)</span><br><span class="line">alice.insert(&#123; _id: &apos;myid2&apos;, happy: true &#125;).then((body) =&gt; &#123;</span><br><span class="line">  console.log(body)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="列举alice数据库中的所有文档"><a href="#列举alice数据库中的所有文档" class="headerlink" title="列举alice数据库中的所有文档"></a>列举alice数据库中的所有文档</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alice.list().then((body) =&gt; &#123;  </span><br><span class="line">	body.rows.forEach((doc) =&gt; &#123;    </span><br><span class="line">			console.log(doc);  &#125;);&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="带参数列举alice数据库中的所有文档"><a href="#带参数列举alice数据库中的所有文档" class="headerlink" title="带参数列举alice数据库中的所有文档"></a>带参数列举alice数据库中的所有文档</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alice.list(&#123;include_docs: true&#125;).then((body) =&gt; &#123;  </span><br><span class="line">    body.rows.forEach((doc) =&gt; &#123;    </span><br><span class="line">        // output each document&apos;s body    </span><br><span class="line">        console.log(doc.doc);  </span><br><span class="line">&#125;);&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="db-listAsStream-params"><a href="#db-listAsStream-params" class="headerlink" title="db.listAsStream([params])"></a>db.listAsStream([params])</h3><p>List all the docs in the database as a stream.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alice.list().pipe(process.stdout)</span><br></pre></td></tr></table></figure>
+<h3 id="备份数据库"><a href="#备份数据库" class="headerlink" title="备份数据库"></a>备份数据库</h3><ul>
+<li>npm安装couchdb-dump库</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g couchdb-dump</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将gis数据库的内容导入到gis.json文件.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cdbdump -d gis &gt; gis.json</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将gis文件的内容导入到 <em>gis2</em>.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cdbload -d gis2 &lt; gis.json</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/94da9171.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -922,165 +1058,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/9c8c3e50.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/9c8c3e50.html" itemprop="url">Ubuntu安装最新版nodejs</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-23T00:00:00+08:00">2019-09-23</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="自动安装"><a href="#自动安装" class="headerlink" title="自动安装"></a>自动安装</h3><ul>
-<li>下载脚本安装</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##如果安装nodejs 10.x版本</span></span><br><span class="line">curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -</span><br><span class="line">sudo apt-get install -y nodejs</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装npm国内镜像</span></span><br><span class="line">sudo npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line">sudo npm install cnpm -g --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<ul>
-<li>常规安装</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update -y</span><br><span class="line">sudo apt install -y nodejs nodejs-legacy npm</span><br><span class="line">sudo npm config set registry https://registry.npm.taobao.org</span><br><span class="line">sudo npm install n -g</span><br><span class="line">sudo n stable</span><br></pre></td></tr></table></figure>
-<ul>
-<li>通过 npm 安装工具 n 来管理 node 版本，升级到最新稳定版</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install n -g</span><br><span class="line">sudo n stable</span><br><span class="line"></span><br><span class="line">n                              #显示已安装的Node版本</span><br><span class="line">n latest                       #安装最新版本Node</span><br><span class="line">n stable                       #安装最新稳定版Node</span><br><span class="line">n lts                          #安装最新长期维护版(lts)Node</span><br><span class="line">n version                      #根据提供的版本号安装Node</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装后，切换版本：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo n           方向键选择已安装的 node 版本，然后回车确认</span><br><span class="line">node -v          检查当期版本</span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果切换后，node的版本居然没有发生变化，解决方案如下：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> NODE_HOME=/usr/<span class="built_in">local</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$NODE_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> NODE_PATH=<span class="variable">$NODE_HOME</span>/lib/node_modules:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
-<h3 id="下载文件安装"><a href="#下载文件安装" class="headerlink" title="下载文件安装"></a>下载文件安装</h3><ul>
-<li>下载并解压</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://nodejs.org/dist/v6.9.5/node-v6.9.5-linux-x64.tar.xz</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>在此目录下解压</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xz -d node-v6.9.5-linux-x64.tar.xz</span><br><span class="line">tar -xvf node-v6.9.5-linux-x64.tar</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>解压后进入到解压后的文件夹。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd node-v6.9.5-linux-x64</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置node和npm为全局变量。(设置软链接)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /home/chuan/chuansoft/node-v6.9.5-linux-x64/bin/node /usr/local/bin/node</span><br><span class="line">ln -s /home/chuan/chuansoft/node-v6.9.5-linux-x64/bin/npm /usr/local/bin/npm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入到其他文件夹测试。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>​    </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1130,7 +1107,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-count">165</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

@@ -273,6 +273,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/7d791865.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/7d791865.html" itemprop="url">svm鸢尾花分类</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T00:00:00+08:00">2020-07-09</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="任务描述："><a href="#任务描述：" class="headerlink" title="任务描述："></a><strong>任务描述：</strong></h1><p>构建一个模型，根据鸢尾花的花萼和花瓣大小将其分为三种不同的品种。</p>
+<h1 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a><strong>数据集</strong></h1><p>总共包含150行数据</p>
+<p>每一行数据由 4 个特征值及一个目标值组成。</p>
+<p>4 个特征值分别为：萼片长度、萼片宽度、花瓣长度、花瓣宽度</p>
+<p>目标值为三种不同类别的鸢尾花，分别为：    Iris Setosa、Iris Versicolour、Iris Virginica</p>
+<p><strong>首先导入必要的包：</strong></p>
+<p><strong>numpy</strong>：python第三方库，用于科学计算</p>
+<p><strong>matplotlib</strong>:python第三方库，主要用于进行可视化</p>
+<p><strong>sklearn</strong>:python的重要机器学习库，其中封装了大量的机器学习算法，如：分类、回归、降维以及聚类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np                </span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> colors     </span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm            </span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> model_selection</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br></pre></td></tr></table></figure>
+<h1 id="Step1-数据准备"><a href="#Step1-数据准备" class="headerlink" title="Step1.数据准备"></a><strong>Step1.数据准备</strong></h1><p>(1)从指定路径下加载数据</p>
+<p>(2)对加载的数据进行数据分割，x_train,x_test,y_train,y_test分别表示训练集特征、训练集标签、测试集特征、测试集标签</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#*************将字符串转为整型，便于数据加载***********************</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iris_type</span><span class="params">(s)</span>:</span></span><br><span class="line">    it = &#123;<span class="string">b'Iris-setosa'</span>:<span class="number">0</span>, <span class="string">b'Iris-versicolor'</span>:<span class="number">1</span>, <span class="string">b'Iris-virginica'</span>:<span class="number">2</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> it[s]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#加载数据</span></span><br><span class="line">data_path=<span class="string">'iris.data'</span>          <span class="comment">#数据文件的路径</span></span><br><span class="line">data = np.loadtxt(data_path,                                <span class="comment">#数据文件路径</span></span><br><span class="line">                  dtype=float,                              <span class="comment">#数据类型</span></span><br><span class="line">                  delimiter=<span class="string">','</span>,                            <span class="comment">#数据分隔符</span></span><br><span class="line">                  converters=&#123;<span class="number">4</span>:iris_type&#125;)                 <span class="comment">#将第5列使用函数iris_type进行转换</span></span><br><span class="line">print(data.shape)                                                 <span class="comment">#data为二维数组，data.shape=(150, 5)</span></span><br><span class="line"><span class="comment">#print(data.shape)</span></span><br><span class="line"><span class="comment">#数据分割</span></span><br><span class="line">x, y = np.split(data,                                       <span class="comment">#要切分的数组</span></span><br><span class="line">                (<span class="number">4</span>,),                                       <span class="comment">#沿轴切分的位置，第5列开始往后为y</span></span><br><span class="line">                axis=<span class="number">1</span>)                                     <span class="comment">#代表纵向分割，按列分割</span></span><br><span class="line">print(x.shape,y.shape)</span><br><span class="line">x = x[:, <span class="number">0</span>:<span class="number">4</span>]                                               <span class="comment">#在X中我们取前两列作为特征，为了后面的可视化。x[:,0:4]代表第一维(行)全取，第二维(列)取0~2</span></span><br><span class="line"><span class="comment"># print(y)</span></span><br><span class="line">x_train,x_test,y_train,y_test=model_selection.train_test_split(x,              <span class="comment">#所要划分的样本特征集</span></span><br><span class="line">                                                               y,              <span class="comment">#所要划分的样本结果</span></span><br><span class="line">                                                               random_state=<span class="number">1</span>, <span class="comment">#随机数种子</span></span><br><span class="line">                                                               test_size=<span class="number">0.3</span>)  <span class="comment">#测试样本占比</span></span><br><span class="line"></span><br><span class="line">print(x_train.shape,x_test.shape,y_train.shape,y_test.shape)</span><br><span class="line">print(y_train.ravel())</span><br></pre></td></tr></table></figure>
+<h1 id="Step2-模型搭建"><a href="#Step2-模型搭建" class="headerlink" title="Step2.模型搭建"></a><strong>Step2.模型搭建</strong></h1><p>C越大，相当于惩罚松弛变量，希望松弛变量接近0，即对误分类的惩罚增大，趋向于对训练集全分对的情况，这样对训练集测试时准确率很高，但泛化能力弱。<br>C值小，对误分类的惩罚减小，允许容错，将他们当成噪声点，泛化能力较强。</p>
+<p>kernel=’linear’时，为线性核</p>
+<p>decision_function_shape=’ovr’时，为one v rest，即一个类别与其他类别进行划分，</p>
+<p>decision_function_shape=’ovo’时，为one v one，即将类别两两之间进行划分，用二分类的方法模拟多分类的结果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#**********************SVM分类器构建*************************</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">classifier</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment">#clf = svm.SVC(C=0.8,kernel='rbf', gamma=50,decision_function_shape='ovr')</span></span><br><span class="line">    clf = svm.SVC(C=<span class="number">0.5</span>,                         <span class="comment">#误差项惩罚系数,默认值是1</span></span><br><span class="line">                  kernel=<span class="string">'linear'</span>,               <span class="comment">#线性核 kenrel="rbf":高斯核</span></span><br><span class="line">                  decision_function_shape=<span class="string">'ovr'</span>) <span class="comment">#决策函数</span></span><br><span class="line">    <span class="keyword">return</span> clf</span><br><span class="line"><span class="comment"># 2.定义模型：SVM模型定义</span></span><br><span class="line">clf = classifier()</span><br></pre></td></tr></table></figure>
+<h1 id="Step3-模型训练"><a href="#Step3-模型训练" class="headerlink" title="Step3.模型训练"></a><strong>Step3.模型训练</strong></h1><h3 id="numpy中的ravel-、flatten-、squeeze-都有将多维数组转换为一维数组的功能"><a href="#numpy中的ravel-、flatten-、squeeze-都有将多维数组转换为一维数组的功能" class="headerlink" title="numpy中的ravel()、flatten()、squeeze()都有将多维数组转换为一维数组的功能"></a>numpy中的ravel()、flatten()、squeeze()都有将多维数组转换为一维数组的功能</h3><p>区别：<br>ravel()：如果没有必要，不会产生源数据的副本<br>flatten()：返回源数据的副本<br>squeeze()：只能对维数为1的维度降维</p>
+<p>另外，reshape(-1)也可以“拉平”多维数组</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#***********************训练模型*****************************</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(clf,x_train,y_train)</span>:</span></span><br><span class="line">    clf.fit(x_train,         <span class="comment">#训练集特征向量</span></span><br><span class="line">            y_train.ravel()) <span class="comment">#训练集目标值</span></span><br><span class="line"><span class="comment"># 3.训练SVM模型</span></span><br><span class="line">train(clf,x_train,y_train)</span><br></pre></td></tr></table></figure>
+<h1 id="Step4-模型评估"><a href="#Step4-模型评估" class="headerlink" title="Step4.模型评估"></a><strong>Step4.模型评估</strong></h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#**************并判断a b是否相等，计算acc的均值*************</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_accuracy</span><span class="params">(a, b, tip)</span>:</span></span><br><span class="line">    acc = a.ravel() == b.ravel()</span><br><span class="line">    print(<span class="string">'%s Accuracy:%.3f'</span> %(tip, np.mean(acc)))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_accuracy</span><span class="params">(clf,x_train,y_train,x_test,y_test)</span>:</span></span><br><span class="line">    <span class="comment">#分别打印训练集和测试集的准确率  score(x_train,y_train):表示输出x_train,y_train在模型上的准确率</span></span><br><span class="line">    print(<span class="string">'trianing prediction:%.3f'</span> %(clf.score(x_train, y_train)))</span><br><span class="line">    print(<span class="string">'test data prediction:%.3f'</span> %(clf.score(x_test, y_test)))</span><br><span class="line">    <span class="comment">#原始结果与预测结果进行对比   predict()表示对x_train样本进行预测，返回样本类别</span></span><br><span class="line">    show_accuracy(clf.predict(x_train), y_train, <span class="string">'traing data'</span>)</span><br><span class="line">    show_accuracy(clf.predict(x_test), y_test, <span class="string">'testing data'</span>)</span><br><span class="line">    <span class="comment">#计算决策函数的值，表示x到各分割平面的距离</span></span><br><span class="line">    print(<span class="string">'decision_function:\n'</span>, clf.decision_function(x_train))</span><br><span class="line">    </span><br><span class="line">print_accuracy(clf,x_train,y_train,x_test,y_test)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/6857bda.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -867,202 +1012,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/ad8febd4.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/ad8febd4.html" itemprop="url">PaddleHub一键预测和迁移学习</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-12T00:00:00+08:00">2020-06-12</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Pytorch-Hub-V-S-PaddleHub"><a href="#Pytorch-Hub-V-S-PaddleHub" class="headerlink" title="Pytorch Hub V.S PaddleHub"></a><strong>Pytorch Hub V.S PaddleHub</strong></h3><p><strong>支持模型数量</strong></p>
-<p>Pytorch Hub 目前支持18个模型，PaddleHub支持29个，包含16个model和13个module，model可以直接使用，module提供了预训练模型的参数，支持命令行调用</p>
-<p><strong>目前PytorchHub不支持命令行运行，但PaddleHub支持</strong>，命令行运行就是指我们安装PaddleHub后，可以无需进入python环境，即可快速体验PaddleHub无需代码、一键预测的命令行功能。需要注意的是，在PaddleHub中，既可以支持命令行使用，即在终端输入，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hub run XXX（nlp模型） --input_text XXX(需要预测的内容)  </span><br><span class="line">$ hub run XXX（cv模型） --input_path XXX(需要预测的内容)</span><br></pre></td></tr></table></figure>
-<p>也可以支持调用api，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import paddlehub as hub   </span><br><span class="line">hub.finetune_and_eval(  </span><br><span class="line">    task,   </span><br><span class="line">    data_reader,   </span><br><span class="line">    feed_list,   </span><br><span class="line">    config=None)</span><br></pre></td></tr></table></figure>
-<p><strong>PaddleHub安装</strong></p>
-<ul>
-<li>环境依赖</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Python&gt;=3.5 </span><br><span class="line">PaddlePaddle&gt;=1.4.0</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install paddlehub</span><br></pre></td></tr></table></figure>
-<p><strong>命令行快速体验</strong></p>
-<p> 安装好后，不需要进入python环境import就可以直接先体验hub的便捷，因为在PaddleHub中hub可以作为一个独立的模块直接运行。PaddleHub目前包含图像分类、目标检测、词法分析、Transformer、情感分析五大类。</p>
-<p> 一行代码预测</p>
-<ul>
-<li>分词</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 使用百度LAC进行分词 </span><br><span class="line">hub run lac --input_text &quot;今天的你真好看&quot; </span><br><span class="line">[&#123;&apos;tag&apos;: [&apos;TIME&apos;, &apos;u&apos;, &apos;r&apos;, &apos;d&apos;, &apos;a&apos;], &apos;word&apos;: [&apos;今天&apos;, &apos;的&apos;, &apos;你&apos;, &apos;真&apos;, &apos;好看&apos;]&#125;]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>情感分析</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 使用百度Senta情感分析模型对句子进行预测 </span><br><span class="line">hub run senta_bilstm --input_text &quot;老铁666，带你开黑&quot;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>目标检测</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#使用SSD检测模型对图片进行目标检测 </span><br><span class="line">hub run ssd_mobilenet_v1_pascal --input_path test_img_bird.jpg</span><br></pre></td></tr></table></figure>
-<ul>
-<li>图像识别</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 使用resnet-50做图像识别 </span><br><span class="line">hub run resnet_v2_50_imagenet --input_path test_img_bird.jpg </span><br><span class="line">Install Module resnet_v2_50_imagenet </span><br><span class="line">Downloading resnet_v2_50_imagenet </span><br><span class="line">[==================================================] 100.00% </span><br><span class="line">Uncompress /root/.paddlehub/cache/resnet_v2_50_imagenet </span><br><span class="line">[==================================================] 100.00% </span><br><span class="line">Successfully installed resnet_v2_50_imagenet-1.0.0 </span><br><span class="line">[[&#123;&apos;brambling&apos;: 0.4907981&#125;]]</span><br></pre></td></tr></table></figure>
-<p>注：模型未下载时会先下载再预测，也可以先试用hub install model_name 下载好模型再使用hub run预测,也可直接运行hub run。hub一共有十个命令，其他命令可参考PaddleHub命令行工具（参考文献2）</p>
-<p><strong>支持29种模型</strong></p>
-<p>PaddleHub目前支持29种模型，主要以CV和NLP模型为主，包括NLP目前最火的BERT和百度自己自己研发开源的ERNIE，以及CV中的ssd-mobilenet、resnet-50、resnet-152等。</p>
-<ul>
-<li><p>NLP预测</p>
-<p>数据通过 —input_text或—input_file导入来实现单次预测和批量预测</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 单文本预测 </span><br><span class="line">hub run lac --input_text &quot;今天是个好日子&quot; </span><br><span class="line"># 多文本分析 </span><br><span class="line">hub run lac --input_file test.txt</span><br></pre></td></tr></table></figure>
-<ul>
-<li>CV预测</li>
-</ul>
-<p>数据通过—input_path或—input_file导入来实现单次预测和批量预测</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 单张照片预测  </span><br><span class="line">hub run ssd_mobilenet_v1_pascal --input_path test.jpg  </span><br><span class="line"># 多张照片预测  </span><br><span class="line">hub run ssd_mobilenet_v1_pascal --input_file test.txt</span><br></pre></td></tr></table></figure>
-<p><strong>支持迁移学习，Fine-tune更Easy</strong></p>
-<p>​     Fine-tune是迁移学习中使用最多的方式之一，通常我们可以在预训练好的模型上进行微调来实现模型迁移，从而达到模型适应新领域(Domain)数据的目的。上图是做一个完整的迁移学习需要的步骤，下面举个实例教大家如何用PaddleHub做图像分类迁移学习： </p>
-<p><strong>1.准备工作</strong></p>
-<p>安装PaddlePaddle和PaddleHub</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install paddlepaddle( 推荐安装1.4.0版本以上) </span><br><span class="line">pip install paddlehub</span><br></pre></td></tr></table></figure>
-<p><strong>2.选择模型</strong></p>
-<p>此处使用经典的ResNet-50作为预训练模型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">module_map = &#123;  </span><br><span class="line">    &quot;resnet50&quot;: &quot;resnet_v2_50_imagenet&quot;,  </span><br><span class="line">    &quot;resnet101&quot;: &quot;resnet_v2_101_imagenet&quot;,  </span><br><span class="line">    &quot;resnet152&quot;: &quot;resnet_v2_152_imagenet&quot;,  </span><br><span class="line">    &quot;mobilenet&quot;: &quot;mobilenet_v2_imagenet&quot;,  </span><br><span class="line">    &quot;nasnet&quot;: &quot;nasnet_imagenet&quot;,  </span><br><span class="line">    &quot;pnasnet&quot;: &quot;pnasnet_imagenet&quot;  </span><br><span class="line">&#125;   </span><br><span class="line">module_name = module_map[&quot;resnet50&quot;]  </span><br><span class="line">module = hub.Module(name = module_name)</span><br></pre></td></tr></table></figure>
-<p><strong>3.准备数据</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 直接用PaddleHub提供的数据集  </span><br><span class="line">dataset = hub.dataset.DogCat()# 生成readerdata_reader = hub.reader.ImageClassificationReader(  </span><br><span class="line">    image_width=module.get_expected_image_width(),  </span><br><span class="line">    image_height=module.get_expected_image_height(),  </span><br><span class="line">    images_mean=module.get_pretrained_images_mean(),  </span><br><span class="line">    images_std=module.get_pretrained_images_std(),  </span><br><span class="line">    dataset=dataset)</span><br></pre></td></tr></table></figure>
-<p><strong>4.组建Finetune Task</strong></p>
-<p> 由于猫狗分类是一个二分类的任务，而我们下载的分类module是在ImageNet数据集上训练的千分类模型，所以我们需要对模型进行简单的微调，把模型改造为一个二分类模型：</p>
-<p>​    1. 获取module的上下文环境，包括输入和输出的变量，以及Paddle Program；</p>
-<p>​    2.从输出变量中找到特征图提取层feature_map；</p>
-<p>​    3.在feature_map后面接入一个全连接层，生成Task</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">input_dict, output_dict, program = module.context(trainable=True)  </span><br><span class="line">img = input_dict[&quot;image&quot;]  </span><br><span class="line">feature_map = output_dict[&quot;feature_map&quot;]  </span><br><span class="line">  </span><br><span class="line">task = hub.create_img_cls_task(  </span><br><span class="line">    feature=feature_map, num_classes=dataset.num_labels)  </span><br><span class="line">  </span><br><span class="line">feed_list = [img.name, task.variable(&quot;label&quot;).name]# 设置configconfig = hub.RunConfig(    use_cuda=False,  </span><br><span class="line">    num_epoch=1,  </span><br><span class="line">    checkpoint_dir=&quot;cv_finetune_turtorial_demo&quot;,  </span><br><span class="line">    batch_size=32,  </span><br><span class="line">    log_interval=10,  </span><br><span class="line">    eval_interval=50,  </span><br><span class="line">    strategy=hub.finetune.strategy.DefaultFinetuneStrategy())</span><br></pre></td></tr></table></figure>
-<p><strong>5.启动Fine-tune并查看效果</strong></p>
-<p> 可以选择<strong>finetune_and_eval</strong>接口来进行模型训练，这个接口在finetune的过程中，会周期性的进行模型效果的评估，以便我们了解整个训练过程的性能变化。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hub.finetune_and_eval( </span><br><span class="line">task, feed_list=feed_list, data_reader=data_reader, config=config)</span><br></pre></td></tr></table></figure>
-<p> 训练过程中的性能数据会被记录到本地，我们可以通过VisualDL来可视化这些数据。我们在shell中输入以下命令来启动VisualDL，其中${HOST_IP}为本机IP，需要用户自行指定</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">visualdl --logdir ./cv_finetune_turtorial_demo/vdllog --host $&#123;HOST_IP&#125; --port 8989</span><br></pre></td></tr></table></figure>
-<p> 启动服务后，我们使用浏览器访问${HOST_IP}:8989，可以看到训练以及预测的loss曲线和accuracy曲线。最后再按照常规流程对模型进行预测即可。</p>
-<p><strong>参考资料：</strong></p>
-<p>1.PaddleHub官方github：<a href="https://link.zhihu.com/?target=https%3A//github.com/PaddlePaddle/PaddleHub" target="_blank" rel="noopener">https://github.com/PaddlePaddle/PaddleHub</a></p>
-<p>2.PaddleHub命令行工具：<a href="https://link.zhihu.com/?target=https%3A//github.com/PaddlePaddle/PaddleHub/wiki/PaddleHub" target="_blank" rel="noopener">https://github.com/PaddlePaddle/PaddleHub/wiki/PaddleHub</a>命令行工具</p>
-<p>3.Paddle-code：<a href="https://link.zhihu.com/?target=https%3A//github.com/huxiaoman7/PaddlePaddle_code" target="_blank" rel="noopener">https://github.com/huxiaoman7/PaddlePaddle_code</a></p>
-<p>4.Paddle-models：<a href="https://link.zhihu.com/?target=https%3A//github.com/PaddlePaddle/models" target="_blank" rel="noopener">https://github.com/PaddlePaddle/models</a></p>
-<p>5.Pytorch Hub：<a href="https://link.zhihu.com/?target=https%3A//pytorch.org/blog/towards-reproducible-research-with-pytorch-hub/" target="_blank" rel="noopener">https://pytorch.org/blog/towards-reproducible-research-with-pytorch-hub/</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1112,7 +1061,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-count">165</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
