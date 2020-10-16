@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="python,paddle,dataset,">
+
+
+<meta name="description" content="images文件夹下按情绪分类的文件夹12345672020/04/29  17:28    &amp;lt;DIR&amp;gt;          Anger2020/04/29  17:28    &amp;lt;DIR&amp;gt;          Disgust2020/04/29  17:28    &amp;lt;DIR&amp;gt;          Fear2020/04/29  17:28    &amp;lt;DIR&amp;gt;">
+<meta name="keywords" content="python,paddle,dataset">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Paddle生成数据集并进行图像分类">
+<meta property="og:url" content="https://xiaopch.github.io/post/610b28c7.html">
+<meta property="og:site_name" content="hello world">
+<meta property="og:description" content="images文件夹下按情绪分类的文件夹12345672020/04/29  17:28    &amp;lt;DIR&amp;gt;          Anger2020/04/29  17:28    &amp;lt;DIR&amp;gt;          Disgust2020/04/29  17:28    &amp;lt;DIR&amp;gt;          Fear2020/04/29  17:28    &amp;lt;DIR&amp;gt;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-09-15T05:38:58.302Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Paddle生成数据集并进行图像分类">
+<meta name="twitter:description" content="images文件夹下按情绪分类的文件夹12345672020/04/29  17:28    &amp;lt;DIR&amp;gt;          Anger2020/04/29  17:28    &amp;lt;DIR&amp;gt;          Disgust2020/04/29  17:28    &amp;lt;DIR&amp;gt;          Fear2020/04/29  17:28    &amp;lt;DIR&amp;gt;">
+
+
+
+
+
+
+  <link rel="canonical" href="https://xiaopch.github.io/post/610b28c7.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Paddle生成数据集并进行图像分类 | hello world</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hello world</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有朋自远方来不亦乐乎</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/610b28c7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Paddle生成数据集并进行图像分类</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-19T00:00:00+08:00">2020-08-19</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="images文件夹下按情绪分类的文件夹"><a href="#images文件夹下按情绪分类的文件夹" class="headerlink" title="images文件夹下按情绪分类的文件夹"></a>images文件夹下按情绪分类的文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Anger</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Disgust</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Fear</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Happy</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Neutral</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Sad</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Surprise</span><br></pre></td></tr></table></figure>
+<h3 id="生成分类需要的索引文件"><a href="#生成分类需要的索引文件" class="headerlink" title="生成分类需要的索引文件"></a>生成分类需要的索引文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">from __future__ import absolute_import</span><br><span class="line">from __future__ import division</span><br><span class="line">from __future__ import print_function</span><br><span class="line">import codecs</span><br><span class="line">import os</span><br><span class="line">import random</span><br><span class="line">import shutil</span><br><span class="line">from PIL import Image</span><br><span class="line"></span><br><span class="line">train_ratio = 4.0 / 5</span><br><span class="line"></span><br><span class="line">all_file_dir = &apos;./images&apos;</span><br><span class="line">class_list = [c for c in os.listdir(all_file_dir) if os.path.isdir(os.path.join(all_file_dir, c)) and not c.endswith(&apos;Set&apos;) and not c.startswith(&apos;.&apos;)]</span><br><span class="line">class_list.sort()</span><br><span class="line">print(class_list)</span><br><span class="line">##train_image_dir = os.path.join(all_file_dir, &quot;trainImageSet&quot;)</span><br><span class="line">##if not os.path.exists(train_image_dir):</span><br><span class="line">##    os.makedirs(train_image_dir)</span><br><span class="line">##    </span><br><span class="line">##eval_image_dir = os.path.join(all_file_dir, &quot;evalImageSet&quot;)</span><br><span class="line">##if not os.path.exists(eval_image_dir):</span><br><span class="line">##    os.makedirs(eval_image_dir)</span><br><span class="line"></span><br><span class="line">train_file = codecs.open(os.path.join(all_file_dir, &quot;train_list.txt&quot;), &apos;w&apos;)</span><br><span class="line">eval_file = codecs.open(os.path.join(all_file_dir, &quot;val_list.txt&quot;), &apos;w&apos;)</span><br><span class="line"></span><br><span class="line">with codecs.open(os.path.join(all_file_dir, &quot;labels.txt&quot;), &quot;w&quot;) as label_list:</span><br><span class="line">    label_id = 0</span><br><span class="line">    for class_dir in class_list:</span><br><span class="line">        label_list.write(&quot;&#123;0&#125;\t&#123;1&#125;\n&quot;.format(label_id, class_dir))</span><br><span class="line">        image_path_pre = os.path.join(all_file_dir, class_dir)</span><br><span class="line">        for file in os.listdir(image_path_pre):</span><br><span class="line">            try:</span><br><span class="line">                img = Image.open(os.path.join(image_path_pre, file))</span><br><span class="line">                if random.uniform(0, 1) &lt;= train_ratio:</span><br><span class="line">##                    shutil.copyfile(os.path.join(image_path_pre, file), os.path.join(train_image_dir, file))</span><br><span class="line">                    train_file.write(&quot;&#123;0&#125;\t&#123;1&#125;\n&quot;.format(os.path.join(class_dir, file), label_id))</span><br><span class="line">                else:</span><br><span class="line">##                    shutil.copyfile(os.path.join(image_path_pre, file), os.path.join(eval_image_dir, file))</span><br><span class="line">                    eval_file.write(&quot;&#123;0&#125;\t&#123;1&#125;\n&quot;.format(os.path.join(class_dir, file), label_id))</span><br><span class="line">            except Exception as e:</span><br><span class="line">                pass</span><br><span class="line">                # 存在一些文件打不开，此处需要稍作清洗</span><br><span class="line">        label_id += 1</span><br><span class="line">            </span><br><span class="line">train_file.close()</span><br><span class="line">eval_file.close()</span><br></pre></td></tr></table></figure>
+<h3 id="开始训练并生成分类模型"><a href="#开始训练并生成分类模型" class="headerlink" title="开始训练并生成分类模型"></a>开始训练并生成分类模型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">!pip install paddlex</span><br><span class="line"># 环境变量配置，用于控制是否使用GPU</span><br><span class="line"># 说明文档：https://paddlex.readthedocs.io/zh_CN/develop/appendix/parameters.html#gpu</span><br><span class="line">import os</span><br><span class="line">os.environ[&apos;CUDA_VISIBLE_DEVICES&apos;] = &apos;0,1,2,3&apos;</span><br><span class="line"></span><br><span class="line">from paddlex.cls import transforms</span><br><span class="line">import paddlex as pdx</span><br><span class="line"></span><br><span class="line"># # 下载和解压蔬菜分类数据集</span><br><span class="line"># veg_dataset = &apos;https://bj.bcebos.com/paddlex/datasets/vegetables_cls.tar.gz&apos;</span><br><span class="line"># pdx.utils.download_and_decompress(veg_dataset, path=&apos;./&apos;)</span><br><span class="line"></span><br><span class="line"># 定义训练和验证时的transforms</span><br><span class="line"># API说明https://paddlex.readthedocs.io/zh_CN/develop/apis/transforms/cls_transforms.html</span><br><span class="line">train_transforms = transforms.Compose([</span><br><span class="line">    transforms.RandomCrop(crop_size=224), transforms.RandomHorizontalFlip(),</span><br><span class="line">    transforms.Normalize()</span><br><span class="line">])</span><br><span class="line">eval_transforms = transforms.Compose([</span><br><span class="line">    transforms.ResizeByShort(short_size=256),</span><br><span class="line">    transforms.CenterCrop(crop_size=224), transforms.Normalize()</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"># 定义训练和验证所用的数据集</span><br><span class="line"># API说明：https://paddlex.readthedocs.io/zh_CN/develop/apis/datasets.html#paddlex-datasets-imagenet</span><br><span class="line">train_dataset = pdx.datasets.ImageNet(</span><br><span class="line">    data_dir=&apos;./data/data53319/images&apos;,</span><br><span class="line">    file_list=&apos;./data/data53319/images/train_list.txt&apos;,</span><br><span class="line">    label_list=&apos;./data/data53319/images/labels.txt&apos;,</span><br><span class="line">    transforms=train_transforms,</span><br><span class="line">    shuffle=True)</span><br><span class="line">eval_dataset = pdx.datasets.ImageNet(</span><br><span class="line">    data_dir=&apos;./data/data53319/images&apos;,</span><br><span class="line">    file_list=&apos;./data/data53319/images/val_list.txt&apos;,</span><br><span class="line">    label_list=&apos;./data/data53319/images/labels.txt&apos;,</span><br><span class="line">    transforms=eval_transforms)</span><br><span class="line"></span><br><span class="line"># 初始化模型，并进行训练</span><br><span class="line"># 可使用VisualDL查看训练指标，参考https://paddlex.readthedocs.io/zh_CN/develop/train/visualdl.html</span><br><span class="line">model = pdx.cls.ResNet50_vd_ssld(num_classes=len(train_dataset.labels))</span><br><span class="line"></span><br><span class="line"># API说明：https://paddlex.readthedocs.io/zh_CN/develop/apis/models/classification.html#train</span><br><span class="line"># 各参数介绍与调整说明：https://paddlex.readthedocs.io/zh_CN/develop/appendix/parameters.html</span><br><span class="line">model.train(</span><br><span class="line">    num_epochs=60,</span><br><span class="line">    train_dataset=train_dataset,</span><br><span class="line">    train_batch_size=32,</span><br><span class="line">    eval_dataset=eval_dataset,</span><br><span class="line">    lr_decay_epochs=[24, 36, 48],</span><br><span class="line">    learning_rate=0.025,</span><br><span class="line">    save_dir=&apos;output/resnet50_vd_ssld&apos;,</span><br><span class="line">    use_vdl=True)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/paddle/" rel="tag"># paddle</a>
+          
+            <a href="/tags/dataset/" rel="tag"># dataset</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/5ba707b1.html" rel="next" title="python使用dict配置文件">
+                <i class="fa fa-chevron-left"></i> python使用dict配置文件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/f81e8835.html" rel="prev" title="python之Scrapy 爬虫框架">
+                python之Scrapy 爬虫框架 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpg" alt="xiaopch">
+            
+              <p class="site-author-name" itemprop="name">xiaopch</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#images文件夹下按情绪分类的文件夹"><span class="nav-number">1.</span> <span class="nav-text">images文件夹下按情绪分类的文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成分类需要的索引文件"><span class="nav-number">2.</span> <span class="nav-text">生成分类需要的索引文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始训练并生成分类模型"><span class="nav-number">3.</span> <span class="nav-text">开始训练并生成分类模型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaopch</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

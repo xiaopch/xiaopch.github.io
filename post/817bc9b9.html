@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="git,">
+
+
+<meta name="description" content="todolist简化版本使用方法　　自己在家里树莓派上用的blog，基于python的flask框架。没有用户管理，通过session+get登陆。通过uid进行性分类。 修改源自：https://github.com/lalor/项目地址：https://github.com/xiaopch/todolist 运行blog服务python app.py 进入blog，输入网址：http://12">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="todolist开源和git使用方法">
+<meta property="og:url" content="https://xiaopch.github.io/post/817bc9b9.html">
+<meta property="og:site_name" content="hello world">
+<meta property="og:description" content="todolist简化版本使用方法　　自己在家里树莓派上用的blog，基于python的flask框架。没有用户管理，通过session+get登陆。通过uid进行性分类。 修改源自：https://github.com/lalor/项目地址：https://github.com/xiaopch/todolist 运行blog服务python app.py 进入blog，输入网址：http://12">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-14T01:40:32.667Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="todolist开源和git使用方法">
+<meta name="twitter:description" content="todolist简化版本使用方法　　自己在家里树莓派上用的blog，基于python的flask框架。没有用户管理，通过session+get登陆。通过uid进行性分类。 修改源自：https://github.com/lalor/项目地址：https://github.com/xiaopch/todolist 运行blog服务python app.py 进入blog，输入网址：http://12">
+
+
+
+
+
+
+  <link rel="canonical" href="https://xiaopch.github.io/post/817bc9b9.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>todolist开源和git使用方法 | hello world</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hello world</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有朋自远方来不亦乐乎</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/817bc9b9.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">todolist开源和git使用方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-24T00:00:00+08:00">2018-02-24</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="todolist简化版本使用方法"><a href="#todolist简化版本使用方法" class="headerlink" title="todolist简化版本使用方法"></a>todolist简化版本使用方法</h2><p>　　自己在家里树莓派上用的blog，基于python的flask框架。没有用户管理，通过session+get登陆。<br>通过uid进行性分类。</p>
+<p>修改源自：<a href="https://github.com/lalor/" target="_blank" rel="noopener">https://github.com/lalor/</a><br>项目地址：<a href="https://github.com/xiaopch/todolist" target="_blank" rel="noopener">https://github.com/xiaopch/todolist</a></p>
+<h3 id="运行blog服务"><a href="#运行blog服务" class="headerlink" title="运行blog服务"></a>运行blog服务</h3><pre><code>python app.py
+</code></pre><h3 id="进入blog，输入网址："><a href="#进入blog，输入网址：" class="headerlink" title="进入blog，输入网址："></a>进入blog，输入网址：</h3><pre><code>http://127.0.0.1/?t=xp&amp;uid=1
+#t为session密码
+#uid为任意较小的整数，1，2，3,......
+</code></pre><h3 id="download文件夹为下载目录"><a href="#download文件夹为下载目录" class="headerlink" title="download文件夹为下载目录"></a>download文件夹为下载目录</h3><a id="more"></a>
+<h2 id="github上传"><a href="#github上传" class="headerlink" title="github上传"></a>github上传</h2><h3 id="运行git-bash，开始配置"><a href="#运行git-bash，开始配置" class="headerlink" title="运行git bash，开始配置"></a>运行git bash，开始配置</h3><pre><code>git config --global user.name xiaopeng
+git config --global user.email user@163.com
+ssh-keygen -C &apos;user@163.com&apos; -t rsa
+</code></pre><ul>
+<li><p>如果一切顺利的话，可以在用户主目录里找到 .ssh 目录，里面有 id_rsa 和 id_rsa.pub 两个文件，这两个就是SSH Key 的秘钥对，id_rsa 是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。用记事本打开 id_rsa.pub（C:\Users\Administrator.ssh），得到ssh key 公钥。</p>
+</li>
+<li><p>为 Github 账户添加 ssh key 。登录 Github，展开个人头像的小三角，点settings，然后打开SSH keys菜单，点击Add SSH key新增密钥，填上标题和公钥。</p>
+</li>
+</ul>
+<h3 id="git-bash使用方法"><a href="#git-bash使用方法" class="headerlink" title="git bash使用方法"></a>git bash使用方法</h3><pre><code>::获取github源程序并建立连接
+::git clone https://github.com/xiaopch/share.git
+::建立github连接
+::git remote add origin git@github.com:xiaopch/share.git
+
+::显示连接的github repository
+git remote -v  
+git add .
+::将本地文件或文件夹同步到本地缓存
+git commit -m &apos;cmd&apos;
+git push origin master
+</code></pre><h2 id="git-gui配置"><a href="#git-gui配置" class="headerlink" title="git gui配置"></a>git gui配置</h2><h3 id="账号保存"><a href="#账号保存" class="headerlink" title="账号保存"></a>账号保存</h3><p>　　若不做设置的话，每次提交的时候，都会询问你填写密码。于是我们先来把这个设置好。</p>
+<h3 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h3><p>　　我的电脑 - 属性 - 高级系统设置 - 环境变量 - 新建变量</p>
+<p>　　变量名HOME，变量值%USERPROFILE%</p>
+<h3 id="创建账号文件"><a href="#创建账号文件" class="headerlink" title="创建账号文件"></a>创建账号文件</h3><p>　　开始 - 运行 中打开%Home%，即windows的管理员账号文件夹。新建一个名为“_netrc”的文件，填写你要保存的服务器地址及账号密码，保存。 </p>
+<pre><code>machine github.com
+login ******@***.com
+password ******
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/fe240bfe.html" rel="next" title="Arduino 学习笔记 1">
+                <i class="fa fa-chevron-left"></i> Arduino 学习笔记 1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/6498d60f.html" rel="prev" title="Javascripts学习笔记1">
+                Javascripts学习笔记1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpg" alt="xiaopch">
+            
+              <p class="site-author-name" itemprop="name">xiaopch</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#todolist简化版本使用方法"><span class="nav-number">1.</span> <span class="nav-text">todolist简化版本使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运行blog服务"><span class="nav-number">1.1.</span> <span class="nav-text">运行blog服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入blog，输入网址："><span class="nav-number">1.2.</span> <span class="nav-text">进入blog，输入网址：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#download文件夹为下载目录"><span class="nav-number">1.3.</span> <span class="nav-text">download文件夹为下载目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#github上传"><span class="nav-number">2.</span> <span class="nav-text">github上传</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运行git-bash，开始配置"><span class="nav-number">2.1.</span> <span class="nav-text">运行git bash，开始配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-bash使用方法"><span class="nav-number">2.2.</span> <span class="nav-text">git bash使用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-gui配置"><span class="nav-number">3.</span> <span class="nav-text">git gui配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#账号保存"><span class="nav-number">3.1.</span> <span class="nav-text">账号保存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加环境变量"><span class="nav-number">3.2.</span> <span class="nav-text">添加环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建账号文件"><span class="nav-number">3.3.</span> <span class="nav-text">创建账号文件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaopch</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

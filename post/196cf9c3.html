@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="pandas,">
+
+
+<meta name="description" content="从list生成DataFrame1234567# -*- coding: cp936 -*-from pandas import DataFramea =[&amp;apos;1&amp;apos;,&amp;apos;2&amp;apos;,&amp;apos;3&amp;apos;]#列表ab = [&amp;apos;4&amp;apos;,&amp;apos;5&amp;apos;,&amp;apos;6&amp;apos;]#列表bc =&amp;#123;&amp;apos;a&amp;apos;:a,">
+<meta name="keywords" content="pandas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python之pandas数据分析">
+<meta property="og:url" content="https://xiaopch.github.io/post/196cf9c3.html">
+<meta property="og:site_name" content="hello world">
+<meta property="og:description" content="从list生成DataFrame1234567# -*- coding: cp936 -*-from pandas import DataFramea =[&amp;apos;1&amp;apos;,&amp;apos;2&amp;apos;,&amp;apos;3&amp;apos;]#列表ab = [&amp;apos;4&amp;apos;,&amp;apos;5&amp;apos;,&amp;apos;6&amp;apos;]#列表bc =&amp;#123;&amp;apos;a&amp;apos;:a,">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-05-25T06:28:40.828Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python之pandas数据分析">
+<meta name="twitter:description" content="从list生成DataFrame1234567# -*- coding: cp936 -*-from pandas import DataFramea =[&amp;apos;1&amp;apos;,&amp;apos;2&amp;apos;,&amp;apos;3&amp;apos;]#列表ab = [&amp;apos;4&amp;apos;,&amp;apos;5&amp;apos;,&amp;apos;6&amp;apos;]#列表bc =&amp;#123;&amp;apos;a&amp;apos;:a,">
+
+
+
+
+
+
+  <link rel="canonical" href="https://xiaopch.github.io/post/196cf9c3.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>python之pandas数据分析 | hello world</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hello world</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有朋自远方来不亦乐乎</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/196cf9c3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python之pandas数据分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T10:16:04+08:00">2018-12-07</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="从list生成DataFrame"><a href="#从list生成DataFrame" class="headerlink" title="从list生成DataFrame"></a>从list生成DataFrame</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">from pandas import DataFrame</span><br><span class="line">a =[&apos;1&apos;,&apos;2&apos;,&apos;3&apos;]#列表a</span><br><span class="line">b = [&apos;4&apos;,&apos;5&apos;,&apos;6&apos;]#列表b</span><br><span class="line">c =&#123;&apos;a&apos;:a,&apos;b&apos;:b&#125;#合并成一个新的字典c</span><br><span class="line">df = DataFrame(c)#将c传入DataFrame并创建</span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<h3 id="loc-根据index行名称、column列名称选取"><a href="#loc-根据index行名称、column列名称选取" class="headerlink" title="loc-根据index行名称、column列名称选取"></a>loc-根据index行名称、column列名称选取</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df.loc[&apos;A&apos;]        # 索引名称为A的行</span><br><span class="line">df.loc[:,[&apos;A&apos;,&apos;B&apos;]]    # 列名称为A和B的一块数据</span><br><span class="line">df.loc[&apos;1&apos;,[&apos;A&apos;,&apos;B&apos;]]        # 索引名称为1，列名称为A和B的一块数据</span><br><span class="line">df.loc[&apos;1&apos;,&apos;A&apos;]   # 索引名称为1，列名称为A的单元格数据</span><br><span class="line">df.loc[list]      # 索引名称为list列表里的所有行</span><br><span class="line">df.at[&apos;1&apos;,&apos;A&apos;]   # 同loc但速度快点，往df里逐行添加内容时，可以用df.loc[index_name] = [list]，如果要加在最后一行，可以df.loc[len(df)] = [list]</span><br></pre></td></tr></table></figure>
+<h3 id="iloc-根据行数、列数选取"><a href="#iloc-根据行数、列数选取" class="headerlink" title="iloc-根据行数、列数选取"></a>iloc-根据行数、列数选取</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df.iloc[1]       # 第1行，即索引为1的行 即A0  B0  C0  D0</span><br><span class="line">df.iloc[0:2,0:2]  # 第1,2行，第1,2列的一块数据</span><br><span class="line">df.iloc[1,1]   # 第1行，第1列的单元格</span><br><span class="line">df.iloc[:, 2]   # 第3列所有数据</span><br><span class="line">df.iloc[[1,3,1], 1:3]   # 第1第3第1行，以及第1至第2列的一块数据</span><br><span class="line">df.iat[1,1]   # 同iloc但速度快点</span><br></pre></td></tr></table></figure>
+<h3 id="df-ix-数名称混合选取，行根据第几行选取，列根据列名选取"><a href="#df-ix-数名称混合选取，行根据第几行选取，列根据列名选取" class="headerlink" title="df.ix-数名称混合选取，行根据第几行选取，列根据列名选取"></a>df.ix-数名称混合选取，行根据第几行选取，列根据列名选取</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.ix[1:3, [&apos;A&apos;,&apos;B&apos;]]   # 选择第1~3行，列名称为A和B的一块数据</span><br><span class="line">df.ix[&apos;1&apos;, 1:3]  # 选择行名称为1，第1~第2列的一块数据</span><br></pre></td></tr></table></figure>
+<h3 id="df-行数或行名称选取"><a href="#df-行数或行名称选取" class="headerlink" title="df[]-行数或行名称选取"></a>df[]-行数或行名称选取</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df[0:3],  df.iloc[0:3]  # 选择前2行，相当于df.</span><br><span class="line">df[&apos;6&apos;:&apos;8&apos;], df.loc[&apos;6&apos;:&apos;8&apos;]   # 选择索引名称为&apos;6&apos;~&apos;8&apos;之间的行，含&apos;8&apos;</span><br><span class="line">#注意没有df[:, 1:3]选择多列这种方式</span><br></pre></td></tr></table></figure>
+<h3 id="bool筛选"><a href="#bool筛选" class="headerlink" title="bool筛选"></a>bool筛选</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#生成bool序列：</span><br><span class="line">df&gt;1   # bool df</span><br><span class="line">df.A&gt;1    # bool series，关于index的一个bool列</span><br><span class="line">df.A ==1    # bool series</span><br><span class="line">list(map(lambda i : i==1, df[&apos;A&apos;]))   # bool list</span><br><span class="line"></span><br><span class="line">#根据bool序列选择数据:</span><br><span class="line">df[df&gt;1]  # 返回结果中，大于1的正常显示，不大于1的都变为NaN</span><br><span class="line">df.A[df.A &gt; 1]  # 选择A列中大于1的数</span><br><span class="line">df.B[df.A &gt; 1]  # 选择A列大于1时，B列的数</span><br><span class="line">df.A[~(df.A &gt; 1)]   # 可以取反选择</span><br><span class="line">df.B[~(df.B &gt;1 )]  # 可以取反选择</span><br><span class="line">df.A[bool_list]   # 用bool_list也可以</span><br><span class="line">df.A[df.A &gt; 1] = 0   # 将A列中大于1的数赋值为0</span><br><span class="line">df.B[df.A &gt; 1] = 0   # A列中大于1时，B列所在的值赋值为0</span><br></pre></td></tr></table></figure>
+<h3 id="df-‘x’-，df-x，先选中一列即series，再选series中的值"><a href="#df-‘x’-，df-x，先选中一列即series，再选series中的值" class="headerlink" title="df[‘x’]，df.x，先选中一列即series，再选series中的值"></a>df[‘x’]，df.x，先选中一列即series，再选series中的值</h3><blockquote>
+<p>选择series，注意只能选一列，不能用df[‘A’, ‘B’]选择多列（要下选多列可以用loc选取）</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df[&apos;A&apos;]   # 选中名称为A的列，结果是series</span><br><span class="line">df.A   # 选中名称为A的列，结果是series</span><br><span class="line">df.x #也支持中文列名，可以直接df.中文名，</span><br><span class="line">##备注：如果想选中的series变成df，可以多加一个括号，df[[&apos;A&apos;]]，即为df</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>继续在series中选择值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df[&apos;A&apos;][1]，或df.A[1]   # 名称为A列的第2行，A1</span><br><span class="line">df[&apos;A&apos;].iloc[1]，或df.A.iloc[1]   # 名称为A列的第2行，A1</span><br><span class="line">df[&apos;A&apos;].values[1],  或df.A.values[1]   # 名称为A列的第2行，A1</span><br><span class="line">df[&apos;A&apos;].loc[&apos;6&apos;],  或df.A.loc[&apos;6&apos;]  # 名称为A列，且索引名称为6的，A1</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="获取索引名"><a href="#获取索引名" class="headerlink" title="获取索引名"></a>获取索引名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df.iloc[1].name   获取到第2行的索引名</span><br><span class="line">#可以是index = df[df[&apos;A&apos;] == 1].index  </span><br><span class="line"># 此时返回的是Int64Index，用此index取数据会取到sereis</span><br><span class="line">#可以是index = df[df[&apos;A&apos;] == 1].index.tolist()  </span><br><span class="line"># 此时返回的是list，加个[0]后可以取到第一个元素的int</span><br></pre></td></tr></table></figure>
+<p>###重新根据index选择数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result.reindex(index=list)</span><br></pre></td></tr></table></figure></p>
+<h3 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df.dropna(axis=0, how=&apos;any&apos;)  # 行里有缺失值就丢掉，如果行里所有值是缺失值才丢掉就how=&apos;all&apos;</span><br><span class="line">df.dropna(axis=1, how=&apos;any&apos;)  # 列里有缺失值就丢掉</span><br><span class="line">df.fillna(value=0)  # 将缺失值填为0</span><br><span class="line">df.isnull()  # 整个df是否有缺失值的情况，结果是df</span><br><span class="line">np.any(df.isnull())=True) # 只要包含有缺失值就返回True，结果是一个bool值</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df=df.dropna(subset=[&quot;col1&quot;, &quot;col2&quot;])  #删除col1和col2值为空的行</span><br><span class="line">df=df[[&quot;longitude&quot;, &quot;latitude&quot;]].astype(&apos;float&apos;) #选取longitude,latitude列并转换为float类型</span><br></pre></td></tr></table></figure>
+<h3 id="Dataframe显示所有列和显示所有行"><a href="#Dataframe显示所有列和显示所有行" class="headerlink" title="Dataframe显示所有列和显示所有行"></a>Dataframe显示所有列和显示所有行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#显示所有列</span><br><span class="line">pd.set_option(&apos;display.max_columns&apos;, None)</span><br><span class="line">#显示所有行</span><br><span class="line">pd.set_option(&apos;display.max_rows&apos;, None)</span><br><span class="line">#设置value的显示长度为100，默认为50</span><br><span class="line">pd.set_option(&apos;max_colwidth&apos;,100)</span><br></pre></td></tr></table></figure>
+<h3 id="关于Dataframe的遍历"><a href="#关于Dataframe的遍历" class="headerlink" title="关于Dataframe的遍历"></a>关于Dataframe的遍历</h3><blockquote>
+<p>遍历一个dataframe，可以直接使用index配合loc，遍历所有列项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for index in df.index:</span><br><span class="line">    df.loc[index, &apos;A&apos;]</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="Dataframe数据合并"><a href="#Dataframe数据合并" class="headerlink" title="Dataframe数据合并"></a>Dataframe数据合并</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd </span><br><span class="line">df1=pd.DataFrame(&#123;&apos;lat&apos;:[1,2,3],&apos;lon&apos;:[4,5,6]&#125;)</span><br><span class="line">df2=pd.DataFrame(&#123;&apos;lat&apos;:[7,8,9],&apos;lon&apos;:[10,11,12]&#125;)</span><br><span class="line">df = pd.concat([df1,df2],ignore_index=True)</span><br><span class="line">df=df.reset_index(drop=True)</span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<h3 id="读取csv文件并合并"><a href="#读取csv文件并合并" class="headerlink" title="读取csv文件并合并"></a>读取csv文件并合并</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python  </span><br><span class="line"># -*- coding: utf-8 -*  </span><br><span class="line">import pandas as pd</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">if __name__==&apos;__main__&apos;:</span><br><span class="line">    df_list=[]</span><br><span class="line">    for f in os.listdir(&apos;.&apos;):</span><br><span class="line">        if f.endswith(&apos;.csv&apos;)and not f.startswith(&apos;merge&apos;):</span><br><span class="line">            print f</span><br><span class="line">            df_list.append(pd.read_csv(f))</span><br><span class="line">    df = pd.concat(df_list,ignore_index=True)</span><br><span class="line">    df=df.reset_index(drop=True)</span><br><span class="line">    df.to_csv(&apos;merge_df.csv&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="滑动平均"><a href="#滑动平均" class="headerlink" title="滑动平均"></a>滑动平均</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">s = [1,2,3,5,None,10,12,14,12,30]</span><br><span class="line">pd.Series(s).rolling(3,min_periods=1).mean()</span><br></pre></td></tr></table></figure>
+<h3 id="分割list"><a href="#分割list" class="headerlink" title="分割list"></a>分割list</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#1.分割大列表为三个元素的小列表，不够三个元素的亦当成一个列表输出</span><br><span class="line">lst=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">for i in range(0,len(lst),3):</span><br><span class="line">   print lst[i:i+3]</span><br></pre></td></tr></table></figure>
+<h3 id="pandas的str列内置方法"><a href="#pandas的str列内置方法" class="headerlink" title="pandas的str列内置方法"></a>pandas的str列内置方法</h3><ul>
+<li>pandas的DataFrame，有时需要处理一些字符串类型列，运用Series.str列内置方法很方便。</li>
+</ul>
+<p>1.one hot 独热编码,get_dummies</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">series=data[&apos;列名&apos;].str.get_dummies(sep=&apos;,&apos;)</span><br></pre></td></tr></table></figure>
+<p>实现DataFrame中列有多值，且想把这列one hot下</p>
+<p>2.切分字符串，split()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">series=data[&apos;列名&apos;].str.split(&apos;,&apos;)</span><br></pre></td></tr></table></figure>
+<p>把DataFrame列中字符串以’,’分隔开，每个元素分开后存入一个列表里</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">series=data[&apos;列名&apos;].str.split(&apos;,&apos;,expand=True)</span><br></pre></td></tr></table></figure>
+<p>参数expand，这个参数取True时，会把切割出来的内容当做一列，产生多列。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">series=data[&apos;列名&apos;].str.split(&apos;,&apos;,expand=True)[0]</span><br></pre></td></tr></table></figure>
+<p>可以只要第一列。</p>
+<p>3.替换，replace()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">series=data[&apos;列名&apos;].str.replace(&apos;,&apos;,&apos;-&apos;)</span><br></pre></td></tr></table></figure>
+<p>用‘-’代替‘,’</p>
+<p>4.是否包含表达式，contains()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">series=data[&apos;列名&apos;].str.contains(&apos;we&apos;)</span><br></pre></td></tr></table></figure>
+<p>返回的是布尔值series</p>
+<p>5.查找所有符合正则表达式的字符findall()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">series=data[&apos;列名&apos;].str.findall(&quot;[a-z]&quot;)</span><br></pre></td></tr></table></figure>
+<p>以数组的形式返回</p>
+<p>6.计算字符串的长度，len()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">series=data[&apos;列名&apos;].str.len()</span><br></pre></td></tr></table></figure>
+<p>7.去除前后的空白字符，strip()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">series=data[&apos;列名&apos;].str.strip()</span><br></pre></td></tr></table></figure>
+<p>rstrip() 去除后面的空白字符</p>
+<p>lstrip() 去除前面的空白字符</p>
+<p>8.isalnum() 是否全部是数字和字母组成</p>
+<p>isalpha() 是否全部是字母</p>
+<p>isdigit() 是否全部都是数字</p>
+<p>isspace() 是否空格</p>
+<p>islower() 是否全部小写</p>
+<p>isupper() 是否全部大写</p>
+<p>istitle() 是否只有首字母为大写，其他字母为小写</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pandas/" rel="tag"># pandas</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/b7729b8e.html" rel="next" title="北斗UB351板卡配置">
+                <i class="fa fa-chevron-left"></i> 北斗UB351板卡配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/58a438b6.html" rel="prev" title="CSharp读写配置文件">
+                CSharp读写配置文件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpg" alt="xiaopch">
+            
+              <p class="site-author-name" itemprop="name">xiaopch</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#从list生成DataFrame"><span class="nav-number">1.</span> <span class="nav-text">从list生成DataFrame</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#loc-根据index行名称、column列名称选取"><span class="nav-number">2.</span> <span class="nav-text">loc-根据index行名称、column列名称选取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iloc-根据行数、列数选取"><span class="nav-number">3.</span> <span class="nav-text">iloc-根据行数、列数选取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#df-ix-数名称混合选取，行根据第几行选取，列根据列名选取"><span class="nav-number">4.</span> <span class="nav-text">df.ix-数名称混合选取，行根据第几行选取，列根据列名选取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#df-行数或行名称选取"><span class="nav-number">5.</span> <span class="nav-text">df[]-行数或行名称选取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bool筛选"><span class="nav-number">6.</span> <span class="nav-text">bool筛选</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#df-‘x’-，df-x，先选中一列即series，再选series中的值"><span class="nav-number">7.</span> <span class="nav-text">df[‘x’]，df.x，先选中一列即series，再选series中的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取索引名"><span class="nav-number">8.</span> <span class="nav-text">获取索引名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺失值处理"><span class="nav-number">9.</span> <span class="nav-text">缺失值处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dataframe显示所有列和显示所有行"><span class="nav-number">10.</span> <span class="nav-text">Dataframe显示所有列和显示所有行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于Dataframe的遍历"><span class="nav-number">11.</span> <span class="nav-text">关于Dataframe的遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dataframe数据合并"><span class="nav-number">12.</span> <span class="nav-text">Dataframe数据合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取csv文件并合并"><span class="nav-number">13.</span> <span class="nav-text">读取csv文件并合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滑动平均"><span class="nav-number">14.</span> <span class="nav-text">滑动平均</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分割list"><span class="nav-number">15.</span> <span class="nav-text">分割list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pandas的str列内置方法"><span class="nav-number">16.</span> <span class="nav-text">pandas的str列内置方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaopch</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

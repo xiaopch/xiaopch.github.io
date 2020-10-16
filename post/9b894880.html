@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="python,paddle,">
+
+
+<meta name="description" content="定义数据读取器飞桨提供了多个封装好的数据集API，本任务我们可以通过调用 paddle.dataset.mnist 的 train 函数和 test 函数，直接获取处理好的 MNIST 训练集和测试集；然后调用 paddle.batch 接口返回 reader 的装饰器，该 reader 将输入 reader 的数据打包成指定 BATCH_SIZE 大小的批处理数据。 12345678910imp">
+<meta name="keywords" content="python,paddle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="paddle使用卷积神经网络识别MNIST手写数字">
+<meta property="og:url" content="https://xiaopch.github.io/post/9b894880.html">
+<meta property="og:site_name" content="hello world">
+<meta property="og:description" content="定义数据读取器飞桨提供了多个封装好的数据集API，本任务我们可以通过调用 paddle.dataset.mnist 的 train 函数和 test 函数，直接获取处理好的 MNIST 训练集和测试集；然后调用 paddle.batch 接口返回 reader 的装饰器，该 reader 将输入 reader 的数据打包成指定 BATCH_SIZE 大小的批处理数据。 12345678910imp">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-22T03:39:25.128Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="paddle使用卷积神经网络识别MNIST手写数字">
+<meta name="twitter:description" content="定义数据读取器飞桨提供了多个封装好的数据集API，本任务我们可以通过调用 paddle.dataset.mnist 的 train 函数和 test 函数，直接获取处理好的 MNIST 训练集和测试集；然后调用 paddle.batch 接口返回 reader 的装饰器，该 reader 将输入 reader 的数据打包成指定 BATCH_SIZE 大小的批处理数据。 12345678910imp">
+
+
+
+
+
+
+  <link rel="canonical" href="https://xiaopch.github.io/post/9b894880.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>paddle使用卷积神经网络识别MNIST手写数字 | hello world</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hello world</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有朋自远方来不亦乐乎</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/9b894880.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">paddle使用卷积神经网络识别MNIST手写数字</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-22T00:00:00+08:00">2020-07-22</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="定义数据读取器"><a href="#定义数据读取器" class="headerlink" title="定义数据读取器"></a>定义数据读取器</h3><p>飞桨提供了多个封装好的数据集API，本任务我们可以通过调用 paddle.dataset.mnist 的 train 函数和 test 函数，直接获取处理好的 MNIST 训练集和测试集；然后调用 paddle.batch 接口返回 reader 的装饰器，该 reader 将输入 reader 的数据打包成指定 BATCH_SIZE 大小的批处理数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> paddle</span><br><span class="line"><span class="comment"># 定义批大小</span></span><br><span class="line">BATCH_SIZE = <span class="number">8</span></span><br><span class="line"><span class="comment"># 通过调用paddle.dataset.mnist的train函数和test函数来构造reader</span></span><br><span class="line">train_reader = paddle.batch(</span><br><span class="line">    paddle.dataset.mnist.train(), batch_size=BATCH_SIZE, drop_last=<span class="literal">True</span>)</span><br><span class="line">test_reader = paddle.batch(</span><br><span class="line">    paddle.dataset.mnist.test(), batch_size=BATCH_SIZE, drop_last=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">test_reader_list=list(enumerate(test_reader()))</span><br></pre></td></tr></table></figure>
+<h3 id="解析reader的结构"><a href="#解析reader的结构" class="headerlink" title="解析reader的结构"></a>解析reader的结构</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">print(<span class="string">'总分组:'</span>,len(test_reader_list))</span><br><span class="line">print(type(test_reader_list[<span class="number">0</span>][<span class="number">1</span>]))</span><br><span class="line">print(len(test_reader_list[<span class="number">0</span>][<span class="number">1</span>]))</span><br><span class="line"><span class="comment"># print(test_reader_list[2][1])</span></span><br><span class="line">print(<span class="string">'label:'</span>,test_reader_list[<span class="number">152</span>][<span class="number">1</span>][<span class="number">2</span>][<span class="number">1</span>])</span><br><span class="line">plt.imshow(test_reader_list[<span class="number">152</span>][<span class="number">1</span>][<span class="number">2</span>][<span class="number">0</span>].reshape(<span class="number">28</span>, <span class="number">28</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="定义模型和优化器"><a href="#定义模型和优化器" class="headerlink" title="定义模型和优化器"></a>定义模型和优化器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line"><span class="keyword">from</span> paddle.fluid.dygraph.nn <span class="keyword">import</span> Conv2D, Pool2D</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义SimpleImgConvPool网络，必须继承自fluid.dygraph.Layer</span></span><br><span class="line"><span class="comment"># 该网络由一个卷积层和一个池化层组成</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SimpleImgConvPool</span><span class="params">(fluid.dygraph.Layer)</span>:</span></span><br><span class="line">    <span class="comment"># 在__init__构造函数中会执行变量的初始化、参数初始化、子网络初始化的操作</span></span><br><span class="line">    <span class="comment"># 本例中执行了Conv2D和Pool2D网络的初始化操作</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,</span></span></span><br><span class="line"><span class="function"><span class="params">                 num_channels,</span></span></span><br><span class="line"><span class="function"><span class="params">                 num_filters,</span></span></span><br><span class="line"><span class="function"><span class="params">                 filter_size,</span></span></span><br><span class="line"><span class="function"><span class="params">                 pool_size,</span></span></span><br><span class="line"><span class="function"><span class="params">                 pool_stride,</span></span></span><br><span class="line"><span class="function"><span class="params">                 pool_padding=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                 pool_type=<span class="string">'max'</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                 global_pooling=False,</span></span></span><br><span class="line"><span class="function"><span class="params">                 conv_stride=<span class="number">1</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                 conv_padding=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                 conv_dilation=<span class="number">1</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                 conv_groups=<span class="number">1</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                 act=None,</span></span></span><br><span class="line"><span class="function"><span class="params">                 use_cudnn=False,</span></span></span><br><span class="line"><span class="function"><span class="params">                 param_attr=None,</span></span></span><br><span class="line"><span class="function"><span class="params">                 bias_attr=None)</span>:</span></span><br><span class="line">        super(SimpleImgConvPool, self).__init__()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Conv2D网络的初始化</span></span><br><span class="line">        self._conv2d = Conv2D(</span><br><span class="line">            num_channels=num_channels,</span><br><span class="line">            num_filters=num_filters,</span><br><span class="line">            filter_size=filter_size,</span><br><span class="line">            stride=conv_stride,</span><br><span class="line">            padding=conv_padding,</span><br><span class="line">            dilation=conv_dilation,</span><br><span class="line">            groups=conv_groups,</span><br><span class="line">            param_attr=<span class="literal">None</span>,</span><br><span class="line">            bias_attr=<span class="literal">None</span>,</span><br><span class="line">            act=act,</span><br><span class="line">            use_cudnn=use_cudnn)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Pool2D网络的初始化</span></span><br><span class="line">        self._pool2d = Pool2D(</span><br><span class="line">            pool_size=pool_size,</span><br><span class="line">            pool_type=pool_type,</span><br><span class="line">            pool_stride=pool_stride,</span><br><span class="line">            pool_padding=pool_padding,</span><br><span class="line">            global_pooling=global_pooling,</span><br><span class="line">            use_cudnn=use_cudnn)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># forward函数实现了SimpleImgConvPool网络的执行逻辑</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, inputs)</span>:</span></span><br><span class="line">        x = self._conv2d(inputs)</span><br><span class="line">        x = self._pool2d(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment"># 定义MNIST网络，必须继承自fluid.dygraph.Layer</span></span><br><span class="line"><span class="comment"># 该网络由两个SimpleImgConvPool子网络、reshape层、matmul层、softmax层、accuracy层组成</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MNIST</span><span class="params">(fluid.dygraph.Layer)</span>:</span></span><br><span class="line">    <span class="comment"># 在__init__构造函数中会执行变量的初始化、参数初始化、子网络初始化的操作</span></span><br><span class="line">    <span class="comment"># 本例中执行了self.pool_2_shape变量、matmul层中参数self.output_weight、SimpleImgConvPool子网络的初始化操作</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(MNIST, self).__init__()</span><br><span class="line">        self._simple_img_conv_pool_1 = SimpleImgConvPool(</span><br><span class="line">            <span class="number">1</span>, <span class="number">20</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">2</span>, act=<span class="string">"relu"</span>)</span><br><span class="line">        self._simple_img_conv_pool_2 = SimpleImgConvPool(</span><br><span class="line">            <span class="number">20</span>, <span class="number">50</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">2</span>, act=<span class="string">"relu"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># self.pool_2_shape变量定义了经过self._simple_img_conv_pool_2层之后的数据</span></span><br><span class="line">        <span class="comment"># 除了batch_size维度之外其他维度的乘积</span></span><br><span class="line">        self.pool_2_shape = <span class="number">50</span> * <span class="number">4</span> * <span class="number">4</span></span><br><span class="line">        <span class="comment"># self.pool_2_shape、SIZE定义了self.output_weight参数的维度</span></span><br><span class="line">        SIZE = <span class="number">10</span></span><br><span class="line">        <span class="comment"># 定义全连接层的参数</span></span><br><span class="line">        self.output_weight = self.create_parameter(</span><br><span class="line">            [self.pool_2_shape, <span class="number">10</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># forward函数实现了MNIST网络的执行逻辑</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, inputs, label=None)</span>:</span></span><br><span class="line">        x = self._simple_img_conv_pool_1(inputs)</span><br><span class="line">        x = self._simple_img_conv_pool_2(x)</span><br><span class="line">        x = fluid.layers.reshape(x, shape=[<span class="number">-1</span>, self.pool_2_shape])</span><br><span class="line">        x = fluid.layers.matmul(x, self.output_weight)</span><br><span class="line">        x = fluid.layers.softmax(x)</span><br><span class="line">        <span class="keyword">if</span> label <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            acc = fluid.layers.accuracy(input=x, label=label)</span><br><span class="line">            <span class="keyword">return</span> x, acc</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> paddle.fluid.optimizer <span class="keyword">import</span> AdamOptimizer</span><br><span class="line"><span class="keyword">from</span> paddle.fluid.dygraph.base <span class="keyword">import</span> to_variable</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> fluid.dygraph.guard():</span><br><span class="line">    <span class="comment"># 定义MNIST类的对象</span></span><br><span class="line">    mnist = MNIST()</span><br><span class="line">    <span class="comment"># 定义优化器为AdamOptimizer，学习旅learning_rate为0.001</span></span><br><span class="line">    <span class="comment"># 注意动态图模式下必须传入parameter_list参数，该参数为需要优化的网络参数，本例需要优化mnist网络中的所有参数</span></span><br><span class="line">    adam = AdamOptimizer(learning_rate=<span class="number">0.001</span>, parameter_list=mnist.parameters())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置全部样本的训练次数</span></span><br><span class="line">    epoch_num = <span class="number">5</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 执行epoch_num次训练</span></span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(epoch_num):</span><br><span class="line">        <span class="comment"># 读取训练数据进行训练</span></span><br><span class="line">        <span class="keyword">for</span> batch_id, data <span class="keyword">in</span> enumerate(train_reader()):</span><br><span class="line">            dy_x_data = np.array([x[<span class="number">0</span>].reshape(<span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>) <span class="keyword">for</span> x <span class="keyword">in</span> data]).astype(<span class="string">'float32'</span>)</span><br><span class="line">            y_data = np.array([x[<span class="number">1</span>] <span class="keyword">for</span> x <span class="keyword">in</span> data]).astype(<span class="string">'int64'</span>).reshape(<span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">            <span class="comment">#将ndarray类型的数据转换为Variable类型</span></span><br><span class="line">            img = to_variable(dy_x_data)</span><br><span class="line">            label = to_variable(y_data)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 网络正向执行</span></span><br><span class="line">            cost, acc = mnist(img, label)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 计算损失值</span></span><br><span class="line">            loss = fluid.layers.cross_entropy(cost, label)</span><br><span class="line">            avg_loss = fluid.layers.mean(loss)</span><br><span class="line">            <span class="comment"># 执行反向计算</span></span><br><span class="line">            avg_loss.backward()</span><br><span class="line">            <span class="comment"># 参数更新</span></span><br><span class="line">            adam.minimize(avg_loss)</span><br><span class="line">            <span class="comment"># 将本次计算的梯度值清零，以便进行下一次迭代和梯度更新</span></span><br><span class="line">            mnist.clear_gradients()</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 输出对应epoch、batch_id下的损失值</span></span><br><span class="line">            <span class="keyword">if</span> batch_id % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">                print(<span class="string">"Loss at epoch &#123;&#125; step &#123;&#125;: &#123;:&#125;"</span>.format(</span><br><span class="line">                    epoch, batch_id, avg_loss.numpy()))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 保存训练好的模型</span></span><br><span class="line">    model_dict = mnist.state_dict()</span><br><span class="line">    fluid.save_dygraph(model_dict, <span class="string">"mnist_save_temp"</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 保存优化器信息</span></span><br><span class="line">    fluid.save_dygraph(adam.state_dict(), <span class="string">"mnist_adam_save_temp"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="评估测试"><a href="#评估测试" class="headerlink" title="评估测试"></a>评估测试</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> fluid.dygraph.guard():</span><br><span class="line">    <span class="comment"># 定义MNIST类的对象</span></span><br><span class="line">    mnist_eval = MNIST()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 加载保存的模型</span></span><br><span class="line">    model_dict, _ = fluid.load_dygraph(<span class="string">"mnist_save_temp"</span>)</span><br><span class="line">    mnist_eval.set_dict(model_dict)</span><br><span class="line">    print(<span class="string">"checkpoint loaded"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 切换到预测评估模式</span></span><br><span class="line">    mnist_eval.eval()</span><br><span class="line"></span><br><span class="line">    acc_set = []</span><br><span class="line">    avg_loss_set = []</span><br><span class="line">    <span class="comment"># 读取测试数据进行评估测试</span></span><br><span class="line">    <span class="keyword">for</span> batch_id, data <span class="keyword">in</span> enumerate(test_reader()):</span><br><span class="line">        dy_x_data = np.array([x[<span class="number">0</span>].reshape(<span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>)</span><br><span class="line">                              <span class="keyword">for</span> x <span class="keyword">in</span> data]).astype(<span class="string">'float32'</span>)</span><br><span class="line">        y_data = np.array(</span><br><span class="line">            [x[<span class="number">1</span>] <span class="keyword">for</span> x <span class="keyword">in</span> data]).astype(<span class="string">'int64'</span>).reshape(<span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 将ndarray类型的数据转换为Variable类型</span></span><br><span class="line">        img = to_variable(dy_x_data)</span><br><span class="line">        label = to_variable(y_data)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 网络正向执行</span></span><br><span class="line">        prediction, acc = mnist_eval(img, label)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 计算损失值</span></span><br><span class="line">        loss = fluid.layers.cross_entropy(input=prediction, label=label)</span><br><span class="line">        avg_loss = fluid.layers.mean(loss)</span><br><span class="line">        acc_set.append(float(acc.numpy()))</span><br><span class="line">        avg_loss_set.append(float(avg_loss.numpy()))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 输出不同 batch 数据下损失值和准确率的平均值</span></span><br><span class="line">    acc_val_mean = np.array(acc_set).mean()</span><br><span class="line">    avg_loss_val_mean = np.array(avg_loss_set).mean()</span><br><span class="line">    print(<span class="string">"Eval avg_loss is: &#123;&#125;, acc is: &#123;&#125;"</span>.format(avg_loss_val_mean, acc_val_mean))</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/paddle/" rel="tag"># paddle</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/1e135d57.html" rel="next" title="paddle使用LeNet识别MNIST手写数字">
+                <i class="fa fa-chevron-left"></i> paddle使用LeNet识别MNIST手写数字
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/6ec20a5d.html" rel="prev" title="paddlex图像分类预测并保存结果">
+                paddlex图像分类预测并保存结果 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpg" alt="xiaopch">
+            
+              <p class="site-author-name" itemprop="name">xiaopch</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义数据读取器"><span class="nav-number">1.</span> <span class="nav-text">定义数据读取器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析reader的结构"><span class="nav-number">2.</span> <span class="nav-text">解析reader的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义模型和优化器"><span class="nav-number">3.</span> <span class="nav-text">定义模型和优化器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评估测试"><span class="nav-number">4.</span> <span class="nav-text">评估测试</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaopch</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

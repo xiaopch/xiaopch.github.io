@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="mongodb,">
+
+
+<meta name="description" content="MongoDB数据备份在Mongodb中我们使用mongodump命令来备份MongoDB数据。该命令可以导出所有数据到指定目录中。 mongodump命令可以通过参数指定导出的数据量级转存的服务器。 语法mongodump命令脚本语法如下： 1&amp;gt;mongodump -h dbhost -d dbname -o dbdirectory  -h： MongDB所在服务器地址，例如：127.0.">
+<meta name="keywords" content="mongodb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongodb数据库备份与恢复">
+<meta property="og:url" content="https://xiaopch.github.io/post/7a99468b.html">
+<meta property="og:site_name" content="hello world">
+<meta property="og:description" content="MongoDB数据备份在Mongodb中我们使用mongodump命令来备份MongoDB数据。该命令可以导出所有数据到指定目录中。 mongodump命令可以通过参数指定导出的数据量级转存的服务器。 语法mongodump命令脚本语法如下： 1&amp;gt;mongodump -h dbhost -d dbname -o dbdirectory  -h： MongDB所在服务器地址，例如：127.0.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-17T01:34:44.797Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mongodb数据库备份与恢复">
+<meta name="twitter:description" content="MongoDB数据备份在Mongodb中我们使用mongodump命令来备份MongoDB数据。该命令可以导出所有数据到指定目录中。 mongodump命令可以通过参数指定导出的数据量级转存的服务器。 语法mongodump命令脚本语法如下： 1&amp;gt;mongodump -h dbhost -d dbname -o dbdirectory  -h： MongDB所在服务器地址，例如：127.0.">
+
+
+
+
+
+
+  <link rel="canonical" href="https://xiaopch.github.io/post/7a99468b.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>mongodb数据库备份与恢复 | hello world</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hello world</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有朋自远方来不亦乐乎</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/7a99468b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mongodb数据库备份与恢复</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T00:00:00+08:00">2020-04-17</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="MongoDB数据备份"><a href="#MongoDB数据备份" class="headerlink" title="MongoDB数据备份"></a>MongoDB数据备份</h2><p>在Mongodb中我们使用mongodump命令来备份MongoDB数据。该命令可以导出所有数据到指定目录中。</p>
+<p>mongodump命令可以通过参数指定导出的数据量级转存的服务器。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>mongodump命令脚本语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;mongodump -h dbhost -d dbname -o dbdirectory</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>-h：</p>
+<p>MongDB所在服务器地址，例如：127.0.0.1，当然也可以指定端口号：127.0.0.1:27017</p>
+</li>
+<li><p>-d：</p>
+<p>需要备份的数据库实例，例如：test</p>
+</li>
+<li><p>-o：</p>
+<p>备份的数据存放位置，例如：c:\data\dump，当然该目录需要提前建立，在备份完成后，系统自动在dump目录下建立一个test目录，这个目录里面存放该数据库实例的备份数据。</p>
+</li>
+</ul>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>在本地使用 27017 启动你的mongod服务。打开命令提示符窗口，进入MongoDB安装目录的bin目录输入命令mongodump:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongodump</span><br></pre></td></tr></table></figure>
+<p>执行以上命令后，客户端会连接到ip为 127.0.0.1 端口号为 27017 的MongoDB服务上，并备份所有数据到 bin/dump/ 目录中。命令输出结果如下：</p>
+<p>mongodump 命令可选参数列表如下所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">语法</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">mongodump –host HOST_NAME –port PORT_NUMBER</td>
+<td style="text-align:left">该命令将备份所有MongoDB数据</td>
+<td style="text-align:left">mongodump –host runoob.com –port 27017</td>
+</tr>
+<tr>
+<td style="text-align:left">mongodump –dbpath DB_PATH –out BACKUP_DIRECTORY</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">mongodump –dbpath /data/db/ –out /data/backup/</td>
+</tr>
+<tr>
+<td style="text-align:left">mongodump –collection COLLECTION –db DB_NAME</td>
+<td style="text-align:left">该命令将备份指定数据库的集合。</td>
+<td style="text-align:left">mongodump –collection mycol –db test</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="MongoDB数据恢复"><a href="#MongoDB数据恢复" class="headerlink" title="MongoDB数据恢复"></a>MongoDB数据恢复</h2><p>mongodb使用 mongorestore 命令来恢复备份的数据。</p>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><p>mongorestore命令脚本语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongorestore -h &lt;hostname&gt;&lt;:port&gt; -d dbname &lt;path&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>–host &lt;:port&gt;, -h &lt;:port&gt;：</p>
+<p>MongoDB所在服务器地址，默认为： localhost:27017</p>
+</li>
+<li><p>–db , -d ：</p>
+<p>需要恢复的数据库实例，例如：test，当然这个名称也可以和备份时候的不一样，比如test2</p>
+</li>
+<li><p>–drop：</p>
+<p>恢复的时候，先删除当前数据，然后恢复备份的数据。就是说，恢复后，备份后添加修改的数据都会被删除，慎用哦！</p>
+</li>
+<li><p><path>：</path></p>
+<p>mongorestore 最后的一个参数，设置备份数据所在位置，例如：c:\data\dump\test。</p>
+<p>你不能同时指定 <path> 和 –dir 选项，–dir也可以设置备份目录。</path></p>
+</li>
+<li><p>–dir：</p>
+<p>指定备份的目录</p>
+<p>你不能同时指定 <path> 和 –dir 选项。</path></p>
+</li>
+</ul>
+<p>接下来我们执行以下命令恢复所有数据库:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongorestore</span><br></pre></td></tr></table></figure>
+<h2 id="数据导出与导入"><a href="#数据导出与导入" class="headerlink" title="数据导出与导入"></a>数据导出与导入</h2><h2 id="mongoexport用法"><a href="#mongoexport用法" class="headerlink" title="mongoexport用法"></a>mongoexport用法</h2><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>mongoexport 支持将mongodb数据表导出为json或csv格式，可在导出时指定一定的查询条件实现过滤。<br>命令的执行要求当前用户对数据库有read权限；<br>在mongos或副本集上执行时，默认采用primary readperference选项，即优先从主库上读取。</p>
+<h3 id="示例用法"><a href="#示例用法" class="headerlink" title="示例用法"></a>示例用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongoexport --host 127.0.0.1 --port 27017 -d appdb -c T_TEST_DATA -u appuser -p appuser@2016 -o export/T_TEST_DATA.json</span><br><span class="line"></span><br><span class="line">mongoexport --host 127.0.0.1 --port 27017 -d Ali_spider -c cup -f _id,store,price,order,feedback,image_urls,images --type=csv -o export/Ali_spider.csv</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><p>参数名    参数值<br>host[h] : 主机<br>port : 端口<br>db[d] : 目标数据库<br>username[u] : 用户名<br>password[p] : 密码<br>authenticationDatabase : 鉴权数据库，不指定则使用database参数<br>collection[c] : 目标Collection<br>query[q] : 查询过滤条件，不指定则导出全表<br>out[o] : 目标输出文件<br>type : 格式类型，默认json<br>skip : skip条件<br>limit : limit条件<br>sort : sort条件</p>
+<h3 id="其他用法"><a href="#其他用法" class="headerlink" title="其他用法"></a>其他用法</h3><ul>
+<li>按分页导出</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoexport -d test -c records --sort &apos;&#123;a: 1&#125;&apos; --limit 100 --skip 100 --out export.1.json</span><br></pre></td></tr></table></figure>
+<ul>
+<li>按查询条件导出</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoexport -d test -c records -q &apos;&#123; a: &#123; $gte: 3 &#125; &#125;&apos; --out exportdir/myRecords.json</span><br></pre></td></tr></table></figure>
+<h2 id="mongoimport用法"><a href="#mongoimport用法" class="headerlink" title="mongoimport用法"></a>mongoimport用法</h2><h3 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h3><p>mongoimport 支持将json或csv格式的数据文件导入到mongodb数据库，该命令与mongoexport结合使用。<br>命令的执行要求当前用户对数据库有readWrite权限；<br>导入命令要求在mongos或副本集主节点上执行。</p>
+<h3 id="示例用法-1"><a href="#示例用法-1" class="headerlink" title="示例用法"></a>示例用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoimport --host 127.0.0.1 --port 27017 -d appdb -c T_TEST_DATA_1 -u appuser -p appuser@2016 --numInsertionWorkers 50 --file export/T_TEST_DATA.json</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明-1"><a href="#参数说明-1" class="headerlink" title="参数说明"></a>参数说明</h3><p>参数名    参数值<br>host[h] : 主机<br>port : 端口<br>db[d] : 目标数据库<br>username[u] : 用户名<br>password[p] : 密码<br>authenticationDatabase : 鉴权数据库，不指定则使用database参数<br>collection[c] : 目标Collection，不指定则采用文件名称<br>drop : 指定该选项，则导入前删除表<br>file : 目标导入文件<br>type : 格式类型，默认json<br>mode : 导入模式，有insert、upsert、merge，默认insert<br>numInsertionWorkers : 并发数<br>导入模式<br>upsert模式 : 会将已有数据替换；<br>merge模式 : 会将已有数据进行合并；</p>
+<h2 id="执行效率"><a href="#执行效率" class="headerlink" title="执行效率"></a>执行效率</h2><p>使用insert的性能最高，建议使用；<br>在多核的环境中，通过numInsertionWorkers可指定并发运行，可提升一定效率。</p>
+<h2 id="参考数据"><a href="#参考数据" class="headerlink" title="参考数据"></a>参考数据</h2><p>使用mongoexport 导出860W的数据记录，文件大小2.9G，共耗时10分钟<br>使用mongoimport 导入860W的数据记录，使用–mode=insert模式，用时3分钟15秒(numInsertionWorkers=50)<br>使用mongoimport 导入860W的数据记录，使用–mode=insert模式，用时5分钟(numInsertionWorkers=1)<br>使用mongoimport 导入860W的数据记录，使用–mode=upsert模式，用时45分钟(numInsertionWorkers=1)<br>使用mongodump 导出为40s，而mongorestore为4分钟。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mongodb/" rel="tag"># mongodb</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/837d50a8.html" rel="next" title="Node.js 连接 MongoDB">
+                <i class="fa fa-chevron-left"></i> Node.js 连接 MongoDB
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/13754fd0.html" rel="prev" title="ubuntu下安装mongodb以及开启远程访问">
+                ubuntu下安装mongodb以及开启远程访问 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpg" alt="xiaopch">
+            
+              <p class="site-author-name" itemprop="name">xiaopch</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB数据备份"><span class="nav-number">1.</span> <span class="nav-text">MongoDB数据备份</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">1.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">1.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB数据恢复"><span class="nav-number">2.</span> <span class="nav-text">MongoDB数据恢复</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-1"><span class="nav-number">2.1.</span> <span class="nav-text">语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据导出与导入"><span class="nav-number">3.</span> <span class="nav-text">数据导出与导入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mongoexport用法"><span class="nav-number">4.</span> <span class="nav-text">mongoexport用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#说明"><span class="nav-number">4.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例用法"><span class="nav-number">4.2.</span> <span class="nav-text">示例用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数说明"><span class="nav-number">4.3.</span> <span class="nav-text">参数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他用法"><span class="nav-number">4.4.</span> <span class="nav-text">其他用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mongoimport用法"><span class="nav-number">5.</span> <span class="nav-text">mongoimport用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#说明-1"><span class="nav-number">5.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例用法-1"><span class="nav-number">5.2.</span> <span class="nav-text">示例用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数说明-1"><span class="nav-number">5.3.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行效率"><span class="nav-number">6.</span> <span class="nav-text">执行效率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考数据"><span class="nav-number">7.</span> <span class="nav-text">参考数据</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaopch</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

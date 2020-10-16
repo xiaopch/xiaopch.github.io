@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="python,flask,">
+
+
+<meta name="description" content="python http server命令行1python -m SimpleHTTPServer 8000 将Flask应用程序部署在tornado的简单方法flask代码，main.py：12345678from flask import Flask  app = Flask(__name__)  @app.route(&amp;apos;/&amp;apos;)  def hello_world():">
+<meta name="keywords" content="python,flask">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python之flask框架">
+<meta property="og:url" content="https://xiaopch.github.io/post/54d8099b.html">
+<meta property="og:site_name" content="hello world">
+<meta property="og:description" content="python http server命令行1python -m SimpleHTTPServer 8000 将Flask应用程序部署在tornado的简单方法flask代码，main.py：12345678from flask import Flask  app = Flask(__name__)  @app.route(&amp;apos;/&amp;apos;)  def hello_world():">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-16T06:28:46.309Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python之flask框架">
+<meta name="twitter:description" content="python http server命令行1python -m SimpleHTTPServer 8000 将Flask应用程序部署在tornado的简单方法flask代码，main.py：12345678from flask import Flask  app = Flask(__name__)  @app.route(&amp;apos;/&amp;apos;)  def hello_world():">
+
+
+
+
+
+
+  <link rel="canonical" href="https://xiaopch.github.io/post/54d8099b.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>python之flask框架 | hello world</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hello world</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有朋自远方来不亦乐乎</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/54d8099b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python之flask框架</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-18T15:28:09+08:00">2018-01-18</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="python-http-server命令行"><a href="#python-http-server命令行" class="headerlink" title="python http server命令行"></a>python http server命令行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m SimpleHTTPServer 8000</span><br></pre></td></tr></table></figure>
+<h2 id="将Flask应用程序部署在tornado的简单方法"><a href="#将Flask应用程序部署在tornado的简单方法" class="headerlink" title="将Flask应用程序部署在tornado的简单方法"></a>将Flask应用程序部署在tornado的简单方法</h2><h3 id="flask代码，main-py："><a href="#flask代码，main-py：" class="headerlink" title="flask代码，main.py："></a>flask代码，main.py：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask  </span><br><span class="line">app = Flask(__name__)  </span><br><span class="line">@app.route(&apos;/&apos;)  </span><br><span class="line">def hello_world():  </span><br><span class="line">    return &apos;Hello World!&apos;  </span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:  </span><br><span class="line">    app.run(debug=True)</span><br></pre></td></tr></table></figure>
+<h3 id="将Flask应用程序部署在tornado"><a href="#将Flask应用程序部署在tornado" class="headerlink" title="#将Flask应用程序部署在tornado"></a>#将Flask应用程序部署在tornado</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#-*- coding: UTF-8 -*-</span><br><span class="line">from __future__ import unicode_literals</span><br><span class="line">from flask import Flask</span><br><span class="line">from flask import session,request</span><br><span class="line">import os,platform</span><br><span class="line"></span><br><span class="line">from tornado.wsgi import WSGIContainer  </span><br><span class="line">from tornado.httpserver import HTTPServer  </span><br><span class="line">from tornado.ioloop import IOLoop</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#导入flask项目  </span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.secret_key = &apos;xp&apos;</span><br><span class="line"></span><br><span class="line">@app.route(&apos;/&apos;)</span><br><span class="line">def index():</span><br><span class="line">    return &apos;Hello World,2020!&apos;</span><br><span class="line"></span><br><span class="line">##http://localhost/get?t=xp</span><br><span class="line">@app.route(&apos;/get&apos;, methods=[&apos;GET&apos;, &apos;POST&apos;])</span><br><span class="line">def index_page():</span><br><span class="line">    if request.method == &apos;GET&apos;:</span><br><span class="line">        get_params = request.args.to_dict()</span><br><span class="line">        if &apos;t&apos; in get_params.keys():</span><br><span class="line">            if str(get_params[&apos;t&apos;]) == app.secret_key:</span><br><span class="line">                return &apos;&lt;h1&gt;hello flask&lt;/h1&gt;&apos;</span><br><span class="line">            </span><br><span class="line">        return  &apos;&lt;h1&gt;get error&lt;/h1&gt;&apos;</span><br><span class="line">    if request.method == &apos;POST&apos;:</span><br><span class="line">        return  &apos;&lt;h1&gt;post error&lt;/h1&gt;&apos;</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">##    app.run(host=&apos;0.0.0.0&apos;,port=&apos;80&apos;, debug=False)</span><br><span class="line"></span><br><span class="line">    http_server = HTTPServer(WSGIContainer(app))  </span><br><span class="line">    http_server.listen(80)#对应的端口  </span><br><span class="line">    IOLoop.instance().start()</span><br></pre></td></tr></table></figure>
+<h3 id="获取POST和GET数据"><a href="#获取POST和GET数据" class="headerlink" title="获取POST和GET数据"></a>获取POST和GET数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#-*- coding: UTF-8 -*-</span><br><span class="line">from __future__ import unicode_literals</span><br><span class="line">from flask import Flask</span><br><span class="line">from flask import session,request</span><br><span class="line">import os,platform</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.secret_key = &apos;xp&apos;</span><br><span class="line"> </span><br><span class="line">@app.route(&apos;/get&apos;, methods=[&apos;GET&apos;, &apos;POST&apos;])</span><br><span class="line">def index_page():</span><br><span class="line">    if request.method == &apos;GET&apos;:</span><br><span class="line">        get_params = request.args.to_dict()</span><br><span class="line">        if &apos;t&apos; in get_params.keys() and &apos;key&apos; in get_params.keys():</span><br><span class="line">            if str(get_params[&apos;t&apos;]) == app.secret_key:</span><br><span class="line">                return &apos;&lt;h1&gt;hello flask&lt;/h1&gt;&apos;+str(get_params[&apos;key&apos;])</span><br><span class="line">            </span><br><span class="line">        return  &apos;&lt;h1&gt;get error&lt;/h1&gt;&apos;</span><br><span class="line">    if request.method == &apos;POST&apos;:</span><br><span class="line">        return  &apos;&lt;h1&gt;post error&lt;/h1&gt;&apos;</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    app.run(host=&apos;0.0.0.0&apos;,port=&apos;80&apos;, debug=True)</span><br></pre></td></tr></table></figure>
+<h2 id="Python-ftp-server-代码"><a href="#Python-ftp-server-代码" class="headerlink" title="Python ftp server 代码"></a>Python ftp server 代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">from pyftpdlib.authorizers import DummyAuthorizer  </span><br><span class="line">from pyftpdlib.handlers import FTPHandler  </span><br><span class="line">from pyftpdlib.servers import FTPServer  </span><br><span class="line">#新建一个用户组  </span><br><span class="line">authorizer = DummyAuthorizer()  </span><br><span class="line">#将用户名，密码，指定目录，权限 添加到里面  </span><br><span class="line">authorizer.add_user(xiaopch, , /home/pi/, perm=elradfmw)#elradfmw  </span><br><span class="line">###这个是添加匿名用户,任何人都可以访问，如果去掉的话，需要输入用户名和密码，可以自己尝试  </span><br><span class="line">authorizer.add_anonymous(/home/pi/Public)  </span><br><span class="line">##  </span><br><span class="line">handler = FTPHandler  </span><br><span class="line">handler.authorizer = authorizer  </span><br><span class="line">#开启服务器  </span><br><span class="line">server = FTPServer((0.0.0.0, 21), handler)  </span><br><span class="line">server.serve_forever()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/flask/" rel="tag"># flask</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/a7a83843.html" rel="next" title="Seafile私有云使用说明">
+                <i class="fa fa-chevron-left"></i> Seafile私有云使用说明
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/c29704a.html" rel="prev" title="Python之conda安装和Exe打包">
+                Python之conda安装和Exe打包 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpg" alt="xiaopch">
+            
+              <p class="site-author-name" itemprop="name">xiaopch</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#python-http-server命令行"><span class="nav-number">1.</span> <span class="nav-text">python http server命令行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将Flask应用程序部署在tornado的简单方法"><span class="nav-number">2.</span> <span class="nav-text">将Flask应用程序部署在tornado的简单方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#flask代码，main-py："><span class="nav-number">2.1.</span> <span class="nav-text">flask代码，main.py：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将Flask应用程序部署在tornado"><span class="nav-number">2.2.</span> <span class="nav-text">#将Flask应用程序部署在tornado</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取POST和GET数据"><span class="nav-number">2.3.</span> <span class="nav-text">获取POST和GET数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-ftp-server-代码"><span class="nav-number">3.</span> <span class="nav-text">Python ftp server 代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaopch</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

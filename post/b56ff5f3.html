@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="nodejs,">
+
+
+<meta name="description" content="下载安装nodejs和安装express框架http://nodejs.cn/download/ 选择对应的版本然后下载安装就好了，完了验证下nodejs安装是否成功。 输入 1node -v #命令查看版本 再输入 1npm -v #命令查看npm版本 notepad++运行nodejs程序 打开运行,写入  1cmd /k cd /d &amp;quot;$(CURRENT_DIRECTORY)&amp;qu">
+<meta name="keywords" content="nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs搭建web服务器">
+<meta property="og:url" content="https://xiaopch.github.io/post/b56ff5f3.html">
+<meta property="og:site_name" content="hello world">
+<meta property="og:description" content="下载安装nodejs和安装express框架http://nodejs.cn/download/ 选择对应的版本然后下载安装就好了，完了验证下nodejs安装是否成功。 输入 1node -v #命令查看版本 再输入 1npm -v #命令查看npm版本 notepad++运行nodejs程序 打开运行,写入  1cmd /k cd /d &amp;quot;$(CURRENT_DIRECTORY)&amp;qu">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-14T01:34:32.974Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs搭建web服务器">
+<meta name="twitter:description" content="下载安装nodejs和安装express框架http://nodejs.cn/download/ 选择对应的版本然后下载安装就好了，完了验证下nodejs安装是否成功。 输入 1node -v #命令查看版本 再输入 1npm -v #命令查看npm版本 notepad++运行nodejs程序 打开运行,写入  1cmd /k cd /d &amp;quot;$(CURRENT_DIRECTORY)&amp;qu">
+
+
+
+
+
+
+  <link rel="canonical" href="https://xiaopch.github.io/post/b56ff5f3.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>nodejs搭建web服务器 | hello world</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hello world</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有朋自远方来不亦乐乎</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/b56ff5f3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">nodejs搭建web服务器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-27T00:00:00+08:00">2019-08-27</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="下载安装nodejs和安装express框架"><a href="#下载安装nodejs和安装express框架" class="headerlink" title="下载安装nodejs和安装express框架"></a>下载安装nodejs和安装express框架</h4><p><a href="http://nodejs.cn/download/" target="_blank" rel="noopener">http://nodejs.cn/download/</a></p>
+<p>选择对应的版本然后下载安装就好了，完了验证下nodejs安装是否成功。</p>
+<p>输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v #命令查看版本</span><br></pre></td></tr></table></figure>
+<p>再输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v #命令查看npm版本</span><br></pre></td></tr></table></figure>
+<h3 id="notepad-运行nodejs程序"><a href="#notepad-运行nodejs程序" class="headerlink" title="notepad++运行nodejs程序"></a>notepad++运行nodejs程序</h3><ul>
+<li>打开运行,写入</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd /k cd /d &quot;$(CURRENT_DIRECTORY)&quot; &amp;  node &quot;$(FULL_CURRENT_PATH)&quot; &amp; ECHO. &amp; PAUSE &amp; EXIT</span><br></pre></td></tr></table></figure>
+<h3 id="全局安装express"><a href="#全局安装express" class="headerlink" title="全局安装express"></a>全局安装express</h3><ul>
+<li>安装框架之前先把NPM镜像改成淘宝镜像，在文件夹打开命令行窗口执行命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装express框架</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install express --save -g</span><br><span class="line">npm install express-generator --save -g</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>express 是nodejs的一个web框架，使用express,能够更便捷的使用nodejs.</p>
+</li>
+<li><p>express-generator是express应用生成器，相当于express 的骨架，进入一个web项目中后，</p>
+</li>
+<li>使用express  projectname命令，能快速构建projectname这个应用的目录结构。</li>
+</ul>
+<h3 id="serve-index模块实现目录浏览"><a href="#serve-index模块实现目录浏览" class="headerlink" title="serve-index模块实现目录浏览"></a>serve-index模块实现目录浏览</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//安装模块npm install serve-index</span><br><span class="line">var express    = require(&apos;express&apos;)</span><br><span class="line">var serveIndex = require(&apos;serve-index&apos;)</span><br><span class="line">var app = express();</span><br><span class="line"> </span><br><span class="line">//浏览public目录下的文件</span><br><span class="line">app.use(&apos;/&apos;, express.static(&apos;public/&apos;), serveIndex(&apos;public/&apos;, &#123;&apos;icons&apos;: true&#125;))</span><br><span class="line">// Listen</span><br><span class="line">app.listen(80)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>支持https</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">let http = require(&apos;http&apos;);</span><br><span class="line">let https = require(&apos;https&apos;);</span><br><span class="line">let fs = require(&apos;fs&apos;);</span><br><span class="line">let express = require(&apos;express&apos;);</span><br><span class="line">let serveIndex = require(&apos;serve-index&apos;);</span><br><span class="line"></span><br><span class="line">let app = express();</span><br><span class="line">app.use(serveIndex(&apos;./public&apos;));</span><br><span class="line">app.use(express.static(&apos;./public&apos;));</span><br><span class="line"></span><br><span class="line">// http server</span><br><span class="line">let http_server = http.createServer(app);</span><br><span class="line">http_server.listen(808, &apos;127.0.0.1&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//下载openssl生成https证书文件ca.key和ca.crt</span><br><span class="line">let options = &#123;</span><br><span class="line">  key: fs.readFileSync(&apos;./ca.key&apos;),</span><br><span class="line">  cert: fs.readFileSync(&apos;./ca.crt&apos;)</span><br><span class="line">&#125;</span><br><span class="line">// https server</span><br><span class="line">let https_server = https.createServer(options, app);</span><br><span class="line">https_server.listen(433, &apos;127.0.0.1&apos;)</span><br><span class="line"></span><br><span class="line">// 浏览器中访问</span><br><span class="line">// http://127.0.0.1:808</span><br><span class="line">// https://127.0.0.1:433</span><br></pre></td></tr></table></figure>
+<h3 id="开始第一个express项目"><a href="#开始第一个express项目" class="headerlink" title="开始第一个express项目"></a>开始第一个express项目</h3><ul>
+<li><p>在文件夹路径处，选中把路径删除，然后输入cmd，再确认就进入了当前文件夹下控制台</p>
+</li>
+<li><p>输入命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">express rail_inspection  //创建了了一个新项目</span><br><span class="line">cd rail_inspection</span><br><span class="line">npm install</span><br><span class="line">npm start  //启动项目</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Nodejs-Express访问html、css、js静态资源文件"><a href="#Nodejs-Express访问html、css、js静态资源文件" class="headerlink" title="Nodejs + Express访问html、css、js静态资源文件"></a>Nodejs + Express访问html、css、js静态资源文件</h3><ul>
+<li>首先安装express在命令行输入</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express -g</span><br></pre></td></tr></table></figure>
+<ul>
+<li>装完成后可以查看安装情况：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls -g</span><br></pre></td></tr></table></figure>
+<ul>
+<li>然后创建server.js文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&quot;express&quot;);</span><br><span class="line">var app = express();</span><br><span class="line">const path = require(&apos;path&apos;); //系统路径模块</span><br><span class="line"></span><br><span class="line">//访问html、css、js静态资源文件</span><br><span class="line">app.use(express.static(path.join(__dirname, &apos;public&apos;))); //指定静态文件目录</span><br><span class="line">app.get(&apos;/&apos;, function (req, res) &#123;</span><br><span class="line">    res.redirect(&apos;/index.html&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">app.listen(80, function () &#123;</span><br><span class="line">console.log(&apos;Node app start at port 80&apos;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>文件存放目录结构</li>
+</ul>
+<p>project/<br>├── server.js<br>│<br>├── public/<br>│   ├── index.html<br>│   │<br>│   ├── css/<br>│   │   └── style.css<br>│   │<br>│   └── js/<br>│       └── index.js<br>│<br>└── node_modules/<br>  ├── …<br>  ├── …<br>  └── …</p>
+<h3 id="连接-MongoDB"><a href="#连接-MongoDB" class="headerlink" title="连接 MongoDB"></a>连接 MongoDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var MongoClient = require(&apos;mongodb&apos;).MongoClient;</span><br><span class="line">var url = &apos;mongodb://localhost:27017/runoob&apos;;</span><br><span class="line">MongoClient.connect(url, &#123; useNewUrlParser: true , useUnifiedTopology: true &#125;, function (err, db) &#123;</span><br><span class="line">    if (err) throw err;</span><br><span class="line">    console.log(&apos;数据库已创建&apos;);</span><br><span class="line">    var dbase = db.db(&quot;runoob&quot;);</span><br><span class="line">    dbase.createCollection(&apos;site&apos;, function (err, res) &#123;</span><br><span class="line">        if (err) throw err;</span><br><span class="line">        console.log(&quot;创建集合!&quot;);</span><br><span class="line">        db.close();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="提交post表单数据"><a href="#提交post表单数据" class="headerlink" title="提交post表单数据"></a>提交post表单数据</h3><ul>
+<li>html文件index.html</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line"> &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line"> &lt;title&gt;Nodejs的data事件与end事件的回调函数测试用页面&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;form id= &quot;form_post&quot; action = &quot;http://localhost/&quot; method = &quot;post&quot;&gt;</span><br><span class="line"> 姓名：&lt;input type = &apos;text&apos; name = &quot;name&quot; value =&quot;xiaopch&quot;&gt;&lt;br/&gt;</span><br><span class="line"> 年龄：&lt;input type = &quot;number&quot; name = &quot;age&quot; value =&quot;20&quot;&gt;</span><br><span class="line"> &lt;input type = &quot;submit&quot; value =&quot; 提交&quot;/&gt; </span><br><span class="line"> &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>js文件app.js</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//app.js</span><br><span class="line">var http = require(&apos;http&apos;);</span><br><span class="line">var server = http.createServer(function (req, res) &#123;</span><br><span class="line">        if (req.url !== &quot;/favicon.ico&quot;) &#123;</span><br><span class="line">            req.on(&apos;data&apos;, function (data) &#123;</span><br><span class="line">                console.log(&quot;服务器接收到的数据:&quot; + decodeURIComponent(data));</span><br><span class="line">            &#125;);</span><br><span class="line">            req.on(&quot;end&quot;, function () &#123;</span><br><span class="line">                console.log(&apos;客户端请求数据全部接收完毕&apos;);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        res.end();</span><br><span class="line">    &#125;).listen(80, &quot;localhost&quot;, function () &#123;</span><br><span class="line">        console.log(&quot;listened&quot;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/4b102b0c.html" rel="next" title="Python之time,datetime,string相互转换">
+                <i class="fa fa-chevron-left"></i> Python之time,datetime,string相互转换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/1ec2e633.html" rel="prev" title="nodejs使用ejs模板">
+                nodejs使用ejs模板 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpg" alt="xiaopch">
+            
+              <p class="site-author-name" itemprop="name">xiaopch</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载安装nodejs和安装express框架"><span class="nav-number">1.</span> <span class="nav-text">下载安装nodejs和安装express框架</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#notepad-运行nodejs程序"><span class="nav-number"></span> <span class="nav-text">notepad++运行nodejs程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局安装express"><span class="nav-number"></span> <span class="nav-text">全局安装express</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#serve-index模块实现目录浏览"><span class="nav-number"></span> <span class="nav-text">serve-index模块实现目录浏览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始第一个express项目"><span class="nav-number"></span> <span class="nav-text">开始第一个express项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nodejs-Express访问html、css、js静态资源文件"><span class="nav-number"></span> <span class="nav-text">Nodejs + Express访问html、css、js静态资源文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接-MongoDB"><span class="nav-number"></span> <span class="nav-text">连接 MongoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交post表单数据"><span class="nav-number"></span> <span class="nav-text">提交post表单数据</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaopch</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

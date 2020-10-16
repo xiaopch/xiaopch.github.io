@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="docker,">
+
+
+<meta name="description" content="docker run命令-创建一个新的容器并运行一个命令 语法docker run [OPTIONS] IMAGE [COMMAND] [ARG…]OPTIONS说明： -a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项； -d: 后台运行容器，并返回容器ID； -i: 以交互模式运行容器，通常与 -t 同时使用； -P: 随机端口映射，容器内部端口随">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker常用命令">
+<meta property="og:url" content="https://xiaopch.github.io/post/749ad7d8.html">
+<meta property="og:site_name" content="hello world">
+<meta property="og:description" content="docker run命令-创建一个新的容器并运行一个命令 语法docker run [OPTIONS] IMAGE [COMMAND] [ARG…]OPTIONS说明： -a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项； -d: 后台运行容器，并返回容器ID； -i: 以交互模式运行容器，通常与 -t 同时使用； -P: 随机端口映射，容器内部端口随">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-05-13T09:29:54.034Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker常用命令">
+<meta name="twitter:description" content="docker run命令-创建一个新的容器并运行一个命令 语法docker run [OPTIONS] IMAGE [COMMAND] [ARG…]OPTIONS说明： -a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项； -d: 后台运行容器，并返回容器ID； -i: 以交互模式运行容器，通常与 -t 同时使用； -P: 随机端口映射，容器内部端口随">
+
+
+
+
+
+
+  <link rel="canonical" href="https://xiaopch.github.io/post/749ad7d8.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>docker常用命令 | hello world</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hello world</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有朋自远方来不亦乐乎</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/749ad7d8.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">docker常用命令</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-10T09:06:12+08:00">2019-07-10</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="docker-run命令"><a href="#docker-run命令" class="headerlink" title="docker run命令"></a>docker run命令</h2><p>-创建一个新的容器并运行一个命令</p>
+<p>语法<br>docker run [OPTIONS] IMAGE [COMMAND] [ARG…]<br>OPTIONS说明：</p>
+<p>-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；</p>
+<p>-d: 后台运行容器，并返回容器ID；</p>
+<p>-i: 以交互模式运行容器，通常与 -t 同时使用；</p>
+<p>-P: 随机端口映射，容器内部端口随机映射到主机的高端口</p>
+<p>-p: 指定端口映射，格式为：主机(宿主)端口:容器端口</p>
+<p>-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；</p>
+<p>–name=”nginx-lb”: 为容器指定一个名称；</p>
+<p>–dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致；</p>
+<p>–dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致；</p>
+<p>-h “mars”: 指定容器的hostname；</p>
+<p>-e username=”ritchie”: 设置环境变量；</p>
+<p>–env-file=[]: 从指定文件读入环境变量；</p>
+<p>–cpuset=”0-2” or –cpuset=”0,1,2”: 绑定容器到指定CPU运行；</p>
+<p>-m :设置容器使用内存最大值；</p>
+<p>–net=”bridge”: 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型；</p>
+<p>–link=[]: 添加链接到另一个容器；</p>
+<p>–expose=[]: 开放一个端口或一组端口；</p>
+<p>–volume , -v:    绑定一个卷</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>使用docker镜像nginx:latest以后台模式启动一个容器,并将容器命名为mynginx。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mynginx -d nginx:latest</span><br></pre></td></tr></table></figure>
+<p>使用镜像nginx:latest以后台模式启动一个容器,并将容器的80端口映射到主机随机端口。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -P -d nginx:latest</span><br></pre></td></tr></table></figure>
+<p>使用镜像 nginx:latest，以后台模式启动一个容器,将容器的 80 端口映射到主机的 80 端口,主机的目录 /data 映射到容器的 /data。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 80:80 -v /data:/data -d nginx:latest</span><br></pre></td></tr></table></figure>
+<p>绑定容器的 8080 端口，并将其映射到本地主机 127.0.0.1 的 80 端口上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 127.0.0.1:80:8080/tcp ubuntu bash</span><br></pre></td></tr></table></figure>
+<p>使用镜像nginx:latest以交互模式启动一个容器,在容器内执行/bin/bash命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it nginx:latest /bin/bash</span><br></pre></td></tr></table></figure>
+<h3 id="启动已被停止的容器myrunoob"><a href="#启动已被停止的容器myrunoob" class="headerlink" title="启动已被停止的容器myrunoob"></a>启动已被停止的容器myrunoob</h3><pre><code>docker start myrunoob
+</code></pre><h3 id="停止运行中的容器myrunoob"><a href="#停止运行中的容器myrunoob" class="headerlink" title="停止运行中的容器myrunoob"></a>停止运行中的容器myrunoob</h3><pre><code>docker stop myrunoob
+</code></pre><h3 id="重启容器myrunoob"><a href="#重启容器myrunoob" class="headerlink" title="重启容器myrunoob"></a>重启容器myrunoob</h3><pre><code>docker restart myrunoob
+</code></pre><h2 id="导出-export-导入-import"><a href="#导出-export-导入-import" class="headerlink" title="导出 export - 导入 import"></a>导出 export - 导入 import</h2><ul>
+<li><p>格式：docker export CONTAINER(容器)<br>使用 docker ps -a 查看本机已有的容器，如： 我们使用容器 furious_bell，现在要将这个容器保存为一个文件 myunbuntu.tar</p>
+<p>   docker export furious_bell &gt;  myunbuntu.tar  </p>
+</li>
+<li><p>导出完成后，就可以使用 import 导入了</p>
+<p>   docker import myubuntu.tar</p>
+</li>
+</ul>
+<h2 id="交互模式运行"><a href="#交互模式运行" class="headerlink" title="交互模式运行"></a>交互模式运行</h2><pre><code>docker run --rm -it ubuntu bash
+</code></pre><h2 id="docker-编译"><a href="#docker-编译" class="headerlink" title="docker 编译"></a>docker 编译</h2><p>在Dockerfile所在的文件夹下执行<br>    docker build -t alpine:t .<br>这条命令，然后镜像就被构建了。</p>
+<h2 id="重命名镜像"><a href="#重命名镜像" class="headerlink" title="重命名镜像"></a>重命名镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker tag IMAGEID(镜像id) REPOSITORY:TAG（仓库：标签）</span><br><span class="line">docker tag ca1b6b825289 xiaopch.top/chrome:v1.0</span><br><span class="line">docker tag 75b02a692455 selenium/standalone-chrome:latest</span><br></pre></td></tr></table></figure>
+<h2 id="获取所有容器名称及其IP地址只需一个命令。"><a href="#获取所有容器名称及其IP地址只需一个命令。" class="headerlink" title="获取所有容器名称及其IP地址只需一个命令。"></a>获取所有容器名称及其IP地址只需一个命令。</h2><pre><code>docker inspect -f &apos;{{.Name}} - {{.NetworkSettings.IPAddress }}&apos; $(docker ps -aq)
+docker inspect --format=&apos;{{.NetworkSettings.IPAddress}}&apos; $(docker ps -a -q)
+</code></pre><h2 id="nginx-配置"><a href="#nginx-配置" class="headerlink" title="nginx 配置"></a>nginx 配置</h2><pre><code>docker run  -p 80:80 -v D:\docker\github\public:/usr/share/nginx/html -d nginx
+</code></pre><h3 id="win10中docker共享文件夹"><a href="#win10中docker共享文件夹" class="headerlink" title="win10中docker共享文件夹"></a>win10中docker共享文件夹</h3><ul>
+<li>docker-settings-Shared Drives-勾选D</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   docker run -it -v D:/docker:/home/docker ubuntu:latest bash</span><br><span class="line">docker run -it -v D:/docker:/home/docker centos:latest bash</span><br><span class="line">   docker run -it -v D:/docker:/home/docker alpine</span><br></pre></td></tr></table></figure>
+<h2 id="chrome集群"><a href="#chrome集群" class="headerlink" title="chrome集群"></a>chrome集群</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker pull selenium/hub</span><br><span class="line">docker pull selenium/node-chrome</span><br><span class="line"></span><br><span class="line">docker images</span><br><span class="line"></span><br><span class="line">docker run -d -P --name selenium-hub selenium/hub</span><br><span class="line">docker run -d --link selenium-hub:hub selenium/node-chrome</span><br><span class="line">docker run -d -e HUB_HOST=192.168.2.252 -e HUB_PORT=4444 selenium/node-chrome</span><br></pre></td></tr></table></figure>
+<h2 id="chrome-standalone"><a href="#chrome-standalone" class="headerlink" title="chrome standalone"></a>chrome standalone</h2><pre><code>docker run -d -p 4444:4444 --restart=always selenium/standalone-chrome
+</code></pre><h3 id="树莓派-redis"><a href="#树莓派-redis" class="headerlink" title="树莓派 redis"></a>树莓派 redis</h3><pre><code>docker run -p 6379:6379 -d  --restart=always arm32v7/redis
+</code></pre><h2 id="docker容器间通讯"><a href="#docker容器间通讯" class="headerlink" title="docker容器间通讯"></a>docker容器间通讯</h2><ul>
+<li><p>下面启动两个容器 bbox1 和 bbox2：<br>  docker run -it –network=xiaopch –name=bbox1 ubuntu</p>
+<p>  docker run -it –network=xiaopch –name=bbox2 ubuntu</p>
+</li>
+</ul>
+<p>然后，bbox2 就可以直接 ping 到 bbox1 了</p>
+<h2 id="轻量级linux-alpine"><a href="#轻量级linux-alpine" class="headerlink" title="轻量级linux - alpine"></a>轻量级linux - alpine</h2><pre><code>docker pull alpine
+</code></pre><h2 id="Using-TensorFlow-via-Docker"><a href="#Using-TensorFlow-via-Docker" class="headerlink" title="Using TensorFlow via Docker"></a>Using TensorFlow via Docker</h2><pre><code>docker run -it -p 8888:8888 tensorflow/tensorflow
+</code></pre><h2 id="Docker-Hexo"><a href="#Docker-Hexo" class="headerlink" title="Docker Hexo"></a>Docker Hexo</h2><pre><code>docker run  -it --name hexo -p 80:80 -v D:/docker/github:/home/hexo alpine-hexo sh
+docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /home/hexo&amp;&amp;hexo s -p 80
+</code></pre><h2 id="alpine中安装python2-7"><a href="#alpine中安装python2-7" class="headerlink" title="alpine中安装python2.7"></a>alpine中安装python2.7</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run  -it --name hexo -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh</span><br><span class="line"></span><br><span class="line">docker run -it -p 80:80 -v D:/docker/app:/home/python/app alpine-bash</span><br><span class="line"></span><br><span class="line">##echo https://mirror.tuna.tsinghua.edu.cn/alpine/v3.4/main/ &gt; /etc/apk/repositories</span><br><span class="line"></span><br><span class="line">##yum install http://download.oray.com/peanuthull/linux/phddns-3.0.2.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<h2 id="vsftp服务器配置"><a href="#vsftp服务器配置" class="headerlink" title="vsftp服务器配置"></a>vsftp服务器配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br><span class="line">mkdir D:\docker\data\ftp</span><br><span class="line">cmd /k docker run -d -p 20:20 -p 21:21 -p 21100-21110:21100-21110 -v D:\docker\data\ftp:/home/vsftpd -e FTP_USER=pi -e FTP_PASS=xp -e PASV_ADDRESS=127.0.0.1 -e PASV_MIN_PORT=21100 -e PASV_MAX_PORT=21110 --name vsftpd --restart=always fauria/vsftpd</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/db129bce.html" rel="next" title="python之hex文件转hex字符串">
+                <i class="fa fa-chevron-left"></i> python之hex文件转hex字符串
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/c3e9ebd1.html" rel="prev" title="CSharp字节处理">
+                CSharp字节处理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpg" alt="xiaopch">
+            
+              <p class="site-author-name" itemprop="name">xiaopch</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-run命令"><span class="nav-number">1.</span> <span class="nav-text">docker run命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">1.1.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动已被停止的容器myrunoob"><span class="nav-number">1.2.</span> <span class="nav-text">启动已被停止的容器myrunoob</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#停止运行中的容器myrunoob"><span class="nav-number">1.3.</span> <span class="nav-text">停止运行中的容器myrunoob</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重启容器myrunoob"><span class="nav-number">1.4.</span> <span class="nav-text">重启容器myrunoob</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导出-export-导入-import"><span class="nav-number">2.</span> <span class="nav-text">导出 export - 导入 import</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交互模式运行"><span class="nav-number">3.</span> <span class="nav-text">交互模式运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-编译"><span class="nav-number">4.</span> <span class="nav-text">docker 编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重命名镜像"><span class="nav-number">5.</span> <span class="nav-text">重命名镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取所有容器名称及其IP地址只需一个命令。"><span class="nav-number">6.</span> <span class="nav-text">获取所有容器名称及其IP地址只需一个命令。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx-配置"><span class="nav-number">7.</span> <span class="nav-text">nginx 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#win10中docker共享文件夹"><span class="nav-number">7.1.</span> <span class="nav-text">win10中docker共享文件夹</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chrome集群"><span class="nav-number">8.</span> <span class="nav-text">chrome集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chrome-standalone"><span class="nav-number">9.</span> <span class="nav-text">chrome standalone</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#树莓派-redis"><span class="nav-number">9.1.</span> <span class="nav-text">树莓派 redis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker容器间通讯"><span class="nav-number">10.</span> <span class="nav-text">docker容器间通讯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#轻量级linux-alpine"><span class="nav-number">11.</span> <span class="nav-text">轻量级linux - alpine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-TensorFlow-via-Docker"><span class="nav-number">12.</span> <span class="nav-text">Using TensorFlow via Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-Hexo"><span class="nav-number">13.</span> <span class="nav-text">Docker Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#alpine中安装python2-7"><span class="nav-number">14.</span> <span class="nav-text">alpine中安装python2.7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vsftp服务器配置"><span class="nav-number">15.</span> <span class="nav-text">vsftp服务器配置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaopch</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

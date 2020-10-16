@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="cmd,">
+
+
+<meta name="description" content="AutoHotKey教程原文地址：http://www.autohotkey.com/docs/Tutorial.htm  下载AutoHotKeyhttp://www.autohotkey.com/download/ notepad新建以.ahk结尾的文本文档。例如：Test.ahk输入以下内容： # space::Run www.baidu.com">
+<meta name="keywords" content="cmd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows常用的命令">
+<meta property="og:url" content="https://xiaopch.github.io/post/69e6d380.html">
+<meta property="og:site_name" content="hello world">
+<meta property="og:description" content="AutoHotKey教程原文地址：http://www.autohotkey.com/docs/Tutorial.htm  下载AutoHotKeyhttp://www.autohotkey.com/download/ notepad新建以.ahk结尾的文本文档。例如：Test.ahk输入以下内容： # space::Run www.baidu.com">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-14T01:29:35.005Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="windows常用的命令">
+<meta name="twitter:description" content="AutoHotKey教程原文地址：http://www.autohotkey.com/docs/Tutorial.htm  下载AutoHotKeyhttp://www.autohotkey.com/download/ notepad新建以.ahk结尾的文本文档。例如：Test.ahk输入以下内容： # space::Run www.baidu.com">
+
+
+
+
+
+
+  <link rel="canonical" href="https://xiaopch.github.io/post/69e6d380.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>windows常用的命令 | hello world</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hello world</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有朋自远方来不亦乐乎</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/69e6d380.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">windows常用的命令</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-06T00:00:00+08:00">2018-07-06</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="AutoHotKey教程"><a href="#AutoHotKey教程" class="headerlink" title="AutoHotKey教程"></a>AutoHotKey教程</h2><p>原文地址：<a href="http://www.autohotkey.com/docs/Tutorial.htm" target="_blank" rel="noopener">http://www.autohotkey.com/docs/Tutorial.htm</a></p>
+<hr>
+<h3 id="下载AutoHotKey"><a href="#下载AutoHotKey" class="headerlink" title="下载AutoHotKey"></a>下载AutoHotKey</h3><p><a href="http://www.autohotkey.com/download/" target="_blank" rel="noopener">http://www.autohotkey.com/download/</a></p>
+<h3 id="notepad新建以-ahk结尾的文本文档。例如：Test-ahk"><a href="#notepad新建以-ahk结尾的文本文档。例如：Test-ahk" class="headerlink" title="notepad新建以.ahk结尾的文本文档。例如：Test.ahk"></a>notepad新建以.ahk结尾的文本文档。例如：Test.ahk</h3><p>输入以下内容：</p>
+<pre><code># space::Run www.baidu.com
+</code></pre><a id="more"></a>
+<p>上一行的第一个字符 # 代表键盘上的 Windows 键；<br>所以 #space 表示在按住 Windows 键后再按空格键。<br>:: 后面的命令会在热键激活后执行，在本例中则会打开百度主页。<br>继续按下面步骤操作，来执行这个脚本。</p>
+<ul>
+<li>保存并关闭该文件。</li>
+<li>双击该文件来启动它。在系统托盘里会出现一个新图标。</li>
+<li>按下 Windows 和空格键，网页会在默认的浏览器里打开。</li>
+<li>右击系统托盘里的绿色图标可以退出或编辑当前脚本。</li>
+</ul>
+<h3 id="多行脚本"><a href="#多行脚本" class="headerlink" title="多行脚本"></a>多行脚本</h3><pre><code>#n::  
+Run http://www.baidu.com  
+Run Notepad.exe  
+return  
+</code></pre><hr>
+<h2 id="CMD-c-k参数"><a href="#CMD-c-k参数" class="headerlink" title="CMD /c /k参数"></a>CMD /c /k参数</h2><ul>
+<li>cmd /c和cmd /k</li>
+<li>cmd /c dir 是执行完dir命令后关闭命令窗口。</li>
+<li>cmd /k dir 是执行完dir命令后不关闭命令窗口。</li>
+<li>cmd /c start dir 会打开一个新窗口后执行dir指令，原窗口会关闭。</li>
+<li>cmd /k start dir 会打开一个新窗口后执行dir指令，原窗口不会关闭。<br>可以用cmd /?查看帮助信息。</li>
+</ul>
+<h2 id="CMD命令"><a href="#CMD命令" class="headerlink" title="CMD命令"></a>CMD命令</h2><ul>
+<li>gpedit.msc—–组策略</li>
+<li>sndrec32——-录音机</li>
+<li>Nslookup——-IP地址侦测器</li>
+<li>explorer——-打开资源管理器</li>
+<li>logoff———注销命令</li>
+<li>tsshutdn——-60秒倒计时关机命令</li>
+<li>services.msc—本地服务设置</li>
+<li>notepad——–打开记事本</li>
+<li>compmgmt.msc—计算机管理</li>
+<li>diskmgmt.msc—磁盘管理实用程序</li>
+<li>calc———–启动计算器</li>
+<li>regedit.exe—-注册表  </li>
+</ul>
+<h2 id="excel转markdown的table"><a href="#excel转markdown的table" class="headerlink" title="excel转markdown的table"></a>excel转markdown的table</h2><p>exceltk.exe -t md -xls budget.xls</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cmd/" rel="tag"># cmd</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/e45a147c.html" rel="next" title="python之画图模块">
+                <i class="fa fa-chevron-left"></i> python之画图模块
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/633535ca.html" rel="prev" title="docker在windows下安装和配置">
+                docker在windows下安装和配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpg" alt="xiaopch">
+            
+              <p class="site-author-name" itemprop="name">xiaopch</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AutoHotKey教程"><span class="nav-number">1.</span> <span class="nav-text">AutoHotKey教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载AutoHotKey"><span class="nav-number">1.1.</span> <span class="nav-text">下载AutoHotKey</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#notepad新建以-ahk结尾的文本文档。例如：Test-ahk"><span class="nav-number">1.2.</span> <span class="nav-text">notepad新建以.ahk结尾的文本文档。例如：Test.ahk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多行脚本"><span class="nav-number">1.3.</span> <span class="nav-text">多行脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMD-c-k参数"><span class="nav-number">2.</span> <span class="nav-text">CMD /c /k参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMD命令"><span class="nav-number">3.</span> <span class="nav-text">CMD命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#excel转markdown的table"><span class="nav-number">4.</span> <span class="nav-text">excel转markdown的table</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaopch</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

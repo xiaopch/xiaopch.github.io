@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="python,">
+
+
+<meta name="description" content="echart画图12345678910from pyecharts import Mapvalue = [155, 10, 66, 78, 33, 80, 190, 53, 49.6]attr = [福建, 山东, 北京, 上海, 甘肃, 新疆, 河南, 广西, 西藏]map = Map(Map 结合 VisualMap 示例, width=1200, height=600)map.add(, a">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python之画图模块">
+<meta property="og:url" content="https://xiaopch.github.io/post/e45a147c.html">
+<meta property="og:site_name" content="hello world">
+<meta property="og:description" content="echart画图12345678910from pyecharts import Mapvalue = [155, 10, 66, 78, 33, 80, 190, 53, 49.6]attr = [福建, 山东, 北京, 上海, 甘肃, 新疆, 河南, 广西, 西藏]map = Map(Map 结合 VisualMap 示例, width=1200, height=600)map.add(, a">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-14T01:38:44.229Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python之画图模块">
+<meta name="twitter:description" content="echart画图12345678910from pyecharts import Mapvalue = [155, 10, 66, 78, 33, 80, 190, 53, 49.6]attr = [福建, 山东, 北京, 上海, 甘肃, 新疆, 河南, 广西, 西藏]map = Map(Map 结合 VisualMap 示例, width=1200, height=600)map.add(, a">
+
+
+
+
+
+
+  <link rel="canonical" href="https://xiaopch.github.io/post/e45a147c.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>python之画图模块 | hello world</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hello world</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有朋自远方来不亦乐乎</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/e45a147c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python之画图模块</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-27T00:00:00+08:00">2018-05-27</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="echart画图"><a href="#echart画图" class="headerlink" title="echart画图"></a>echart画图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from pyecharts import Map</span><br><span class="line">value = [155, 10, 66, 78, 33, 80, 190, 53, 49.6]</span><br><span class="line">attr = [福建, 山东, 北京, 上海, 甘肃, 新疆, 河南, 广西, 西藏]</span><br><span class="line">map = Map(Map 结合 VisualMap 示例, width=1200, height=600)</span><br><span class="line">map.add(, attr, value, maptype=&apos;china&apos;, is_visualmap=True, visual_text_color=&apos;#000&apos;)</span><br><span class="line">map.show_config()</span><br><span class="line">map.render()</span><br><span class="line"></span><br><span class="line">import webbrowser</span><br><span class="line">webbrowser.open(&apos;render.html&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="pyecharts画wordcloud"><a href="#pyecharts画wordcloud" class="headerlink" title="pyecharts画wordcloud"></a>pyecharts画wordcloud</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from pyecharts import options as opts</span><br><span class="line">from pyecharts.charts import Page, WordCloud</span><br><span class="line">from pyecharts.globals import SymbolType</span><br><span class="line"></span><br><span class="line">words = [</span><br><span class="line">    (&quot;python&quot;, 10000),</span><br><span class="line">    (&quot;javascript&quot;, 6181),</span><br><span class="line">    (&quot;C#&quot;, 4386),</span><br><span class="line">    (&quot;C++&quot;, 4055),</span><br><span class="line">    (&quot;nodejs&quot;, 2467),</span><br><span class="line">    (&quot;go&quot;, 2244),</span><br><span class="line">    (&quot;github&quot;, 1868),</span><br><span class="line">]</span><br><span class="line">worldcloud=(</span><br><span class="line">    WordCloud()</span><br><span class="line">    .add(&quot;&quot;, words, word_size_range=[20, 100])</span><br><span class="line">    .set_global_opts(title_opts=opts.TitleOpts(title=&quot;WordCloud-基本示例&quot;))</span><br><span class="line">    )</span><br><span class="line">worldcloud.render(&apos;wordcloud.html&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="pyecharts根据文件画wordcloud"><a href="#pyecharts根据文件画wordcloud" class="headerlink" title="pyecharts根据文件画wordcloud"></a>pyecharts根据文件画wordcloud</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">from collections import Counter</span><br><span class="line">from pyecharts import WordCloud  ##安装模块: pip install pyecharts==0.5.11</span><br><span class="line">import jieba.analyse</span><br><span class="line">import webbrowser</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 将counter拆分成两个list</span><br><span class="line">def counter2list(counter):</span><br><span class="line">    keyList,valueList = [],[]</span><br><span class="line">    for c in counter:</span><br><span class="line">        keyList.append(c[0])</span><br><span class="line">        valueList.append(c[1])</span><br><span class="line">    return keyList,valueList</span><br><span class="line"></span><br><span class="line"># 使用jieba提取关键词并计算权重</span><br><span class="line">def extractTag(content,tagsList):</span><br><span class="line">    keyList,valueList = [],[]</span><br><span class="line">    if content:</span><br><span class="line">        tags = jieba.analyse.extract_tags(content, topK=100, withWeight=True)</span><br><span class="line">        for tex, widget in tags:</span><br><span class="line">            tagsList[tex] += int(widget*10000)</span><br><span class="line"></span><br><span class="line">def drawWorldCloud(content,count,outputFile = &apos;wordcloud.html&apos;):</span><br><span class="line">    </span><br><span class="line">    cloud = WordCloud(outputFile, width=1024, height=820, title_pos=&apos;center&apos;)</span><br><span class="line">    cloud.add(&apos;&apos;,content,count,</span><br><span class="line">        shape=&apos;cardioid&apos;,# &apos;circle&apos;, &apos;cardioid&apos;, &apos;diamond&apos;, &apos;triangle-forward&apos;, &apos;triangle&apos;, &apos;pentagon&apos;</span><br><span class="line">        background_color=&apos;white&apos;,</span><br><span class="line">        max_words=200 </span><br><span class="line">    )</span><br><span class="line">    cloud.render(outputFile)</span><br><span class="line">    webbrowser.open(outputFile)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    c = Counter()   #建一个容器</span><br><span class="line">    filePath = &apos;jintiankaishi.txt&apos;   #分析的文档路径</span><br><span class="line">    with open(filePath) as file_object:</span><br><span class="line">        contents = file_object.read()</span><br><span class="line">        extractTag(contents, c)</span><br><span class="line"></span><br><span class="line">    contentList,countList = counter2list(c.most_common(100))</span><br><span class="line">    drawWorldCloud(contentList, countList,filePath+&apos;.html&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="matplotlib中文显示"><a href="#matplotlib中文显示" class="headerlink" title="matplotlib中文显示"></a>matplotlib中文显示</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">from sklearn.datasets import make_blobs, load_iris</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"># 支持中文</span><br><span class="line">plt.rcParams[&apos;font.sans-serif&apos;] = [&apos;SimHei&apos;]  # 用来正常显示中文标签</span><br><span class="line">plt.rcParams[&apos;axes.unicode_minus&apos;] = False  # 用来正常显示负号</span><br><span class="line"></span><br><span class="line">n_samples = 1500</span><br><span class="line">random_state = 170</span><br><span class="line">x, y = make_blobs(n_samples=n_samples, random_state=random_state)</span><br><span class="line"># x, y = load_iris(True) # 莺尾花</span><br><span class="line">print(x.shape, y.shape)</span><br><span class="line">plt.scatter(x[:, 0], x[:, 1], c=y)</span><br><span class="line">plt.title(u&quot;原始数据分布&quot;)</span><br><span class="line">plt.show()</span><br><span class="line">##原文链接：https://blog.csdn.net/u010472607/article/details/82789887</span><br></pre></td></tr></table></figure>
+<h2 id="matplotlib键盘事件绑定"><a href="#matplotlib键盘事件绑定" class="headerlink" title="matplotlib键盘事件绑定"></a>matplotlib键盘事件绑定</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">def on_key_press(event):</span><br><span class="line">    print(&quot;you pressed&quot; ,event.key, event.xdata, event.ydata)#键盘值，鼠标位置x,y</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">fig.canvas.mpl_connect(&apos;key_press_event&apos;, on_key_press)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h2 id="16进制字符串转byte数组"><a href="#16进制字符串转byte数组" class="headerlink" title="16进制字符串转byte数组"></a>16进制字符串转byte数组</h2><pre><code>line=&apos;55 AA F6 28 5C 0F 0C B2 16 41 AF 0A 6E C9 E5 93&apos;
+print(line.replace(&apos; &apos;,&apos;&apos;).decode(&apos;hex&apos;))
+</code></pre><h2 id="plotly绘制gantt图"><a href="#plotly绘制gantt图" class="headerlink" title="plotly绘制gantt图"></a>plotly绘制gantt图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import plotly as py</span><br><span class="line">import plotly.figure_factory as ff</span><br><span class="line">##import plotly.graph_objs as gob</span><br><span class="line"></span><br><span class="line">## 离线作图</span><br><span class="line">pyplt = py.offline.plot</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df = [dict(Task=u&quot;项目1&quot;, Start=&apos;2019-01-01&apos;, Finish=&apos;2019-02-02&apos;, Resource=&apos;Complete&apos;),</span><br><span class="line">   dict(Task=u&quot;项目2&quot;, Start=&apos;2019-02-15&apos;, Finish=&apos;2019-03-15&apos;, Resource=&apos;Incomplete&apos;),</span><br><span class="line">   dict(Task=u&quot;项目3&quot;, Start=&apos;2019-01-17&apos;, Finish=&apos;2019-02-17&apos;, Resource=&apos;Complete&apos;),</span><br><span class="line">   dict(Task=u&quot;项目4&quot;, Start=&apos;2019-04-01&apos;, Finish=&apos;2019-04-20&apos;, Resource=&apos;Not Started&apos;),</span><br><span class="line">   dict(Task=u&quot;项目5&quot;, Start=&apos;2019-05-18&apos;, Finish=&apos;2019-06-18&apos;, Resource=&apos;Not Started&apos;),</span><br><span class="line">   dict(Task=u&quot;项目6&quot;, Start=&apos;2019-01-14&apos;, Finish=&apos;2019-03-14&apos;, Resource=&apos;Complete&apos;)]</span><br><span class="line"></span><br><span class="line">colors = &#123;&apos;Not Started&apos;:&apos;rgb(220, 0, 0)&apos;,&apos;Incomplete&apos;:(1, 0.9, 0.16),&apos;Complete&apos;: &apos;rgb(0, 255, 100)&apos;&#125;</span><br><span class="line">fig = ff.create_gantt(df, colors=colors, index_col=&apos;Resource&apos;,show_colorbar=True, title=u&apos;可视化软件&apos;, showgrid_x=True,group_tasks=True)</span><br><span class="line">pyplt(fig, filename=&apos;gantt-simple-gantt-chart.html&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="读取csv文件并用matplotlib作图"><a href="#读取csv文件并用matplotlib作图" class="headerlink" title="读取csv文件并用matplotlib作图"></a>读取csv文件并用matplotlib作图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">from math import cos,sin,pi</span><br><span class="line">import collections,os</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">if __name__==&quot;__main__&quot;:</span><br><span class="line">    df = pd.read_csv(&apos;standard_50rail_profile.csv&apos;,encoding=&apos;gbk&apos;).astype(&apos;float&apos;)</span><br><span class="line">    df=df.dropna()</span><br><span class="line">    df=df.sort_values(by=&apos;x&apos;)</span><br><span class="line">    ##获取3的倍数的行</span><br><span class="line">    df=df.loc[::3,:]</span><br><span class="line">##    df.to_csv(&apos;standard_50rail_profile.sorted.csv&apos;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    print(df)</span><br><span class="line">##    df.plot()</span><br><span class="line">##    plt.plot(df[&apos;x&apos;],df[&apos;y&apos;],c=&apos;r&apos;)</span><br><span class="line">    plt.scatter(df[&apos;x&apos;],df[&apos;y&apos;],marker=&apos;.&apos;,c=&apos;b&apos;)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+<h1 id="matplotlib的颜色及线条控制的示例"><a href="#matplotlib的颜色及线条控制的示例" class="headerlink" title="matplotlib的颜色及线条控制的示例"></a>matplotlib的颜色及线条控制的示例</h1><ul>
+<li>linestyle可选参数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&apos;-&apos;  solid line style </span><br><span class="line">&apos;--&apos;  dashed line style </span><br><span class="line">&apos;-.&apos;  dash-dot line style </span><br><span class="line">&apos;:&apos;  dotted line style</span><br></pre></td></tr></table></figure>
+<ul>
+<li>marker可选参数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&apos;.&apos;  point marker </span><br><span class="line">&apos;,&apos;  pixel marker </span><br><span class="line">&apos;o&apos;  circle marker </span><br><span class="line">&apos;v&apos;  triangle_down marker </span><br><span class="line">&apos;^&apos;  triangle_up marker </span><br><span class="line">&apos;&lt;&apos;  triangle_left marker </span><br><span class="line">&apos;&gt;&apos;  triangle_right marker </span><br><span class="line">&apos;1&apos;  tri_down marker </span><br><span class="line">&apos;2&apos;  tri_up marker </span><br><span class="line">&apos;3&apos;  tri_left marker </span><br><span class="line">&apos;4&apos;  tri_right marker </span><br><span class="line">&apos;s&apos;  square marker </span><br><span class="line">&apos;p&apos;  pentagon marker </span><br><span class="line">&apos;*&apos;  star marker </span><br><span class="line">&apos;h&apos;  hexagon1 marker </span><br><span class="line">&apos;H&apos;  hexagon2 marker </span><br><span class="line">&apos;+&apos;  plus marker </span><br><span class="line">&apos;x&apos;  x marker </span><br><span class="line">&apos;D&apos;  diamond marker </span><br><span class="line">&apos;d&apos;  thin_diamond marker </span><br><span class="line">&apos;|&apos;  vline marker </span><br><span class="line">&apos;_&apos;  hline marker</span><br></pre></td></tr></table></figure>
+<ul>
+<li>color可用的颜色</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line">cnames = &#123;</span><br><span class="line">&apos;aliceblue&apos;:            &apos;#F0F8FF&apos;,</span><br><span class="line">&apos;antiquewhite&apos;:         &apos;#FAEBD7&apos;,</span><br><span class="line">&apos;aqua&apos;:                 &apos;#00FFFF&apos;,</span><br><span class="line">&apos;aquamarine&apos;:           &apos;#7FFFD4&apos;,</span><br><span class="line">&apos;azure&apos;:                &apos;#F0FFFF&apos;,</span><br><span class="line">&apos;beige&apos;:                &apos;#F5F5DC&apos;,</span><br><span class="line">&apos;bisque&apos;:               &apos;#FFE4C4&apos;,</span><br><span class="line">&apos;black&apos;:                &apos;#000000&apos;,</span><br><span class="line">&apos;blanchedalmond&apos;:       &apos;#FFEBCD&apos;,</span><br><span class="line">&apos;blue&apos;:                 &apos;#0000FF&apos;,</span><br><span class="line">&apos;blueviolet&apos;:           &apos;#8A2BE2&apos;,</span><br><span class="line">&apos;brown&apos;:                &apos;#A52A2A&apos;,</span><br><span class="line">&apos;burlywood&apos;:            &apos;#DEB887&apos;,</span><br><span class="line">&apos;cadetblue&apos;:            &apos;#5F9EA0&apos;,</span><br><span class="line">&apos;chartreuse&apos;:           &apos;#7FFF00&apos;,</span><br><span class="line">&apos;chocolate&apos;:            &apos;#D2691E&apos;,</span><br><span class="line">&apos;coral&apos;:                &apos;#FF7F50&apos;,</span><br><span class="line">&apos;cornflowerblue&apos;:       &apos;#6495ED&apos;,</span><br><span class="line">&apos;cornsilk&apos;:             &apos;#FFF8DC&apos;,</span><br><span class="line">&apos;crimson&apos;:              &apos;#DC143C&apos;,</span><br><span class="line">&apos;cyan&apos;:                 &apos;#00FFFF&apos;,</span><br><span class="line">&apos;darkblue&apos;:             &apos;#00008B&apos;,</span><br><span class="line">&apos;darkcyan&apos;:             &apos;#008B8B&apos;,</span><br><span class="line">&apos;darkgoldenrod&apos;:        &apos;#B8860B&apos;,</span><br><span class="line">&apos;darkgray&apos;:             &apos;#A9A9A9&apos;,</span><br><span class="line">&apos;darkgreen&apos;:            &apos;#006400&apos;,</span><br><span class="line">&apos;darkkhaki&apos;:            &apos;#BDB76B&apos;,</span><br><span class="line">&apos;darkmagenta&apos;:          &apos;#8B008B&apos;,</span><br><span class="line">&apos;darkolivegreen&apos;:       &apos;#556B2F&apos;,</span><br><span class="line">&apos;darkorange&apos;:           &apos;#FF8C00&apos;,</span><br><span class="line">&apos;darkorchid&apos;:           &apos;#9932CC&apos;,</span><br><span class="line">&apos;darkred&apos;:              &apos;#8B0000&apos;,</span><br><span class="line">&apos;darksalmon&apos;:           &apos;#E9967A&apos;,</span><br><span class="line">&apos;darkseagreen&apos;:         &apos;#8FBC8F&apos;,</span><br><span class="line">&apos;darkslateblue&apos;:        &apos;#483D8B&apos;,</span><br><span class="line">&apos;darkslategray&apos;:        &apos;#2F4F4F&apos;,</span><br><span class="line">&apos;darkturquoise&apos;:        &apos;#00CED1&apos;,</span><br><span class="line">&apos;darkviolet&apos;:           &apos;#9400D3&apos;,</span><br><span class="line">&apos;deeppink&apos;:             &apos;#FF1493&apos;,</span><br><span class="line">&apos;deepskyblue&apos;:          &apos;#00BFFF&apos;,</span><br><span class="line">&apos;dimgray&apos;:              &apos;#696969&apos;,</span><br><span class="line">&apos;dodgerblue&apos;:           &apos;#1E90FF&apos;,</span><br><span class="line">&apos;firebrick&apos;:            &apos;#B22222&apos;,</span><br><span class="line">&apos;floralwhite&apos;:          &apos;#FFFAF0&apos;,</span><br><span class="line">&apos;forestgreen&apos;:          &apos;#228B22&apos;,</span><br><span class="line">&apos;fuchsia&apos;:              &apos;#FF00FF&apos;,</span><br><span class="line">&apos;gainsboro&apos;:            &apos;#DCDCDC&apos;,</span><br><span class="line">&apos;ghostwhite&apos;:           &apos;#F8F8FF&apos;,</span><br><span class="line">&apos;gold&apos;:                 &apos;#FFD700&apos;,</span><br><span class="line">&apos;goldenrod&apos;:            &apos;#DAA520&apos;,</span><br><span class="line">&apos;gray&apos;:                 &apos;#808080&apos;,</span><br><span class="line">&apos;green&apos;:                &apos;#008000&apos;,</span><br><span class="line">&apos;greenyellow&apos;:          &apos;#ADFF2F&apos;,</span><br><span class="line">&apos;honeydew&apos;:             &apos;#F0FFF0&apos;,</span><br><span class="line">&apos;hotpink&apos;:              &apos;#FF69B4&apos;,</span><br><span class="line">&apos;indianred&apos;:            &apos;#CD5C5C&apos;,</span><br><span class="line">&apos;indigo&apos;:               &apos;#4B0082&apos;,</span><br><span class="line">&apos;ivory&apos;:                &apos;#FFFFF0&apos;,</span><br><span class="line">&apos;khaki&apos;:                &apos;#F0E68C&apos;,</span><br><span class="line">&apos;lavender&apos;:             &apos;#E6E6FA&apos;,</span><br><span class="line">&apos;lavenderblush&apos;:        &apos;#FFF0F5&apos;,</span><br><span class="line">&apos;lawngreen&apos;:            &apos;#7CFC00&apos;,</span><br><span class="line">&apos;lemonchiffon&apos;:         &apos;#FFFACD&apos;,</span><br><span class="line">&apos;lightblue&apos;:            &apos;#ADD8E6&apos;,</span><br><span class="line">&apos;lightcoral&apos;:           &apos;#F08080&apos;,</span><br><span class="line">&apos;lightcyan&apos;:            &apos;#E0FFFF&apos;,</span><br><span class="line">&apos;lightgoldenrodyellow&apos;: &apos;#FAFAD2&apos;,</span><br><span class="line">&apos;lightgreen&apos;:           &apos;#90EE90&apos;,</span><br><span class="line">&apos;lightgray&apos;:            &apos;#D3D3D3&apos;,</span><br><span class="line">&apos;lightpink&apos;:            &apos;#FFB6C1&apos;,</span><br><span class="line">&apos;lightsalmon&apos;:          &apos;#FFA07A&apos;,</span><br><span class="line">&apos;lightseagreen&apos;:        &apos;#20B2AA&apos;,</span><br><span class="line">&apos;lightskyblue&apos;:         &apos;#87CEFA&apos;,</span><br><span class="line">&apos;lightslategray&apos;:       &apos;#778899&apos;,</span><br><span class="line">&apos;lightsteelblue&apos;:       &apos;#B0C4DE&apos;,</span><br><span class="line">&apos;lightyellow&apos;:          &apos;#FFFFE0&apos;,</span><br><span class="line">&apos;lime&apos;:                 &apos;#00FF00&apos;,</span><br><span class="line">&apos;limegreen&apos;:            &apos;#32CD32&apos;,</span><br><span class="line">&apos;linen&apos;:                &apos;#FAF0E6&apos;,</span><br><span class="line">&apos;magenta&apos;:              &apos;#FF00FF&apos;,</span><br><span class="line">&apos;maroon&apos;:               &apos;#800000&apos;,</span><br><span class="line">&apos;mediumaquamarine&apos;:     &apos;#66CDAA&apos;,</span><br><span class="line">&apos;mediumblue&apos;:           &apos;#0000CD&apos;,</span><br><span class="line">&apos;mediumorchid&apos;:         &apos;#BA55D3&apos;,</span><br><span class="line">&apos;mediumpurple&apos;:         &apos;#9370DB&apos;,</span><br><span class="line">&apos;mediumseagreen&apos;:       &apos;#3CB371&apos;,</span><br><span class="line">&apos;mediumslateblue&apos;:      &apos;#7B68EE&apos;,</span><br><span class="line">&apos;mediumspringgreen&apos;:    &apos;#00FA9A&apos;,</span><br><span class="line">&apos;mediumturquoise&apos;:      &apos;#48D1CC&apos;,</span><br><span class="line">&apos;mediumvioletred&apos;:      &apos;#C71585&apos;,</span><br><span class="line">&apos;midnightblue&apos;:         &apos;#191970&apos;,</span><br><span class="line">&apos;mintcream&apos;:            &apos;#F5FFFA&apos;,</span><br><span class="line">&apos;mistyrose&apos;:            &apos;#FFE4E1&apos;,</span><br><span class="line">&apos;moccasin&apos;:             &apos;#FFE4B5&apos;,</span><br><span class="line">&apos;navajowhite&apos;:          &apos;#FFDEAD&apos;,</span><br><span class="line">&apos;navy&apos;:                 &apos;#000080&apos;,</span><br><span class="line">&apos;oldlace&apos;:              &apos;#FDF5E6&apos;,</span><br><span class="line">&apos;olive&apos;:                &apos;#808000&apos;,</span><br><span class="line">&apos;olivedrab&apos;:            &apos;#6B8E23&apos;,</span><br><span class="line">&apos;orange&apos;:               &apos;#FFA500&apos;,</span><br><span class="line">&apos;orangered&apos;:            &apos;#FF4500&apos;,</span><br><span class="line">&apos;orchid&apos;:               &apos;#DA70D6&apos;,</span><br><span class="line">&apos;palegoldenrod&apos;:        &apos;#EEE8AA&apos;,</span><br><span class="line">&apos;palegreen&apos;:            &apos;#98FB98&apos;,</span><br><span class="line">&apos;paleturquoise&apos;:        &apos;#AFEEEE&apos;,</span><br><span class="line">&apos;palevioletred&apos;:        &apos;#DB7093&apos;,</span><br><span class="line">&apos;papayawhip&apos;:           &apos;#FFEFD5&apos;,</span><br><span class="line">&apos;peachpuff&apos;:            &apos;#FFDAB9&apos;,</span><br><span class="line">&apos;peru&apos;:                 &apos;#CD853F&apos;,</span><br><span class="line">&apos;pink&apos;:                 &apos;#FFC0CB&apos;,</span><br><span class="line">&apos;plum&apos;:                 &apos;#DDA0DD&apos;,</span><br><span class="line">&apos;powderblue&apos;:           &apos;#B0E0E6&apos;,</span><br><span class="line">&apos;purple&apos;:               &apos;#800080&apos;,</span><br><span class="line">&apos;red&apos;:                  &apos;#FF0000&apos;,</span><br><span class="line">&apos;rosybrown&apos;:            &apos;#BC8F8F&apos;,</span><br><span class="line">&apos;royalblue&apos;:            &apos;#4169E1&apos;,</span><br><span class="line">&apos;saddlebrown&apos;:          &apos;#8B4513&apos;,</span><br><span class="line">&apos;salmon&apos;:               &apos;#FA8072&apos;,</span><br><span class="line">&apos;sandybrown&apos;:           &apos;#FAA460&apos;,</span><br><span class="line">&apos;seagreen&apos;:             &apos;#2E8B57&apos;,</span><br><span class="line">&apos;seashell&apos;:             &apos;#FFF5EE&apos;,</span><br><span class="line">&apos;sienna&apos;:               &apos;#A0522D&apos;,</span><br><span class="line">&apos;silver&apos;:               &apos;#C0C0C0&apos;,</span><br><span class="line">&apos;skyblue&apos;:              &apos;#87CEEB&apos;,</span><br><span class="line">&apos;slateblue&apos;:            &apos;#6A5ACD&apos;,</span><br><span class="line">&apos;slategray&apos;:            &apos;#708090&apos;,</span><br><span class="line">&apos;snow&apos;:                 &apos;#FFFAFA&apos;,</span><br><span class="line">&apos;springgreen&apos;:          &apos;#00FF7F&apos;,</span><br><span class="line">&apos;steelblue&apos;:            &apos;#4682B4&apos;,</span><br><span class="line">&apos;tan&apos;:                  &apos;#D2B48C&apos;,</span><br><span class="line">&apos;teal&apos;:                 &apos;#008080&apos;,</span><br><span class="line">&apos;thistle&apos;:              &apos;#D8BFD8&apos;,</span><br><span class="line">&apos;tomato&apos;:               &apos;#FF6347&apos;,</span><br><span class="line">&apos;turquoise&apos;:            &apos;#40E0D0&apos;,</span><br><span class="line">&apos;violet&apos;:               &apos;#EE82EE&apos;,</span><br><span class="line">&apos;wheat&apos;:                &apos;#F5DEB3&apos;,</span><br><span class="line">&apos;white&apos;:                &apos;#FFFFFF&apos;,</span><br><span class="line">&apos;whitesmoke&apos;:           &apos;#F5F5F5&apos;,</span><br><span class="line">&apos;yellow&apos;:               &apos;#FFFF00&apos;,</span><br><span class="line">&apos;yellowgreen&apos;:          &apos;#9ACD32&apos;&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/d7a82017.html" rel="next" title="linux学习笔记-1">
+                <i class="fa fa-chevron-left"></i> linux学习笔记-1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/69e6d380.html" rel="prev" title="windows常用的命令">
+                windows常用的命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpg" alt="xiaopch">
+            
+              <p class="site-author-name" itemprop="name">xiaopch</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#echart画图"><span class="nav-number">1.</span> <span class="nav-text">echart画图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pyecharts画wordcloud"><span class="nav-number">1.1.</span> <span class="nav-text">pyecharts画wordcloud</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pyecharts根据文件画wordcloud"><span class="nav-number">1.2.</span> <span class="nav-text">pyecharts根据文件画wordcloud</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#matplotlib中文显示"><span class="nav-number">1.3.</span> <span class="nav-text">matplotlib中文显示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matplotlib键盘事件绑定"><span class="nav-number">2.</span> <span class="nav-text">matplotlib键盘事件绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16进制字符串转byte数组"><span class="nav-number">3.</span> <span class="nav-text">16进制字符串转byte数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#plotly绘制gantt图"><span class="nav-number">4.</span> <span class="nav-text">plotly绘制gantt图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取csv文件并用matplotlib作图"><span class="nav-number">5.</span> <span class="nav-text">读取csv文件并用matplotlib作图</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#matplotlib的颜色及线条控制的示例"><span class="nav-number"></span> <span class="nav-text">matplotlib的颜色及线条控制的示例</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaopch</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

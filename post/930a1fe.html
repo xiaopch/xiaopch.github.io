@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="tensorflow,深度学习,">
+
+
+<meta name="description" content="TensorBoard 可视化tensorflow不仅仅是一个计算图软件，其还包含了tensorboard可视化工具，安装tensorflow的时候会默认安装，使用方法非常简单，使用writer = tf.summary.FileWriter(‘./graph’, sess.graph)就能够创建一个文件写入器，./graph是存储目录，sess.graph表示读入的图结构。 我们可以写一个简单的">
+<meta name="keywords" content="tensorflow,深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习之tensorflow的变量">
+<meta property="og:url" content="https://xiaopch.github.io/post/930a1fe.html">
+<meta property="og:site_name" content="hello world">
+<meta property="og:description" content="TensorBoard 可视化tensorflow不仅仅是一个计算图软件，其还包含了tensorboard可视化工具，安装tensorflow的时候会默认安装，使用方法非常简单，使用writer = tf.summary.FileWriter(‘./graph’, sess.graph)就能够创建一个文件写入器，./graph是存储目录，sess.graph表示读入的图结构。 我们可以写一个简单的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-18T05:58:20.342Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度学习之tensorflow的变量">
+<meta name="twitter:description" content="TensorBoard 可视化tensorflow不仅仅是一个计算图软件，其还包含了tensorboard可视化工具，安装tensorflow的时候会默认安装，使用方法非常简单，使用writer = tf.summary.FileWriter(‘./graph’, sess.graph)就能够创建一个文件写入器，./graph是存储目录，sess.graph表示读入的图结构。 我们可以写一个简单的">
+
+
+
+
+
+
+  <link rel="canonical" href="https://xiaopch.github.io/post/930a1fe.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>深度学习之tensorflow的变量 | hello world</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hello world</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有朋自远方来不亦乐乎</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/930a1fe.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">深度学习之tensorflow的变量</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T16:38:55+08:00">2018-02-05</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="TensorBoard-可视化"><a href="#TensorBoard-可视化" class="headerlink" title="TensorBoard 可视化"></a>TensorBoard 可视化</h2><p>tensorflow不仅仅是一个计算图软件，其还包含了tensorboard可视化工具，安装tensorflow的时候会默认安装，使用方法非常简单，使用writer = tf.summary.FileWriter(‘./graph’, sess.graph)就能够创建一个文件写入器，./graph是存储目录，sess.graph表示读入的图结构。</p>
+<p>我们可以写一个简单的小程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">a = tf.constant(2)</span><br><span class="line">b = tf.constant(3)</span><br><span class="line">x = tf.add(a, b)</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    writer = tf.summary.FileWriter(&apos;./graphs&apos;, sess.graph)</span><br><span class="line">    print(sess.run(x))</span><br><span class="line">writer.close()  # close the writer when you’re done using it</span><br></pre></td></tr></table></figure>
+<p>然后打开终端，运行程序，接着输入</p>
+<pre><code>tensorboard --logdir=./graphs
+</code></pre><p>然后打开网页输入<a href="http://localhost:6006/" target="_blank" rel="noopener">http://localhost:6006/</a> 就能够进入tensorboard，可以看到结果。</p>
+<h2 id="常数类型-Constant-types"><a href="#常数类型-Constant-types" class="headerlink" title="常数类型(Constant types)"></a>常数类型(Constant types)</h2><p>能够通过下面这个方式创造一个常数</p>
+<p><strong>tf.constant(value, dtype=None, shape=None, name=’Const’, verify_shape=False)</strong></p>
+<p>比如建立一维向量和矩阵，然后将他们乘起来</p>
+<pre><code>a = tf.constant([2, 2], name=&apos;a&apos;)
+b = tf.constant([[0, 1], [2, 3]], name=&apos;b&apos;)
+x = tf.multiply(a, b, name=&apos;dot_production&apos;)
+with tf.Session() as sess:
+    print(sess.run(x))
+</code></pre><blockquote>
+<blockquote>
+<p>[[0, 2]<br>    [4, 6]]</p>
+</blockquote>
+</blockquote>
+<p>这跟numpy里面的是差不多的，同时还有一些特殊值的常量创建。</p>
+<pre><code>tf.zeros(shape, dtype=tf.float32, name=None)
+tf.zeros_like(input_tensor, dtype=None, name=None, optimize=True)
+tf.ones(shape, dtype=tf.float32, name=None)
+tf.ones_like(input_tensor, dtype=None, name=None, optimize=True)
+tf.fill(dims, value, name=None)
+tf.fill([2, 3], 8)
+</code></pre><blockquote>
+<blockquote>
+<p>[[8, 8, 8], [8, 8, 8]]<br>也有和numpy类似的序列创建</p>
+</blockquote>
+</blockquote>
+<pre><code>tf.linspace(start, stop, num, name=None)
+tf.linspace(10.0, 13.0, 4)
+</code></pre><blockquote>
+<blockquote>
+<p>[10.0, 11.0, 12.0, 13.0]<br>    tf.range(start, limit=None, delta=1, dtype=None, name=’range’)<br>    tf.range(3, limit=18, delta=3)<br>[3, 6, 9, 12, 15]<br>这和numpy最大的区别在于其不能迭代，即</p>
+</blockquote>
+</blockquote>
+<p>for _ in tf.range(4): # TypeError<br>除此之外还可以产生一些随机数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tf.random_normal(shape, mean=0.0, stddev=1.0, dtype=tf.float32, seed=None, name=None)</span><br><span class="line">tf.truncated_normal(shape, mean=0.0, stddev=1.0, dtype=tf.float32, seed=None,</span><br><span class="line">name=None)</span><br><span class="line">tf.random_uniform(shape, minval=0, maxval=None, dtype=tf.float32, seed=None,</span><br><span class="line">name=None)</span><br><span class="line">tf.random_shuffle(value, seed=None, name=None)</span><br><span class="line">tf.random_crop(value, size, seed=None, name=None)</span><br><span class="line">tf.multinomial(logits, num_samples, seed=None, name=None)</span><br><span class="line">tf.random_gamma(shape, alpha, beta=None, dtype=tf.float32, seed=None, name=None)</span><br></pre></td></tr></table></figure>
+<p>另外tensorflow和numpy的数据类型可以通用，也就是说</p>
+<pre><code>tf.ones([2, 2], np.float32)
+</code></pre><blockquote>
+<blockquote>
+<p>[[1.0, 1.0], [1.0, 1.0]]</p>
+</blockquote>
+</blockquote>
+<p>最好不要使用python自带的数据类型，同时在使用numpy数据类型的时候要小心，因为未来可能tensorflow的数据类型和numpy不再兼容。</p>
+<h2 id="变量-Variable"><a href="#变量-Variable" class="headerlink" title="变量(Variable)"></a>变量(Variable)</h2><p>使用常量会存在什么问题呢？常量会存在计算图的定义当中，如果常量过多，这会使得加载计算图变得非常慢，同时常量的值不可改变，所以引入了变量。</p>
+<pre><code>a = tf.Variable(2, name=&apos;scalar&apos;)
+b = tf.Variable([2, 3], name=&apos;vector&apos;)
+c = tf.Variable([[0, 1], [2, 3]], name=&apos;matrix&apos;)
+w = tf.Variable(tf.zeros([784, 10]), name=&apos;weight&apos;)
+</code></pre><p>变量有着下面几个操作<br>    x = tf.Variable()<br>    x.initializer # 初始化<br>    x.eval() # 读取里面的值<br>    x.assign() # 分配值给这个变量<br>注意一点，在使用变量之前必须对其进行初始化，初始化可以看作是一种变量的分配值操作。最简单的初始化方式是一次性初始化所有的变量</p>
+<pre><code>init = tf.global_variables_initializer()
+with tf.Session() as sess:
+    sess.run(init)
+</code></pre><p>也可以对某一部分变量进行初始化</p>
+<pre><code>init_ab = tf.variable_initializer([a, b], name=&apos;init_ab&apos;)
+with tf.Session() as sess:
+    sess.run(init_ab)
+</code></pre><p>或者是对某一个变量进行初始化</p>
+<pre><code>w = tf.Variable(tf.zeros([784, 10]))
+with tf.Session() as sess:
+    sess.run(w.initializer)
+</code></pre><p>如果我们想取出变量的值，有两种方法</p>
+<pre><code>w = tf.Variable(tf.truncated_normal([10, 10], name=&apos;normal&apos;))
+with tf.Session() as sess:
+    sess.run(w.initializer)
+    print(w.eval()) # 方法一
+    print(sess.run(w)) # 方法二
+</code></pre><p>下面看看这个小程序</p>
+<pre><code>w = tf.Variable(10)
+w.assign(100)
+with tf.Session() as sess:
+    sess.run(w.initializer)
+    print(w.eval())
+</code></pre><blockquote>
+<blockquote>
+<p>10</p>
+</blockquote>
+</blockquote>
+<p>上面这个程度会得到10,这是因为我们虽然定义了assign操作，但是tensorflow是在session中执行操作，所以我们需要执行assign操作。</p>
+<pre><code>w = tf.Variable(10)
+assign_op = w.assign(100)
+with tf.Session() as sess:
+    sess.run(w.initializer)
+    sess.run(assign_op)
+    print(w.eval())
+</code></pre><blockquote>
+<blockquote>
+<p>100</p>
+</blockquote>
+</blockquote>
+<p>另外tensorflow的每个session是相互独立的，我们可以看看下面这个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">W = tf.Variable(10)</span><br><span class="line">sess1 = tf.Session()</span><br><span class="line">sess2 = tf.Session()</span><br><span class="line">sess1.run(W.initializer)</span><br><span class="line">sess2.run(W.initializer)</span><br><span class="line">print(sess1.run(W.assign_add(10))) # &gt;&gt; 20</span><br><span class="line">print(sess2.run(W.assign_sub(2))) # &gt;&gt; 8</span><br><span class="line">print(sess1.run(W.assign_add(100))) # &gt;&gt; 120</span><br><span class="line">print(sess2.run(W.assign_sub(50))) # &gt;&gt; -42</span><br><span class="line">sess1.close()</span><br><span class="line">sess2.close()</span><br></pre></td></tr></table></figure>
+<p>你也可以根据一个变量来定义一个变量</p>
+<pre><code>w = tf.Variable(tf.truncated_normal([700, 10]))
+u = tf.Variable(w * 2)
+</code></pre><h2 id="占位符-Placeholders"><a href="#占位符-Placeholders" class="headerlink" title="占位符(Placeholders)"></a>占位符(Placeholders)</h2><p>tensorflow中一般有两步，第一步是定义图，第二步是在session中进行图中的计算。对于图中我们暂时不知道值的量，我们可以定义为占位符，之后再用<code>feed_dict</code>去赋值。</p>
+<p>定义占位符的方式非常简单</p>
+<p>tf.placeholder(dtype, shape=None, name=None)</p>
+<p>dtype是必须要指定的参数，shape如果是None，说明任何大小的tensor都能够接受，使用shape=None很容易定义好图，但是在debug的时候这将成为噩梦，所以最好是指定好shape。</p>
+<p>我们可以给出下面的小例子。</p>
+<pre><code>a = tf.placeholder(tf.float32, shape=[3])
+b = tf.constant([5, 5, 5], tf.float32)
+c = a + b
+with tf.Session() as sess:
+    print(sess.run(c, feed_dict={a: [1, 2, 3]}))
+</code></pre><p>除此之外，也可以给tensorflow中的运算进行feed操作，如下</p>
+<pre><code>a = tf.add(2, 3)
+b = tf.multiply(a, 3)
+with tf.Session() as sess:
+    print(sess.run(b, feed_dict={a: 2}))
+</code></pre><blockquote>
+<blockquote>
+<p>6</p>
+</blockquote>
+</blockquote>
+<h2 id="lazy-loading"><a href="#lazy-loading" class="headerlink" title="lazy loading"></a>lazy loading</h2><p>lazy loading是指你推迟变量的创建直到你必须要使用他的时候。下面我们看看一般的loading和lazy loading的区别。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># normal loading</span><br><span class="line"></span><br><span class="line">x = tf.Variable(10, name=&apos;x&apos;)</span><br><span class="line">y = tf.Variable(20, name=&apos;y&apos;)</span><br><span class="line">z = tf.add(x, y)</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    for _ in range(10):</span><br><span class="line">        sess.run(z)</span><br><span class="line"></span><br><span class="line"># lazy loading</span><br><span class="line"></span><br><span class="line">x = tf.Variable(10, name=&apos;x&apos;)</span><br><span class="line">y = tf.Variable(20, name=&apos;y&apos;)</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    for _ in range(10):</span><br><span class="line">        sess.run(tf.add(x, y))</span><br></pre></td></tr></table></figure>
+<p>normal loading 会在图中创建x和y变量，同时创建x+y的运算，而lazy loading只会创建x和y两个变量。这不是一个bug，那么问题在哪里呢？</p>
+<p>normal loading在session中不管做多少次x+y，只需要执行z定义的加法操作就可以了，而lazy loading在session中每进行一次x+y，就会在图中创建一个加法操作，如果进行1000次x+y的运算，normal loading的计算图没有任何变化，而lazy loading的计算图会多1000个节点，每个节点都表示x+y的操作。</p>
+<p>看到了吗，这就是lazy loading造成的问题，这会严重影响图的读入速度。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tensorflow/" rel="tag"># tensorflow</a>
+          
+            <a href="/tags/DeepLearning/" rel="tag"># 深度学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/5d55368a.html" rel="next" title="深度学习之什么是TensorFlow">
+                <i class="fa fa-chevron-left"></i> 深度学习之什么是TensorFlow
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/7e379168.html" rel="prev" title="深度学习之Tensorflow的线性回归与优化">
+                深度学习之Tensorflow的线性回归与优化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpg" alt="xiaopch">
+            
+              <p class="site-author-name" itemprop="name">xiaopch</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TensorBoard-可视化"><span class="nav-number">1.</span> <span class="nav-text">TensorBoard 可视化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常数类型-Constant-types"><span class="nav-number">2.</span> <span class="nav-text">常数类型(Constant types)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量-Variable"><span class="nav-number">3.</span> <span class="nav-text">变量(Variable)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#占位符-Placeholders"><span class="nav-number">4.</span> <span class="nav-text">占位符(Placeholders)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lazy-loading"><span class="nav-number">5.</span> <span class="nav-text">lazy loading</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaopch</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

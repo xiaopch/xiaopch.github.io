@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="gnss,">
+
+
+<meta name="description" content="将GNSS原始坐标转百度地图坐标1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969">
+<meta name="keywords" content="gnss">
+<meta property="og:type" content="article">
+<meta property="og:title" content="将GNSS原始坐标转百度地图坐标">
+<meta property="og:url" content="https://xiaopch.github.io/post/c839bb13.html">
+<meta property="og:site_name" content="hello world">
+<meta property="og:description" content="将GNSS原始坐标转百度地图坐标1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-05-07T02:35:26.012Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="将GNSS原始坐标转百度地图坐标">
+<meta name="twitter:description" content="将GNSS原始坐标转百度地图坐标1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969">
+
+
+
+
+
+
+  <link rel="canonical" href="https://xiaopch.github.io/post/c839bb13.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>将GNSS原始坐标转百度地图坐标 | hello world</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hello world</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有朋自远方来不亦乐乎</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/c839bb13.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">将GNSS原始坐标转百度地图坐标</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-19T00:00:00+08:00">2020-03-19</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="将GNSS原始坐标转百度地图坐标"><a href="#将GNSS原始坐标转百度地图坐标" class="headerlink" title="将GNSS原始坐标转百度地图坐标"></a>将GNSS原始坐标转百度地图坐标</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment">#引入库</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> webbrowser</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment">#定义常量</span></span><br><span class="line">x_pi = <span class="number">3.1415926535897932384626</span> * <span class="number">3000.0</span> / <span class="number">180.0</span></span><br><span class="line">pi = <span class="number">3.1415926535897932384626</span>  <span class="comment">#</span></span><br><span class="line">a = <span class="number">6378245.0</span> <span class="comment"># 长半轴</span></span><br><span class="line">ee = <span class="number">0.00669342162296594323</span> <span class="comment"># 扁率</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#gnss Raw Data to Degree</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gnns_raw_to_degree</span><span class="params">(gnss_longitude,gnss_latitude)</span>:</span></span><br><span class="line"><span class="comment">##    print gnss_latitude,gnss_longitude</span></span><br><span class="line">    latitude_degree = int(gnss_latitude/<span class="number">100</span>)</span><br><span class="line">    longitude_degree = int(gnss_longitude/<span class="number">100</span>)</span><br><span class="line"><span class="comment">##    print latitude_degree,longitude_degree</span></span><br><span class="line">    latitude_minute=gnss_latitude-latitude_degree*<span class="number">100</span></span><br><span class="line">    longitude_minute=gnss_longitude-longitude_degree*<span class="number">100</span></span><br><span class="line"><span class="comment">##    print latitude_minute,longitude_minute</span></span><br><span class="line">    <span class="keyword">return</span> [longitude_degree+longitude_minute/<span class="number">60.0</span>,latitude_degree+latitude_minute/<span class="number">60.0</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gcj02tobd09</span><span class="params">(lng, lat)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    火星坐标系(GCJ-02)转百度坐标系(BD-09)</span></span><br><span class="line"><span class="string">    谷歌、高德——&gt;百度</span></span><br><span class="line"><span class="string">    :param lng:火星坐标经度</span></span><br><span class="line"><span class="string">    :param lat:火星坐标纬度</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    z = math.sqrt(lng * lng + lat * lat) + <span class="number">0.00002</span> * math.sin(lat * x_pi)</span><br><span class="line">    theta = math.atan2(lat, lng) + <span class="number">0.000003</span> * math.cos(lng * x_pi)</span><br><span class="line">    bd_lng = z * math.cos(theta) + <span class="number">0.0065</span></span><br><span class="line">    bd_lat = z * math.sin(theta) + <span class="number">0.006</span></span><br><span class="line">    <span class="keyword">return</span> [bd_lng, bd_lat]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bd09togcj02</span><span class="params">(bd_lon, bd_lat)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    百度坐标系(BD-09)转火星坐标系(GCJ-02)</span></span><br><span class="line"><span class="string">    百度——&gt;谷歌、高德</span></span><br><span class="line"><span class="string">    :param bd_lat:百度坐标纬度</span></span><br><span class="line"><span class="string">    :param bd_lon:百度坐标经度</span></span><br><span class="line"><span class="string">    :return:转换后的坐标列表形式</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    x = bd_lon - <span class="number">0.0065</span></span><br><span class="line">    y = bd_lat - <span class="number">0.006</span></span><br><span class="line">    z = math.sqrt(x * x + y * y) - <span class="number">0.00002</span> * math.sin(y * x_pi)</span><br><span class="line">    theta = math.atan2(y, x) - <span class="number">0.000003</span> * math.cos(x * x_pi)</span><br><span class="line">    gg_lng = z * math.cos(theta)</span><br><span class="line">    gg_lat = z * math.sin(theta)</span><br><span class="line">    <span class="keyword">return</span> [gg_lng, gg_lat]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">wgs84togcj02</span><span class="params">(lng, lat)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    WGS84转GCJ02(火星坐标系)</span></span><br><span class="line"><span class="string">    :param lng:WGS84坐标系的经度</span></span><br><span class="line"><span class="string">    :param lat:WGS84坐标系的纬度</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">if</span> out_of_china(lng, lat):</span><br><span class="line">        <span class="comment"># 判断是否在国内</span></span><br><span class="line">        <span class="keyword">return</span> lng, lat</span><br><span class="line">    dlat = transformlat(lng - <span class="number">105.0</span>, lat - <span class="number">35.0</span>)</span><br><span class="line">    dlng = transformlng(lng - <span class="number">105.0</span>, lat - <span class="number">35.0</span>)</span><br><span class="line">    radlat = lat / <span class="number">180.0</span> * pi</span><br><span class="line">    magic = math.sin(radlat)</span><br><span class="line">    magic = <span class="number">1</span> - ee * magic * magic</span><br><span class="line">    sqrtmagic = math.sqrt(magic)</span><br><span class="line">    dlat = (dlat * <span class="number">180.0</span>) / ((a * (<span class="number">1</span> - ee)) / (magic * sqrtmagic) * pi)</span><br><span class="line">    dlng = (dlng * <span class="number">180.0</span>) / (a / sqrtmagic * math.cos(radlat) * pi)</span><br><span class="line">    mglat = lat + dlat</span><br><span class="line">    mglng = lng + dlng</span><br><span class="line">    <span class="keyword">return</span> [mglng, mglat]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gcj02towgs84</span><span class="params">(lng, lat)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    GCJ02(火星坐标系)转gnss84</span></span><br><span class="line"><span class="string">    :param lng:火星坐标系的经度</span></span><br><span class="line"><span class="string">    :param lat:火星坐标系纬度</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">if</span> out_of_china(lng, lat):</span><br><span class="line">        <span class="keyword">return</span> lng, lat</span><br><span class="line">    dlat = transformlat(lng - <span class="number">105.0</span>, lat - <span class="number">35.0</span>)</span><br><span class="line">    dlng = transformlng(lng - <span class="number">105.0</span>, lat - <span class="number">35.0</span>)</span><br><span class="line">    radlat = lat / <span class="number">180.0</span> * pi</span><br><span class="line">    magic = math.sin(radlat)</span><br><span class="line">    magic = <span class="number">1</span> - ee * magic * magic</span><br><span class="line">    sqrtmagic = math.sqrt(magic)</span><br><span class="line">    dlat = (dlat * <span class="number">180.0</span>) / ((a * (<span class="number">1</span> - ee)) / (magic * sqrtmagic) * pi)</span><br><span class="line">    dlng = (dlng * <span class="number">180.0</span>) / (a / sqrtmagic * math.cos(radlat) * pi)</span><br><span class="line">    mglat = lat + dlat</span><br><span class="line">    mglng = lng + dlng</span><br><span class="line">    <span class="keyword">return</span> [lng * <span class="number">2</span> - mglng, lat * <span class="number">2</span> - mglat]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">transformlat</span><span class="params">(lng, lat)</span>:</span></span><br><span class="line">    ret = <span class="number">-100.0</span> + <span class="number">2.0</span> * lng + <span class="number">3.0</span> * lat + <span class="number">0.2</span> * lat * lat + \</span><br><span class="line">        <span class="number">0.1</span> * lng * lat + <span class="number">0.2</span> * math.sqrt(math.fabs(lng))</span><br><span class="line">    ret += (<span class="number">20.0</span> * math.sin(<span class="number">6.0</span> * lng * pi) + <span class="number">20.0</span> *</span><br><span class="line">            math.sin(<span class="number">2.0</span> * lng * pi)) * <span class="number">2.0</span> / <span class="number">3.0</span></span><br><span class="line">    ret += (<span class="number">20.0</span> * math.sin(lat * pi) + <span class="number">40.0</span> *</span><br><span class="line">            math.sin(lat / <span class="number">3.0</span> * pi)) * <span class="number">2.0</span> / <span class="number">3.0</span></span><br><span class="line">    ret += (<span class="number">160.0</span> * math.sin(lat / <span class="number">12.0</span> * pi) + <span class="number">320</span> *</span><br><span class="line">            math.sin(lat * pi / <span class="number">30.0</span>)) * <span class="number">2.0</span> / <span class="number">3.0</span></span><br><span class="line">    <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">transformlng</span><span class="params">(lng, lat)</span>:</span></span><br><span class="line">    ret = <span class="number">300.0</span> + lng + <span class="number">2.0</span> * lat + <span class="number">0.1</span> * lng * lng + \</span><br><span class="line">        <span class="number">0.1</span> * lng * lat + <span class="number">0.1</span> * math.sqrt(math.fabs(lng))</span><br><span class="line">    ret += (<span class="number">20.0</span> * math.sin(<span class="number">6.0</span> * lng * pi) + <span class="number">20.0</span> *</span><br><span class="line">            math.sin(<span class="number">2.0</span> * lng * pi)) * <span class="number">2.0</span> / <span class="number">3.0</span></span><br><span class="line">    ret += (<span class="number">20.0</span> * math.sin(lng * pi) + <span class="number">40.0</span> *</span><br><span class="line">            math.sin(lng / <span class="number">3.0</span> * pi)) * <span class="number">2.0</span> / <span class="number">3.0</span></span><br><span class="line">    ret += (<span class="number">150.0</span> * math.sin(lng / <span class="number">12.0</span> * pi) + <span class="number">300.0</span> *</span><br><span class="line">            math.sin(lng / <span class="number">30.0</span> * pi)) * <span class="number">2.0</span> / <span class="number">3.0</span></span><br><span class="line">    <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">out_of_china</span><span class="params">(lng, lat)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    判断是否在国内，不在国内不做偏移</span></span><br><span class="line"><span class="string">    :param lng:</span></span><br><span class="line"><span class="string">    :param lat:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">if</span> lng &lt; <span class="number">72.004</span> <span class="keyword">or</span> lng &gt; <span class="number">137.8347</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">if</span> lat &lt; <span class="number">0.8293</span> <span class="keyword">or</span> lat &gt; <span class="number">55.8271</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_gnss_raw</span><span class="params">(lng, lat)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    判断是否是GNSS的原始数据</span></span><br><span class="line"><span class="string">    :param lng:</span></span><br><span class="line"><span class="string">    :param lat:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">if</span> lng &gt; <span class="number">7200</span> <span class="keyword">and</span> lng &lt; <span class="number">13800</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">if</span> lat &gt; <span class="number">0</span> <span class="keyword">and</span> lat &lt; <span class="number">5600</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#将原始GNSS经纬度转换成百度的坐标</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gnns_raw_to_bd09</span><span class="params">(lng, lat)</span>:</span></span><br><span class="line">    lng, lat=gnns_raw_to_degree(lng, lat)</span><br><span class="line">    lng, lat=wgs84togcj02(lng, lat)</span><br><span class="line">    lng, lat=gcj02tobd09(lng, lat)</span><br><span class="line">    <span class="keyword">return</span> [lng,lat]</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_csv_files</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''合并csv数据文件'''</span></span><br><span class="line">    df_list=[]</span><br><span class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> os.listdir(<span class="string">'.'</span>):</span><br><span class="line">        <span class="keyword">if</span> f.endswith(<span class="string">'.csv'</span>)<span class="keyword">and</span> <span class="keyword">not</span> f.startswith(<span class="string">'merge'</span>):</span><br><span class="line">            print(f)</span><br><span class="line">            df_list.append(pd.read_csv(f))</span><br><span class="line">    df = pd.concat(df_list,ignore_index=<span class="literal">True</span>)</span><br><span class="line">    df=df.reset_index(drop=<span class="literal">True</span>)</span><br><span class="line">    df.to_csv(<span class="string">'merge_df.csv'</span>)</span><br><span class="line">           </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_js_file_from_dataframe</span><span class="params">(df)</span>:</span></span><br><span class="line">    points_list=[]</span><br><span class="line">    pos_array=np.array(df[[<span class="string">u'经度'</span>,<span class="string">u'纬度'</span>]])</span><br><span class="line">    print(pos_array)</span><br><span class="line">    [rows, cols] = pos_array.shape</span><br><span class="line">    print(rows, cols)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(rows):</span><br><span class="line">        points_list.append(<span class="string">'['</span>+str(pos_array[i][<span class="number">0</span>])+<span class="string">','</span>+str(pos_array[i][<span class="number">1</span>])+<span class="string">']'</span>)</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'points.js'</span>,<span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line"><span class="comment">##        file_content=df_all.to_json(orient='records')#可选参数 &#123;'split','records','index','columns','values'&#125;</span></span><br><span class="line">        file_content=<span class="string">'var points=['</span>+<span class="string">','</span>.join(points_list)+<span class="string">'];'</span></span><br><span class="line">        f.write(file_content)</span><br><span class="line"></span><br><span class="line">    webbrowser.open(<span class="string">'load_js_points_to_map.html'</span>)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment">#读取gnss原始坐标的文件</span></span><br><span class="line">    df=pd.read_csv(<span class="string">'2018-merged_dataframe_xiangyang.csv'</span>,low_memory=<span class="literal">False</span>,encoding=<span class="string">'gbk'</span>)<span class="comment">#[::100]</span></span><br><span class="line">    pos_array=np.array(df[[<span class="string">u'经度'</span>,<span class="string">u'纬度'</span>]])</span><br><span class="line">    print(pos_array)</span><br><span class="line">    [rows, cols] = pos_array.shape</span><br><span class="line">    print(rows, cols)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(rows):</span><br><span class="line"><span class="comment">##            print(pos_array[i])</span></span><br><span class="line">            pos_array[i][<span class="number">0</span>], pos_array[i][<span class="number">1</span>] = gnns_raw_to_bd09(pos_array[i][<span class="number">0</span>], pos_array[i][<span class="number">1</span>])</span><br><span class="line">    print(pos_array)</span><br><span class="line">    df[<span class="string">u'经度'</span>]=pos_array[:,<span class="number">0</span>]</span><br><span class="line">    df[<span class="string">u'纬度'</span>]=pos_array[:,<span class="number">1</span>]</span><br><span class="line">    print(df)</span><br><span class="line">    generate_js_file_from_dataframe(df[::<span class="number">50</span>])</span><br></pre></td></tr></table></figure>
+<h3 id="load-js-points-to-map-html文件"><a href="#load-js-points-to-map-html文件" class="headerlink" title="load_js_points_to_map.html文件"></a>load_js_points_to_map.html文件</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=utf-8"</span> /&gt;</span><br><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"initial-scale=1.0, user-scalable=no"</span> /&gt;</span><br><span class="line">&lt;title&gt;国铁机电GIS系统&lt;/title&gt;</span><br><span class="line">&lt;script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&amp;ak=******"&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src="points.js"&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src="jquery-3.4.1.min.js"&gt;&lt;/script&gt;</span><br><span class="line">&lt;style type=<span class="string">"text/css"</span>&gt;</span><br><span class="line">body, html&#123;width: <span class="number">100</span>%;height: <span class="number">100</span>%;overflow: hidden;margin:<span class="number">0</span>;font-family:<span class="string">"微软雅黑"</span>;&#125;</span><br><span class="line"><span class="comment">#container&#123;height:100%;width:100%;&#125;</span></span><br><span class="line">button &#123;background-color:<span class="comment">#dd8833; display:block;&#125;</span></span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id="container"&gt;&lt;/div&gt;</span><br><span class="line">	 </span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"></span><br><span class="line">	var map = new BMap.Map(<span class="string">"container"</span>);</span><br><span class="line">	//map.centerAndZoom(new BMap.Point(<span class="number">112.142728</span>, <span class="number">32.176653</span>), <span class="number">12</span>);</span><br><span class="line"></span><br><span class="line">	map.addControl(new BMap.NavigationControl()); // 添加平移缩放控件</span><br><span class="line">	map.addControl(new BMap.ScaleControl()); // 添加比例尺控件</span><br><span class="line">	map.addControl(new BMap.OverviewMapControl()); //添加缩略地图控件</span><br><span class="line">	map.enableScrollWheelZoom(); //启用滚轮放大缩小</span><br><span class="line">	map.addControl(new BMap.MapTypeControl()); //添加地图类型控件</span><br><span class="line">	map.disable3DBuilding();</span><br><span class="line">	//map.setDefaultCursor(<span class="string">"url('bird.cur')"</span>); //设置地图默认的鼠标指针样式</span><br><span class="line">	map.setDefaultCursor(<span class="string">"crosshair"</span>);</span><br><span class="line">	map.setMapStyle(&#123; style: <span class="string">'hardedge'</span>&#125;); //地图风格</span><br><span class="line"></span><br><span class="line">		// 编写自定义函数,创建标注</span><br><span class="line">	function addMarker(point)&#123;</span><br><span class="line">	  var marker = new BMap.Marker(point);</span><br><span class="line">	  map.addOverlay(marker);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(var x <span class="keyword">in</span> points)</span><br><span class="line">	&#123;</span><br><span class="line">		var pt=new BMap.Point(points[x][<span class="number">0</span>],points[x][<span class="number">1</span>])</span><br><span class="line">		var marker = new BMap.Marker(pt);</span><br><span class="line">		map.addOverlay(marker);</span><br><span class="line">	&#125;	</span><br><span class="line">	</span><br><span class="line">	map.centerAndZoom(new BMap.Point(points[<span class="number">0</span>][<span class="number">0</span>],points[<span class="number">0</span>][<span class="number">1</span>]), <span class="number">18</span>);</span><br><span class="line">	</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="merged-dataframe-csv文件"><a href="#merged-dataframe-csv文件" class="headerlink" title="merged_dataframe.csv文件"></a>merged_dataframe.csv文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Unnamed: <span class="number">0</span>,command,utc_time,latitude,n_s,longitude,e_w,state,n_satellites,hdop,antenna_height,h_unit,height_anomaly,ha_unit,dif_age,check</span><br><span class="line"><span class="number">0</span>,$GNGGA,<span class="number">42241.1</span>,<span class="number">3210.63516617</span>,N,<span class="number">11206.95778315</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7693</span>,M,<span class="number">-23.6341</span>,M,<span class="number">2</span>,<span class="number">0000</span>*<span class="number">61</span></span><br><span class="line"><span class="number">1</span>,$GNGGA,<span class="number">42241.15</span>,<span class="number">3210.63516642</span>,N,<span class="number">11206.95778288</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7693</span>,M,<span class="number">-23.6341</span>,M,<span class="number">2</span>,<span class="number">0000</span>*<span class="number">61</span></span><br><span class="line"><span class="number">2</span>,$GNGGA,<span class="number">42241.2</span>,<span class="number">3210.63516594</span>,N,<span class="number">11206.95778389</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7698</span>,M,<span class="number">-23.6341</span>,M,<span class="number">2</span>,<span class="number">0000</span>*<span class="number">64</span></span><br><span class="line"><span class="number">3</span>,$GNGGA,<span class="number">42241.25</span>,<span class="number">3210.63516589</span>,N,<span class="number">11206.95778427</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7704</span>,M,<span class="number">-23.6341</span>,M,<span class="number">2</span>,<span class="number">0000</span>*<span class="number">6</span>A</span><br><span class="line"><span class="number">4</span>,$GNGGA,<span class="number">42241.3</span>,<span class="number">3210.63516564</span>,N,<span class="number">11206.95778366</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7702</span>,M,<span class="number">-23.6341</span>,M,<span class="number">2</span>,<span class="number">0000</span>*<span class="number">69</span></span><br><span class="line"><span class="number">5</span>,$GNGGA,<span class="number">42241.35</span>,<span class="number">3210.63516562</span>,N,<span class="number">11206.95778381</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7699</span>,M,<span class="number">-23.6341</span>,M,<span class="number">2</span>,<span class="number">0000</span>*<span class="number">60</span></span><br><span class="line"><span class="number">6</span>,$GNGGA,<span class="number">42241.4</span>,<span class="number">3210.63516513</span>,N,<span class="number">11206.95778506</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7717</span>,M,<span class="number">-23.6341</span>,M,<span class="number">1</span>,<span class="number">0000</span>*<span class="number">69</span></span><br><span class="line"><span class="number">7</span>,$GNGGA,<span class="number">42241.45</span>,<span class="number">3210.6351649999997</span>,N,<span class="number">11206.95778498</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7725</span>,M,<span class="number">-23.6341</span>,M,<span class="number">1</span>,<span class="number">0000</span>*<span class="number">69</span></span><br><span class="line"><span class="number">8</span>,$GNGGA,<span class="number">42241.5</span>,<span class="number">3210.63516431</span>,N,<span class="number">11206.95778555</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7775</span>,M,<span class="number">-23.6341</span>,M,<span class="number">1</span>,<span class="number">0000</span>*<span class="number">6</span>B</span><br><span class="line"><span class="number">9</span>,$GNGGA,<span class="number">42241.55</span>,<span class="number">3210.63516453</span>,N,<span class="number">11206.95778538</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7785</span>,M,<span class="number">-23.6341</span>,M,<span class="number">1</span>,<span class="number">0000</span>*<span class="number">6</span>E</span><br><span class="line"><span class="number">10</span>,$GNGGA,<span class="number">42241.6</span>,<span class="number">3210.63516607</span>,N,<span class="number">11206.95778352</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7719</span>,M,<span class="number">-23.6341</span>,M,<span class="number">1</span>,<span class="number">0000</span>*<span class="number">64</span></span><br><span class="line"><span class="number">11</span>,$GNGGA,<span class="number">42241.65</span>,<span class="number">3210.6351664</span>,N,<span class="number">11206.95778336</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7712</span>,M,<span class="number">-23.6341</span>,M,<span class="number">1</span>,<span class="number">0000</span>*<span class="number">6</span>B</span><br><span class="line"><span class="number">12</span>,$GNGGA,<span class="number">42241.7</span>,<span class="number">3210.63516464</span>,N,<span class="number">11206.9577857</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7744</span>,M,<span class="number">-23.6341</span>,M,<span class="number">1</span>,<span class="number">0000</span>*<span class="number">6</span>C</span><br><span class="line"><span class="number">13</span>,$GNGGA,<span class="number">42241.75</span>,<span class="number">3210.6351644</span>,N,<span class="number">11206.957785999999</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7747</span>,M,<span class="number">-23.6341</span>,M,<span class="number">1</span>,<span class="number">0000</span>*<span class="number">68</span></span><br><span class="line"><span class="number">14</span>,$GNGGA,<span class="number">42241.8</span>,<span class="number">3210.63516436</span>,N,<span class="number">11206.95778446</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7735</span>,M,<span class="number">-23.6341</span>,M,<span class="number">1</span>,<span class="number">0000</span>*<span class="number">66</span></span><br><span class="line"><span class="number">15</span>,$GNGGA,<span class="number">42241.85</span>,<span class="number">3210.63516429</span>,N,<span class="number">11206.95778393</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7731</span>,M,<span class="number">-23.6341</span>,M,<span class="number">1</span>,<span class="number">0000</span>*<span class="number">66</span></span><br><span class="line"><span class="number">16</span>,$GNGGA,<span class="number">42241.9</span>,<span class="number">3210.6351654</span>,N,<span class="number">11206.95778237</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7811</span>,M,<span class="number">-23.6341</span>,M,<span class="number">0</span>,<span class="number">0000</span>*<span class="number">6</span>F</span><br><span class="line"><span class="number">17</span>,$GNGGA,<span class="number">42241.95</span>,<span class="number">3210.63516559</span>,N,<span class="number">11206.95778229</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7827</span>,M,<span class="number">-23.6341</span>,M,<span class="number">0</span>,<span class="number">0000</span>*<span class="number">68</span></span><br><span class="line"><span class="number">18</span>,$GNGGA,<span class="number">42242.0</span>,<span class="number">3210.6351635</span>,N,<span class="number">11206.957783</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7832</span>,M,<span class="number">-23.6341</span>,M,<span class="number">1</span>,<span class="number">0000</span>*<span class="number">67</span></span><br><span class="line"><span class="number">19</span>,$GNGGA,<span class="number">42242.05</span>,<span class="number">3210.63516303</span>,N,<span class="number">11206.95778311</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.7846</span>,M,<span class="number">-23.6341</span>,M,<span class="number">1</span>,<span class="number">0000</span>*<span class="number">67</span></span><br><span class="line"><span class="number">20</span>,$GNGGA,<span class="number">42242.1</span>,<span class="number">3210.63516392</span>,N,<span class="number">11206.95778362</span>,E,<span class="number">4</span>,<span class="number">25</span>,<span class="number">0.5</span>,<span class="number">89.78200000000001</span>,M,<span class="number">-23.6341</span>,M,<span class="number">1</span>,<span class="number">0000</span>*<span class="number">6</span>F</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/gnss/" rel="tag"># gnss</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/91a8d5ae.html" rel="next" title="python之文件处理">
+                <i class="fa fa-chevron-left"></i> python之文件处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/9ee3dab1.html" rel="prev" title="python常用函数精选">
+                python常用函数精选 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpg" alt="xiaopch">
+            
+              <p class="site-author-name" itemprop="name">xiaopch</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#将GNSS原始坐标转百度地图坐标"><span class="nav-number">1.</span> <span class="nav-text">将GNSS原始坐标转百度地图坐标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#load-js-points-to-map-html文件"><span class="nav-number">2.</span> <span class="nav-text">load_js_points_to_map.html文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#merged-dataframe-csv文件"><span class="nav-number">3.</span> <span class="nav-text">merged_dataframe.csv文件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaopch</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

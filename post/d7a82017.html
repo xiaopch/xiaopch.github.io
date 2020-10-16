@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="linux,">
+
+
+<meta name="description" content="使用Screen后台执行任务，防止SSH中断Screen，虚拟终端管理器。可以在后台管理终端界面，防止SSH断开以后任务停止运行 安装：sudo apt-get install screen 创建虚拟终端，使用putty登录树莓派后执行screen -S terminal1 这样即可创建一个名为terminal1的终端.此时便可以随意执行操作,例如执行sudo apt-get upgrade，或者">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux学习笔记-1">
+<meta property="og:url" content="https://xiaopch.github.io/post/d7a82017.html">
+<meta property="og:site_name" content="hello world">
+<meta property="og:description" content="使用Screen后台执行任务，防止SSH中断Screen，虚拟终端管理器。可以在后台管理终端界面，防止SSH断开以后任务停止运行 安装：sudo apt-get install screen 创建虚拟终端，使用putty登录树莓派后执行screen -S terminal1 这样即可创建一个名为terminal1的终端.此时便可以随意执行操作,例如执行sudo apt-get upgrade，或者">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-12T02:34:00.821Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux学习笔记-1">
+<meta name="twitter:description" content="使用Screen后台执行任务，防止SSH中断Screen，虚拟终端管理器。可以在后台管理终端界面，防止SSH断开以后任务停止运行 安装：sudo apt-get install screen 创建虚拟终端，使用putty登录树莓派后执行screen -S terminal1 这样即可创建一个名为terminal1的终端.此时便可以随意执行操作,例如执行sudo apt-get upgrade，或者">
+
+
+
+
+
+
+  <link rel="canonical" href="https://xiaopch.github.io/post/d7a82017.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>linux学习笔记-1 | hello world</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hello world</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有朋自远方来不亦乐乎</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/d7a82017.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">linux学习笔记-1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T08:37:23+08:00">2018-03-28</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="使用Screen后台执行任务，防止SSH中断"><a href="#使用Screen后台执行任务，防止SSH中断" class="headerlink" title="使用Screen后台执行任务，防止SSH中断"></a>使用Screen后台执行任务，防止SSH中断</h2><p>Screen，虚拟终端管理器。可以在后台管理终端界面，防止SSH断开以后任务停止运行</p>
+<h3 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h3><pre><code>sudo apt-get install screen
+</code></pre><h3 id="创建虚拟终端，使用putty登录树莓派后执行"><a href="#创建虚拟终端，使用putty登录树莓派后执行" class="headerlink" title="创建虚拟终端，使用putty登录树莓派后执行"></a>创建虚拟终端，使用putty登录树莓派后执行</h3><pre><code>screen -S terminal1
+</code></pre><p>这样即可创建一个名为terminal1的终端.此时便可以随意执行操作,例如执行sudo apt-get upgrade，或者其它消耗时间比较长的工作，像编译内核等等。按<strong>ctrl+A后再按D</strong>保存虚拟终端，系统提示deatached即为保存成功接下来可以断开SSH终端，虚拟终端仍会执行.</p>
+<h3 id="访问已经创建好的终端"><a href="#访问已经创建好的终端" class="headerlink" title="访问已经创建好的终端"></a>访问已经创建好的终端</h3><pre><code>screen -ls
+</code></pre><p>列出已经创建的正在后台运行的终端,进入终端</p>
+<pre><code>screen -r terminal1
+</code></pre><h3 id="彻底退出"><a href="#彻底退出" class="headerlink" title="彻底退出"></a>彻底退出</h3><p>screen -r 进入终端后执行<br>    exit</p>
+<p>即可完全退出</p>
+<h2 id="linux下串口转TCP-IP的终端服务器实现"><a href="#linux下串口转TCP-IP的终端服务器实现" class="headerlink" title="linux下串口转TCP-IP的终端服务器实现"></a>linux下串口转TCP-IP的终端服务器实现</h2><h3 id="串口与网络IP、端口号完成映射的脚本。"><a href="#串口与网络IP、端口号完成映射的脚本。" class="headerlink" title="串口与网络IP、端口号完成映射的脚本。"></a>串口与网络IP、端口号完成映射的脚本。</h3><pre><code>##ttyusb.sh
+#!/bin/bash
+TCP_PORT=5021
+SERIAL_PORT=/dev/ttyUSB0
+BAUDRATE=9600
+while (true)
+    do
+    stty -F $SERIAL_PORT $BAUDRATE
+    stty -F $SERIAL_PORT line 0
+    stty -F $SERIAL_PORT eof ^A
+    stty -F $SERIAL_PORT min 1
+    stty -F $SERIAL_PORT time 0
+    stty -F $SERIAL_PORT -brkint
+    stty -F $SERIAL_PORT -icrnl
+    stty -F $SERIAL_PORT ixoff
+    stty -F $SERIAL_PORT -imaxbel
+    stty -F $SERIAL_PORT -opost
+    stty -F $SERIAL_PORT -onlcr
+    stty -F $SERIAL_PORT -isig
+    stty -F $SERIAL_PORT -icanon
+    stty -F $SERIAL_PORT -iexten
+    stty -F $SERIAL_PORT -echo
+    stty -F $SERIAL_PORT -echoe
+    stty -F $SERIAL_PORT -echok
+    stty -F $SERIAL_PORT -echoctl
+    stty -F $SERIAL_PORT -echoke
+
+    nc -l 192.168.1.33 $TCP_PORT &lt; $SERIAL_PORT &gt; $SERIAL_PORT
+done
+</code></pre><h3 id="串口转TCP简单脚本"><a href="#串口转TCP简单脚本" class="headerlink" title="串口转TCP简单脚本"></a>串口转TCP简单脚本</h3><pre><code>while (true)
+    do
+    sudo socat file:/dev/ttyUSB0,b115200,inlcr=1 tcp-listen:9501 
+done
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/ac798998.html" rel="next" title="树莓派之无线AP和录音">
+                <i class="fa fa-chevron-left"></i> 树莓派之无线AP和录音
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/e45a147c.html" rel="prev" title="python之画图模块">
+                python之画图模块 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpg" alt="xiaopch">
+            
+              <p class="site-author-name" itemprop="name">xiaopch</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Screen后台执行任务，防止SSH中断"><span class="nav-number">1.</span> <span class="nav-text">使用Screen后台执行任务，防止SSH中断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装："><span class="nav-number">1.1.</span> <span class="nav-text">安装：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建虚拟终端，使用putty登录树莓派后执行"><span class="nav-number">1.2.</span> <span class="nav-text">创建虚拟终端，使用putty登录树莓派后执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问已经创建好的终端"><span class="nav-number">1.3.</span> <span class="nav-text">访问已经创建好的终端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#彻底退出"><span class="nav-number">1.4.</span> <span class="nav-text">彻底退出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux下串口转TCP-IP的终端服务器实现"><span class="nav-number">2.</span> <span class="nav-text">linux下串口转TCP-IP的终端服务器实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#串口与网络IP、端口号完成映射的脚本。"><span class="nav-number">2.1.</span> <span class="nav-text">串口与网络IP、端口号完成映射的脚本。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#串口转TCP简单脚本"><span class="nav-number">2.2.</span> <span class="nav-text">串口转TCP简单脚本</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaopch</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

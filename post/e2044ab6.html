@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="轨检,">
+
+
+<meta name="description" content="PHM技术定义  PHM是Prognostic and Health Management 的缩写，即故障预测与健康管理。PHM是指故障预 测和健康管理，为了满足自主保障、自主诊断的要求提出来的，是基于状态的维修CBM (视情维修， condition based maintenance)的升级发展。其核心是利用先进传感器的集成，借助各种算法 和智能模型来预测、监控和管理系统的健康状态。它强调资产">
+<meta name="keywords" content="轨检">
+<meta property="og:type" content="article">
+<meta property="og:title" content="故障预测与健康管理的PHM技术">
+<meta property="og:url" content="https://xiaopch.github.io/post/e2044ab6.html">
+<meta property="og:site_name" content="hello world">
+<meta property="og:description" content="PHM技术定义  PHM是Prognostic and Health Management 的缩写，即故障预测与健康管理。PHM是指故障预 测和健康管理，为了满足自主保障、自主诊断的要求提出来的，是基于状态的维修CBM (视情维修， condition based maintenance)的升级发展。其核心是利用先进传感器的集成，借助各种算法 和智能模型来预测、监控和管理系统的健康状态。它强调资产">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-14T01:30:10.378Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="故障预测与健康管理的PHM技术">
+<meta name="twitter:description" content="PHM技术定义  PHM是Prognostic and Health Management 的缩写，即故障预测与健康管理。PHM是指故障预 测和健康管理，为了满足自主保障、自主诊断的要求提出来的，是基于状态的维修CBM (视情维修， condition based maintenance)的升级发展。其核心是利用先进传感器的集成，借助各种算法 和智能模型来预测、监控和管理系统的健康状态。它强调资产">
+
+
+
+
+
+
+  <link rel="canonical" href="https://xiaopch.github.io/post/e2044ab6.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>故障预测与健康管理的PHM技术 | hello world</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hello world</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">有朋自远方来不亦乐乎</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/e2044ab6.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">故障预测与健康管理的PHM技术</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-11T00:00:00+08:00">2019-06-11</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="PHM技术定义"><a href="#PHM技术定义" class="headerlink" title="PHM技术定义"></a>PHM技术定义</h3><pre><code>  PHM是Prognostic and Health Management 的缩写，即故障预测与健康管理。PHM是指故障预
+测和健康管理，为了满足自主保障、自主诊断的要求提出来的，是基于状态的维修CBM (视情维修，
+condition based maintenance)的升级发展。其核心是利用先进传感器的集成，借助各种算法
+和智能模型来预测、监控和管理系统的健康状态。它强调资产设备管理中的状态感知，监控设备健
+康状况、故障频发区域与周期，通过数据监控与分析，预测故障的发生，从而大幅度提高运维效率。
+
+  PHM预测与健康管理技术是综合利用现代信息技术、人工智能技术的最新研究成果而提出的一种全
+新的管理健康状态的解决方案。PHM预测未来一段时间内系统失效可能性以及采取适当维护措施的能
+力，一般具备故障检测与隔离、故障诊断、故障预测、健康管理和部件寿命追踪等能力。
+</code></pre><h3 id="PHM系统主要由六个部分构成"><a href="#PHM系统主要由六个部分构成" class="headerlink" title="PHM系统主要由六个部分构成"></a>PHM系统主要由六个部分构成</h3><h4 id="1、数据采集"><a href="#1、数据采集" class="headerlink" title="1、数据采集"></a>1、数据采集</h4><pre><code>利用各种传感器探测、采集被检系统的相关参数信息，将收集的数据进行有效信息转换以及信息传输等。
+</code></pre><h4 id="2、信息归纳处理"><a href="#2、信息归纳处理" class="headerlink" title="2、信息归纳处理"></a>2、信息归纳处理</h4><pre><code>  接受来自传感器以及其它数据处理模块的信号和数据信息，将数据信息处理成后续部件可以处理的
+有效形式或格式。该部分输出结果包括经过滤波、压缩简化后的传感器数据，频谱数据以及其它特
+征数据等。
+</code></pre><h4 id="3、状态监测"><a href="#3、状态监测" class="headerlink" title="3、状态监测"></a>3、状态监测</h4><pre><code>  接受来自传感器、数据处理以及其它状态监测模块的数据。其功能主要是将这些数据同预定的失效
+判据等进行比较来监测系统当前的状态，并且可根据预定的各种参数指标极限值/阈值来提供故障报
+警能力。
+</code></pre><h4 id="4、健康评估"><a href="#4、健康评估" class="headerlink" title="4、健康评估"></a>4、健康评估</h4><pre><code>  接受来自不同状态监测模块以及其它健康评估模块的数据。主要评估被监测系统(也可以是分系统、
+部件等)的健康状态(如是否有参数退化现象等)，可以产生故障诊断记录并确定故障发生的可能
+性。故障诊断应基于各种健康状态历史数据、工作状态以及维修历史数据等。
+</code></pre><h4 id="5、故障预测决策"><a href="#5、故障预测决策" class="headerlink" title="5、故障预测决策"></a>5、故障预测决策</h4><pre><code>  故障预测能力是PHM系统的显著特征之一。该部件由两部分组成，可综合利用前述各部分的数据信
+息，评估和预测被监测系统未来的健康状态，并做出判断，建议、决策采取相应的措施。该部件可
+以在被监测系统发生故障之前的适宜时机采取维修措施。该部分实现了PHM系统管理的能力，是另
+一显著特征之一。
+</code></pre><h4 id="6、保障决策"><a href="#6、保障决策" class="headerlink" title="6、保障决策"></a>6、保障决策</h4><pre><code>  主要包括人-机接口和机-机接口。人-机接口包括状态监测模块的警告信息显示以及健康评估、预测
+和决策支持模块的数据信息的表示等；机-机接口使得上述各模块之间以及PHM系统同其它系统之间
+的数据信息可以进行传递交换。需要指出的是，上述体系结构中的各部件之间并没有显明界限，存
+在着数据信息的交叉反馈。
+</code></pre><h3 id="PHM模型一般分三类"><a href="#PHM模型一般分三类" class="headerlink" title="PHM模型一般分三类"></a>PHM模型一般分三类</h3><h4 id="1、基于模型的故障诊断与预测"><a href="#1、基于模型的故障诊断与预测" class="headerlink" title="1、基于模型的故障诊断与预测"></a>1、基于模型的故障诊断与预测</h4><pre><code>  故障诊断与预测一般需要先在系统的模型上测试和验证，以最少的耗费来获取直观有效的数据信息。
+应用基于故障诊断与预测技术的系统模型，通常由一定的领域的专家给出，经过大量的数据验证，通
+常比较真实可靠。基于模型的故障诊断与预测技术能深入对象系统本质的性质和实现实时的故障预测
+，并且对象系统的故障特征通常与模型参数相近或是紧密相联系。随着对设备故障演化机理理解的逐
+步深入，模型可以被逐渐修正来提高其预测精度。
+  但是，实际工程应用要求对象系统的数学模型具有较高的精度与复杂的动态系统，建立精确的数学模
+型往往是个难于解决的矛盾。因此基于模型的故障诊断与预测技术的实际应用范围和效果常常受到限
+制。人们通过大量研究论证，逐步提出了许多相关的解决办法。如基于随机滤波理论的故障预测技术
+是基于模型的故障预测技术的典型代表，包括卡尔曼滤波、扩展卡尔曼滤波、无味滤波和粒子滤波。
+</code></pre><h4 id="2、基于状态信息的故障诊断与预测"><a href="#2、基于状态信息的故障诊断与预测" class="headerlink" title="2、基于状态信息的故障诊断与预测"></a>2、基于状态信息的故障诊断与预测</h4><pre><code>  现在基于状态的维修(CBM)手段，直接采信被观测对象功能及性能信息进行故障诊断，是置信度很高
+的故障诊断、维修方法，得到了成功的应用。CBM方式是通过对设备工作状态和工作环境实时监测，
+借助人工智能等先进的计算访求，诊断、预测和合理安排设备未来的维修调度时间。CBM方法根据设
+备的实际运行状态确定设备的最小维护时间，降低设备全寿命周期费用，增加设备的稳定性。CBM的
+思想即只有在设备需要维护时，才进行必要的维护，大大减少了不必要的检修、诊断耗费。
+</code></pre><h4 id="3、基于知识的故障诊断与预测"><a href="#3、基于知识的故障诊断与预测" class="headerlink" title="3、基于知识的故障诊断与预测"></a>3、基于知识的故障诊断与预测</h4><pre><code>  在实际工程应用中，常常无法获得对象系统的精确数学模型，这就大大限制了基于模型的故障诊断与
+预测方法的实施。而基于知识的故障诊断与预测访求不需要对象系统精确的数学模型，同时能够有效
+地表达对象相关的领域专家的经验知识，因此是很有前景的方法。基于知识的故障诊断与预测技术的
+最大优势就是能够充分利用对象系统有关的领域专家经验知识。
+但是，由于基于知识的故障诊断与预测技术本身更适合于定性推理而不太适合于定量计算，因而其实
+际应用还比较困难，单独使用专家系统或模糊逻辑进行故障诊断与预测的实例还不多见。
+</code></pre><h3 id="PHM技术广泛应用于各个领域"><a href="#PHM技术广泛应用于各个领域" class="headerlink" title="PHM技术广泛应用于各个领域"></a>PHM技术广泛应用于各个领域</h3><pre><code>  在电子系统中，PHM的主要意义在于，提前预知将要发生故障的时间和位置，预测整个系统的RUL
+（Remaining Useful Life，剩余使用寿命），提高系统的运行可靠性，减少系统的维修费用和提
+高维修准确性，实现电子系统的CBM。同时，PHM系统记录分析电子系统的健康数据，像管理人体健康
+一样，对整个系统进行健康管理。
+  在风电检修方面，PHM技术可以降低机组事故发生率、降低维修费用、减少维修时间、提高机组运
+行效率和可靠性，同时会为设计人员提供指导。
+PHM技术还被成功应用于军事、民用航空等领域，大大提升了各应用领域的运作效率。因此，PHM技术
+有重要的实用价值和广阔的发展前景。
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/TrackCheck/" rel="tag"># 轨检</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/846432c7.html" rel="next" title="轨检车的局限">
+                <i class="fa fa-chevron-left"></i> 轨检车的局限
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/eea33d6a.html" rel="prev" title="hexo中文链接解决之道">
+                hexo中文链接解决之道 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpg" alt="xiaopch">
+            
+              <p class="site-author-name" itemprop="name">xiaopch</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHM技术定义"><span class="nav-number">1.</span> <span class="nav-text">PHM技术定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHM系统主要由六个部分构成"><span class="nav-number">2.</span> <span class="nav-text">PHM系统主要由六个部分构成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、数据采集"><span class="nav-number">2.1.</span> <span class="nav-text">1、数据采集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、信息归纳处理"><span class="nav-number">2.2.</span> <span class="nav-text">2、信息归纳处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、状态监测"><span class="nav-number">2.3.</span> <span class="nav-text">3、状态监测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、健康评估"><span class="nav-number">2.4.</span> <span class="nav-text">4、健康评估</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、故障预测决策"><span class="nav-number">2.5.</span> <span class="nav-text">5、故障预测决策</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、保障决策"><span class="nav-number">2.6.</span> <span class="nav-text">6、保障决策</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHM模型一般分三类"><span class="nav-number">3.</span> <span class="nav-text">PHM模型一般分三类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、基于模型的故障诊断与预测"><span class="nav-number">3.1.</span> <span class="nav-text">1、基于模型的故障诊断与预测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、基于状态信息的故障诊断与预测"><span class="nav-number">3.2.</span> <span class="nav-text">2、基于状态信息的故障诊断与预测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、基于知识的故障诊断与预测"><span class="nav-number">3.3.</span> <span class="nav-text">3、基于知识的故障诊断与预测</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHM技术广泛应用于各个领域"><span class="nav-number">4.</span> <span class="nav-text">PHM技术广泛应用于各个领域</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaopch</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
