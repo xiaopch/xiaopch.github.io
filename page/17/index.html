@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/6134ce7.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/7642882a.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -292,7 +292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/6134ce7.html" itemprop="url">python之gis地图</a></h1>
+                <a class="post-title-link" href="/post/7642882a.html" itemprop="url">python之couchdb数据库</a></h1>
         
 
         <div class="post-meta">
@@ -304,7 +304,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-01T00:00:00+08:00">2019-09-01</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-17T08:00:00+08:00">2019-10-17</time>
             
 
             
@@ -343,12 +343,12 @@
       
         
           
-            <h3 id="将GNSS的经度和纬度数据转换为度为单位的格式"><a href="#将GNSS的经度和纬度数据转换为度为单位的格式" class="headerlink" title="将GNSS的经度和纬度数据转换为度为单位的格式"></a>将GNSS的经度和纬度数据转换为度为单位的格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&apos;&apos;&apos;</span><br><span class="line">建立GNSS的经纬度和公里标的对应关系</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"> </span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">将GNSS的经度longitude和纬度latidute数据转换为标准度为单位的格式</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">def gnss_raw_to_degree(gnss_longitude,gnss_latitude):</span><br><span class="line">    </span><br><span class="line">    longitude_degree = int(gnss_longitude/100)</span><br><span class="line">    latitude_degree = int(gnss_latitude/100) ##得到度数的整数部分</span><br><span class="line">    </span><br><span class="line">    longitude_minute = gnss_longitude-longitude_degree*100</span><br><span class="line">    latitude_minute = gnss_latitude-latitude_degree*100 ##得到分钟</span><br><span class="line"></span><br><span class="line">    _longitude = longitude_degree+longitude_minute/60.0 ##得到总度数</span><br><span class="line">    _latitude = latitude_degree+latitude_minute/60.0</span><br><span class="line">    return (_longitude,_latitude)</span><br></pre></td></tr></table></figure>
-<h3 id="Python求list的均值，方差，标准差"><a href="#Python求list的均值，方差，标准差" class="headerlink" title="Python求list的均值，方差，标准差"></a>Python求list的均值，方差，标准差</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np </span><br><span class="line">arr = [1,2,3,4,5,6,5,3,3,2]</span><br><span class="line">#求均值</span><br><span class="line">arr_mean = np.mean(arr)</span><br><span class="line">#求方差</span><br><span class="line">arr_var = np.var(arr)</span><br><span class="line">#求标准差</span><br><span class="line">arr_std = np.std(arr,ddof=1)</span><br><span class="line">print(&quot;平均值为：%f&quot; % arr_mean)</span><br><span class="line">print(&quot;方差为：%f&quot; % arr_var)</span><br><span class="line">print(&quot;标准差为:%f&quot; % arr_std)</span><br></pre></td></tr></table></figure>
-<h2 id="Python-地图模块folium"><a href="#Python-地图模块folium" class="headerlink" title="Python 地图模块folium"></a>Python 地图模块folium</h2><h3 id="模块安装"><a href="#模块安装" class="headerlink" title="模块安装"></a>模块安装</h3><pre><code>pip install folium
-</code></pre><h3 id="生成地图html文件"><a href="#生成地图html文件" class="headerlink" title="生成地图html文件"></a>生成地图html文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import folium</span><br><span class="line">import re</span><br><span class="line">import webbrowser</span><br><span class="line">content=&apos;&apos;</span><br><span class="line">filename=&apos;osm3.html&apos;</span><br><span class="line">map_osm= folium.Map(location=[32.17666,112.142748],zoom_start=13) #输入坐标</span><br><span class="line">##map_osm = folium.Map(location=[45.5236, -122.6750], tiles=&apos;Stamen Toner&apos;,zoom_start=13)</span><br><span class="line">map_osm.save(filename)</span><br><span class="line">with open(filename,&apos;r&apos;) as f:</span><br><span class="line">    content = f.read()</span><br><span class="line">## print type(content)</span><br><span class="line"></span><br><span class="line">#由于不能访问google等地址，将js文件url下载到本地</span><br><span class="line">content=content.replace(&apos;https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js&apos;,&apos;jquery-latest.js&apos;)</span><br><span class="line">content=content.replace(&apos;https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css&apos;,&apos;leaflet.awesome-markers.css&apos;)</span><br><span class="line"></span><br><span class="line">## f.write(content)</span><br><span class="line"></span><br><span class="line">with open(filename,&apos;w&apos;) as f:</span><br><span class="line">    f.write(content)</span><br><span class="line"></span><br><span class="line">webbrowser.open(filename)</span><br></pre></td></tr></table></figure>
-<h2 id="python-Basemap模块安装"><a href="#python-Basemap模块安装" class="headerlink" title="python Basemap模块安装"></a>python Basemap模块安装</h2><h3 id="安装geos"><a href="#安装geos" class="headerlink" title="安装geos"></a>安装geos</h3><pre><code>pip install geos
-</code></pre><h3 id="下载pyproj和basemap并pip安装"><a href="#下载pyproj和basemap并pip安装" class="headerlink" title="下载pyproj和basemap并pip安装"></a>下载pyproj和basemap并pip安装</h3><p><a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="noopener">https://www.lfd.uci.edu/~gohlke/pythonlibs/</a></p>
+            <h2 id="下载couchdb"><a href="#下载couchdb" class="headerlink" title="下载couchdb"></a>下载couchdb</h2><p><a href="https://couchdb.apache.org/#download" target="_blank" rel="noopener">https://couchdb.apache.org/#download</a></p>
+<h3 id="打开couchdb的web管理"><a href="#打开couchdb的web管理" class="headerlink" title="打开couchdb的web管理"></a>打开couchdb的web管理</h3><p><a href="http://localhost:5984/_utils/" target="_blank" rel="noopener">http://localhost:5984/_utils/</a></p>
+<h3 id="安装couchdb的python"><a href="#安装couchdb的python" class="headerlink" title="安装couchdb的python"></a>安装couchdb的python</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install couchdb</span><br></pre></td></tr></table></figure>
+<h3 id="python读写couchdb的代码"><a href="#python读写couchdb的代码" class="headerlink" title="python读写couchdb的代码"></a>python读写couchdb的代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import couchdb</span><br><span class="line"></span><br><span class="line">couch = couchdb.Server(&apos;http://127.0.0.1:5984/&apos;)</span><br><span class="line"></span><br><span class="line">##db = couch.create(&apos;test&apos;) # 新建数据库</span><br><span class="line">db = couch[&apos;test&apos;] # 使用已经存在的数据库</span><br><span class="line">##创建文档并插入到数据库：</span><br><span class="line">doc = &#123;&apos;foo1&apos;: &apos;bar&apos;&#125;</span><br><span class="line">db.save(doc)</span><br><span class="line">##遍历数据库</span><br><span class="line">for _id in db:</span><br><span class="line">    print(_id)</span><br><span class="line">    print(db[_id])</span><br></pre></td></tr></table></figure>
+<h2 id="将json文件保存到couchdb-将数据库的doc读取到json文件"><a href="#将json文件保存到couchdb-将数据库的doc读取到json文件" class="headerlink" title="将json文件保存到couchdb,将数据库的doc读取到json文件"></a>将json文件保存到couchdb,将数据库的doc读取到json文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import json</span><br><span class="line">import pandas as pd</span><br><span class="line">import couchdb</span><br><span class="line">couch = couchdb.Server(&apos;http://127.0.0.1:5984/&apos;)</span><br><span class="line"></span><br><span class="line">db=None</span><br><span class="line">db_name=&apos;test&apos;</span><br><span class="line">try:</span><br><span class="line">    db = couch[db_name] # 使用已经存在的数据库</span><br><span class="line">except:</span><br><span class="line">    db = couch.create(db_name) # 新建数据库</span><br><span class="line">    </span><br><span class="line">##读取文档并插入到数据库：</span><br><span class="line">df=pd.read_json(&quot;db.json&quot;,orient=&apos;records&apos;)</span><br><span class="line">print(df)</span><br><span class="line"></span><br><span class="line">doc = json.loads(df.to_json(orient=&apos;table&apos;))</span><br><span class="line">doc[&apos;_id&apos;]=&apos;db_doc&apos;</span><br><span class="line">db.save(doc)</span><br><span class="line"></span><br><span class="line">##读取数据库中的数据并保存为json文件</span><br><span class="line">with open(&quot;./db_dump.json&quot;,&apos;w&apos;) as json_file:</span><br><span class="line">    json.dump(db[&apos;db_doc&apos;],json_file,ensure_ascii=False)</span><br></pre></td></tr></table></figure>
+<h3 id="备份数据库到json文件"><a href="#备份数据库到json文件" class="headerlink" title="备份数据库到json文件"></a>备份数据库到json文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">npm安装数据库备份模块</span><br><span class="line">npm install -g couchdb-dump</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">headers=&#123;&apos;user-agent&apos;:&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36&quot;&#125;</span><br><span class="line">#提交get请求</span><br><span class="line">dbs=requests.get(&apos;http://127.0.0.1:5984/_all_dbs&apos;).content</span><br><span class="line">dbs=eval(dbs)</span><br><span class="line">for db_name in dbs:</span><br><span class="line">    print(db_name)</span><br><span class="line">    os.system(&apos;cdbdump -d &apos;+db_name+&apos; &gt; &apos;+db_name+&apos;.json&apos;)</span><br></pre></td></tr></table></figure>
 
           
         
@@ -399,7 +399,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/3f73e366.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/4524bfd1.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -418,7 +418,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/3f73e366.html" itemprop="url">nodejs使用cnpm</a></h1>
+                <a class="post-title-link" href="/post/4524bfd1.html" itemprop="url">Sublime运行nodejs的配置方法</a></h1>
         
 
         <div class="post-meta">
@@ -430,7 +430,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-30T00:00:00+08:00">2019-08-30</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T16:38:55+08:00">2019-10-15</time>
             
 
             
@@ -469,18 +469,10 @@
       
         
           
-            <h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><p>使用定制的 <a href="https://github.com/cnpm/cnpm" target="_blank" rel="noopener">cnpm</a> (gzip 压缩支持) 命令行工具代替默认的 <code>npm</code>:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<p>或者你直接通过添加 <code>npm</code> 参数 <code>alias</code> 一个新命令:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> cnpm=<span class="string">"npm --registry=https://registry.npm.taobao.org \</span></span><br><span class="line"><span class="string">--cache=<span class="variable">$HOME</span>/.npm/.cache/cnpm \</span></span><br><span class="line"><span class="string">--disturl=https://npm.taobao.org/dist \</span></span><br><span class="line"><span class="string">--userconfig=<span class="variable">$HOME</span>/.cnpmrc"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Or alias it in .bashrc or .zshrc</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">'\n#alias for cnpm\nalias cnpm="npm --registry=https://registry.npm.taobao.org \</span></span><br><span class="line"><span class="string">  --cache=$HOME/.npm/.cache/cnpm \</span></span><br><span class="line"><span class="string">  --disturl=https://npm.taobao.org/dist \</span></span><br><span class="line"><span class="string">  --userconfig=$HOME/.cnpmrc"'</span> &gt;&gt; ~/.zshrc &amp;&amp; <span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
-<h3 id="安装模块"><a href="#安装模块" class="headerlink" title="安装模块"></a>安装模块</h3><p>从 <a href="https://registry.npm.taobao.org/" target="_blank" rel="noopener">registry.npm.taobao.org</a> 安装所有模块. 当安装的时候发现安装的模块还没有同步过来, 淘宝 NPM 会自动在后台进行同步, 并且会让你从官方 NPM <a href="https://registry.npmjs.org/" target="_blank" rel="noopener">registry.npmjs.org</a> 进行安装. 下次你再安装这个模块的时候, 就会直接从淘宝 NPM 安装了.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install [name]</span><br></pre></td></tr></table></figure>
-<h3 id="同步模块"><a href="#同步模块" class="headerlink" title="同步模块"></a>同步模块</h3><p>直接通过 <code>sync</code> 命令马上同步一个模块, 只有 <code>cnpm</code> 命令行才有此功能:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm sync connect</span><br></pre></td></tr></table></figure>
-<p>当然, 你可以直接通过 web 方式来同步: <a href="https://npm.taobao.org/sync/connect" target="_blank" rel="noopener">/sync/connect</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ open https://npm.taobao.org/sync/connect</span><br></pre></td></tr></table></figure>
-<h3 id="其它命令"><a href="#其它命令" class="headerlink" title="其它命令"></a>其它命令</h3><p>支持 <code>npm</code> 除了 <code>publish</code> 之外的所有命令, 如:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm info connect</span><br></pre></td></tr></table></figure>
+            <h3 id="首先确保nodejs安装成功-然后到Sublime-Text中Tools-–-gt-Build-System-–-gt-new-Build-System"><a href="#首先确保nodejs安装成功-然后到Sublime-Text中Tools-–-gt-Build-System-–-gt-new-Build-System" class="headerlink" title="首先确保nodejs安装成功,然后到Sublime Text中Tools –&gt; Build System –&gt; new Build System"></a>首先确保nodejs安装成功,然后到Sublime Text中Tools –&gt; Build System –&gt; new Build System</h3><p>在打开的文件中输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;cmd&quot;: [&quot;node&quot;, &quot;$file&quot;],</span><br><span class="line">    &quot;file_regex&quot;: &quot;^[ ]*File \&quot;(...*?)\&quot;, line ([0-9]*)&quot;,</span><br><span class="line">    &quot;working_dir&quot;: &quot;$&#123;project_path:$&#123;folder&#125;&#125;&quot;,</span><br><span class="line">    &quot;selector&quot;: &quot;source.js&quot;,</span><br><span class="line">    &quot;shell&quot;: true,</span><br><span class="line">    &quot;encoding&quot;: &quot;utf-8&quot;,</span><br><span class="line">    &quot;windows&quot;: &#123;</span><br><span class="line">        &quot;cmd&quot;: [&quot;node&quot;, &quot;$file&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="如果系统不是64位的话，windows系统中输入一下内容"><a href="#如果系统不是64位的话，windows系统中输入一下内容" class="headerlink" title="如果系统不是64位的话，windows系统中输入一下内容"></a>如果系统不是64位的话，windows系统中输入一下内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;cmd&quot;: [&quot;taskkill /f /im node.exe &gt;nul 2&gt;nul &amp; node&quot;, &quot;$file&quot;],</span><br><span class="line">    &quot;file_regex&quot;: &quot;^[ ]*File \&quot;(...*?)\&quot;, line ([0-9]*)&quot;,</span><br><span class="line">    &quot;working_dir&quot;: &quot;$&#123;project_path:$&#123;folder&#125;&#125;&quot;,</span><br><span class="line">    &quot;selector&quot;: &quot;source.js&quot;,</span><br><span class="line">    &quot;shell&quot;: true,</span><br><span class="line">    &quot;encoding&quot;: &quot;utf-8&quot;,</span><br><span class="line">    &quot;windows&quot;: &#123;</span><br><span class="line">        &quot;cmd&quot;: [&quot;node&quot;, &quot;$file&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="保存文件为js-sublime-build"><a href="#保存文件为js-sublime-build" class="headerlink" title="保存文件为js.sublime-build"></a>保存文件为js.sublime-build</h3>
           
         
       
@@ -530,7 +522,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/1ec2e633.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2d766cb3.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -549,7 +541,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/1ec2e633.html" itemprop="url">nodejs使用ejs模板</a></h1>
+                <a class="post-title-link" href="/post/2d766cb3.html" itemprop="url">nodejs操作couchdb</a></h1>
         
 
         <div class="post-meta">
@@ -561,7 +553,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-30T00:00:00+08:00">2019-08-30</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T00:00:00+08:00">2019-10-15</time>
             
 
             
@@ -600,16 +592,23 @@
       
         
           
-            <h3 id="ejs字符串模板的使用"><a href="#ejs字符串模板的使用" class="headerlink" title="ejs字符串模板的使用"></a>ejs字符串模板的使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var ejs = require(&quot;ejs&quot;);</span><br><span class="line">//ejs模块安装: npm install --save ejs</span><br><span class="line">//字符串模板</span><br><span class="line">var string = &quot;哈哈第&lt;%= a %&gt;个&quot;;</span><br><span class="line">//数据</span><br><span class="line">var data = &#123;</span><br><span class="line">    a : 710</span><br><span class="line">&#125;;</span><br><span class="line">//数据绑定</span><br><span class="line">var html = ejs.render(string, data);</span><br><span class="line">//输出模板数据</span><br><span class="line">console.log(html);</span><br></pre></td></tr></table></figure>
-<h3 id="html模板的使用"><a href="#html模板的使用" class="headerlink" title="html模板的使用"></a>html模板的使用</h3><ul>
-<li>app.js文件</li>
+            <h3 id="nodejs连接数据库并插入数据"><a href="#nodejs连接数据库并插入数据" class="headerlink" title="nodejs连接数据库并插入数据"></a>nodejs连接数据库并插入数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const nano = require(&apos;nano&apos;)(&apos;http://localhost:5984&apos;);</span><br><span class="line">nano.db.create(&apos;alice&apos;);</span><br><span class="line">const alice = nano.use(&apos;alice&apos;)</span><br><span class="line">alice.insert(&#123; _id: &apos;myid2&apos;, happy: true &#125;).then((body) =&gt; &#123;</span><br><span class="line">  console.log(body)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="列举alice数据库中的所有文档"><a href="#列举alice数据库中的所有文档" class="headerlink" title="列举alice数据库中的所有文档"></a>列举alice数据库中的所有文档</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alice.list().then((body) =&gt; &#123;  </span><br><span class="line">	body.rows.forEach((doc) =&gt; &#123;    </span><br><span class="line">			console.log(doc);  &#125;);&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="带参数列举alice数据库中的所有文档"><a href="#带参数列举alice数据库中的所有文档" class="headerlink" title="带参数列举alice数据库中的所有文档"></a>带参数列举alice数据库中的所有文档</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alice.list(&#123;include_docs: true&#125;).then((body) =&gt; &#123;  </span><br><span class="line">    body.rows.forEach((doc) =&gt; &#123;    </span><br><span class="line">        // output each document&apos;s body    </span><br><span class="line">        console.log(doc.doc);  </span><br><span class="line">&#125;);&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="db-listAsStream-params"><a href="#db-listAsStream-params" class="headerlink" title="db.listAsStream([params])"></a>db.listAsStream([params])</h3><p>List all the docs in the database as a stream.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alice.list().pipe(process.stdout)</span><br></pre></td></tr></table></figure>
+<h3 id="备份数据库"><a href="#备份数据库" class="headerlink" title="备份数据库"></a>备份数据库</h3><ul>
+<li>npm安装couchdb-dump库</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var ejs = require(&quot;ejs&quot;);</span><br><span class="line">var fs = require(&quot;fs&quot;);</span><br><span class="line">var http = require(&quot;http&quot;);</span><br><span class="line"> </span><br><span class="line">http.createServer(function (req, res) &#123;</span><br><span class="line">    fs.readFile(&quot;./views/index.ejs&quot;, function (err, data) &#123;</span><br><span class="line">        var template = data.toString();</span><br><span class="line">        var dictionary = &#123;</span><br><span class="line">            a : 6,</span><br><span class="line">            news : [&quot;行吧&quot;, &quot;说的&quot;, &quot;很牛逼&quot;]</span><br><span class="line">        &#125;;</span><br><span class="line">        var html = ejs.render(template, dictionary);</span><br><span class="line"> </span><br><span class="line">        res.writeHead(200, &#123;&apos;content-type&apos;: &apos;text/html; charset=utf-8&apos;&#125;);</span><br><span class="line">        res.end(html);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;).listen(80, &quot;127.0.0.1&quot;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g couchdb-dump</span><br></pre></td></tr></table></figure>
 <ul>
-<li>views文件夹下的index.ejs文件</li>
+<li>将gis数据库的内容导入到gis.json文件.</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;h1&gt;第&lt;%= a %&gt;个&lt;/h1&gt;</span><br><span class="line">  &lt;ul&gt;</span><br><span class="line">      &lt;% for(var i = 0; i &lt; news.length; i++)&#123; %&gt;</span><br><span class="line">          &lt;li&gt;&lt;%= news[i] %&gt;&lt;/li&gt;</span><br><span class="line">      &lt;%&#125;%&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cdbdump -d gis &gt; gis.json</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将gis文件的内容导入到 <em>gis2</em>.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cdbload -d gis2 &lt; gis.json</span><br></pre></td></tr></table></figure>
           
         
       
@@ -659,7 +658,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/b56ff5f3.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/94da9171.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -678,7 +677,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/b56ff5f3.html" itemprop="url">nodejs搭建web服务器</a></h1>
+                <a class="post-title-link" href="/post/94da9171.html" itemprop="url">OpenSSl生成SSL证书-支持https</a></h1>
         
 
         <div class="post-meta">
@@ -690,7 +689,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-27T00:00:00+08:00">2019-08-27</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-13T00:00:00+08:00">2019-10-13</time>
             
 
             
@@ -729,68 +728,56 @@
       
         
           
-            <h4 id="下载安装nodejs和安装express框架"><a href="#下载安装nodejs和安装express框架" class="headerlink" title="下载安装nodejs和安装express框架"></a>下载安装nodejs和安装express框架</h4><p><a href="http://nodejs.cn/download/" target="_blank" rel="noopener">http://nodejs.cn/download/</a></p>
-<p>选择对应的版本然后下载安装就好了，完了验证下nodejs安装是否成功。</p>
-<p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v #命令查看版本</span><br></pre></td></tr></table></figure>
-<p>再输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v #命令查看npm版本</span><br></pre></td></tr></table></figure>
-<h3 id="notepad-运行nodejs程序"><a href="#notepad-运行nodejs程序" class="headerlink" title="notepad++运行nodejs程序"></a>notepad++运行nodejs程序</h3><ul>
-<li>打开运行,写入</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd /k cd /d &quot;$(CURRENT_DIRECTORY)&quot; &amp;  node &quot;$(FULL_CURRENT_PATH)&quot; &amp; ECHO. &amp; PAUSE &amp; EXIT</span><br></pre></td></tr></table></figure>
-<h3 id="全局安装express"><a href="#全局安装express" class="headerlink" title="全局安装express"></a>全局安装express</h3><ul>
-<li>安装框架之前先把NPM镜像改成淘宝镜像，在文件夹打开命令行窗口执行命令</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装express框架</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install express --save -g</span><br><span class="line">npm install express-generator --save -g</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>express 是nodejs的一个web框架，使用express,能够更便捷的使用nodejs.</p>
+            <h3 id="OpenSSL-下载"><a href="#OpenSSL-下载" class="headerlink" title="OpenSSL 下载"></a>OpenSSL 下载</h3><ul>
+<li><p>这里下载 openssl win64 版本，并安装。</p>
 </li>
-<li><p>express-generator是express应用生成器，相当于express 的骨架，进入一个web项目中后，</p>
+<li><p><a href="http://www.slproweb.com/products/Win32OpenSSL.html" target="_blank" rel="noopener">http://www.slproweb.com/products/Win32OpenSSL.html</a></p>
 </li>
-<li>使用express  projectname命令，能快速构建projectname这个应用的目录结构。</li>
-</ul>
-<h3 id="serve-index模块实现目录浏览"><a href="#serve-index模块实现目录浏览" class="headerlink" title="serve-index模块实现目录浏览"></a>serve-index模块实现目录浏览</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//安装模块npm install serve-index</span><br><span class="line">var express    = require(&apos;express&apos;)</span><br><span class="line">var serveIndex = require(&apos;serve-index&apos;)</span><br><span class="line">var app = express();</span><br><span class="line"> </span><br><span class="line">//浏览public目录下的文件</span><br><span class="line">app.use(&apos;/&apos;, express.static(&apos;public/&apos;), serveIndex(&apos;public/&apos;, &#123;&apos;icons&apos;: true&#125;))</span><br><span class="line">// Listen</span><br><span class="line">app.listen(80)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>支持https</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">let http = require(&apos;http&apos;);</span><br><span class="line">let https = require(&apos;https&apos;);</span><br><span class="line">let fs = require(&apos;fs&apos;);</span><br><span class="line">let express = require(&apos;express&apos;);</span><br><span class="line">let serveIndex = require(&apos;serve-index&apos;);</span><br><span class="line"></span><br><span class="line">let app = express();</span><br><span class="line">app.use(serveIndex(&apos;./public&apos;));</span><br><span class="line">app.use(express.static(&apos;./public&apos;));</span><br><span class="line"></span><br><span class="line">// http server</span><br><span class="line">let http_server = http.createServer(app);</span><br><span class="line">http_server.listen(808, &apos;127.0.0.1&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//下载openssl生成https证书文件ca.key和ca.crt</span><br><span class="line">let options = &#123;</span><br><span class="line">  key: fs.readFileSync(&apos;./ca.key&apos;),</span><br><span class="line">  cert: fs.readFileSync(&apos;./ca.crt&apos;)</span><br><span class="line">&#125;</span><br><span class="line">// https server</span><br><span class="line">let https_server = https.createServer(options, app);</span><br><span class="line">https_server.listen(433, &apos;127.0.0.1&apos;)</span><br><span class="line"></span><br><span class="line">// 浏览器中访问</span><br><span class="line">// http://127.0.0.1:808</span><br><span class="line">// https://127.0.0.1:433</span><br></pre></td></tr></table></figure>
-<h3 id="开始第一个express项目"><a href="#开始第一个express项目" class="headerlink" title="开始第一个express项目"></a>开始第一个express项目</h3><ul>
-<li><p>在文件夹路径处，选中把路径删除，然后输入cmd，再确认就进入了当前文件夹下控制台</p>
-</li>
-<li><p>输入命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">express rail_inspection  //创建了了一个新项目</span><br><span class="line">cd rail_inspection</span><br><span class="line">npm install</span><br><span class="line">npm start  //启动项目</span><br></pre></td></tr></table></figure>
+<li><p>安装openssl到C:/OpenSSL-Win64</p>
 </li>
 </ul>
-<h3 id="Nodejs-Express访问html、css、js静态资源文件"><a href="#Nodejs-Express访问html、css、js静态资源文件" class="headerlink" title="Nodejs + Express访问html、css、js静态资源文件"></a>Nodejs + Express访问html、css、js静态资源文件</h3><ul>
-<li>首先安装express在命令行输入</li>
+<h3 id="OpenSSL-设置环境"><a href="#OpenSSL-设置环境" class="headerlink" title="OpenSSL 设置环境"></a>OpenSSL 设置环境</h3><ul>
+<li><p>设置系统环境变量<br>set OPENSSL_CONF=C:/OpenSSL-Win64/bin/openssl.cfg<br>set path=C:\OpenSSL-Win64\bin;%path%;</p>
+</li>
+<li><p>首次使用时，创建目录 “newcerts”<br>C:\OpenSSL-Win32\bin\PEM\demoCA**newcerts**</p>
+</li>
+<li><p>创建一个空文件 “serial” (没有扩展名)<br>C:\OpenSSL-Win32\bin\PEM\demoCA**serial**</p>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express -g</span><br></pre></td></tr></table></figure>
+<h3 id="制作CA证书"><a href="#制作CA证书" class="headerlink" title="制作CA证书"></a>制作CA证书</h3><ul>
+<li><p>进入目录 C:\OpenSSL-Win64\bin\PEM</p>
+</li>
+<li><p>生成 ca.key CA 私钥</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out ca.key 4096</span><br></pre></td></tr></table></figure>
 <ul>
-<li>装完成后可以查看安装情况：</li>
+<li>制作解密后的 CA 私钥（一般无此必要）</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls -g</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl rsa -in ca.key -out ca_decrypted.key</span><br></pre></td></tr></table></figure>
 <ul>
-<li>然后创建server.js文件</li>
+<li>生成 ca.crt CA 根证书（公钥）：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&quot;express&quot;);</span><br><span class="line">var app = express();</span><br><span class="line">const path = require(&apos;path&apos;); //系统路径模块</span><br><span class="line"></span><br><span class="line">//访问html、css、js静态资源文件</span><br><span class="line">app.use(express.static(path.join(__dirname, &apos;public&apos;))); //指定静态文件目录</span><br><span class="line">app.get(&apos;/&apos;, function (req, res) &#123;</span><br><span class="line">    res.redirect(&apos;/index.html&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">app.listen(80, function () &#123;</span><br><span class="line">console.log(&apos;Node app start at port 80&apos;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -days 7304 -key ca.key -out ca.crt</span><br></pre></td></tr></table></figure>
 <ul>
-<li>文件存放目录结构</li>
+<li>自动批处理文件</li>
 </ul>
-<p>project/<br>├── server.js<br>│<br>├── public/<br>│   ├── index.html<br>│   │<br>│   ├── css/<br>│   │   └── style.css<br>│   │<br>│   └── js/<br>│       └── index.js<br>│<br>└── node_modules/<br>  ├── …<br>  ├── …<br>  └── …</p>
-<h3 id="连接-MongoDB"><a href="#连接-MongoDB" class="headerlink" title="连接 MongoDB"></a>连接 MongoDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var MongoClient = require(&apos;mongodb&apos;).MongoClient;</span><br><span class="line">var url = &apos;mongodb://localhost:27017/runoob&apos;;</span><br><span class="line">MongoClient.connect(url, &#123; useNewUrlParser: true , useUnifiedTopology: true &#125;, function (err, db) &#123;</span><br><span class="line">    if (err) throw err;</span><br><span class="line">    console.log(&apos;数据库已创建&apos;);</span><br><span class="line">    var dbase = db.db(&quot;runoob&quot;);</span><br><span class="line">    dbase.createCollection(&apos;site&apos;, function (err, res) &#123;</span><br><span class="line">        if (err) throw err;</span><br><span class="line">        console.log(&quot;创建集合!&quot;);</span><br><span class="line">        db.close();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="提交post表单数据"><a href="#提交post表单数据" class="headerlink" title="提交post表单数据"></a>提交post表单数据</h3><ul>
-<li>html文件index.html</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">::安装openssl到C:/OpenSSL-Win64</span><br><span class="line">set OPENSSL_CONF=C:/OpenSSL-Win64/bin/openssl.cfg</span><br><span class="line">set path=C:\OpenSSL-Win64\bin;%path%;</span><br><span class="line">::首次使用时，创建目录 &quot;newcerts&quot;</span><br><span class="line">mkdir C:\OpenSSL-Win64\bin\PEM\demoCA\newcerts</span><br><span class="line">::创建一个空文件 &quot;serial&quot; (没有扩展名)</span><br><span class="line">echo &gt;C:\OpenSSL-Win64\bin\PEM\demoCA\serial</span><br><span class="line">openssl genrsa -out ca.key 4096</span><br><span class="line">openssl req -new -x509 -days 7304 -key ca.key -out ca.crt</span><br><span class="line">cmd /k cd .</span><br></pre></td></tr></table></figure>
+<h3 id="制作生成网站的证书并用CA-签名认证"><a href="#制作生成网站的证书并用CA-签名认证" class="headerlink" title="制作生成网站的证书并用CA 签名认证"></a>制作生成网站的证书并用CA 签名认证</h3><ul>
+<li><p>如果CA证书已经存在或者想沿用，则可以直接从这一步开始。</p>
+</li>
+<li><p>生成证书私钥：</p>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line"> &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line"> &lt;title&gt;Nodejs的data事件与end事件的回调函数测试用页面&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;form id= &quot;form_post&quot; action = &quot;http://localhost/&quot; method = &quot;post&quot;&gt;</span><br><span class="line"> 姓名：&lt;input type = &apos;text&apos; name = &quot;name&quot; value =&quot;xiaopch&quot;&gt;&lt;br/&gt;</span><br><span class="line"> 年龄：&lt;input type = &quot;number&quot; name = &quot;age&quot; value =&quot;20&quot;&gt;</span><br><span class="line"> &lt;input type = &quot;submit&quot; value =&quot; 提交&quot;/&gt; </span><br><span class="line"> &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out server.pem 4096</span><br></pre></td></tr></table></figure>
 <ul>
-<li>js文件app.js</li>
+<li>制作解密后的证书私钥：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//app.js</span><br><span class="line">var http = require(&apos;http&apos;);</span><br><span class="line">var server = http.createServer(function (req, res) &#123;</span><br><span class="line">        if (req.url !== &quot;/favicon.ico&quot;) &#123;</span><br><span class="line">            req.on(&apos;data&apos;, function (data) &#123;</span><br><span class="line">                console.log(&quot;服务器接收到的数据:&quot; + decodeURIComponent(data));</span><br><span class="line">            &#125;);</span><br><span class="line">            req.on(&quot;end&quot;, function () &#123;</span><br><span class="line">                console.log(&apos;客户端请求数据全部接收完毕&apos;);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        res.end();</span><br><span class="line">    &#125;).listen(80, &quot;localhost&quot;, function () &#123;</span><br><span class="line">        console.log(&quot;listened&quot;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl rsa -in server.pem -out server.key</span><br></pre></td></tr></table></figure>
+<ul>
+<li>生成签名请求：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -key server.pem -out server.csr</span><br></pre></td></tr></table></figure>
 
           
         
@@ -841,7 +828,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/4b102b0c.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/e5fac68c.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -860,7 +847,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/4b102b0c.html" itemprop="url">Python之time,datetime,string相互转换</a></h1>
+                <a class="post-title-link" href="/post/e5fac68c.html" itemprop="url">nodejs之ajax跨域请求</a></h1>
         
 
         <div class="post-meta">
@@ -872,7 +859,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-26T17:07:12+08:00">2019-08-26</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-03T00:00:00+08:00">2019-10-03</time>
             
 
             
@@ -911,8 +898,8 @@
       
         
           
-            <h2 id="time-datetime-string-相互转换"><a href="#time-datetime-string-相互转换" class="headerlink" title="time , datetime , string 相互转换"></a>time , datetime , string 相互转换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line">import datetime</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line"># 日期时间字符串</span><br><span class="line">st = &quot;2017-11-23 16:10:10&quot;</span><br><span class="line"># 当前日期时间</span><br><span class="line">dt = datetime.datetime.now()</span><br><span class="line"># 当前时间戳</span><br><span class="line">sp = time.time()</span><br><span class="line"># 1.把datetime转成字符串</span><br><span class="line">dt.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)</span><br><span class="line"></span><br><span class="line"># 2.把字符串转成datetime</span><br><span class="line">datetime.datetime.strptime(st, &quot;%Y-%m-%d %H:%M:%S&quot;)</span><br><span class="line"></span><br><span class="line"># 3.把字符串转成时间戳形式</span><br><span class="line">time.mktime(time.strptime(st, &quot;%Y-%m-%d %H:%M:%S&quot;))</span><br><span class="line"></span><br><span class="line"># 4.把时间戳转成字符串形式</span><br><span class="line"> time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime(sp))</span><br><span class="line"></span><br><span class="line"># 5.把datetime类型转外时间戳形式</span><br><span class="line">time.mktime(dt.timetuple())</span><br></pre></td></tr></table></figure>
-<p>- </p>
+            <h3 id="客户端文件cross-origin-html"><a href="#客户端文件cross-origin-html" class="headerlink" title="客户端文件cross_origin.html"></a>客户端文件cross_origin.html</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;跨域测试&lt;/title&gt;</span><br><span class="line">    &lt;script src=&quot;./js/jquery-3.4.1.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line"></span><br><span class="line">        $(document).ready(function () &#123;</span><br><span class="line">            </span><br><span class="line">            $(&quot;#btn&quot;).click(function () &#123;</span><br><span class="line">                 $.ajax(&#123;</span><br><span class="line">                     url: &apos;http://localhost/cors&apos;,</span><br><span class="line">                     type: &apos;GET&apos;,</span><br><span class="line">                     success: function (data) &#123;</span><br><span class="line">                         $(text).val(data);</span><br><span class="line">                     &#125;</span><br><span class="line">                 &#125;);</span><br><span class="line"> </span><br><span class="line">             &#125;);	 </span><br><span class="line">         &#125;);</span><br><span class="line">     &lt;/script&gt;</span><br><span class="line"> &lt;/head&gt;</span><br><span class="line"> &lt;body&gt;</span><br><span class="line">     &lt;input id=&quot;btn&quot; type=&quot;button&quot; value=&quot;跨域获取数据&quot; /&gt;</span><br><span class="line">     &lt;textarea id=&quot;text&quot; style=&quot;width: 400px; height: 100px;&quot;&gt;&lt;/textarea&gt;</span><br><span class="line"> &lt;/body&gt;</span><br><span class="line"> &lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="nodejs服务器端文件app-js"><a href="#nodejs服务器端文件app-js" class="headerlink" title="nodejs服务器端文件app.js"></a>nodejs服务器端文件app.js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var fs = require(&apos;fs&apos;);</span><br><span class="line">var app = express(); //新建app模块</span><br><span class="line">var state_points_json_string = fs.readFileSync(__dirname +&quot;/json/state_points.json&quot;, &quot;utf8&quot;);</span><br><span class="line"></span><br><span class="line">const path = require(&apos;path&apos;); //系统路径模块</span><br><span class="line">app.use(express.static(path.join(__dirname, &apos;static&apos;))); //指定静态文件目录</span><br><span class="line"></span><br><span class="line">//主目录默认显示页面</span><br><span class="line">app.get(&apos;/&apos;, function (req, res) &#123;</span><br><span class="line">    res.redirect(&apos;/index.html&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">app.get(&apos;/cors&apos;, function (req, res) &#123;</span><br><span class="line">	res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);</span><br><span class="line">	res.setHeader(&apos;Access-Control-Allow-Methods&apos;, &apos;GET, POST&apos;);</span><br><span class="line">    res.json(state_points_json_string);</span><br><span class="line">&#125;);</span><br><span class="line">//开启服务器进程</span><br><span class="line">var port_num = 80;</span><br><span class="line">app.listen(port_num, function () &#123;</span><br><span class="line">    console.log(&apos;server start at port &apos; + port_num + &apos;......&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
           
         
@@ -963,7 +950,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/ec8cdefc.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2b4d3ff3.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -982,7 +969,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/ec8cdefc.html" itemprop="url">gnss数据包格式及数据包解析</a></h1>
+                <a class="post-title-link" href="/post/2b4d3ff3.html" itemprop="url">nodejs之csv文件转json</a></h1>
         
 
         <div class="post-meta">
@@ -994,7 +981,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-26T00:00:00+08:00">2019-08-26</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-01T00:00:00+08:00">2019-10-01</time>
             
 
             
@@ -1033,321 +1020,10 @@
       
         
           
-            <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">类别</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">GPGSV</td>
-<td style="text-align:center">可见卫星信息</td>
-</tr>
-<tr>
-<td style="text-align:center">GPRMC</td>
-<td style="text-align:center">推荐最小定位信息</td>
-</tr>
-<tr>
-<td style="text-align:center">GPVTG</td>
-<td style="text-align:center">地面速度信息</td>
-</tr>
-<tr>
-<td style="text-align:center">GPGGA</td>
-<td style="text-align:center">GPS定位信息</td>
-</tr>
-<tr>
-<td style="text-align:center">GPGSA</td>
-<td style="text-align:center">当前卫星信息</td>
-</tr>
-</tbody>
-</table>
-<h2 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h2><ul>
-<li>原始数据样本</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$GPRMC,092927.000,A,2235.9058,N,11400.0518,E,0.000,74.11,151216,,D*49 </span><br><span class="line">$GPVTG,74.11,T,,M,0.000,N,0.000,K,D*0B </span><br><span class="line">$GPGGA,092927.000,2235.9058,N,11400.0518,E,2,9,1.03,53.1,M,-2.4,M,0.0,0*6B </span><br><span class="line">$GPGSA,A,3,29,18,12,25,10,193,32,14,31,,,,1.34,1.03,0.85*31 </span><br><span class="line">$GPGSV,3,1,12,10,77,192,17,25,59,077,42,32,51,359,39,193,49,157,36*48</span><br><span class="line">$GPGSV,3,2,12,31,47,274,25,50,46,122,37,18,45,158,37,14,36,326,18*70</span><br><span class="line">$GPGSV,3,3,12,12,24,045,45,26,17,200,18,29,07,128,38,21,02,174,*79</span><br></pre></td></tr></table></figure>
-<h2 id="数据解释"><a href="#数据解释" class="headerlink" title="数据解释"></a>数据解释</h2><h3 id="GPRMC-最小定位信息"><a href="#GPRMC-最小定位信息" class="headerlink" title="GPRMC 最小定位信息"></a>GPRMC 最小定位信息</h3><p><em>数据详解</em>：<br><code>$GPRMC,&lt;1&gt;,&lt;2&gt;,&lt;3&gt;,&lt;4&gt;,&lt;5&gt;,&lt;6&gt;,&lt;7&gt;,&lt;8&gt;,&lt;9&gt;,&lt;10&gt;,&lt;11&gt;,&lt;12&gt;*hh</code></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">参数</th>
-<th style="text-align:left">定义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><1></1></td>
-<td style="text-align:left">UTC 时间，hhmmss(时分秒)格式</td>
-</tr>
-<tr>
-<td style="text-align:center"><2></2></td>
-<td style="text-align:left">定位状态，A=有效定位，V=无效定位</td>
-</tr>
-<tr>
-<td style="text-align:center"><3></3></td>
-<td style="text-align:left">纬度ddmm.mmmm(度分)格式(前面的0也将被传输)</td>
-</tr>
-<tr>
-<td style="text-align:center"><4></4></td>
-<td style="text-align:left">纬度半球N(北半球)或S(南半球)</td>
-</tr>
-<tr>
-<td style="text-align:center"><5></5></td>
-<td style="text-align:left">经度dddmm.mmmm(度分)格式(前面的0也将被传输)</td>
-</tr>
-<tr>
-<td style="text-align:center"><6></6></td>
-<td style="text-align:left">经度半球E(东经)或W(西经)</td>
-</tr>
-<tr>
-<td style="text-align:center"><7></7></td>
-<td style="text-align:left">地面速率(000.0~999.9节，前面的0也将被传输)</td>
-</tr>
-<tr>
-<td style="text-align:center"><8></8></td>
-<td style="text-align:left">地面航向(000.0~359.9度，以真北为参考基准，前面的0也将被传输)</td>
-</tr>
-<tr>
-<td style="text-align:center"><9></9></td>
-<td style="text-align:left">UTC 日期，ddmmyy(日月年)格式</td>
-</tr>
-<tr>
-<td style="text-align:center"><10></10></td>
-<td style="text-align:left">磁偏角(000.0~180.0度，前面的0也将被传输)</td>
-</tr>
-<tr>
-<td style="text-align:center"><11></11></td>
-<td style="text-align:left">磁偏角方向，E(东)或W(西)</td>
-</tr>
-<tr>
-<td style="text-align:center"><12></12></td>
-<td style="text-align:left">模式指示(仅NMEA01833.00版本输出，A=自主定位，D=差分，E=估算，N=数据无效)</td>
-</tr>
-</tbody>
-</table>
-<p><em>解析内容</em>：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">参数</th>
-<th style="text-align:left">释义</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">时间</td>
-<td style="text-align:left">这个是格林威治时间，是世界时间（UTC），我们需要把它转换成北京时间（BTC），BTC和UTC差了8个小时，要在这个时间基础上加8个小时。</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">定位状态</td>
-<td style="text-align:left">在接收到有效数据前，这个位是‘V’，后面的数据都为空，接到有效数据后，这个位是‘A’，后面才开始有数据。</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">纬度</td>
-<td style="text-align:left">我们需要把它转换成度分秒的格式。</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">南北纬</td>
-<td style="text-align:left">这个位有两种值‘N’（北纬）和‘S’（南纬</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">经度</td>
-<td style="text-align:left">经度的计算方法和纬度的计算方法一样</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">东西经</td>
-<td style="text-align:left">这个位有两种值‘E’（东经）和‘W’（西经）</td>
-<td>.</td>
-</tr>
-<tr>
-<td style="text-align:center">速率</td>
-<td style="text-align:left">这个速率值是海里/时，单位是节，要把它转换成千米/时，根据：1海里=1.85公里，把得到的速率乘以1.85。</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">航向</td>
-<td style="text-align:left">指的是偏离正北的角度</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">日期</td>
-<td style="text-align:left">这个日期是准确的，不需要转换</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>经纬度计算方法：<br>如接收到的纬度是：4546.40891 　　<br>4546.40891/100=45.4640891＃取整可以直接读出45度,<br>4546.40891–45ｘ100=46.40891, ＃取整可以直接读出46分 　　</p>
-<p>（46.40891–46）ｘ60=24.5346读出24秒<br>所以纬度是：45度46分24秒。</p>
-</blockquote>
-<h3 id="GPGGA-GPS定位数据"><a href="#GPGGA-GPS定位数据" class="headerlink" title="GPGGA GPS定位数据"></a>GPGGA GPS定位数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">##该数据帧的结构及各字段释义如下：</span><br><span class="line">$GPGGA,&lt;1&gt;,&lt;2&gt;,&lt;3&gt;,&lt;4&gt;,&lt;5&gt;,&lt;6&gt;,&lt;7&gt;,&lt;8&gt;,&lt;9&gt;,M,&lt;10&gt;,M,&lt;11&gt;,&lt;12&gt;*xx&lt;CR&gt;&lt;LF&gt;</span><br><span class="line">$GPGGA：起始引导符及语句格式说明</span><br><span class="line"></span><br><span class="line">&lt;1&gt; UTC时间，格式为hhmmss.sss；</span><br><span class="line">&lt;2&gt; 纬度，格式为ddmm.mmmm(第一位是零也将传送)；</span><br><span class="line">&lt;3&gt; 纬度半球，N或S(北纬或南纬)</span><br><span class="line">&lt;4&gt; 经度，格式为dddmm.mmmm(第一位零也将传送)；</span><br><span class="line">&lt;5&gt; 经度半球，E或W(东经或西经)</span><br><span class="line">&lt;6&gt; GPS状态， 0初始化， 1单点定位， 2码差分， 3无效PPS， 4固定解， 5浮点解， 6正在估算 7，人工输入固定值， 8模拟模式， 9WAAS差分</span><br><span class="line">&lt;7&gt; 使用卫星数量，从00到12(第一个零也将传送)</span><br><span class="line">&lt;8&gt; HDOP-水平精度因子，0.5到99.9，一般认为HDOP越小，质量越好。</span><br><span class="line">&lt;9&gt; 海拔高度，-9999.9到9999.9米</span><br><span class="line">M 指单位米</span><br><span class="line">&lt;10&gt; 大地水准面高度异常差值，-9999.9到9999.9米</span><br><span class="line">M 指单位米</span><br><span class="line">&lt;11&gt; 差分GPS数据期限(RTCM SC-104)，最后设立RTCM传送的秒数量，如不是差分定位则为空</span><br><span class="line">&lt;12&gt; 差分参考基站标号，从0000到1023(首位0也将传送)。</span><br><span class="line">\* 语句结束标志符</span><br><span class="line">xx 从$开始到*之间的所有ASCII码的[异或][校验]</span><br><span class="line">&lt;CR&gt; 回车符，结束标记</span><br><span class="line">&lt;LF&gt; 换行符，结束标记</span><br></pre></td></tr></table></figure>
-<p><em>数据详解</em>:<br><code>$GPVTG,&lt;1&gt;,T,&lt;2&gt;,M,&lt;3&gt;,N,&lt;4&gt;,K,&lt;5&gt;*hh</code></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">参数</th>
-<th style="text-align:left">定义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><1></1></td>
-<td style="text-align:left">以正北为参考基准的地面航向(000~359度，前面的0也将被传输)</td>
-</tr>
-<tr>
-<td style="text-align:center"><2></2></td>
-<td style="text-align:left">以磁北为参考基准的地面航向(000~359度，前面的0也将被传输)</td>
-</tr>
-<tr>
-<td style="text-align:center"><3></3></td>
-<td style="text-align:left">地面速率(000.0~999.9节，前面的0也将被传输)</td>
-</tr>
-<tr>
-<td style="text-align:center"><4></4></td>
-<td style="text-align:left">地面速率(0000.0~1851.8公里/小时，前面的0也将被传输)</td>
-</tr>
-<tr>
-<td style="text-align:center"><5></5></td>
-<td style="text-align:left">模式指示(仅NMEA0183 3.00版本输出，A=自主定位，D=差分，E=估算，N=数据无效</td>
-</tr>
-</tbody>
-</table>
-<h3 id="GPGSV-可视卫星状态"><a href="#GPGSV-可视卫星状态" class="headerlink" title="GPGSV 可视卫星状态"></a>GPGSV 可视卫星状态</h3><p><em>数据详解</em>:<br><code>GPGSV，(1)，(2)，(3)，(4)，(5)，(6)，(7)，…(4),(5)，(6)，(7)*hh(CR)(LF)</code></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">参数</th>
-<th style="text-align:left">定义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">(1)</td>
-<td style="text-align:left">总的GSV语句电文数；2;</td>
-</tr>
-<tr>
-<td style="text-align:center">(2)</td>
-<td style="text-align:left">当前GSV语句号:1;</td>
-</tr>
-<tr>
-<td style="text-align:center">(3)</td>
-<td style="text-align:left">可视卫星总数:08;</td>
-</tr>
-<tr>
-<td style="text-align:center">(4)</td>
-<td style="text-align:left">PRN码(伪随机噪声码也可以认为是卫星编号)</td>
-</tr>
-<tr>
-<td style="text-align:center">(5)</td>
-<td style="text-align:left">仰角(00～90度):33度;</td>
-</tr>
-<tr>
-<td style="text-align:center">(6)</td>
-<td style="text-align:left">方位角(000～359度):240度;</td>
-</tr>
-<tr>
-<td style="text-align:center">(7)</td>
-<td style="text-align:left">信噪比(00～99dB):45dB(后面依次为第10，16，17号卫星的信息); *总和校验域;hh 总和校验数:78; (CR)(LF)回车，换行。</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>注：每条语句最多包括四颗卫星的信息，每颗卫星的信息有四个数据项，即： (4)－卫星号，(5)－仰角，(6)－方位角，(7)－信噪比。</p>
-</blockquote>
-<blockquote>
-<p>例： $GPGSV,3,1,10,24,82,023,40,05,62,285,32,01,62,123,00,17,59,229,28*70<br>每条语句包含四部分内容，例如：第一部分是“24,82,023,40”，第二部分是“05,62,285,32”等等。 每部分的第一个词为PRC，第二个词为卫星高程，跟着为方位角和信号强度。这个语句里最重要的指标应该算是“信号躁声比（signal-to-noise ratio）”（以下简称为SNR）。 这个数值标示卫星信号的接收率。我们知道，卫星是以相同的强度发射信号，但是传播过程中难免会遇到诸如树和墙之类的 障碍物，这样就影响了信号的识别。 典型的SNR值在0到50之间，其中50表示非常好的信号。（SNR可以达到99）。</p>
-</blockquote>
-<h3 id="GPGSA-当前卫星信息"><a href="#GPGSA-当前卫星信息" class="headerlink" title="GPGSA 当前卫星信息"></a>GPGSA 当前卫星信息</h3><blockquote>
-<p>GPGSA，语句ID，表明该语句为GPS DOP and Active Satellites（GSA）当前卫星信息 　　<br><em>数据详解</em>:<br><code>GPGSA，字段1，字段2，字段3，字段4，字段5，字段6，字段7，字段8，字段9，字段10，字段11，字段12，字段13，字段14，字段15，字段16，字段17，字段18</code></p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">参数</th>
-<th style="text-align:left">定义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">字段1</td>
-<td style="text-align:left">定位模式，A=自动手动2D/3D，M=手动2D/3D</td>
-</tr>
-<tr>
-<td style="text-align:center">字段2</td>
-<td style="text-align:left">定位类型，1=未定位，2=2D定位，3=3D定位</td>
-</tr>
-<tr>
-<td style="text-align:center">字段3</td>
-<td style="text-align:left">PRN码(伪随机噪声码),第1信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
-</tr>
-<tr>
-<td style="text-align:center">字段4</td>
-<td style="text-align:left">PRN码(伪随机噪声码),第2信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
-</tr>
-<tr>
-<td style="text-align:center">字段5</td>
-<td style="text-align:left">PRN码(伪随机噪声码),第3信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
-</tr>
-<tr>
-<td style="text-align:center">字段6</td>
-<td style="text-align:left">PRN码(伪随机噪声码),第4信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
-</tr>
-<tr>
-<td style="text-align:center">字段7</td>
-<td style="text-align:left">PRN码(伪随机噪声码)第5信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
-</tr>
-<tr>
-<td style="text-align:center">字段8</td>
-<td style="text-align:left">PRN码(伪随机噪声码),第6信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
-</tr>
-<tr>
-<td style="text-align:center">字段9</td>
-<td style="text-align:left">PRN码(伪随机噪声码),第7信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
-</tr>
-<tr>
-<td style="text-align:center">字段10</td>
-<td style="text-align:left">PRN码(伪随机噪声码),第8信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
-</tr>
-<tr>
-<td style="text-align:center">字段11</td>
-<td style="text-align:left">PRN码(伪随机噪声码),第9信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
-</tr>
-<tr>
-<td style="text-align:center">字段12</td>
-<td style="text-align:left">PRN码(伪随机噪声码),第10信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
-</tr>
-<tr>
-<td style="text-align:center">字段13</td>
-<td style="text-align:left">PRN码(伪随机噪声码),第11信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
-</tr>
-<tr>
-<td style="text-align:center">字段14</td>
-<td style="text-align:left">PRN码(伪随机噪声码),第12信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
-</tr>
-<tr>
-<td style="text-align:center">字段15</td>
-<td style="text-align:left">PDOP综合位置精度因子(0.5 - 99.9)</td>
-</tr>
-<tr>
-<td style="text-align:center">字段16</td>
-<td style="text-align:left">HDOP水平精度因子(0.5 - 99.9)</td>
-</tr>
-<tr>
-<td style="text-align:center">字段17</td>
-<td style="text-align:left">VDOP垂直精度因子(0.5 - 99.9)</td>
-</tr>
-<tr>
-<td style="text-align:center">字段18</td>
-<td style="text-align:left">校验值</td>
-</tr>
-</tbody>
-</table>
+            <h3 id="CSVTOJSON模块"><a href="#CSVTOJSON模块" class="headerlink" title="CSVTOJSON模块"></a>CSVTOJSON模块</h3><p><a href="https://www.npmjs.com/package/csvtojson" target="_blank" rel="noopener">https://www.npmjs.com/package/csvtojson</a></p>
+<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save csvtojson</span><br></pre></td></tr></table></figure>
+<h3 id="From-CSV-File-to-JSON-Array"><a href="#From-CSV-File-to-JSON-Array" class="headerlink" title="From CSV File to JSON Array"></a>From CSV File to JSON Array</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const csvFilePath=&apos;inspection_data.csv&apos;</span><br><span class="line">const csv=require(&apos;csvtojson&apos;)</span><br><span class="line">csv()</span><br><span class="line">.fromFile(csvFilePath)</span><br><span class="line">.then((jsonObj)=&gt;&#123;</span><br><span class="line">    console.log(jsonObj);</span><br><span class="line">&#125;)</span><br><span class="line">// Async / await usage</span><br><span class="line">const jsonArray=csv().fromFile(csvFilePath);</span><br></pre></td></tr></table></figure>
+<h2 id="nodejs写入json文件，格式化输出json的方法"><a href="#nodejs写入json文件，格式化输出json的方法" class="headerlink" title="nodejs写入json文件，格式化输出json的方法"></a>nodejs写入json文件，格式化输出json的方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let str = JSON.stringify(json_data,null,&quot;\t&quot;);</span><br><span class="line">fs.writeFile(&apos;data.json&apos;,str,function(err)&#123;</span><br><span class="line">    if (err) &#123;console.log(&apos;error...&apos;)&#125;</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1387,7 +1063,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1432,7 +1108,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">165</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1525,33 +1201,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1591,7 +1241,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

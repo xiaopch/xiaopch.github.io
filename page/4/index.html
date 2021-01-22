@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/bfd017f6.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/6916b9e8.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -292,7 +292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/bfd017f6.html" itemprop="url">python之yield和zip</a></h1>
+                <a class="post-title-link" href="/post/6916b9e8.html" itemprop="url">Paddlehub图像分割并显示</a></h1>
         
 
         <div class="post-meta">
@@ -304,7 +304,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-19T00:00:00+08:00">2020-07-19</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-27T00:00:00+08:00">2020-09-27</time>
             
 
             
@@ -343,12 +343,7 @@
       
         
           
-            <h4 id="生成斐波那契数列"><a href="#生成斐波那契数列" class="headerlink" title="生成斐波那契数列"></a>生成斐波那契数列</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fab</span><span class="params">(max)</span>:</span> </span><br><span class="line">    <span class="comment">#初始化</span></span><br><span class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span> </span><br><span class="line">    <span class="keyword">while</span> n &lt; max: </span><br><span class="line">        print(b)</span><br><span class="line">        a, b = b, a + b </span><br><span class="line">        n = n + <span class="number">1</span></span><br><span class="line">fab(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="使用yield生成斐波那契数列"><a href="#使用yield生成斐波那契数列" class="headerlink" title="使用yield生成斐波那契数列"></a>使用yield生成斐波那契数列</h4><h6 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fab</span><span class="params">(max)</span>:</span> </span><br><span class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span> </span><br><span class="line">    <span class="keyword">while</span> n &lt; max: </span><br><span class="line">        <span class="keyword">yield</span> b      <span class="comment"># 使用 yield</span></span><br><span class="line">        <span class="comment"># print b </span></span><br><span class="line">        a, b = b, a + b </span><br><span class="line">        n = n + <span class="number">1</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> fab(<span class="number">5</span>): </span><br><span class="line">    print(n)</span><br></pre></td></tr></table></figure>
-<p>‘’’简单地讲，yield 的作用就是把一个函数变成一个 generator，带有 yield 的函数不再是一个普通函数，Python 解释器会将其视为一个 generator，<br>调用 fab(5) 不会执行 fab 函数，而是返回一个 iterable 对象！在 for 循环执行时，每次循环都会执行 fab 函数内部的代码，执行到 yield b 时，<br>fab 函数就返回一个迭代值，下次迭代时，代码从 yield b 的下一条语句继续执行，而函数的本地变量看起来和上次中断执行前是完全一样的，于是<br>函数继续执行，直到再次遇到 yield。’’’</p>
-<h4 id="使用next读取generator"><a href="#使用next读取generator" class="headerlink" title="使用next读取generator"></a>使用next读取generator</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">f=fab(<span class="number">5</span>)</span><br><span class="line">print(next(f))</span><br><span class="line">print(f.__next__())</span><br><span class="line">print(next(f))</span><br><span class="line">print(f.__next__())</span><br><span class="line">print(f.__next__())</span><br></pre></td></tr></table></figure>
-<h4 id="使用zip把list合并成一个元组对的列表"><a href="#使用zip把list合并成一个元组对的列表" class="headerlink" title="使用zip把list合并成一个元组对的列表"></a>使用zip把list合并成一个元组对的列表</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</span><br><span class="line">b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">c = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line">zipped = list(zip(a,b))     <span class="comment"># 打包为元组的列表</span></span><br><span class="line">print(zipped,list(zipped))</span><br><span class="line"></span><br><span class="line">print(list(zip(a,c)))              <span class="comment"># 元素个数与最短的列表一致</span></span><br><span class="line"></span><br><span class="line">print(list(zip(*zipped)))    <span class="comment"># 与 zip 相反，zip(*) 可理解为解压，返回二维矩阵式</span></span><br><span class="line"></span><br><span class="line">print(dict(zip(a, b)))</span><br></pre></td></tr></table></figure>
-<h4 id="zipfile压缩和解压文件"><a href="#zipfile压缩和解压文件" class="headerlink" title="zipfile压缩和解压文件"></a>zipfile压缩和解压文件</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#打包成zip文件</span></span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line">f = zipfile.ZipFile(<span class="string">'archive.zip'</span>,<span class="string">'w'</span>)</span><br><span class="line">f.write(<span class="string">'MusicNamer.exe'</span>)</span><br><span class="line">f.close()</span><br><span class="line"> </span><br><span class="line"><span class="comment">#从zip文件解包</span></span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line">zfile = zipfile.ZipFile(<span class="string">'archive.zip'</span>,<span class="string">'r'</span>)</span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> zfile.namelist():</span><br><span class="line">    data = zfile.read(filename)</span><br><span class="line">    file = open(filename,<span class="string">'w+b'</span>)</span><br><span class="line">    file.write(data)</span><br><span class="line">    file.close()</span><br><span class="line"> </span><br><span class="line"><span class="comment">#把整个文件夹内的文件打包</span></span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">f = zipfile.ZipFile(<span class="string">'archive2.zip'</span>,<span class="string">'w'</span>)</span><br><span class="line">startdir = <span class="string">"./download"</span></span><br><span class="line"><span class="keyword">for</span> dirpath,dirnames,filenames <span class="keyword">in</span> os.walk(startdir):</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">        f.write(os.path.join(dirpath,filename))</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+            <h3 id="Paddlehub图像分割并显示"><a href="#Paddlehub图像分割并显示" class="headerlink" title="Paddlehub图像分割并显示"></a>Paddlehub图像分割并显示</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import paddlehub as hub</span><br><span class="line">import matplotlib.pyplot as plt </span><br><span class="line">import matplotlib.image as mpimg</span><br><span class="line">import matplotlib</span><br><span class="line">matplotlib.use('TkAgg')</span><br><span class="line"><span class="meta">#</span><span class="bash">加载模型ace2p</span></span><br><span class="line">module = hub.Module(name="ace2p")</span><br><span class="line">test_img_path = "test_image.jpg"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">set</span> input dict</span></span><br><span class="line">input_dict = &#123;"image": [test_img_path]&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> execute predict and <span class="built_in">print</span> the result</span></span><br><span class="line">results = module.segmentation(data=input_dict,output_dir='./')</span><br><span class="line">for result in results:</span><br><span class="line">    print(result)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 预测结果展示</span></span><br><span class="line">test_img_path = "./test_image_processed.png"</span><br><span class="line">img = mpimg.imread(test_img_path)</span><br><span class="line">plt.imshow(img) </span><br><span class="line">plt.axis('off') </span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
           
         
@@ -399,7 +394,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/6d77eabc.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/f81e8835.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -418,7 +413,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/6d77eabc.html" itemprop="url">paddlepaddle的基本概念1</a></h1>
+                <a class="post-title-link" href="/post/f81e8835.html" itemprop="url">python之Scrapy 爬虫框架</a></h1>
         
 
         <div class="post-meta">
@@ -430,7 +425,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-16T00:00:00+08:00">2020-07-16</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-09T00:00:00+08:00">2020-09-09</time>
             
 
             
@@ -469,8 +464,11 @@
       
         
           
-            <h3 id="生成Tenor和Variable"><a href="#生成Tenor和Variable" class="headerlink" title="生成Tenor和Variable"></a>生成Tenor和Variable</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line"><span class="comment">#定义一个二维变量,第一维为3,第二维未知</span></span><br><span class="line">x=fluid.data(name=<span class="string">'x'</span>,shape=[<span class="number">3</span>,<span class="literal">None</span>],dtype=<span class="string">'int64'</span>)</span><br><span class="line">batched_x=fluid.data(name=<span class="string">'batched_x'</span>,shape=[<span class="literal">None</span>,<span class="number">3</span>,<span class="literal">None</span>])</span><br><span class="line"><span class="comment"># print(x,batched_x)</span></span><br><span class="line"><span class="comment">#创建常量</span></span><br><span class="line">data=fluid.layers.fill_constant(shape=[<span class="number">3</span>,<span class="number">4</span>],value=<span class="number">16</span>,dtype=<span class="string">'int64'</span>)</span><br><span class="line">print(data)</span><br></pre></td></tr></table></figure>
-<h3 id="声明式编程模式（通常也被称为静态模式或define-and-run模式）"><a href="#声明式编程模式（通常也被称为静态模式或define-and-run模式）" class="headerlink" title="声明式编程模式（通常也被称为静态模式或define-and-run模式）"></a>声明式编程模式（通常也被称为静态模式或define-and-run模式）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"></span><br><span class="line">a = fluid.data(name=<span class="string">"a"</span>,shape=[<span class="number">1</span>],dtype=<span class="string">'float32'</span>)</span><br><span class="line">b = fluid.data(name=<span class="string">"b"</span>,shape=[<span class="number">1</span>],dtype=<span class="string">'float32'</span>)</span><br><span class="line"><span class="comment">##operator</span></span><br><span class="line">result = fluid.layers.elementwise_add(a,b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义执行器，并且制定执行的设备为CPU</span></span><br><span class="line">cpu = fluid.core.CPUPlace()</span><br><span class="line">exe = fluid.Executor(cpu)</span><br><span class="line">exe.run(fluid.default_startup_program())</span><br><span class="line"></span><br><span class="line">x = numpy.array([<span class="number">5</span>]).astype(<span class="string">"float32"</span>)</span><br><span class="line">y = numpy.array([<span class="number">7</span>]).astype(<span class="string">"float32"</span>)</span><br><span class="line"></span><br><span class="line">outs = exe.run(</span><br><span class="line">        feed=&#123;<span class="string">'a'</span>:x,<span class="string">'b'</span>:y&#125;,</span><br><span class="line">        fetch_list=[result])</span><br><span class="line"><span class="comment"># 打印输出结果，[array([12.], dtype=float32)]</span></span><br><span class="line">print( outs )</span><br></pre></td></tr></table></figure>
+            <h3 id="python之Scrapy-爬虫框架"><a href="#python之Scrapy-爬虫框架" class="headerlink" title="python之Scrapy 爬虫框架"></a>python之Scrapy 爬虫框架</h3><h4 id="安装scrapy模块"><a href="#安装scrapy模块" class="headerlink" title="安装scrapy模块"></a>安装scrapy模块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install scrapy</span><br></pre></td></tr></table></figure>
+<h4 id="myspider-py文件的代码"><a href="#myspider-py文件的代码" class="headerlink" title="myspider.py文件的代码"></a>myspider.py文件的代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import scrapy</span><br><span class="line">class QuotesSpider(scrapy.Spider):</span><br><span class="line">    name = &apos;quotes&apos;</span><br><span class="line">    start_urls = [&apos;http://quotes.toscrape.com/tag/humor/&apos;,]</span><br><span class="line">    def parse(self, response):</span><br><span class="line">        for quote in response.css(&apos;div.quote&apos;):</span><br><span class="line">            yield &#123;</span><br><span class="line">                &apos;author&apos;: quote.xpath(&apos;span/small/text()&apos;).get(),</span><br><span class="line">                &apos;text&apos;: quote.css(&apos;span.text::text&apos;).get(),</span><br><span class="line">            &#125;</span><br><span class="line">        next_page = response.css(&apos;li.next a::attr(&quot;href&quot;)&apos;).get()</span><br><span class="line">        if next_page is not None:</span><br><span class="line">            yield response.follow(next_page, self.parse)</span><br></pre></td></tr></table></figure>
+<h4 id="启动爬虫程序"><a href="#启动爬虫程序" class="headerlink" title="启动爬虫程序"></a>启动爬虫程序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy runspider myspider.py -o myspider.json</span><br></pre></td></tr></table></figure>
+<h4 id="启动爬虫交互shell"><a href="#启动爬虫交互shell" class="headerlink" title="启动爬虫交互shell"></a>启动爬虫交互shell</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">scrapy shell &quot;http://news.baidu.com/&quot;</span><br><span class="line"></span><br><span class="line">#下载完后，url 的内容保存在 response 的变量中</span><br><span class="line">response.body</span><br><span class="line">response.headers</span><br><span class="line">response.headers[&apos;Server&apos;]</span><br><span class="line">response.xpath(&apos;//meta&apos;) 使用 xpath</span><br><span class="line">response.css() 使用 css 语法选取内容</span><br><span class="line">view(response) //结果就是调用浏览器，查看视图</span><br><span class="line">response.xpath //response.selector.xpath 的快捷方式</span><br><span class="line">response.css   //response.selector.css 的快捷方式</span><br><span class="line">selector.extract //把节点内容用 unicode 形式返回</span><br><span class="line">selector.re    //允许用户通过正则选择内容</span><br><span class="line">response.xpath( &quot;//table/tr/td/a&quot; ) #&quot;//table&quot; 表示不管 table 在哪个标签的下面，找到所有的 table标签</span><br><span class="line"></span><br><span class="line">res_href = response.xpath( &quot;//table/tr/td/a/@href&quot; )</span><br><span class="line">for i in res_href : </span><br><span class="line">	print( i.extract() )</span><br></pre></td></tr></table></figure>
+<h4 id="下载百度news"><a href="#下载百度news" class="headerlink" title="下载百度news"></a>下载百度news</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">import scrapy</span><br><span class="line">class baidu_news_spider(scrapy.Spider):</span><br><span class="line">    name = &apos;quotes&apos;</span><br><span class="line">    start_urls = [&apos;http://news.baidu.com/guoji&apos;,</span><br><span class="line">                  &apos;http://news.baidu.com/guonei&apos;,</span><br><span class="line">                  &apos;http://news.baidu.com/mil&apos;,</span><br><span class="line">                  &apos;http://news.baidu.com/finance&apos;,</span><br><span class="line">                  &apos;http://news.baidu.com/ent&apos;,</span><br><span class="line">                  &apos;http://news.baidu.com/sports&apos;,</span><br><span class="line">                  &apos;http://news.baidu.com/internet&apos;,</span><br><span class="line">                  &apos;http://news.baidu.com/tech&apos;,</span><br><span class="line">                  &apos;http://news.baidu.com/game&apos;,</span><br><span class="line">                  &apos;http://news.baidu.com/lady&apos;,</span><br><span class="line">                  &apos;http://news.baidu.com/auto&apos;,</span><br><span class="line">                  &apos;http://news.baidu.com/house&apos;]</span><br><span class="line">    def parse(self, response):</span><br><span class="line">        for body in response.xpath(&apos;//a[@mon]&apos;):</span><br><span class="line">            url=body.xpath(&apos;./@href&apos;).get()</span><br><span class="line">            </span><br><span class="line">            title=body.xpath(&apos;./text()&apos;).get()</span><br><span class="line">            if (&apos;http&apos; in url) and (title is not None):</span><br><span class="line">                if len(title)&gt;5:</span><br><span class="line">                    yield &#123;</span><br><span class="line">                        &apos;url&apos;: url,</span><br><span class="line">                        &apos;title&apos;: title&#125;</span><br><span class="line">##cmd /k scrapy runspider baidu_news_spider.py -o baidu_news.json</span><br></pre></td></tr></table></figure>
 
           
         
@@ -521,7 +519,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/d86f3640.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/610b28c7.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -540,7 +538,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/d86f3640.html" itemprop="url">paddlepaddle的基本概念2</a></h1>
+                <a class="post-title-link" href="/post/610b28c7.html" itemprop="url">Paddle生成数据集并进行图像分类</a></h1>
         
 
         <div class="post-meta">
@@ -552,7 +550,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-16T00:00:00+08:00">2020-07-16</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-19T00:00:00+08:00">2020-08-19</time>
             
 
             
@@ -591,9 +589,9 @@
       
         
           
-            <h4 id="组建网络"><a href="#组建网络" class="headerlink" title="组建网络"></a>组建网络</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义变量</span></span><br><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line">a = fluid.data(name=<span class="string">"a"</span>, shape=[<span class="literal">None</span>, <span class="number">1</span>], dtype=<span class="string">'int32'</span>)</span><br><span class="line">b = fluid.data(name=<span class="string">"b"</span>, shape=[<span class="literal">None</span>, <span class="number">1</span>], dtype=<span class="string">'int32'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 组建网络（此处网络仅由一个操作构成，即elementwise_add）</span></span><br><span class="line">result = fluid.layers.elementwise_add(a,b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 准备运行网络</span></span><br><span class="line">cpu = fluid.CPUPlace() <span class="comment"># 定义运算设备，这里选择在CPU下训练</span></span><br><span class="line">exe = fluid.Executor(cpu) <span class="comment"># 创建执行器</span></span><br><span class="line">exe.run(fluid.default_startup_program()) <span class="comment"># 网络参数初始化</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取输入数据</span></span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line">data_1 = <span class="number">2020</span></span><br><span class="line">data_2 = <span class="number">715</span></span><br><span class="line">x = numpy.array([[data_1]])</span><br><span class="line">y = numpy.array([[data_2]])</span><br><span class="line"><span class="comment"># print(x.shape,y.shape)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行网络</span></span><br><span class="line">outs = exe.run(</span><br><span class="line">    feed=&#123;<span class="string">'a'</span>:x, <span class="string">'b'</span>:y&#125;, <span class="comment"># 将输入数据x, y分别赋值给变量a，b</span></span><br><span class="line">    fetch_list=[a,b,result] <span class="comment"># 通过fetch_list参数指定需要获取的变量结果</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出计算结果</span></span><br><span class="line">print(<span class="string">"%d+%d=%d"</span> % (data_1,data_2,outs[<span class="number">2</span>]))</span><br><span class="line"><span class="comment"># print(outs)</span></span><br></pre></td></tr></table></figure>
-<h4 id="组建更加复杂的网络"><a href="#组建更加复杂的网络" class="headerlink" title="组建更加复杂的网络"></a>组建更加复杂的网络</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 该代码要求安装飞桨1.7+版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 该示例代码展示整数循环+1，循环10次，输出计数结果</span></span><br><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line"><span class="keyword">import</span> paddle.fluid.layers <span class="keyword">as</span> layers</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义cond方法，作为while_loop的判断条件</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cond</span><span class="params">(i, ten)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> i &lt; ten</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义body方法，作为while_loop的执行体，只要cond返回值为True，while_loop就会一直调用该方法进行计算</span></span><br><span class="line"><span class="comment"># 由于在使用while_loop OP时，cond和body的参数都是由while_loop的loop_vars参数指定的，所以cond和body必须有相同数量的参数列表，因此body中虽然只需要i这个参数，但是仍然要保持参数列表个数为2，此处添加了一个dummy参数来进行"占位"</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">body</span><span class="params">(i, dummy)</span>:</span></span><br><span class="line">    <span class="comment"># 计算过程是对输入参数i进行自增操作，即 i = i + 1</span></span><br><span class="line">    i = i + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> i, dummy</span><br><span class="line"></span><br><span class="line">i = layers.fill_constant(shape=[<span class="number">1</span>], dtype=<span class="string">'int64'</span>, value=<span class="number">0</span>) <span class="comment"># 循环计数器</span></span><br><span class="line">ten = layers.fill_constant(shape=[<span class="number">1</span>], dtype=<span class="string">'int64'</span>, value=<span class="number">10</span>) <span class="comment"># 循环次数</span></span><br><span class="line">out, ten = layers.while_loop(cond=cond, body=body, loop_vars=[i, ten]) <span class="comment"># while_loop的返回值是一个tensor列表，其长度，结构，类型与loop_vars相同</span></span><br><span class="line"></span><br><span class="line">exe = fluid.Executor(fluid.CPUPlace())</span><br><span class="line">res = exe.run(fluid.default_main_program(), feed=&#123;&#125;, fetch_list=out)</span><br><span class="line">print(res) <span class="comment">#[array([10])]</span></span><br></pre></td></tr></table></figure>
-<h4 id="一个完整的网络示例"><a href="#一个完整的网络示例" class="headerlink" title="一个完整的网络示例"></a>一个完整的网络示例</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载库</span></span><br><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义输入数据</span></span><br><span class="line">train_data=numpy.array([[<span class="number">1.0</span>],[<span class="number">2.0</span>],[<span class="number">3.0</span>],[<span class="number">4.0</span>]]).astype(<span class="string">'float32'</span>)</span><br><span class="line">y_true = numpy.array([[<span class="number">2.0</span>],[<span class="number">4.0</span>],[<span class="number">6.0</span>],[<span class="number">8.0</span>]]).astype(<span class="string">'float32'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 组建网络</span></span><br><span class="line">x = fluid.data(name=<span class="string">"x"</span>,shape=[<span class="literal">None</span>, <span class="number">1</span>],dtype=<span class="string">'float32'</span>)</span><br><span class="line">y = fluid.data(name=<span class="string">"y"</span>,shape=[<span class="literal">None</span>, <span class="number">1</span>],dtype=<span class="string">'float32'</span>)</span><br><span class="line">y_predict = fluid.layers.fc(input=x,size=<span class="number">1</span>,act=<span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义损失函数</span></span><br><span class="line">cost = fluid.layers.square_error_cost(input=y_predict,label=y)</span><br><span class="line">avg_cost = fluid.layers.mean(cost)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 选择优化方法</span></span><br><span class="line">sgd_optimizer = fluid.optimizer.SGD(learning_rate=<span class="number">0.01</span>)</span><br><span class="line">sgd_optimizer.minimize(avg_cost)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 网络参数初始化</span></span><br><span class="line">cpu = fluid.CPUPlace()</span><br><span class="line">exe = fluid.Executor(cpu)</span><br><span class="line">exe.run(fluid.default_startup_program())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开始训练，迭代100次</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">    outs = exe.run(</span><br><span class="line">        feed=&#123;<span class="string">'x'</span>:train_data, <span class="string">'y'</span>:y_true&#125;,</span><br><span class="line">        fetch_list=[y_predict, avg_cost])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出训练结果</span></span><br><span class="line">print(outs)</span><br></pre></td></tr></table></figure>
+            <h3 id="images文件夹下按情绪分类的文件夹"><a href="#images文件夹下按情绪分类的文件夹" class="headerlink" title="images文件夹下按情绪分类的文件夹"></a>images文件夹下按情绪分类的文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Anger</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Disgust</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Fear</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Happy</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Neutral</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Sad</span><br><span class="line">2020/04/29  17:28    &lt;DIR&gt;          Surprise</span><br></pre></td></tr></table></figure>
+<h3 id="生成分类需要的索引文件"><a href="#生成分类需要的索引文件" class="headerlink" title="生成分类需要的索引文件"></a>生成分类需要的索引文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">from __future__ import absolute_import</span><br><span class="line">from __future__ import division</span><br><span class="line">from __future__ import print_function</span><br><span class="line">import codecs</span><br><span class="line">import os</span><br><span class="line">import random</span><br><span class="line">import shutil</span><br><span class="line">from PIL import Image</span><br><span class="line"></span><br><span class="line">train_ratio = 4.0 / 5</span><br><span class="line"></span><br><span class="line">all_file_dir = &apos;./images&apos;</span><br><span class="line">class_list = [c for c in os.listdir(all_file_dir) if os.path.isdir(os.path.join(all_file_dir, c)) and not c.endswith(&apos;Set&apos;) and not c.startswith(&apos;.&apos;)]</span><br><span class="line">class_list.sort()</span><br><span class="line">print(class_list)</span><br><span class="line">##train_image_dir = os.path.join(all_file_dir, &quot;trainImageSet&quot;)</span><br><span class="line">##if not os.path.exists(train_image_dir):</span><br><span class="line">##    os.makedirs(train_image_dir)</span><br><span class="line">##    </span><br><span class="line">##eval_image_dir = os.path.join(all_file_dir, &quot;evalImageSet&quot;)</span><br><span class="line">##if not os.path.exists(eval_image_dir):</span><br><span class="line">##    os.makedirs(eval_image_dir)</span><br><span class="line"></span><br><span class="line">train_file = codecs.open(os.path.join(all_file_dir, &quot;train_list.txt&quot;), &apos;w&apos;)</span><br><span class="line">eval_file = codecs.open(os.path.join(all_file_dir, &quot;val_list.txt&quot;), &apos;w&apos;)</span><br><span class="line"></span><br><span class="line">with codecs.open(os.path.join(all_file_dir, &quot;labels.txt&quot;), &quot;w&quot;) as label_list:</span><br><span class="line">    label_id = 0</span><br><span class="line">    for class_dir in class_list:</span><br><span class="line">        label_list.write(&quot;&#123;0&#125;\t&#123;1&#125;\n&quot;.format(label_id, class_dir))</span><br><span class="line">        image_path_pre = os.path.join(all_file_dir, class_dir)</span><br><span class="line">        for file in os.listdir(image_path_pre):</span><br><span class="line">            try:</span><br><span class="line">                img = Image.open(os.path.join(image_path_pre, file))</span><br><span class="line">                if random.uniform(0, 1) &lt;= train_ratio:</span><br><span class="line">##                    shutil.copyfile(os.path.join(image_path_pre, file), os.path.join(train_image_dir, file))</span><br><span class="line">                    train_file.write(&quot;&#123;0&#125;\t&#123;1&#125;\n&quot;.format(os.path.join(class_dir, file), label_id))</span><br><span class="line">                else:</span><br><span class="line">##                    shutil.copyfile(os.path.join(image_path_pre, file), os.path.join(eval_image_dir, file))</span><br><span class="line">                    eval_file.write(&quot;&#123;0&#125;\t&#123;1&#125;\n&quot;.format(os.path.join(class_dir, file), label_id))</span><br><span class="line">            except Exception as e:</span><br><span class="line">                pass</span><br><span class="line">                # 存在一些文件打不开，此处需要稍作清洗</span><br><span class="line">        label_id += 1</span><br><span class="line">            </span><br><span class="line">train_file.close()</span><br><span class="line">eval_file.close()</span><br></pre></td></tr></table></figure>
+<h3 id="开始训练并生成分类模型"><a href="#开始训练并生成分类模型" class="headerlink" title="开始训练并生成分类模型"></a>开始训练并生成分类模型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">!pip install paddlex</span><br><span class="line"># 环境变量配置，用于控制是否使用GPU</span><br><span class="line"># 说明文档：https://paddlex.readthedocs.io/zh_CN/develop/appendix/parameters.html#gpu</span><br><span class="line">import os</span><br><span class="line">os.environ[&apos;CUDA_VISIBLE_DEVICES&apos;] = &apos;0,1,2,3&apos;</span><br><span class="line"></span><br><span class="line">from paddlex.cls import transforms</span><br><span class="line">import paddlex as pdx</span><br><span class="line"></span><br><span class="line"># # 下载和解压蔬菜分类数据集</span><br><span class="line"># veg_dataset = &apos;https://bj.bcebos.com/paddlex/datasets/vegetables_cls.tar.gz&apos;</span><br><span class="line"># pdx.utils.download_and_decompress(veg_dataset, path=&apos;./&apos;)</span><br><span class="line"></span><br><span class="line"># 定义训练和验证时的transforms</span><br><span class="line"># API说明https://paddlex.readthedocs.io/zh_CN/develop/apis/transforms/cls_transforms.html</span><br><span class="line">train_transforms = transforms.Compose([</span><br><span class="line">    transforms.RandomCrop(crop_size=224), transforms.RandomHorizontalFlip(),</span><br><span class="line">    transforms.Normalize()</span><br><span class="line">])</span><br><span class="line">eval_transforms = transforms.Compose([</span><br><span class="line">    transforms.ResizeByShort(short_size=256),</span><br><span class="line">    transforms.CenterCrop(crop_size=224), transforms.Normalize()</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"># 定义训练和验证所用的数据集</span><br><span class="line"># API说明：https://paddlex.readthedocs.io/zh_CN/develop/apis/datasets.html#paddlex-datasets-imagenet</span><br><span class="line">train_dataset = pdx.datasets.ImageNet(</span><br><span class="line">    data_dir=&apos;./data/data53319/images&apos;,</span><br><span class="line">    file_list=&apos;./data/data53319/images/train_list.txt&apos;,</span><br><span class="line">    label_list=&apos;./data/data53319/images/labels.txt&apos;,</span><br><span class="line">    transforms=train_transforms,</span><br><span class="line">    shuffle=True)</span><br><span class="line">eval_dataset = pdx.datasets.ImageNet(</span><br><span class="line">    data_dir=&apos;./data/data53319/images&apos;,</span><br><span class="line">    file_list=&apos;./data/data53319/images/val_list.txt&apos;,</span><br><span class="line">    label_list=&apos;./data/data53319/images/labels.txt&apos;,</span><br><span class="line">    transforms=eval_transforms)</span><br><span class="line"></span><br><span class="line"># 初始化模型，并进行训练</span><br><span class="line"># 可使用VisualDL查看训练指标，参考https://paddlex.readthedocs.io/zh_CN/develop/train/visualdl.html</span><br><span class="line">model = pdx.cls.ResNet50_vd_ssld(num_classes=len(train_dataset.labels))</span><br><span class="line"></span><br><span class="line"># API说明：https://paddlex.readthedocs.io/zh_CN/develop/apis/models/classification.html#train</span><br><span class="line"># 各参数介绍与调整说明：https://paddlex.readthedocs.io/zh_CN/develop/appendix/parameters.html</span><br><span class="line">model.train(</span><br><span class="line">    num_epochs=60,</span><br><span class="line">    train_dataset=train_dataset,</span><br><span class="line">    train_batch_size=32,</span><br><span class="line">    eval_dataset=eval_dataset,</span><br><span class="line">    lr_decay_epochs=[24, 36, 48],</span><br><span class="line">    learning_rate=0.025,</span><br><span class="line">    save_dir=&apos;output/resnet50_vd_ssld&apos;,</span><br><span class="line">    use_vdl=True)</span><br></pre></td></tr></table></figure>
 
           
         
@@ -644,7 +642,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/214d9aa7.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/5ba707b1.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -663,7 +661,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/214d9aa7.html" itemprop="url">paddlepaddle静态图和动态图</a></h1>
+                <a class="post-title-link" href="/post/5ba707b1.html" itemprop="url">python使用dict配置文件</a></h1>
         
 
         <div class="post-meta">
@@ -675,7 +673,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-15T00:00:00+08:00">2020-07-15</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-19T00:00:00+08:00">2020-08-19</time>
             
 
             
@@ -714,8 +712,131 @@
       
         
           
-            <h3 id="开启命令式编程模式-动态图"><a href="#开启命令式编程模式-动态图" class="headerlink" title="开启命令式编程模式-动态图"></a>开启命令式编程模式-动态图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line"><span class="keyword">from</span> paddle.fluid.dygraph.base <span class="keyword">import</span> to_variable</span><br><span class="line"></span><br><span class="line">main_program = fluid.Program()</span><br><span class="line">startup_program = fluid.Program()</span><br><span class="line"><span class="keyword">with</span> fluid.program_guard(main_program=main_program, startup_program=startup_program):</span><br><span class="line">    <span class="comment"># 利用np.ones函数构造出[2*2]的二维数组，值为1</span></span><br><span class="line">    data = np.ones([<span class="number">2</span>, <span class="number">2</span>], np.float32)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 静态图模式下，使用layers.data构建占位符用于数据输入</span></span><br><span class="line">    x = fluid.layers.data(name=<span class="string">'x'</span>, shape=[<span class="number">2</span>], dtype=<span class="string">'float32'</span>)</span><br><span class="line">    print(<span class="string">'In static mode, after calling layers.data, x = '</span>, x)</span><br><span class="line">    <span class="comment"># 静态图模式下，对Variable类型的数据执行x=x+10操作</span></span><br><span class="line">    x += <span class="number">10</span></span><br><span class="line">    <span class="comment"># 在静态图模式下，需要用户显示指定运行设备</span></span><br><span class="line">    <span class="comment"># 此处调用fluid.CPUPlace() API来指定在CPU设备上运行程序</span></span><br><span class="line">    place = fluid.CPUPlace()</span><br><span class="line">    <span class="comment"># 创建“执行器”，并用place参数指明需要在何种设备上运行</span></span><br><span class="line">    exe = fluid.Executor(place=place)</span><br><span class="line">    <span class="comment"># 初始化操作，包括为所有变量分配空间等，比如上面的‘x’，在下面这行代码执行后才会被分配实际的内存空间</span></span><br><span class="line">    exe.run(fluid.default_startup_program())</span><br><span class="line">    <span class="comment"># 使用执行器“执行”已经记录的所有操作，在本例中即执行layers.data、x += 10操作</span></span><br><span class="line">    <span class="comment"># 在调用执行器的run接口时，可以通过fetch_list参数来指定要获取哪些变量的计算结果，这里我们要获取‘x += 10’执行完成后‘x’的结果；</span></span><br><span class="line">    <span class="comment"># 同时也可以通过feed参数来传入数据，这里我们将data数据传递给‘fluid.layers.data’指定的‘x’。</span></span><br><span class="line">    data_after_run = exe.run(fetch_list=[x], feed=&#123;<span class="string">'x'</span>: data&#125;)</span><br><span class="line">    <span class="comment"># 此时我们打印执行器返回的结果，可以看到“执行”后，Tensor中的数据已经被赋值并进行了运算，每个元素的值都是11</span></span><br><span class="line">    print(<span class="string">'In static mode, data after run:'</span>, data_after_run)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开启动态图模式</span></span><br><span class="line"><span class="keyword">with</span> fluid.dygraph.guard():</span><br><span class="line">    <span class="comment"># 动态图模式下，将numpy的ndarray类型的数据转换为Variable类型</span></span><br><span class="line">    x = fluid.dygraph.to_variable(data)</span><br><span class="line">    print(<span class="string">'In DyGraph mode, after calling dygraph.to_variable, x = '</span>, x)</span><br><span class="line">    <span class="comment"># 动态图模式下，对Variable类型的数据执行x=x+10操作</span></span><br><span class="line">    x += <span class="number">10</span></span><br><span class="line">    <span class="comment"># 动态图模式下，调用Variable的numpy函数将Variable类型的数据转换为numpy的ndarray类型的数据</span></span><br><span class="line">    print(<span class="string">'In DyGraph mode, data after run:'</span>, x.numpy())</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+            <h2 id="python使用dict配置文件"><a href="#python使用dict配置文件" class="headerlink" title="python使用dict配置文件"></a>python使用dict配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from easydict import EasyDict</span><br><span class="line">d = EasyDict(&#123;&apos;foo&apos;:&apos;i am foo&apos;, &apos;bar&apos;:&#123;&apos;x&apos;:&apos;x value&apos;, &apos;y&apos;:1.001&#125;&#125;)</span><br><span class="line">print(d.foo)</span><br><span class="line"></span><br><span class="line">print(d.bar.x)</span><br><span class="line"></span><br><span class="line">d.name=&apos;me&apos;</span><br><span class="line">d.list=[1,2,3]</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
+<h2 id="在深度学习中往往利用easydict建立一个全局的变量"><a href="#在深度学习中往往利用easydict建立一个全局的变量" class="headerlink" title="在深度学习中往往利用easydict建立一个全局的变量"></a>在深度学习中往往利用easydict建立一个全局的变量</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> easydict <span class="keyword">import</span> EasyDict <span class="keyword">as</span> edict</span><br><span class="line">config = edict()</span><br><span class="line">config.TRAIN = edict() <span class="comment"># 创建一个字典，key是Train,值是&#123;&#125;</span></span><br><span class="line">config.Test = edict()</span><br><span class="line"> <span class="comment"># config.TRAIN = &#123;&#125; # 这个和上面的那句话是等价的，相当于创建一个字典的key</span></span><br><span class="line">config.TRAIN.batch_size = <span class="number">25</span>  <span class="comment"># 然后在里面写值,表示Train里面的value也是一个字典</span></span><br><span class="line">config.TRAIN.early_stopping_num = <span class="number">10</span></span><br><span class="line">config.TRAIN.lr = <span class="number">0.0001</span></span><br><span class="line">print(config)</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/487b15b0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/487b15b0.html" itemprop="url">python之音频格式转换</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-18T08:00:00+08:00">2020-08-18</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="下载ffmpeg"><a href="#下载ffmpeg" class="headerlink" title="下载ffmpeg"></a>下载ffmpeg</h4><p><a href="http://ffmpeg.zeranoe.com/builds/" target="_blank" rel="noopener">http://ffmpeg.zeranoe.com/builds/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 output.avi</span><br></pre></td></tr></table></figure>
+<h4 id="将当前文件夹下的m4a-文件转换为mp3文件"><a href="#将当前文件夹下的m4a-文件转换为mp3文件" class="headerlink" title="将当前文件夹下的m4a 文件转换为mp3文件"></a>将当前文件夹下的m4a 文件转换为mp3文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import subprocess</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    for fn in os.listdir(&apos;.&apos;):</span><br><span class="line">        if fn.endswith(&apos;.m4a&apos;):</span><br><span class="line">            fn_target=fn.replace(&apos;.m4a&apos;,&apos;&apos;)+&apos;.mp3&apos;</span><br><span class="line">            print(&apos;bin/ffmpeg -i %s %s&apos; % (fn,fn_target))</span><br><span class="line">            error = subprocess.call([&apos;bin/ffmpeg&apos;,&apos;-i&apos;,fn,fn_target])</span><br><span class="line">            print(error)</span><br></pre></td></tr></table></figure>
+<p>### </p>
 
           
         
@@ -766,7 +887,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/39be18f0.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/6ec20a5d.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -785,7 +906,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/39be18f0.html" itemprop="url">PaddleX模型库</a></h1>
+                <a class="post-title-link" href="/post/6ec20a5d.html" itemprop="url">paddlex图像分类预测并保存结果</a></h1>
         
 
         <div class="post-meta">
@@ -797,7 +918,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-11T00:00:00+08:00">2020-07-11</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-25T00:00:00+08:00">2020-07-25</time>
             
 
             
@@ -836,653 +957,7 @@
       
         
           
-            <h1 id="PaddleX模型库"><a href="#PaddleX模型库" class="headerlink" title="PaddleX模型库"></a>PaddleX模型库</h1><h2 id="图像分类模型"><a href="#图像分类模型" class="headerlink" title="图像分类模型"></a>图像分类模型</h2><blockquote>
-<p>表中模型相关指标均为在ImageNet数据集上使用PaddlePaddle Python预测接口测试得到（测试GPU型号为Nvidia Tesla P40），预测速度为每张图片预测用时（不包括预处理和后处理），表中符号<code>-</code>表示相关指标暂未测试。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>模型</th>
-<th>模型大小</th>
-<th>预测速度（毫秒）</th>
-<th>Top1准确率（%）</th>
-<th>Top5准确率（%）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/ResNet18_pretrained.tar" target="_blank" rel="noopener">ResNet18</a></td>
-<td>46.2MB</td>
-<td>3.72882</td>
-<td>71.0</td>
-<td>89.9</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/ResNet34_pretrained.tar" target="_blank" rel="noopener">ResNet34</a></td>
-<td>87.9MB</td>
-<td>5.50876</td>
-<td>74.6</td>
-<td>92.1</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/ResNet50_pretrained.tar" target="_blank" rel="noopener">ResNet50</a></td>
-<td>103.4MB</td>
-<td>7.76659</td>
-<td>76.5</td>
-<td>93.0</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/ResNet101_pretrained.tar" target="_blank" rel="noopener">ResNet101</a></td>
-<td>180.4MB</td>
-<td>13.80876</td>
-<td>77.6</td>
-<td>93.6</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/ResNet50_vd_pretrained.tar" target="_blank" rel="noopener">ResNet50_vd</a></td>
-<td>103.5MB</td>
-<td>8.20476</td>
-<td>79.1</td>
-<td>94.4</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/ResNet101_vd_pretrained.tar" target="_blank" rel="noopener">ResNet101_vd</a></td>
-<td>180.5MB</td>
-<td>14.24643</td>
-<td>80.2</td>
-<td>95.0</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/ResNet50_vd_ssld_pretrained.tar" target="_blank" rel="noopener">ResNet50_vd_ssld</a></td>
-<td>103.5MB</td>
-<td>7.79264</td>
-<td>82.4</td>
-<td>96.1</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/ResNet101_vd_ssld_pretrained.tar" target="_blank" rel="noopener">ResNet101_vd_ssld</a></td>
-<td>180.5MB</td>
-<td>13.34580</td>
-<td>83.7</td>
-<td>96.7</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/DarkNet53_ImageNet1k_pretrained.tar" target="_blank" rel="noopener">DarkNet53</a></td>
-<td>167.4MB</td>
-<td>8.82047</td>
-<td>78.0</td>
-<td>94.1</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/MobileNetV1_pretrained.tar" target="_blank" rel="noopener">MobileNetV1</a></td>
-<td>17.4MB</td>
-<td>3.42838</td>
-<td>71.0</td>
-<td>89.7</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/MobileNetV2_pretrained.tar" target="_blank" rel="noopener">MobileNetV2</a></td>
-<td>15.0MB</td>
-<td>5.92667</td>
-<td>72.2</td>
-<td>90.7</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/MobileNetV3_large_x1_0_pretrained.tar" target="_blank" rel="noopener">MobileNetV3_large</a></td>
-<td>22.8MB</td>
-<td>8.31428</td>
-<td>75.3</td>
-<td>93.2</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/MobileNetV3_small_x1_0_pretrained.tar" target="_blank" rel="noopener">MobileNetV3_small</a></td>
-<td>12.5MB</td>
-<td>7.30689</td>
-<td>68.2</td>
-<td>88.1</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/MobileNetV3_large_x1_0_ssld_pretrained.tar" target="_blank" rel="noopener">MobileNetV3_large_ssld</a></td>
-<td>22.8MB</td>
-<td>8.06651</td>
-<td>79.0</td>
-<td>94.5</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/MobileNetV3_small_x1_0_ssld_pretrained.tar" target="_blank" rel="noopener">MobileNetV3_small_ssld</a></td>
-<td>12.5MB</td>
-<td>7.08837</td>
-<td>71.3</td>
-<td>90.1</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/Xception41_deeplab_pretrained.tar" target="_blank" rel="noopener">Xception41</a></td>
-<td>109.2MB</td>
-<td>8.15611</td>
-<td>79.6</td>
-<td>94.4</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/Xception65_deeplab_pretrained.tar" target="_blank" rel="noopener">Xception65</a></td>
-<td>161.6MB</td>
-<td>13.87017</td>
-<td>80.3</td>
-<td>94.5</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/DenseNet121_pretrained.tar" target="_blank" rel="noopener">DenseNet121</a></td>
-<td>33.1MB</td>
-<td>17.09874</td>
-<td>75.7</td>
-<td>92.6</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/DenseNet161_pretrained.tar" target="_blank" rel="noopener">DenseNet161</a></td>
-<td>118.0MB</td>
-<td>22.79690</td>
-<td>78.6</td>
-<td>94.1</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/DenseNet201_pretrained.tar" target="_blank" rel="noopener">DenseNet201</a></td>
-<td>84.1MB</td>
-<td>25.26089</td>
-<td>77.6</td>
-<td>93.7</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/ShuffleNetV2_pretrained.tar" target="_blank" rel="noopener">ShuffleNetV2</a></td>
-<td>10.2MB</td>
-<td>15.40138</td>
-<td>68.8</td>
-<td>88.5</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/HRNet_W18_C_pretrained.tar" target="_blank" rel="noopener">HRNet_W18</a></td>
-<td>21.29MB</td>
-<td>45.25514</td>
-<td>76.9</td>
-<td>93.4</td>
-</tr>
-<tr>
-<td><a href="https://paddle-imagenet-models-name.bj.bcebos.com/AlexNet_pretrained.tar" target="_blank" rel="noopener">AlexNet</a></td>
-<td>244.4MB</td>
-<td>-</td>
-<td>56.7</td>
-<td>79.2</td>
-</tr>
-</tbody>
-</table>
-<h2 id="目标检测模型"><a href="#目标检测模型" class="headerlink" title="目标检测模型"></a>目标检测模型</h2><blockquote>
-<p>表中模型相关指标均为在MSCOCO数据集上使用PaddlePaddle Python预测接口测试得到（测试GPU型号为Nvidia Tesla V100测试得到），表中符号<code>-</code>表示相关指标暂未测试。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>模型</th>
-<th>模型大小</th>
-<th>预测时间(毫秒)</th>
-<th>BoxAP（%）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://bj.bcebos.com/paddlex/pretrained_weights/faster_rcnn_r18_fpn_1x.tar" target="_blank" rel="noopener">FasterRCNN-ResNet18-FPN</a></td>
-<td>173.2M</td>
-<td>-</td>
-<td>32.6</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/faster_rcnn_r50_1x.tar" target="_blank" rel="noopener">FasterRCNN-ResNet50</a></td>
-<td>136.0MB</td>
-<td>197.715</td>
-<td>35.2</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/faster_rcnn_r50_vd_1x.tar" target="_blank" rel="noopener">FasterRCNN-ResNet50_vd</a></td>
-<td>136.1MB</td>
-<td>475.700</td>
-<td>36.4</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/faster_rcnn_r101_1x.tar" target="_blank" rel="noopener">FasterRCNN-ResNet101</a></td>
-<td>212.5MB</td>
-<td>582.911</td>
-<td>38.3</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/faster_rcnn_r50_fpn_1x.tar" target="_blank" rel="noopener">FasterRCNN-ResNet50-FPN</a></td>
-<td>167.7MB</td>
-<td>83.189</td>
-<td>37.2</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/faster_rcnn_r50_vd_fpn_2x.tar" target="_blank" rel="noopener">FasterRCNN-ResNet50_vd-FPN</a></td>
-<td>167.8MB</td>
-<td>128.277</td>
-<td>38.9</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/faster_rcnn_r101_fpn_1x.tar" target="_blank" rel="noopener">FasterRCNN-ResNet101-FPN</a></td>
-<td>244.2MB</td>
-<td>119.788</td>
-<td>38.7</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/faster_rcnn_r101_vd_fpn_2x.tar" target="_blank" rel="noopener">FasterRCNN-ResNet101_vd-FPN</a></td>
-<td>244.3MB</td>
-<td>156.097</td>
-<td>40.5</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/faster_rcnn_hrnetv2p_w18_1x.tar" target="_blank" rel="noopener">FasterRCNN-HRNet_W18-FPN</a></td>
-<td>115.5MB</td>
-<td>81.592</td>
-<td>36</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/yolov3_darknet.tar" target="_blank" rel="noopener">YOLOv3-DarkNet53</a></td>
-<td>249.2MB</td>
-<td>42.672</td>
-<td>38.9</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/yolov3_mobilenet_v1.tar" target="_blank" rel="noopener">YOLOv3-MobileNetV1</a></td>
-<td>99.2MB</td>
-<td>15.442</td>
-<td>29.3</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/yolov3_mobilenet_v3.pdparams" target="_blank" rel="noopener">YOLOv3-MobileNetV3_large</a></td>
-<td>100.7MB</td>
-<td>143.322</td>
-<td>31.6</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/yolov3_r34.tar" target="_blank" rel="noopener">YOLOv3-ResNet34</a></td>
-<td>170.3MB</td>
-<td>23.185</td>
-<td>36.2</td>
-</tr>
-</tbody>
-</table>
-<h2 id="实例分割模型"><a href="#实例分割模型" class="headerlink" title="实例分割模型"></a>实例分割模型</h2><blockquote>
-<p>预测时间是在一张Nvidia Tesla V100的GPU上通过’evaluate()’接口测试MSCOCO验证集得到，包括数据加载、网络前向执行和后处理, batch size是1，表中符号<code>-</code>表示相关指标暂未测试。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>模型</th>
-<th>模型大小</th>
-<th>预测时间(毫秒)</th>
-<th>BoxAP (%)</th>
-<th>MaskAP (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://bj.bcebos.com/paddlex/pretrained_weights/mask_rcnn_r18_fpn_1x.tar" target="_blank" rel="noopener">MaskRCNN-ResNet18-FPN</a></td>
-<td>189.1MB</td>
-<td>-</td>
-<td>33.6</td>
-<td>30.5</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/mask_rcnn_r50_2x.tar" target="_blank" rel="noopener">MaskRCNN-ResNet50</a></td>
-<td>143.9MB</td>
-<td>87</td>
-<td>38.2</td>
-<td>33.4</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/mask_rcnn_r50_fpn_2x.tar" target="_blank" rel="noopener">MaskRCNN-ResNet50-FPN</a></td>
-<td>177.7MB</td>
-<td>63.9</td>
-<td>38.7</td>
-<td>34.7</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/mask_rcnn_r50_vd_fpn_2x.tar" target="_blank" rel="noopener">MaskRCNN-ResNet50_vd-FPN</a></td>
-<td>177.7MB</td>
-<td>63.1</td>
-<td>39.8</td>
-<td>35.4</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/mask_rcnn_r101_fpn_1x.tar" target="_blank" rel="noopener">MaskRCNN-ResNet101-FPN</a></td>
-<td>253.6MB</td>
-<td>77</td>
-<td>39.5</td>
-<td>35.2</td>
-</tr>
-<tr>
-<td><a href="https://paddlemodels.bj.bcebos.com/object_detection/mask_rcnn_r101_vd_fpn_1x.tar" target="_blank" rel="noopener">MaskRCNN-ResNet101_vd-FPN</a></td>
-<td>253.7MB</td>
-<td>76.4</td>
-<td>41.4</td>
-<td>36.8</td>
-</tr>
-<tr>
-<td><a href="https://bj.bcebos.com/paddlex/pretrained_weights/mask_rcnn_hrnetv2p_w18_2x.tar" target="_blank" rel="noopener">MaskRCNN-HRNet_W18-FPN</a></td>
-<td>120.7MB</td>
-<td>-</td>
-<td>38.7</td>
-<td>34.7</td>
-</tr>
-</tbody>
-</table>
-<h2 id="语义分割模型"><a href="#语义分割模型" class="headerlink" title="语义分割模型"></a>语义分割模型</h2><blockquote>
-<p>以下指标均在MSCOCO验证集上测试得到，表中符号<code>-</code>表示相关指标暂未测试。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>模型</th>
-<th>模型大小</th>
-<th>预测时间(毫秒)</th>
-<th>mIoU（%）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://bj.bcebos.com/v1/paddleseg/deeplab_mobilenet_x1_0_coco.tgz" target="_blank" rel="noopener">DeepLabv3_MobileNetV2_x1.0</a></td>
-<td>14.7MB</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td><a href="https://paddleseg.bj.bcebos.com/models/xception65_coco.tgz" target="_blank" rel="noopener">DeepLabv3_Xception65</a></td>
-<td>329.3MB</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td><a href="https://paddleseg.bj.bcebos.com/models/unet_coco_v3.tgz" target="_blank" rel="noopener">UNet</a></td>
-<td>107.3MB</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>以下指标均在Cityscapes验证集上测试得到，表中符号<code>-</code>表示相关指标暂未测试。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>模型</th>
-<th>模型大小</th>
-<th>预测时间(毫秒)</th>
-<th>mIoU（%）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://paddleseg.bj.bcebos.com/models/mobilenet_cityscapes.tgz" target="_blank" rel="noopener">DeepLabv3_MobileNetv2_x1.0</a></td>
-<td>14.7MB</td>
-<td>-</td>
-<td>69.8</td>
-</tr>
-<tr>
-<td><a href="https://paddleseg.bj.bcebos.com/models/xception65_bn_cityscapes.tgz" target="_blank" rel="noopener">DeepLabv3_Xception65</a></td>
-<td>329.3MB</td>
-<td>-</td>
-<td>79.3</td>
-</tr>
-<tr>
-<td><a href="https://paddleseg.bj.bcebos.com/models/hrnet_w18_bn_cityscapes.tgz" target="_blank" rel="noopener">HRNet_W18</a></td>
-<td>77.3MB</td>
-<td></td>
-<td>79.36</td>
-</tr>
-<tr>
-<td><a href="https://paddleseg.bj.bcebos.com/models/fast_scnn_cityscape.tar" target="_blank" rel="noopener">Fast-SCNN</a></td>
-<td>9.8MB</td>
-<td></td>
-<td>69.64</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/45fe54fa.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/45fe54fa.html" itemprop="url">PaddleX开始使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-11T00:00:00+08:00">2020-07-11</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="PaddleX开始使用"><a href="#PaddleX开始使用" class="headerlink" title="PaddleX开始使用"></a>PaddleX开始使用</h1><p>本文档在一个小数据集上展示了如何通过PaddleX进行训练。本示例同步在AIStudio上，可直接<a href="https://aistudio.baidu.com/aistudio/projectdetail/450220" target="_blank" rel="noopener">在线体验模型训练</a>。</p>
-<p>PaddleX中的所有模型训练跟随以下3个步骤，即可快速完成训练代码开发！</p>
-<table>
-<thead>
-<tr>
-<th>步骤</th>
-<th></th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>第1步</td>
-<td><a href="https://paddlex.readthedocs.io/zh_CN/develop/quick_start.html#定义训练验证图像处理流程transforms" target="_blank" rel="noopener">定义transforms</a></td>
-<td>用于定义模型训练、验证、预测过程中， 输入图像的预处理和数据增强操作</td>
-</tr>
-<tr>
-<td>第2步</td>
-<td><a href="https://paddlex.readthedocs.io/zh_CN/develop/quick_start.html#定义dataset加载图像分类数据集" target="_blank" rel="noopener">定义datasets</a></td>
-<td>用于定义模型要加载的训练、验证数据集</td>
-</tr>
-<tr>
-<td>第3步</td>
-<td><a href="https://paddlex.readthedocs.io/zh_CN/develop/quick_start.html#使用MoibleNetV3_small_ssld模型开始训练" target="_blank" rel="noopener">定义模型开始训练</a></td>
-<td>选择需要的模型，进行训练</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><strong>注意</strong>：不同模型的transforms、datasets和训练参数都有较大差异，更多模型训练，可直接根据文档教程获取更多模型的训练代码。<a href="https://paddlex.readthedocs.io/zh_CN/develop/train/index.html" target="_blank" rel="noopener">模型训练教程</a></p>
-</blockquote>
-<p>PaddleX的其它用法</p>
-<ul>
-<li><a href="https://paddlex.readthedocs.io/zh_CN/develop/quick_start.html#训练过程使用VisualDL查看训练指标变化" target="_blank" rel="noopener">使用VisualDL查看训练过程中的指标变化</a></li>
-<li><p><a href="https://paddlex.readthedocs.io/zh_CN/develop/quick_start.html#加载训练保存的模型预测" target="_blank" rel="noopener">加载训练保存的模型进行预测</a></p>
-<p><strong>1. 安装PaddleX</strong></p>
-</li>
-</ul>
-<blockquote>
-<p>安装相关过程和问题可以参考PaddleX的<a href="https://paddlex.readthedocs.io/zh_CN/develop/install.html" target="_blank" rel="noopener">安装文档</a>。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install paddlex -i https://mirror.baidu.com/pypi/simple</span><br></pre></td></tr></table></figure>
-<p> <strong>2. 准备蔬菜分类数据集</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://bj.bcebos.com/paddlex/datasets/vegetables_cls.tar.gz</span><br><span class="line">tar xzvf vegetables_cls.tar.gz</span><br></pre></td></tr></table></figure>
-<ul>
-<li>常见标注工具</li>
-</ul>
-<p>图像分类无需标注工具，用户只需以txt文件记录每张图片的类别标签即可。对于目标检测、实例分割和语义分割，PaddleX已经与主流的标注工具进行了适配，用户可根据自己的需求，选择以下标注工具进行数据标注。</p>
-<table>
-<thead>
-<tr>
-<th>标注工具</th>
-<th>图像分类</th>
-<th>目标检测</th>
-<th>实例分割</th>
-<th>语义分割</th>
-<th style="text-align:center">安装</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Labelme</td>
-<td>-</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td style="text-align:center">pip install labelme （本地数据标注）</td>
-</tr>
-<tr>
-<td>精灵标注</td>
-<td>√</td>
-<td>√*</td>
-<td>√</td>
-<td>√</td>
-<td style="text-align:center"><a href="http://www.jinglingbiaozhu.com/" target="_blank" rel="noopener">官网下载</a> （本地数据标注）</td>
-</tr>
-<tr>
-<td>EasyData</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td style="text-align:center"><a href="https://ai.baidu.com/easydata/" target="_blank" rel="noopener">Web页面标注</a> （需上传数据进行标注)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>3. 定义训练/验证图像处理流程transforms</strong></p>
-<p>因为训练时加入了数据增强操作，因此在训练和验证过程中，模型的数据处理流程需要分别进行定义。如下所示，代码在<code>train_transforms</code>中加入了<a href="https://paddlex.readthedocs.io/zh_CN/develop/apis/transforms/cls_transforms.html#randomcrop" target="_blank" rel="noopener">RandomCrop</a>和<a href="https://paddlex.readthedocs.io/zh_CN/develop/apis/transforms/cls_transforms.html#randomhorizontalflip" target="_blank" rel="noopener">RandomHorizontalFlip</a>两种数据增强方式, 更多方法可以参考<a href="https://paddlex.readthedocs.io/zh_CN/develop/apis/transforms/augment.html" target="_blank" rel="noopener">数据增强文档</a>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from paddlex.cls import transforms</span><br><span class="line">train_transforms = transforms.Compose([</span><br><span class="line">    transforms.RandomCrop(crop_size=224),</span><br><span class="line">    transforms.RandomHorizontalFlip(),</span><br><span class="line">    transforms.Normalize()</span><br><span class="line">])</span><br><span class="line">eval_transforms = transforms.Compose([</span><br><span class="line">    transforms.ResizeByShort(short_size=256),</span><br><span class="line">    transforms.CenterCrop(crop_size=224),</span><br><span class="line">    transforms.Normalize()</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
-<p> <strong>4. 定义<code>dataset</code>加载图像分类数据集</strong></p>
-<p>定义数据集，<code>pdx.datasets.ImageNet</code>表示读取ImageNet格式的分类数据集</p>
-<ul>
-<li><a href="https://paddlex.readthedocs.io/zh_CN/develop/apis/datasets.html" target="_blank" rel="noopener">paddlex.datasets.ImageNet接口说明</a></li>
-<li><a href="https://paddlex.readthedocs.io/zh_CN/develop/data/format/classification.html" target="_blank" rel="noopener">ImageNet数据格式说明</a></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">train_dataset = pdx.datasets.ImageNet(</span><br><span class="line">    data_dir=&apos;vegetables_cls&apos;,</span><br><span class="line">    file_list=&apos;vegetables_cls/train_list.txt&apos;,</span><br><span class="line">    label_list=&apos;vegetables_cls/labels.txt&apos;,</span><br><span class="line">    transforms=train_transforms,</span><br><span class="line">    shuffle=True)</span><br><span class="line">eval_dataset = pdx.datasets.ImageNet(</span><br><span class="line">    data_dir=&apos;vegetables_cls&apos;,</span><br><span class="line">    file_list=&apos;vegetables_cls/val_list.txt&apos;,</span><br><span class="line">    label_list=&apos;vegetables_cls/labels.txt&apos;,</span><br><span class="line">    transforms=eval_transforms)</span><br></pre></td></tr></table></figure>
-<p> <strong>5. 使用ResNet50_vd_ssld模型开始训练</strong></p>
-<p>PaddleX内置了20多种分类模型，查阅<a href="https://paddlex.readthedocs.io/zh_CN/develop/appendix/model_zoo.html" target="_blank" rel="noopener">PaddleX模型库</a>了解更多分类模型。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">num_classes = len(train_dataset.labels)</span><br><span class="line">model = pdx.cls.ResNet50_vd_ssld(num_classes=num_classes)</span><br><span class="line"></span><br><span class="line">model.train(num_epochs=20,</span><br><span class="line">            train_dataset=train_dataset,</span><br><span class="line">            train_batch_size=32,</span><br><span class="line">            eval_dataset=eval_dataset,</span><br><span class="line">            lr_decay_epochs=[4, 6, 8],</span><br><span class="line">            save_dir=&apos;output/ResNet50_vd_ssld&apos;,</span><br><span class="line">            use_vdl=True)</span><br></pre></td></tr></table></figure>
-<p> <strong>6. 训练过程使用VisualDL查看训练指标变化</strong></p>
-<p>训练过程中，模型在训练集和验证集上的指标均会以标准输出流形式输出到命令终端。当用户设定<code>use_vdl=True</code>时，也会使用VisualDL格式将指标打点到<code>save_dir</code>目录下的<code>vdl_log</code>文件夹，在终端运行如下命令启动visualdl并查看可视化的指标变化情况。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">visualdl --logdir output/ResNet50_vd_ssld --port 80</span><br></pre></td></tr></table></figure>
-<p>服务启动后，通过浏览器打开<a href="https://0.0.0.0:80或https://localhost:80即可。" target="_blank" rel="noopener">https://0.0.0.0:80或https://localhost:80即可。</a></p>
-<p>如果您使用的是AIStudio平台进行训练，不能通过此方式启动visualdl，请参考AIStudio VisualDL启动教程使用</p>
-<p> <strong>7. 加载训练保存的模型预测</strong></p>
-<p>模型在训练过程中，会每间隔一定轮数保存一次模型，在验证集上评估效果最好的一轮会保存在<code>save_dir</code>目录下的<code>best_model</code>文件夹。通过如下方式可加载模型，进行预测。</p>
-<ul>
-<li><a href="https://paddlex.readthedocs.io/zh_CN/develop/apis/load_model.html" target="_blank" rel="noopener">load_model接口说明</a></li>
-<li><a href="https://paddlex.readthedocs.io/zh_CN/develop/apis/models/classification.html#predict" target="_blank" rel="noopener">分类模型predict接口说明</a></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import paddlex as pdx</span><br><span class="line">model = pdx.load_model(&apos;output/ResNet50_vd_ssld/best_model&apos;)</span><br><span class="line">result = model.predict(&apos;vegetables_cls/bocai/100.jpg&apos;)</span><br><span class="line">print(&quot;Predict Result: &quot;, result)</span><br></pre></td></tr></table></figure>
-<p>预测结果输出如下,</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Predict Result: Predict Result: [&#123;&apos;score&apos;: 0.9999393, &apos;category&apos;: &apos;bocai&apos;, &apos;category_id&apos;: 0&#125;]</span><br></pre></td></tr></table></figure>
-<p> <strong>更多使用教程</strong></p>
-<ul>
-<li>1.<a href="https://paddlex.readthedocs.io/zh_CN/develop/train/object_detection.html" target="_blank" rel="noopener">目标检测模型训练</a></li>
-<li>2.<a href="https://paddlex.readthedocs.io/zh_CN/develop/train/semantic_segmentation.html" target="_blank" rel="noopener">语义分割模型训练</a></li>
-<li>3.<a href="https://paddlex.readthedocs.io/zh_CN/develop/train/instance_segmentation.html" target="_blank" rel="noopener">实例分割模型训练</a></li>
-<li>4.<a href="https://github.com/PaddlePaddle/PaddleX/tree/develop/tutorials/compress" target="_blank" rel="noopener">模型太大，想要更小的模型，试试模型裁剪吧!</a></li>
-</ul>
+            <h4 id="paddlex图像分类预测并保存结果"><a href="#paddlex图像分类预测并保存结果" class="headerlink" title="paddlex图像分类预测并保存结果"></a>paddlex图像分类预测并保存结果</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">import paddlex as pdx</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">os.environ[&apos;CPU_NUM&apos;]=&apos;3&apos;</span><br><span class="line">model = pdx.load_model(&apos;output/resnet50_vd_ssld/best_model&apos;)</span><br><span class="line">image_dir=&apos;vegetables_cls/&apos;</span><br><span class="line"></span><br><span class="line">class_list = [os.path.join(image_dir, c) for c in os.listdir(image_dir) if os.path.isdir(os.path.join(image_dir, c))]</span><br><span class="line">class_list.sort()</span><br><span class="line">print(class_list)</span><br><span class="line"></span><br><span class="line">import random</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"># 在我的 notebook 里，要设置下面两行才能显示中文</span><br><span class="line">plt.rcParams[&apos;font.family&apos;] = [&apos;sans-serif&apos;]</span><br><span class="line"># 如果是在 PyCharm 里，只要下面一行，上面的一行可以删除</span><br><span class="line">plt.rcParams[&apos;font.sans-serif&apos;] = [&apos;SimHei&apos;]</span><br><span class="line"></span><br><span class="line">import uuid</span><br><span class="line">print(random.random())</span><br><span class="line"></span><br><span class="line">result_dir=&apos;result&apos;</span><br><span class="line">try:</span><br><span class="line">    os.makedirs(result_dir)</span><br><span class="line">except:</span><br><span class="line">    print(&apos;exists&apos;)</span><br><span class="line">for subdir in class_list:</span><br><span class="line">    </span><br><span class="line">    for fn in os.listdir(subdir):</span><br><span class="line">        if random.random()&gt;0.98:</span><br><span class="line">            print(fn)</span><br><span class="line">            test_jpg = subdir+&apos;/&apos;+fn</span><br><span class="line">            print(test_jpg)</span><br><span class="line">            result = model.predict(test_jpg)</span><br><span class="line">            print(&quot;Predict Result:&quot;, result)</span><br><span class="line"></span><br><span class="line">            img=plt.imread(test_jpg)</span><br><span class="line">            #print(img.shape)</span><br><span class="line">            plt.title(str(result[0][&apos;category&apos;])+&apos; 的概率是:&apos;+str(result[0][&apos;score&apos;]),fontsize=24)</span><br><span class="line">##            plt.text(0, 20, str(result[0][&apos;score&apos;]))</span><br><span class="line">            plt.imshow(img)</span><br><span class="line">            fpath,filename=os.path.split(test_jpg)</span><br><span class="line">            #print(filename)</span><br><span class="line">            plt.savefig(result_dir+&apos;/&apos;+str(uuid.uuid4())+filename)</span><br><span class="line">        # plt.show()</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1522,7 +997,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1567,7 +1042,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">165</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1660,33 +1135,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1726,7 +1175,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

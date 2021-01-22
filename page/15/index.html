@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2d766cb3.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/b01a3b3b.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -292,7 +292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/2d766cb3.html" itemprop="url">nodejs操作couchdb</a></h1>
+                <a class="post-title-link" href="/post/b01a3b3b.html" itemprop="url">python之内存数据库引擎PyDbLite</a></h1>
         
 
         <div class="post-meta">
@@ -304,7 +304,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T00:00:00+08:00">2019-10-15</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-07T10:16:04+08:00">2019-12-07</time>
             
 
             
@@ -343,192 +343,7 @@
       
         
           
-            <h3 id="nodejs连接数据库并插入数据"><a href="#nodejs连接数据库并插入数据" class="headerlink" title="nodejs连接数据库并插入数据"></a>nodejs连接数据库并插入数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const nano = require(&apos;nano&apos;)(&apos;http://localhost:5984&apos;);</span><br><span class="line">nano.db.create(&apos;alice&apos;);</span><br><span class="line">const alice = nano.use(&apos;alice&apos;)</span><br><span class="line">alice.insert(&#123; _id: &apos;myid2&apos;, happy: true &#125;).then((body) =&gt; &#123;</span><br><span class="line">  console.log(body)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="列举alice数据库中的所有文档"><a href="#列举alice数据库中的所有文档" class="headerlink" title="列举alice数据库中的所有文档"></a>列举alice数据库中的所有文档</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alice.list().then((body) =&gt; &#123;  </span><br><span class="line">	body.rows.forEach((doc) =&gt; &#123;    </span><br><span class="line">			console.log(doc);  &#125;);&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="带参数列举alice数据库中的所有文档"><a href="#带参数列举alice数据库中的所有文档" class="headerlink" title="带参数列举alice数据库中的所有文档"></a>带参数列举alice数据库中的所有文档</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alice.list(&#123;include_docs: true&#125;).then((body) =&gt; &#123;  </span><br><span class="line">    body.rows.forEach((doc) =&gt; &#123;    </span><br><span class="line">        // output each document&apos;s body    </span><br><span class="line">        console.log(doc.doc);  </span><br><span class="line">&#125;);&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="db-listAsStream-params"><a href="#db-listAsStream-params" class="headerlink" title="db.listAsStream([params])"></a>db.listAsStream([params])</h3><p>List all the docs in the database as a stream.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alice.list().pipe(process.stdout)</span><br></pre></td></tr></table></figure>
-<h3 id="备份数据库"><a href="#备份数据库" class="headerlink" title="备份数据库"></a>备份数据库</h3><ul>
-<li>npm安装couchdb-dump库</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g couchdb-dump</span><br></pre></td></tr></table></figure>
-<ul>
-<li>将gis数据库的内容导入到gis.json文件.</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cdbdump -d gis &gt; gis.json</span><br></pre></td></tr></table></figure>
-<ul>
-<li>将gis文件的内容导入到 <em>gis2</em>.</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cdbload -d gis2 &lt; gis.json</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/94da9171.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/94da9171.html" itemprop="url">OpenSSl生成SSL证书-支持https</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-13T00:00:00+08:00">2019-10-13</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="OpenSSL-下载"><a href="#OpenSSL-下载" class="headerlink" title="OpenSSL 下载"></a>OpenSSL 下载</h3><ul>
-<li><p>这里下载 openssl win64 版本，并安装。</p>
-</li>
-<li><p><a href="http://www.slproweb.com/products/Win32OpenSSL.html" target="_blank" rel="noopener">http://www.slproweb.com/products/Win32OpenSSL.html</a></p>
-</li>
-<li><p>安装openssl到C:/OpenSSL-Win64</p>
-</li>
-</ul>
-<h3 id="OpenSSL-设置环境"><a href="#OpenSSL-设置环境" class="headerlink" title="OpenSSL 设置环境"></a>OpenSSL 设置环境</h3><ul>
-<li><p>设置系统环境变量<br>set OPENSSL_CONF=C:/OpenSSL-Win64/bin/openssl.cfg<br>set path=C:\OpenSSL-Win64\bin;%path%;</p>
-</li>
-<li><p>首次使用时，创建目录 “newcerts”<br>C:\OpenSSL-Win32\bin\PEM\demoCA**newcerts**</p>
-</li>
-<li><p>创建一个空文件 “serial” (没有扩展名)<br>C:\OpenSSL-Win32\bin\PEM\demoCA**serial**</p>
-</li>
-</ul>
-<h3 id="制作CA证书"><a href="#制作CA证书" class="headerlink" title="制作CA证书"></a>制作CA证书</h3><ul>
-<li><p>进入目录 C:\OpenSSL-Win64\bin\PEM</p>
-</li>
-<li><p>生成 ca.key CA 私钥</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out ca.key 4096</span><br></pre></td></tr></table></figure>
-<ul>
-<li>制作解密后的 CA 私钥（一般无此必要）</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl rsa -in ca.key -out ca_decrypted.key</span><br></pre></td></tr></table></figure>
-<ul>
-<li>生成 ca.crt CA 根证书（公钥）：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -days 7304 -key ca.key -out ca.crt</span><br></pre></td></tr></table></figure>
-<ul>
-<li>自动批处理文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">::安装openssl到C:/OpenSSL-Win64</span><br><span class="line">set OPENSSL_CONF=C:/OpenSSL-Win64/bin/openssl.cfg</span><br><span class="line">set path=C:\OpenSSL-Win64\bin;%path%;</span><br><span class="line">::首次使用时，创建目录 &quot;newcerts&quot;</span><br><span class="line">mkdir C:\OpenSSL-Win64\bin\PEM\demoCA\newcerts</span><br><span class="line">::创建一个空文件 &quot;serial&quot; (没有扩展名)</span><br><span class="line">echo &gt;C:\OpenSSL-Win64\bin\PEM\demoCA\serial</span><br><span class="line">openssl genrsa -out ca.key 4096</span><br><span class="line">openssl req -new -x509 -days 7304 -key ca.key -out ca.crt</span><br><span class="line">cmd /k cd .</span><br></pre></td></tr></table></figure>
-<h3 id="制作生成网站的证书并用CA-签名认证"><a href="#制作生成网站的证书并用CA-签名认证" class="headerlink" title="制作生成网站的证书并用CA 签名认证"></a>制作生成网站的证书并用CA 签名认证</h3><ul>
-<li><p>如果CA证书已经存在或者想沿用，则可以直接从这一步开始。</p>
-</li>
-<li><p>生成证书私钥：</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out server.pem 4096</span><br></pre></td></tr></table></figure>
-<ul>
-<li>制作解密后的证书私钥：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl rsa -in server.pem -out server.key</span><br></pre></td></tr></table></figure>
-<ul>
-<li>生成签名请求：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -key server.pem -out server.csr</span><br></pre></td></tr></table></figure>
+            <h3 id="数据库读写实例"><a href="#数据库读写实例" class="headerlink" title="数据库读写实例"></a>数据库读写实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"># _*_ coding: utf-8 _*-</span><br><span class="line">import pydblite</span><br><span class="line"> </span><br><span class="line">def pydblite_test():</span><br><span class="line">    pydb = pydblite.Base(&apos;mydb&apos;)  # 创建一个数据库实例，在文件系统中传递一个路径</span><br><span class="line"> </span><br><span class="line">    # 创建4个字段，如果缺少某些字段，则使用None值初始化它们。</span><br><span class="line">    # 可以将参数“mode”传递给create()方法，以指定如果基已经存在，您想要做什么</span><br><span class="line">    # db.create(&apos; name &apos;， &apos; age &apos;， &apos; size &apos;， mode=&quot;open&quot;)打开数据库并忽略字段定义</span><br><span class="line">    # db.create(&apos; name &apos;， &apos; age &apos;， &apos; size &apos;， mode=&quot;override&quot;)删除现有的并使用字段定义创建一个新的</span><br><span class="line">    # •如果没有指定模式，并且基数已经存在，则会引发IOError</span><br><span class="line">    pydb.create(&apos;name&apos;, &apos;grade&apos;, &apos;age&apos;, &apos;sex&apos;, mode=&apos;open&apos;)</span><br><span class="line"> </span><br><span class="line">    # 为字段a,b创建索引</span><br><span class="line">    pydb.create_index(&apos;name&apos;, &apos;grade&apos;)</span><br><span class="line"> </span><br><span class="line">    # 插入新记录</span><br><span class="line">    pydb.insert(name=&apos;xiao ming&apos;, grade=3, age=9, sex=&apos;male&apos;)</span><br><span class="line">    pydb.insert(name=&apos;li qin&apos;, grade=2, age=8, sex=&apos;female&apos;)</span><br><span class="line">    pydb.insert(name=&apos;ren qiang&apos;, grade=5, age=11, sex=&apos;male&apos;)</span><br><span class="line"> </span><br><span class="line">    # 通过字段简单查询记录</span><br><span class="line">    record = pydb(name=&quot;xiao ming&quot;)</span><br><span class="line">    print(&apos;record:&apos;, record)</span><br><span class="line"> </span><br><span class="line">    # 更新记录</span><br><span class="line">    pydb.update(record, age=20)</span><br><span class="line">    record = pydb(name=&quot;xiao ming&quot;)</span><br><span class="line">    print(&apos;record:&apos;, record)</span><br><span class="line">    print(&apos;********************&apos;)</span><br><span class="line"> </span><br><span class="line">    # 通过列表解析式进行复杂选择</span><br><span class="line">    res = [r for r in pydb if r[&apos;grade&apos;] &lt; 5 and r[&apos;sex&apos;] in [&apos;male&apos;]]</span><br><span class="line">    print(&quot;res:&quot;, res)</span><br><span class="line"> </span><br><span class="line">    # 删除记录或记录列表</span><br><span class="line">    record = pydb(name=&quot;li qin&quot;)</span><br><span class="line">    print(&apos;record:&apos;, record)</span><br><span class="line">    res = record[0]</span><br><span class="line">    pydb.delete(res)</span><br><span class="line"> </span><br><span class="line">    # 增加字段</span><br><span class="line">    pydb.add_field(&apos;new_field&apos;, default=0)</span><br><span class="line">    print(&apos;********************&apos;)</span><br><span class="line">    res = [r for r in pydb if r[&apos;grade&apos;] &lt; 5 and r[&apos;sex&apos;] in [&apos;male&apos;]]</span><br><span class="line">    print(&quot;res:&quot;, res)</span><br><span class="line"> </span><br><span class="line">    # 删除字段</span><br><span class="line">    pydb.drop_field(&apos;name&apos;)</span><br><span class="line">    print(&apos;********************&apos;)</span><br><span class="line">    res = [r for r in pydb if r[&apos;grade&apos;] &lt; 5 and r[&apos;sex&apos;] in [&apos;male&apos;]]</span><br><span class="line">    print(&quot;res:&quot;, res)</span><br><span class="line"> </span><br><span class="line">    # 保存修改到磁盘</span><br><span class="line">    pydb.commit()</span><br><span class="line"></span><br><span class="line">def show_iterms_in_db():</span><br><span class="line">    pydb = pydblite.Base(&apos;mydb&apos;)  # 打开一个数据库实例，在文件系统中传递一个路径</span><br><span class="line">    pydb.open()</span><br><span class="line">    for r in pydb():</span><br><span class="line">        print(r)</span><br><span class="line"> </span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">##    pydblite_test()</span><br><span class="line">    show_iterms_in_db()</span><br></pre></td></tr></table></figure>
 
           
         
@@ -579,7 +394,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/e5fac68c.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2f5d98a.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -598,7 +413,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/e5fac68c.html" itemprop="url">nodejs之ajax跨域请求</a></h1>
+                <a class="post-title-link" href="/post/2f5d98a.html" itemprop="url">python之BeautifulSoup模块</a></h1>
         
 
         <div class="post-meta">
@@ -610,7 +425,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-03T00:00:00+08:00">2019-10-03</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-06T00:00:00+08:00">2019-12-06</time>
             
 
             
@@ -649,8 +464,8 @@
       
         
           
-            <h3 id="客户端文件cross-origin-html"><a href="#客户端文件cross-origin-html" class="headerlink" title="客户端文件cross_origin.html"></a>客户端文件cross_origin.html</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;跨域测试&lt;/title&gt;</span><br><span class="line">    &lt;script src=&quot;./js/jquery-3.4.1.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line"></span><br><span class="line">        $(document).ready(function () &#123;</span><br><span class="line">            </span><br><span class="line">            $(&quot;#btn&quot;).click(function () &#123;</span><br><span class="line">                 $.ajax(&#123;</span><br><span class="line">                     url: &apos;http://localhost/cors&apos;,</span><br><span class="line">                     type: &apos;GET&apos;,</span><br><span class="line">                     success: function (data) &#123;</span><br><span class="line">                         $(text).val(data);</span><br><span class="line">                     &#125;</span><br><span class="line">                 &#125;);</span><br><span class="line"> </span><br><span class="line">             &#125;);	 </span><br><span class="line">         &#125;);</span><br><span class="line">     &lt;/script&gt;</span><br><span class="line"> &lt;/head&gt;</span><br><span class="line"> &lt;body&gt;</span><br><span class="line">     &lt;input id=&quot;btn&quot; type=&quot;button&quot; value=&quot;跨域获取数据&quot; /&gt;</span><br><span class="line">     &lt;textarea id=&quot;text&quot; style=&quot;width: 400px; height: 100px;&quot;&gt;&lt;/textarea&gt;</span><br><span class="line"> &lt;/body&gt;</span><br><span class="line"> &lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="nodejs服务器端文件app-js"><a href="#nodejs服务器端文件app-js" class="headerlink" title="nodejs服务器端文件app.js"></a>nodejs服务器端文件app.js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var fs = require(&apos;fs&apos;);</span><br><span class="line">var app = express(); //新建app模块</span><br><span class="line">var state_points_json_string = fs.readFileSync(__dirname +&quot;/json/state_points.json&quot;, &quot;utf8&quot;);</span><br><span class="line"></span><br><span class="line">const path = require(&apos;path&apos;); //系统路径模块</span><br><span class="line">app.use(express.static(path.join(__dirname, &apos;static&apos;))); //指定静态文件目录</span><br><span class="line"></span><br><span class="line">//主目录默认显示页面</span><br><span class="line">app.get(&apos;/&apos;, function (req, res) &#123;</span><br><span class="line">    res.redirect(&apos;/index.html&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">app.get(&apos;/cors&apos;, function (req, res) &#123;</span><br><span class="line">	res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);</span><br><span class="line">	res.setHeader(&apos;Access-Control-Allow-Methods&apos;, &apos;GET, POST&apos;);</span><br><span class="line">    res.json(state_points_json_string);</span><br><span class="line">&#125;);</span><br><span class="line">//开启服务器进程</span><br><span class="line">var port_num = 80;</span><br><span class="line">app.listen(port_num, function () &#123;</span><br><span class="line">    console.log(&apos;server start at port &apos; + port_num + &apos;......&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+            <h4 id="BeautifulSoup解析html"><a href="#BeautifulSoup解析html" class="headerlink" title="BeautifulSoup解析html"></a>BeautifulSoup解析html</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">import requests</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">import tushare as ts</span><br><span class="line">headers=&#123;&apos;user-agent&apos;: &apos;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36&apos;&#125;</span><br><span class="line"></span><br><span class="line">def get_fund_price():</span><br><span class="line">    response = requests.get(</span><br><span class="line">        url=&apos;http://quotes.money.163.com/fund/110011.html&apos;,</span><br><span class="line">        headers=headers</span><br><span class="line">    )</span><br><span class="line">    response.encoding = response.apparent_encoding</span><br><span class="line">    soup = BeautifulSoup(response.text, &apos;html.parser&apos;)</span><br><span class="line"></span><br><span class="line">    main_content = soup.find(name=&apos;div&apos;, attrs=&#123;&quot;class&quot;:&quot;fn_data_trend_total&quot;&#125;)#fund</span><br><span class="line">    print(main_content)</span><br><span class="line">    </span><br><span class="line">get_fund_price()</span><br></pre></td></tr></table></figure>
+<h4 id="百度今日高校排行榜"><a href="#百度今日高校排行榜" class="headerlink" title="百度今日高校排行榜"></a>百度今日高校排行榜</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># coding:utf-8</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">import requests,re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def get_baidu_billboard():</span><br><span class="line">    response = requests.get(</span><br><span class="line">##        url=&quot;http://top.baidu.com/buzz?b=42&amp;fr=topindex&quot;,#http://top.baidu.com/buzz?b=341&amp;fr=topindex,</span><br><span class="line">        url=&quot;http://top.baidu.com/buzz?b=12&quot;,</span><br><span class="line">        headers=&#123;</span><br><span class="line">            &apos;user-agent&apos;: &apos;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36&apos;, &#125;,</span><br><span class="line">    )</span><br><span class="line">    response.encoding = response.apparent_encoding</span><br><span class="line">    ##print(ret.text)</span><br><span class="line"></span><br><span class="line">    soup = BeautifulSoup(response.text, &apos;html.parser&apos;)</span><br><span class="line">    ##print(soup.prettify())</span><br><span class="line">    print(soup.title.text)</span><br><span class="line">    divs = soup.find_all(&apos;a&apos;,attrs=&#123;&quot;class&quot;:&quot;list-title&quot;&#125;)</span><br><span class="line">    print(&apos;num:&apos;,len(divs))</span><br><span class="line">    i=1</span><br><span class="line">    for div in divs:</span><br><span class="line">        print(i,div.text)</span><br><span class="line">        i=i+1</span><br><span class="line">    ##div = soup.find(name=&apos;div&apos;, attrs=&#123;&quot;class&quot;:&quot;HotList-itemTitle&quot;&#125;)</span><br><span class="line">get_baidu_billboard()</span><br></pre></td></tr></table></figure>
 
           
         
@@ -701,7 +516,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2b4d3ff3.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2f5d98a.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -720,7 +535,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/2b4d3ff3.html" itemprop="url">nodejs之csv文件转json</a></h1>
+                <a class="post-title-link" href="/post/2f5d98a.html" itemprop="url">python之requests的GET和POST</a></h1>
         
 
         <div class="post-meta">
@@ -732,7 +547,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-01T00:00:00+08:00">2019-10-01</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-06T00:00:00+08:00">2019-12-06</time>
             
 
             
@@ -771,10 +586,8 @@
       
         
           
-            <h3 id="CSVTOJSON模块"><a href="#CSVTOJSON模块" class="headerlink" title="CSVTOJSON模块"></a>CSVTOJSON模块</h3><p><a href="https://www.npmjs.com/package/csvtojson" target="_blank" rel="noopener">https://www.npmjs.com/package/csvtojson</a></p>
-<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save csvtojson</span><br></pre></td></tr></table></figure>
-<h3 id="From-CSV-File-to-JSON-Array"><a href="#From-CSV-File-to-JSON-Array" class="headerlink" title="From CSV File to JSON Array"></a>From CSV File to JSON Array</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const csvFilePath=&apos;inspection_data.csv&apos;</span><br><span class="line">const csv=require(&apos;csvtojson&apos;)</span><br><span class="line">csv()</span><br><span class="line">.fromFile(csvFilePath)</span><br><span class="line">.then((jsonObj)=&gt;&#123;</span><br><span class="line">    console.log(jsonObj);</span><br><span class="line">&#125;)</span><br><span class="line">// Async / await usage</span><br><span class="line">const jsonArray=csv().fromFile(csvFilePath);</span><br></pre></td></tr></table></figure>
-<h2 id="nodejs写入json文件，格式化输出json的方法"><a href="#nodejs写入json文件，格式化输出json的方法" class="headerlink" title="nodejs写入json文件，格式化输出json的方法"></a>nodejs写入json文件，格式化输出json的方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let str = JSON.stringify(json_data,null,&quot;\t&quot;);</span><br><span class="line">fs.writeFile(&apos;data.json&apos;,str,function(err)&#123;</span><br><span class="line">    if (err) &#123;console.log(&apos;error...&apos;)&#125;</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+            <h3 id="python通过get读取数据"><a href="#python通过get读取数据" class="headerlink" title="python通过get读取数据"></a>python通过get读取数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># !/usr/bin/python</span><br><span class="line"># encoding:utf-8</span><br><span class="line">import requests</span><br><span class="line">r=requests.get(&apos;http://baidu.com&apos;)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
+<h3 id="python通过post传递数据"><a href="#python通过post传递数据" class="headerlink" title="python通过post传递数据"></a>python通过post传递数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># !/usr/bin/python</span><br><span class="line"># encoding:utf-8</span><br><span class="line">import requests</span><br><span class="line">#下面替换成您的数据</span><br><span class="line">postdata=&#123;&apos;name&apos;:&apos;xiaochong&apos;&#125;</span><br><span class="line">r=requests.post(&apos;http://localhost/post&apos;,data=postdata)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
 
           
         
@@ -825,7 +638,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/c067e7e3.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/b55aa275.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -844,7 +657,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/c067e7e3.html" itemprop="url">frp内网穿透</a></h1>
+                <a class="post-title-link" href="/post/b55aa275.html" itemprop="url">TensorFlow之Tensorboard可视化</a></h1>
         
 
         <div class="post-meta">
@@ -856,7 +669,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-26T00:00:00+08:00">2019-09-26</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-22T00:00:00+08:00">2019-11-22</time>
             
 
             
@@ -895,11 +708,11 @@
       
         
           
-            <h3 id="下载frp最新版本并解压缩"><a href="#下载frp最新版本并解压缩" class="headerlink" title="下载frp最新版本并解压缩"></a>下载frp最新版本并解压缩</h3><p><a href="https://github.com/fatedier/frp/releases/" target="_blank" rel="noopener">https://github.com/fatedier/frp/releases/</a></p>
-<h3 id="修改frp服务器配置文件frps-ini"><a href="#修改frp服务器配置文件frps-ini" class="headerlink" title="修改frp服务器配置文件frps.ini"></a>修改frp服务器配置文件frps.ini</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_port = 7000</span><br><span class="line">vhost_http_port = 8080 #网站访问端口</span><br><span class="line">auto_token = 1234567 #认证的密码</span><br></pre></td></tr></table></figure>
-<h3 id="运行frp服务器"><a href="#运行frp服务器" class="headerlink" title="运行frp服务器"></a>运行frp服务器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frps -c frps.ini</span><br></pre></td></tr></table></figure>
-<h3 id="修改frp客户端配置文件frpc-ini"><a href="#修改frp客户端配置文件frpc-ini" class="headerlink" title="修改frp客户端配置文件frpc.ini"></a>修改frp客户端配置文件frpc.ini</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = 180.8.8.8 #frp服务器地址</span><br><span class="line">server_port = 7000</span><br><span class="line">auth_token = 1234567  #认证的密码</span><br><span class="line"></span><br><span class="line">[ssh]</span><br><span class="line">type = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 22</span><br><span class="line">remote_port = 6000</span><br><span class="line">auth_token = 1234567</span><br><span class="line"></span><br><span class="line">[web]</span><br><span class="line">type = http</span><br><span class="line">local_port = 80</span><br><span class="line">auth_token = 1234567</span><br><span class="line">custom_domains = 180.8.8.8 #frp服务器ip或域名</span><br></pre></td></tr></table></figure>
-<h3 id="运行frp客户端"><a href="#运行frp客户端" class="headerlink" title="运行frp客户端"></a>运行frp客户端</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frpc -c frpc.ini</span><br></pre></td></tr></table></figure>
+            <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">运行完程序后，图结构将以日志文件的形式保存到给定的路径下。 </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">a = tf.constant([<span class="number">1.0</span>,<span class="number">2.0</span>,<span class="number">3.0</span>],name=<span class="string">'input1'</span>)</span><br><span class="line">b = tf.Variable(tf.random_uniform([<span class="number">3</span>]),name=<span class="string">'input2'</span>)</span><br><span class="line">add = tf.add_n([a,b],name=<span class="string">'addOP'</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    writer = tf.summary.FileWriter(<span class="string">"logs"</span>,sess.graph)</span><br><span class="line">    print(sess.run(add))</span><br><span class="line">writer.close()</span><br></pre></td></tr></table></figure>
+<pre><code>[1.6388482 2.921091  3.0559368]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在命令行启动Tensorboard。Tensorboard作为本地的一个服务已经启动，</span></span><br><span class="line"><span class="comment">#jupyter中运行本地命令</span></span><br><span class="line">!tensorboard --logdir=.\logs</span><br></pre></td></tr></table></figure>
+<p>#在浏览器下输入127.0.0.1:6006就可以进入TensorBoard。</p>
+<p><a href="http://localhost:6006/" target="_blank" rel="noopener">http://localhost:6006/</a></p>
 
           
         
@@ -950,7 +763,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/49258384.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/9e26fd76.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -969,7 +782,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/49258384.html" itemprop="url">nodejs读写文件和端口转发</a></h1>
+                <a class="post-title-link" href="/post/9e26fd76.html" itemprop="url">TensorFlow处理图片</a></h1>
         
 
         <div class="post-meta">
@@ -981,7 +794,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-25T00:00:00+08:00">2019-09-25</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-22T00:00:00+08:00">2019-11-22</time>
             
 
             
@@ -1020,9 +833,138 @@
       
         
           
-            <h3 id="nodejs顺序执行函数"><a href="#nodejs顺序执行函数" class="headerlink" title="nodejs顺序执行函数"></a>nodejs顺序执行函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function step1() &#123;</span><br><span class="line">	func1(v1,v2);</span><br><span class="line">&#125;</span><br><span class="line">function step2() &#123;</span><br><span class="line">	func2(v3,v4);</span><br><span class="line">&#125;</span><br><span class="line">function step3() &#123;</span><br><span class="line">	func3(v5,v6);</span><br><span class="line">&#125;</span><br><span class="line">function step4() &#123;</span><br><span class="line">	 func4(v7,v8);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setTimeout( step1,100);</span><br><span class="line">setTimeout(step2 ,2000);</span><br><span class="line">setTimeout(step3 ,4000);</span><br><span class="line">setTimeout(step4 ,6000);</span><br></pre></td></tr></table></figure>
-<h4 id="读写文件"><a href="#读写文件" class="headerlink" title="读写文件"></a>读写文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">let fs = require(&apos;fs&apos;);</span><br><span class="line"></span><br><span class="line">// 第二种写文件的方式，如果没有则会创建</span><br><span class="line">fs.writeFile(&apos;hello.txt&apos;, &apos;123&apos;, function () &#123;&#125;);</span><br><span class="line"></span><br><span class="line">// 第二种追加写的方式，如果没有则会创建</span><br><span class="line">fs.appendFile(&apos;hello.txt&apos;, &apos;123&apos;, function () &#123;&#125;);</span><br><span class="line">// 检查文件存不存在</span><br><span class="line">fs.exists(&apos;hello.tex&apos;, (err) =&gt; &#123;</span><br><span class="line">    //err 为false则文件不存在</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">/************读文件************* */</span><br><span class="line">fs.readFile(&apos;hello.txt&apos;, function (err, data) &#123;</span><br><span class="line">    console.log(data.toString(), u&apos;我是读出来的文件&apos;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">var contentText = fs.readFileSync(&apos;hello.txt&apos;,&apos;utf-8&apos;);</span><br><span class="line"></span><br><span class="line">console.log(contentText);</span><br><span class="line"></span><br><span class="line">/************删除文件************* */</span><br><span class="line">fs.unlink(&apos;hello&apos;, function (err) &#123;</span><br><span class="line">    if (err) &#123;</span><br><span class="line">        console.log(&apos;删除失败&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="nodejs端口转发"><a href="#nodejs端口转发" class="headerlink" title="nodejs端口转发"></a>nodejs端口转发</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var net = require(&apos;net&apos;);</span><br><span class="line">//本地端口80端口转发到7000端口</span><br><span class="line">console.log(&apos;forwarder started!&apos;);</span><br><span class="line">net.createServer(function(to) &#123;</span><br><span class="line">        var from = net.createConnection(&#123;</span><br><span class="line">                host: &apos;192.168.2.88&apos;,#&apos;0.0.0.0&apos;</span><br><span class="line">                port: 80</span><br><span class="line">                &#125;);</span><br><span class="line">        to.pipe(from);</span><br><span class="line">        from.pipe(to);</span><br><span class="line">&#125;).listen(7000)</span><br></pre></td></tr></table></figure>
+            <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">读取并显示图片</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">image_raw_data = tf.gfile.GFile(<span class="string">'.//hua.jpg'</span>,<span class="string">'rb'</span>).read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">     img_data = tf.image.decode_jpeg(image_raw_data)</span><br><span class="line">     <span class="comment">#print(img_data.eval())</span></span><br><span class="line"></span><br><span class="line">     plt.imshow(img_data.eval())</span><br><span class="line">     plt.show()</span><br><span class="line"></span><br><span class="line">     <span class="comment">#img_data = tf.image.convert_image_dtype(img_data,dtype = tf.float32)</span></span><br><span class="line"></span><br><span class="line">     <span class="comment">#encoded_image = tf.image.encode_jpeg(img_data)</span></span><br><span class="line">     <span class="comment">#with tf.gfile.GFile(".//image//3.jpg","wb") as f:</span></span><br><span class="line">     <span class="comment">#     f.write(encoded_image.eval())</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">编码与解码并保存</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">image_raw_data = tf.gfile.GFile(<span class="string">'.//hua.jpg'</span>,<span class="string">'rb'</span>).read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">     img_data = tf.image.decode_jpeg(image_raw_data)</span><br><span class="line">     <span class="comment">#print(img_data.eval())</span></span><br><span class="line"></span><br><span class="line">     plt.imshow(img_data.eval())</span><br><span class="line">     plt.show()</span><br><span class="line"></span><br><span class="line">     <span class="comment">#img_data = tf.image.convert_image_dtype(img_data,dtype = tf.float32)</span></span><br><span class="line"></span><br><span class="line">     encoded_image = tf.image.encode_jpeg(img_data)</span><br><span class="line">     <span class="keyword">with</span> tf.gfile.GFile(<span class="string">".//image//hua.jpg"</span>,<span class="string">"wb"</span>) <span class="keyword">as</span> f:</span><br><span class="line">          f.write(encoded_image.eval())</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">图像尺寸调整 </span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">image_raw_data = tf.gfile.GFile(<span class="string">'.//image//hua.jpg'</span>,<span class="string">'rb'</span>).read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    img_data = tf.image.decode_jpeg(image_raw_data)</span><br><span class="line">    <span class="comment">#原图</span></span><br><span class="line">    plt.imshow(img_data.eval())</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">    <span class="comment">#调整图片大小</span></span><br><span class="line">    resized = tf.image.resize_images(img_data, [<span class="number">100</span>, <span class="number">100</span>], method=<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># TensorFlow的函数处理图片后存储的数据是float32格式的，需要转换成uint8才能正确打印图片。</span></span><br><span class="line">    print(<span class="string">"Digital type: "</span>, resized.dtype)</span><br><span class="line">    resized = np.asarray(resized.eval(), dtype=<span class="string">'uint8'</span>)</span><br><span class="line">    <span class="comment"># tf.image.convert_image_dtype(rgb_image, tf.float32)</span></span><br><span class="line">    plt.imshow(resized)</span><br><span class="line">    plt.show()</span><br><span class="line">    <span class="comment">#图片裁剪</span></span><br><span class="line">    croped = tf.image.resize_image_with_crop_or_pad(img_data, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">    padded = tf.image.resize_image_with_crop_or_pad(img_data, <span class="number">500</span>, <span class="number">500</span>)</span><br><span class="line">    plt.imshow(croped.eval())</span><br><span class="line">    plt.show()</span><br><span class="line">    plt.imshow(padded.eval())</span><br><span class="line">    plt.show()</span><br><span class="line">    <span class="comment">#居中裁剪</span></span><br><span class="line">    central_cropped = tf.image.central_crop(img_data, <span class="number">0.5</span>)</span><br><span class="line">    plt.imshow(central_cropped.eval())</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">image_raw_data = tf.gfile.GFile(<span class="string">'.//hua.jpg'</span>,<span class="string">'rb'</span>).read()</span><br><span class="line"></span><br><span class="line">image = tf.image.decode_jpeg(image_raw_data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    <span class="comment">#ResizeMethod.BILINEAR ：双线性插值</span></span><br><span class="line">    <span class="comment">#ResizeMethod.NEAREST_NEIGHBOR ： 最近邻插值</span></span><br><span class="line">    <span class="comment">#ResizeMethod.BICUBIC ： 双三次插值</span></span><br><span class="line">    <span class="comment">#ResizeMethod.AREA ：面积插值</span></span><br><span class="line">    resized_image = tf.image.resize_images(image, [<span class="number">280</span>,<span class="number">280</span>],method=tf.image.ResizeMethod.BILINEAR)    </span><br><span class="line">    resized_image = np.asarray(resized_image.eval(), dtype=<span class="string">'uint8'</span>)</span><br><span class="line"> </span><br><span class="line">    plt.imshow(resized_image)</span><br><span class="line">    plt.show()</span><br><span class="line">    </span><br><span class="line">    cropped_image = tf.image.crop_to_bounding_box(image, <span class="number">20</span>, <span class="number">20</span>, <span class="number">516</span>, <span class="number">516</span>) <span class="comment">#剪切</span></span><br><span class="line">    plt.imshow(cropped_image.eval())</span><br><span class="line">    plt.show()</span><br><span class="line">    <span class="comment">#水平翻转</span></span><br><span class="line">    flipped_image = tf.image.flip_left_right(image) </span><br><span class="line">    plt.imshow(flipped_image.eval())</span><br><span class="line">    plt.show()</span><br><span class="line">    <span class="comment">#垂直翻转</span></span><br><span class="line">    flipped_image = tf.image.flip_up_down(image) </span><br><span class="line">    plt.imshow(flipped_image.eval())</span><br><span class="line">    plt.show()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#旋转</span></span><br><span class="line">    rotated_image = tf.image.rot90(image, k=<span class="number">1</span>) </span><br><span class="line">    plt.imshow(rotated_image.eval())</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 以50%概率上下翻转</span></span><br><span class="line">    flipped = tf.image.random_flip_up_down(image)</span><br><span class="line">    plt.imshow(flipped.eval())</span><br><span class="line">    plt.show()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 以50%概率左右翻转图像</span></span><br><span class="line">    flipped = tf.image.random_flip_left_right(image)</span><br><span class="line">    plt.imshow(flipped.eval())</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">图像裁剪和填充</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">image_raw_data_jpg = tf.gfile.GFile(<span class="string">'.//hua.jpg'</span>,<span class="string">'rb'</span>).read()</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:  </span><br><span class="line">    image = tf.image.decode_jpeg(image_raw_data_jpg)  </span><br><span class="line">    <span class="comment">#image = tf.image.convert_image_dtype(img_data_jpg, dtype=tf.float32)  </span></span><br><span class="line">    crop = tf.image.resize_image_with_crop_or_pad(image, <span class="number">500</span>, <span class="number">500</span>)  </span><br><span class="line">    plt.figure(<span class="number">1</span>)  </span><br><span class="line">    plt.imshow(crop.eval()) </span><br><span class="line">    </span><br><span class="line">    pad = tf.image.resize_image_with_crop_or_pad(image, <span class="number">2000</span>, <span class="number">2000</span>)  </span><br><span class="line">    plt.figure(<span class="number">2</span>)  </span><br><span class="line">    plt.imshow(pad.eval())  </span><br><span class="line">    plt.show()</span><br><span class="line">    </span><br><span class="line"><span class="comment">#     image = tf.image.random_brightness(image, max_delta=32. / 255.)</span></span><br><span class="line"><span class="comment">#     image = tf.image.random_saturation(image, lower=0.5, upper=1.5)</span></span><br><span class="line"><span class="comment">#     image = tf.image.random_hue(image, max_delta=0.2)</span></span><br><span class="line"><span class="comment">#     image = tf.image.random_contrast(image, lower=0.5, upper=1.5)</span></span><br><span class="line"></span><br><span class="line">    image = tf.image.random_saturation(image, lower=<span class="number">0.5</span>, upper=<span class="number">1.5</span>)</span><br><span class="line">    image = tf.image.random_brightness(image, max_delta = <span class="number">32.</span> / <span class="number">255.</span>)</span><br><span class="line">    image = tf.image.random_contrast(image, lower=<span class="number">0.5</span>, upper=<span class="number">1.5</span>)</span><br><span class="line">    image = tf.image.random_hue(image, max_delta=<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">    plt.imshow(image.eval())  </span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/ba3cf25f.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/ba3cf25f.html" itemprop="url">TensorFlow之Dataset读取数据</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-22T00:00:00+08:00">2019-11-22</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="TensorFlow全新的数据读取方式-Dataset的eager模式"><a href="#TensorFlow全新的数据读取方式-Dataset的eager模式" class="headerlink" title="TensorFlow全新的数据读取方式-Dataset的eager模式"></a>TensorFlow全新的数据读取方式-Dataset的eager模式</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">在Eager模式中，创建Iterator的方式有所不同。是通过tfe.Iterator(dataset)的形式</span></span><br><span class="line"><span class="string">直接创建Iterator并迭代。迭代时可以直接取出值，不需要使用sess.run()：</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">tfe = tf.contrib.eager</span><br><span class="line">tfe.enable_eager_execution()</span><br><span class="line"><span class="comment">##eager模式下迭代</span></span><br><span class="line">dataset = tf.data.Dataset.from_tensor_slices(np.array([<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>, <span class="number">4.0</span>, <span class="number">5.0</span>]))</span><br><span class="line"><span class="keyword">for</span> one_element <span class="keyword">in</span> tfe.Iterator(dataset):</span><br><span class="line">    print(one_element)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''map函数</span></span><br><span class="line"><span class="string">map接收一个函数，Dataset中的每个元素都会被当作这个函数的输入，并将函数返回值作为新的Dataset</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">dataset = tf.data.Dataset.from_tensor_slices(np.array([<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>, <span class="number">4.0</span>, <span class="number">5.0</span>]))</span><br><span class="line">dataset = dataset.map(<span class="keyword">lambda</span> x: x + <span class="number">1</span>) <span class="comment"># 2.0, 3.0, 4.0, 5.0, 6.0</span></span><br><span class="line"><span class="keyword">for</span> one_element <span class="keyword">in</span> tfe.Iterator(dataset):</span><br><span class="line">    print(one_element)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">repeat函数-repeat的功能就是将整个序列重复多次</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">dataset = tf.data.Dataset.from_tensor_slices(np.array([<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>, <span class="number">4.0</span>, <span class="number">5.0</span>]))</span><br><span class="line">dataset = dataset.repeat(<span class="number">3</span>)</span><br><span class="line"><span class="keyword">for</span> one_element <span class="keyword">in</span> tfe.Iterator(dataset):</span><br><span class="line">    print(one_element)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">batch函数-batch就是将多个元素组合成batch</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">dataset = tf.data.Dataset.from_tensor_slices(np.arange(<span class="number">15</span>))</span><br><span class="line">dataset = dataset.batch(<span class="number">3</span>)</span><br><span class="line"><span class="keyword">for</span> one_element <span class="keyword">in</span> tfe.Iterator(dataset):</span><br><span class="line">    print(one_element)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">shuffle函数-shuffle的功能为打乱dataset中的元素</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">dataset = tf.data.Dataset.from_tensor_slices(np.arange(<span class="number">15</span>))</span><br><span class="line">dataset = dataset.shuffle(buffer_size=<span class="number">5</span>)</span><br><span class="line"><span class="keyword">for</span> one_element <span class="keyword">in</span> tfe.Iterator(dataset):</span><br><span class="line">    print(one_element)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">传入的数值是一个矩阵，它的形状为(5, 2)，tf.data.Dataset.from_tensor_slices就会切分它形状上的第一个维度，</span></span><br><span class="line"><span class="string">最后生成的dataset中一个含有5个元素，每个元素的形状是(2, )，即每个元素是矩阵的一行。</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">dataset = tf.data.Dataset.from_tensor_slices(np.random.uniform(size=(<span class="number">5</span>, <span class="number">2</span>)))</span><br><span class="line">dataset = tf.data.Dataset.from_tensor_slices(</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">"a"</span>: np.array([<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>, <span class="number">4.0</span>, <span class="number">5.0</span>]),                                       </span><br><span class="line">        <span class="string">"b"</span>: np.random.uniform(size=(<span class="number">5</span>, <span class="number">2</span>))</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br><span class="line"><span class="keyword">for</span> one_element <span class="keyword">in</span> tfe.Iterator(dataset):</span><br><span class="line">    print(one_element)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">非eager模式</span></span><br><span class="line"><span class="string">............</span></span><br><span class="line"><span class="string">Dataset可以看作是相同类型“元素”的有序列表。在实际使用时，</span></span><br><span class="line"><span class="string">单个“元素”可以是向量，也可以是字符串、图片，甚至是tuple或者dict。</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">print(tf.__version__)</span><br><span class="line">np.set_printoptions(precision=<span class="number">4</span>)</span><br><span class="line"><span class="comment">#创建了一个dataset</span></span><br><span class="line">dataset=tf.data.Dataset.from_tensor_slices([<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>,<span class="number">23</span>])</span><br><span class="line">print(dataset)</span><br><span class="line"><span class="comment">#从Dataset中示例化一个Iterator，然后对Iterator进行迭代。</span></span><br><span class="line">iterator = tf.compat.v1.data.make_one_shot_iterator(dataset)</span><br><span class="line">one_element = iterator.get_next()</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):</span><br><span class="line">        print(sess.run(one_element))</span><br><span class="line">        </span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            print(sess.run(one_element))</span><br><span class="line">    <span class="keyword">except</span> tf.errors.OutOfRangeError:</span><br><span class="line">        print(<span class="string">"end!"</span>)</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1062,7 +1004,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1107,7 +1049,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">165</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1200,33 +1142,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1266,7 +1182,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="hello world">
 <meta property="og:description" content="文件读写模式   模式 可做操作 若文件不存在 是否覆盖     r 只能读 报错 -   r+ 可读可写 报错 是   w 只能写 创建 是   w+ 可读可写 创建 是   a　 只能写 创建 否,追加写   a+ 可读可写 创建 否，追加写    write()方法123456789#!/usr/bin/python# -*- coding: UTF-8 -*- # 打开一个文件fo = o">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-28T08:03:10.151Z">
+<meta property="og:updated_time" content="2020-10-27T08:46:17.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python之文件处理">
 <meta name="twitter:description" content="文件读写模式   模式 可做操作 若文件不存在 是否覆盖     r 只能读 报错 -   r+ 可读可写 报错 是   w 只能写 创建 是   w+ 可读可写 创建 是   a　 只能写 创建 否,追加写   a+ 可读可写 创建 否，追加写    write()方法123456789#!/usr/bin/python# -*- coding: UTF-8 -*- # 打开一个文件fo = o">
@@ -401,7 +401,7 @@
 <h3 id="chdir-方法"><a href="#chdir-方法" class="headerlink" title="chdir()方法"></a>chdir()方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import os</span><br><span class="line"># 将当前目录改为&quot;/home/newdir&quot;</span><br><span class="line">os.chdir(&quot;/home/newdir&quot;)</span><br></pre></td></tr></table></figure>
 <h3 id="getcwd-方法"><a href="#getcwd-方法" class="headerlink" title="getcwd()方法"></a>getcwd()方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import os</span><br><span class="line"># 给出当前的目录</span><br><span class="line">print os.getcwd()</span><br></pre></td></tr></table></figure>
 <h3 id="rmdir-方法"><a href="#rmdir-方法" class="headerlink" title="rmdir()方法"></a>rmdir()方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import os</span><br><span class="line"># 删除”/tmp/test”目录</span><br><span class="line">os.rmdir( &quot;/tmp/test&quot;  )</span><br></pre></td></tr></table></figure>
-<h3 id="listdir-方法"><a href="#listdir-方法" class="headerlink" title="listdir() 方法"></a>listdir() 方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import os, sys</span><br><span class="line"># 打开文件</span><br><span class="line">path = &quot;/var/www/html/&quot;</span><br><span class="line">dirs = os.listdir( path )</span><br><span class="line"></span><br><span class="line"># 输出所有文件和文件夹</span><br><span class="line">for file in dirs:</span><br><span class="line">   print(file)</span><br></pre></td></tr></table></figure>
+<h3 id="listdir-方法"><a href="#listdir-方法" class="headerlink" title="listdir() 方法"></a>listdir() 方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import os, sys</span><br><span class="line">path = &quot;./&quot;</span><br><span class="line">dirs = os.listdir( path )</span><br><span class="line"></span><br><span class="line"># 输出所有文件和文件夹</span><br><span class="line">for file in dirs:</span><br><span class="line">   print(file)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -522,7 +522,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">165</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -615,33 +615,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -697,7 +671,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

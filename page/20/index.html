@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/e45a147c.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/4b102b0c.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -292,7 +292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/e45a147c.html" itemprop="url">python之jupyter-notebook</a></h1>
+                <a class="post-title-link" href="/post/4b102b0c.html" itemprop="url">Python之time,datetime,string相互转换</a></h1>
         
 
         <div class="post-meta">
@@ -304,7 +304,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-16T00:00:00+08:00">2019-07-16</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-26T17:07:12+08:00">2019-08-26</time>
             
 
             
@@ -343,51 +343,8 @@
       
         
           
-            <h3 id="安装jupyter"><a href="#安装jupyter" class="headerlink" title="安装jupyter"></a>安装jupyter</h3><pre><code>pip install jupyter
-</code></pre><h3 id="设置工作目录"><a href="#设置工作目录" class="headerlink" title="设置工作目录"></a>设置工作目录</h3><ul>
-<li>修改默认配置，先查看你的notebook配置文件在哪里，输入</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
-<ul>
-<li>配置文件的位置一般在C:\Users\***\.jupyter</li>
-</ul>
-<p>之后弹出一个文件路径，复制，在文件管理器地址栏粘贴打开配置文件jupyter_notebook_config.py</p>
-<ul>
-<li>搜索 c.NotebookApp.notebook_dir</li>
-</ul>
-<p>然后修改成自己的目录，保存。如下</p>
-<pre><code>## The directory to use for notebooks and kernels.
-c.NotebookApp.notebook_dir = &apos;d:\\python_notebook&apos;
-</code></pre><h3 id="单击页面右侧的“New”选项卡-有四个选项可供选择"><a href="#单击页面右侧的“New”选项卡-有四个选项可供选择" class="headerlink" title="单击页面右侧的“New”选项卡,有四个选项可供选择"></a>单击页面右侧的“New”选项卡,有四个选项可供选择</h3><ul>
-<li>Python 3</li>
-<li>Text File (文本文件)</li>
-<li>Folder (文件夹)</li>
-<li>Terminal (终端)</li>
-</ul>
-<h3 id="在下拉菜单中有四个选项："><a href="#在下拉菜单中有四个选项：" class="headerlink" title="在下拉菜单中有四个选项："></a>在下拉菜单中有四个选项：</h3><ul>
-<li>Code - 这是你输入代码的地方</li>
-<li>Markdown - 这是你输入文本的地方。</li>
-<li>Raw NBConvert - 这是一个命令行工具，可将你的笔记本转换为另一种格式（如 HTML）</li>
-<li>Heading - 你可以将标题添加到单独的小节并使你的 Notebook 看起来干净整洁。</li>
-</ul>
-<h3 id="输出为markdown文件"><a href="#输出为markdown文件" class="headerlink" title="输出为markdown文件"></a>输出为markdown文件</h3><p>File -&gt; Download as -&gt; Markdown(.md)</p>
-<ul>
-<li>HEXO标记-顶部添加-&gt;原生 NBConvert</li>
-</ul>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Python之Sklearn使用教程</span><br><span class="line">date: 2019-07-16</span><br><span class="line">tags: [深度学习, sklearn]</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<h3 id="主题安装和设置"><a href="#主题安装和设置" class="headerlink" title="主题安装和设置"></a>主题安装和设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pip install --no-dependencies jupyterthemes -i Https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"></span><br><span class="line">pip install lesscpy</span><br><span class="line">##配置主题</span><br><span class="line"></span><br><span class="line">jt -t grade3 -ofs 14 -nfs 12 -tfs 14 -fs 12 -T -N</span><br></pre></td></tr></table></figure>
-<h3 id="自动代码补全"><a href="#自动代码补全" class="headerlink" title="自动代码补全"></a>自动代码补全</h3><ul>
-<li>安装 <strong>nbextensions</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter_contrib_nbextensions -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">jupyter contrib nbextension install --user</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装 <strong>nbextensions_configurator</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter_nbextensions_configurator</span><br><span class="line">jupyter nbextensions_configurator enable --user</span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果提示缺少依赖，就使用pip安装对应依赖即可。</li>
-</ul>
+            <h2 id="time-datetime-string-相互转换"><a href="#time-datetime-string-相互转换" class="headerlink" title="time , datetime , string 相互转换"></a>time , datetime , string 相互转换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line">import datetime</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line"># 日期时间字符串</span><br><span class="line">st = &quot;2017-11-23 16:10:10&quot;</span><br><span class="line"># 当前日期时间</span><br><span class="line">dt = datetime.datetime.now()</span><br><span class="line"># 当前时间戳</span><br><span class="line">sp = time.time()</span><br><span class="line"># 1.把datetime转成字符串</span><br><span class="line">dt.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)</span><br><span class="line"></span><br><span class="line"># 2.把字符串转成datetime</span><br><span class="line">datetime.datetime.strptime(st, &quot;%Y-%m-%d %H:%M:%S&quot;)</span><br><span class="line"></span><br><span class="line"># 3.把字符串转成时间戳形式</span><br><span class="line">time.mktime(time.strptime(st, &quot;%Y-%m-%d %H:%M:%S&quot;))</span><br><span class="line"></span><br><span class="line"># 4.把时间戳转成字符串形式</span><br><span class="line"> time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime(sp))</span><br><span class="line"></span><br><span class="line"># 5.把datetime类型转外时间戳形式</span><br><span class="line">time.mktime(dt.timetuple())</span><br></pre></td></tr></table></figure>
+<p>- </p>
 
           
         
@@ -438,7 +395,7 @@ c.NotebookApp.notebook_dir = &apos;d:\\python_notebook&apos;
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/170b5962.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/ec8cdefc.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -457,7 +414,7 @@ c.NotebookApp.notebook_dir = &apos;d:\\python_notebook&apos;
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/170b5962.html" itemprop="url">深度学习之Keras深度学习笔记1</a></h1>
+                <a class="post-title-link" href="/post/ec8cdefc.html" itemprop="url">gnss数据包格式及数据包解析</a></h1>
         
 
         <div class="post-meta">
@@ -469,7 +426,7 @@ c.NotebookApp.notebook_dir = &apos;d:\\python_notebook&apos;
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-16T00:00:00+08:00">2019-07-16</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-26T00:00:00+08:00">2019-08-26</time>
             
 
             
@@ -508,8 +465,321 @@ c.NotebookApp.notebook_dir = &apos;d:\\python_notebook&apos;
       
         
           
-            <h3 id="诊断"><a href="#诊断" class="headerlink" title="诊断"></a>诊断</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设定随机数种子</span></span><br><span class="line">np.random.seed(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入数据</span></span><br><span class="line">dataset = np.loadtxt(<span class="string">'pima-indians-diabetes.csv'</span>, delimiter=<span class="string">','</span>)</span><br><span class="line"><span class="comment"># 分割输入x和输出Y</span></span><br><span class="line">x = dataset[:, <span class="number">0</span> : <span class="number">8</span>]</span><br><span class="line">Y = dataset[:, <span class="number">8</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建模型</span></span><br><span class="line">model = Sequential()</span><br><span class="line">model.add(Dense(<span class="number">12</span>, input_dim=<span class="number">8</span>, activation=<span class="string">'relu'</span>))<span class="comment">##输入层8个神经元</span></span><br><span class="line">model.add(Dense(<span class="number">8</span>, activation=<span class="string">'relu'</span>))</span><br><span class="line">model.add(Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>))<span class="comment">#输出层1个神经元</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译模型</span></span><br><span class="line">model.compile(loss=<span class="string">'binary_crossentropy'</span>, optimizer=<span class="string">'adam'</span>, metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 训练模型并自动评估模型</span></span><br><span class="line">model.fit(x=x, y=Y, epochs=<span class="number">50</span>, batch_size=<span class="number">100</span>, validation_split=<span class="number">0.3</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="手动分割数据集并评估"><a href="#手动分割数据集并评估" class="headerlink" title="手动分割数据集并评估"></a>手动分割数据集并评估</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">seed = <span class="number">7</span></span><br><span class="line"><span class="comment"># 设定随机数种子</span></span><br><span class="line">np.random.seed(seed)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入数据</span></span><br><span class="line">dataset = np.loadtxt(<span class="string">'pima-indians-diabetes.csv'</span>, delimiter=<span class="string">','</span>)</span><br><span class="line"><span class="comment"># 分割输入x和输出Y</span></span><br><span class="line">x = dataset[:, <span class="number">0</span> : <span class="number">8</span>]</span><br><span class="line">Y = dataset[:, <span class="number">8</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分割数据集</span></span><br><span class="line">x_train, x_validation, Y_train, Y_validation = train_test_split(x, Y, test_size=<span class="number">0.2</span>, random_state=seed)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构建模型</span></span><br><span class="line">model = Sequential()</span><br><span class="line">model.add(Dense(<span class="number">12</span>,activation=<span class="string">'relu'</span>))</span><br><span class="line">model.add(Dense(<span class="number">8</span>, activation=<span class="string">'relu'</span>))</span><br><span class="line">model.add(Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译模型</span></span><br><span class="line">model.compile(loss=<span class="string">'binary_crossentropy'</span>, optimizer=<span class="string">'adam'</span>, metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 训练模型</span></span><br><span class="line">model.fit(x_train, Y_train, validation_data=(x_validation, Y_validation), epochs=<span class="number">150</span>, batch_size=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+            <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">类别</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">GPGSV</td>
+<td style="text-align:center">可见卫星信息</td>
+</tr>
+<tr>
+<td style="text-align:center">GPRMC</td>
+<td style="text-align:center">推荐最小定位信息</td>
+</tr>
+<tr>
+<td style="text-align:center">GPVTG</td>
+<td style="text-align:center">地面速度信息</td>
+</tr>
+<tr>
+<td style="text-align:center">GPGGA</td>
+<td style="text-align:center">GPS定位信息</td>
+</tr>
+<tr>
+<td style="text-align:center">GPGSA</td>
+<td style="text-align:center">当前卫星信息</td>
+</tr>
+</tbody>
+</table>
+<h2 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h2><ul>
+<li>原始数据样本</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$GPRMC,092927.000,A,2235.9058,N,11400.0518,E,0.000,74.11,151216,,D*49 </span><br><span class="line">$GPVTG,74.11,T,,M,0.000,N,0.000,K,D*0B </span><br><span class="line">$GPGGA,092927.000,2235.9058,N,11400.0518,E,2,9,1.03,53.1,M,-2.4,M,0.0,0*6B </span><br><span class="line">$GPGSA,A,3,29,18,12,25,10,193,32,14,31,,,,1.34,1.03,0.85*31 </span><br><span class="line">$GPGSV,3,1,12,10,77,192,17,25,59,077,42,32,51,359,39,193,49,157,36*48</span><br><span class="line">$GPGSV,3,2,12,31,47,274,25,50,46,122,37,18,45,158,37,14,36,326,18*70</span><br><span class="line">$GPGSV,3,3,12,12,24,045,45,26,17,200,18,29,07,128,38,21,02,174,*79</span><br></pre></td></tr></table></figure>
+<h2 id="数据解释"><a href="#数据解释" class="headerlink" title="数据解释"></a>数据解释</h2><h3 id="GPRMC-最小定位信息"><a href="#GPRMC-最小定位信息" class="headerlink" title="GPRMC 最小定位信息"></a>GPRMC 最小定位信息</h3><p><em>数据详解</em>：<br><code>$GPRMC,&lt;1&gt;,&lt;2&gt;,&lt;3&gt;,&lt;4&gt;,&lt;5&gt;,&lt;6&gt;,&lt;7&gt;,&lt;8&gt;,&lt;9&gt;,&lt;10&gt;,&lt;11&gt;,&lt;12&gt;*hh</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:left">定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><1></1></td>
+<td style="text-align:left">UTC 时间，hhmmss(时分秒)格式</td>
+</tr>
+<tr>
+<td style="text-align:center"><2></2></td>
+<td style="text-align:left">定位状态，A=有效定位，V=无效定位</td>
+</tr>
+<tr>
+<td style="text-align:center"><3></3></td>
+<td style="text-align:left">纬度ddmm.mmmm(度分)格式(前面的0也将被传输)</td>
+</tr>
+<tr>
+<td style="text-align:center"><4></4></td>
+<td style="text-align:left">纬度半球N(北半球)或S(南半球)</td>
+</tr>
+<tr>
+<td style="text-align:center"><5></5></td>
+<td style="text-align:left">经度dddmm.mmmm(度分)格式(前面的0也将被传输)</td>
+</tr>
+<tr>
+<td style="text-align:center"><6></6></td>
+<td style="text-align:left">经度半球E(东经)或W(西经)</td>
+</tr>
+<tr>
+<td style="text-align:center"><7></7></td>
+<td style="text-align:left">地面速率(000.0~999.9节，前面的0也将被传输)</td>
+</tr>
+<tr>
+<td style="text-align:center"><8></8></td>
+<td style="text-align:left">地面航向(000.0~359.9度，以真北为参考基准，前面的0也将被传输)</td>
+</tr>
+<tr>
+<td style="text-align:center"><9></9></td>
+<td style="text-align:left">UTC 日期，ddmmyy(日月年)格式</td>
+</tr>
+<tr>
+<td style="text-align:center"><10></10></td>
+<td style="text-align:left">磁偏角(000.0~180.0度，前面的0也将被传输)</td>
+</tr>
+<tr>
+<td style="text-align:center"><11></11></td>
+<td style="text-align:left">磁偏角方向，E(东)或W(西)</td>
+</tr>
+<tr>
+<td style="text-align:center"><12></12></td>
+<td style="text-align:left">模式指示(仅NMEA01833.00版本输出，A=自主定位，D=差分，E=估算，N=数据无效)</td>
+</tr>
+</tbody>
+</table>
+<p><em>解析内容</em>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:left">释义</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">时间</td>
+<td style="text-align:left">这个是格林威治时间，是世界时间（UTC），我们需要把它转换成北京时间（BTC），BTC和UTC差了8个小时，要在这个时间基础上加8个小时。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">定位状态</td>
+<td style="text-align:left">在接收到有效数据前，这个位是‘V’，后面的数据都为空，接到有效数据后，这个位是‘A’，后面才开始有数据。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">纬度</td>
+<td style="text-align:left">我们需要把它转换成度分秒的格式。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">南北纬</td>
+<td style="text-align:left">这个位有两种值‘N’（北纬）和‘S’（南纬</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">经度</td>
+<td style="text-align:left">经度的计算方法和纬度的计算方法一样</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">东西经</td>
+<td style="text-align:left">这个位有两种值‘E’（东经）和‘W’（西经）</td>
+<td>.</td>
+</tr>
+<tr>
+<td style="text-align:center">速率</td>
+<td style="text-align:left">这个速率值是海里/时，单位是节，要把它转换成千米/时，根据：1海里=1.85公里，把得到的速率乘以1.85。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">航向</td>
+<td style="text-align:left">指的是偏离正北的角度</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">日期</td>
+<td style="text-align:left">这个日期是准确的，不需要转换</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>经纬度计算方法：<br>如接收到的纬度是：4546.40891 　　<br>4546.40891/100=45.4640891＃取整可以直接读出45度,<br>4546.40891–45ｘ100=46.40891, ＃取整可以直接读出46分 　　</p>
+<p>（46.40891–46）ｘ60=24.5346读出24秒<br>所以纬度是：45度46分24秒。</p>
+</blockquote>
+<h3 id="GPGGA-GPS定位数据"><a href="#GPGGA-GPS定位数据" class="headerlink" title="GPGGA GPS定位数据"></a>GPGGA GPS定位数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">##该数据帧的结构及各字段释义如下：</span><br><span class="line">$GPGGA,&lt;1&gt;,&lt;2&gt;,&lt;3&gt;,&lt;4&gt;,&lt;5&gt;,&lt;6&gt;,&lt;7&gt;,&lt;8&gt;,&lt;9&gt;,M,&lt;10&gt;,M,&lt;11&gt;,&lt;12&gt;*xx&lt;CR&gt;&lt;LF&gt;</span><br><span class="line">$GPGGA：起始引导符及语句格式说明</span><br><span class="line"></span><br><span class="line">&lt;1&gt; UTC时间，格式为hhmmss.sss；</span><br><span class="line">&lt;2&gt; 纬度，格式为ddmm.mmmm(第一位是零也将传送)；</span><br><span class="line">&lt;3&gt; 纬度半球，N或S(北纬或南纬)</span><br><span class="line">&lt;4&gt; 经度，格式为dddmm.mmmm(第一位零也将传送)；</span><br><span class="line">&lt;5&gt; 经度半球，E或W(东经或西经)</span><br><span class="line">&lt;6&gt; GPS状态， 0初始化， 1单点定位， 2码差分， 3无效PPS， 4固定解， 5浮点解， 6正在估算 7，人工输入固定值， 8模拟模式， 9WAAS差分</span><br><span class="line">&lt;7&gt; 使用卫星数量，从00到12(第一个零也将传送)</span><br><span class="line">&lt;8&gt; HDOP-水平精度因子，0.5到99.9，一般认为HDOP越小，质量越好。</span><br><span class="line">&lt;9&gt; 海拔高度，-9999.9到9999.9米</span><br><span class="line">M 指单位米</span><br><span class="line">&lt;10&gt; 大地水准面高度异常差值，-9999.9到9999.9米</span><br><span class="line">M 指单位米</span><br><span class="line">&lt;11&gt; 差分GPS数据期限(RTCM SC-104)，最后设立RTCM传送的秒数量，如不是差分定位则为空</span><br><span class="line">&lt;12&gt; 差分参考基站标号，从0000到1023(首位0也将传送)。</span><br><span class="line">\* 语句结束标志符</span><br><span class="line">xx 从$开始到*之间的所有ASCII码的[异或][校验]</span><br><span class="line">&lt;CR&gt; 回车符，结束标记</span><br><span class="line">&lt;LF&gt; 换行符，结束标记</span><br></pre></td></tr></table></figure>
+<p><em>数据详解</em>:<br><code>$GPVTG,&lt;1&gt;,T,&lt;2&gt;,M,&lt;3&gt;,N,&lt;4&gt;,K,&lt;5&gt;*hh</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:left">定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><1></1></td>
+<td style="text-align:left">以正北为参考基准的地面航向(000~359度，前面的0也将被传输)</td>
+</tr>
+<tr>
+<td style="text-align:center"><2></2></td>
+<td style="text-align:left">以磁北为参考基准的地面航向(000~359度，前面的0也将被传输)</td>
+</tr>
+<tr>
+<td style="text-align:center"><3></3></td>
+<td style="text-align:left">地面速率(000.0~999.9节，前面的0也将被传输)</td>
+</tr>
+<tr>
+<td style="text-align:center"><4></4></td>
+<td style="text-align:left">地面速率(0000.0~1851.8公里/小时，前面的0也将被传输)</td>
+</tr>
+<tr>
+<td style="text-align:center"><5></5></td>
+<td style="text-align:left">模式指示(仅NMEA0183 3.00版本输出，A=自主定位，D=差分，E=估算，N=数据无效</td>
+</tr>
+</tbody>
+</table>
+<h3 id="GPGSV-可视卫星状态"><a href="#GPGSV-可视卫星状态" class="headerlink" title="GPGSV 可视卫星状态"></a>GPGSV 可视卫星状态</h3><p><em>数据详解</em>:<br><code>GPGSV，(1)，(2)，(3)，(4)，(5)，(6)，(7)，…(4),(5)，(6)，(7)*hh(CR)(LF)</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:left">定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">(1)</td>
+<td style="text-align:left">总的GSV语句电文数；2;</td>
+</tr>
+<tr>
+<td style="text-align:center">(2)</td>
+<td style="text-align:left">当前GSV语句号:1;</td>
+</tr>
+<tr>
+<td style="text-align:center">(3)</td>
+<td style="text-align:left">可视卫星总数:08;</td>
+</tr>
+<tr>
+<td style="text-align:center">(4)</td>
+<td style="text-align:left">PRN码(伪随机噪声码也可以认为是卫星编号)</td>
+</tr>
+<tr>
+<td style="text-align:center">(5)</td>
+<td style="text-align:left">仰角(00～90度):33度;</td>
+</tr>
+<tr>
+<td style="text-align:center">(6)</td>
+<td style="text-align:left">方位角(000～359度):240度;</td>
+</tr>
+<tr>
+<td style="text-align:center">(7)</td>
+<td style="text-align:left">信噪比(00～99dB):45dB(后面依次为第10，16，17号卫星的信息); *总和校验域;hh 总和校验数:78; (CR)(LF)回车，换行。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注：每条语句最多包括四颗卫星的信息，每颗卫星的信息有四个数据项，即： (4)－卫星号，(5)－仰角，(6)－方位角，(7)－信噪比。</p>
+</blockquote>
+<blockquote>
+<p>例： $GPGSV,3,1,10,24,82,023,40,05,62,285,32,01,62,123,00,17,59,229,28*70<br>每条语句包含四部分内容，例如：第一部分是“24,82,023,40”，第二部分是“05,62,285,32”等等。 每部分的第一个词为PRC，第二个词为卫星高程，跟着为方位角和信号强度。这个语句里最重要的指标应该算是“信号躁声比（signal-to-noise ratio）”（以下简称为SNR）。 这个数值标示卫星信号的接收率。我们知道，卫星是以相同的强度发射信号，但是传播过程中难免会遇到诸如树和墙之类的 障碍物，这样就影响了信号的识别。 典型的SNR值在0到50之间，其中50表示非常好的信号。（SNR可以达到99）。</p>
+</blockquote>
+<h3 id="GPGSA-当前卫星信息"><a href="#GPGSA-当前卫星信息" class="headerlink" title="GPGSA 当前卫星信息"></a>GPGSA 当前卫星信息</h3><blockquote>
+<p>GPGSA，语句ID，表明该语句为GPS DOP and Active Satellites（GSA）当前卫星信息 　　<br><em>数据详解</em>:<br><code>GPGSA，字段1，字段2，字段3，字段4，字段5，字段6，字段7，字段8，字段9，字段10，字段11，字段12，字段13，字段14，字段15，字段16，字段17，字段18</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:left">定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">字段1</td>
+<td style="text-align:left">定位模式，A=自动手动2D/3D，M=手动2D/3D</td>
+</tr>
+<tr>
+<td style="text-align:center">字段2</td>
+<td style="text-align:left">定位类型，1=未定位，2=2D定位，3=3D定位</td>
+</tr>
+<tr>
+<td style="text-align:center">字段3</td>
+<td style="text-align:left">PRN码(伪随机噪声码),第1信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
+</tr>
+<tr>
+<td style="text-align:center">字段4</td>
+<td style="text-align:left">PRN码(伪随机噪声码),第2信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
+</tr>
+<tr>
+<td style="text-align:center">字段5</td>
+<td style="text-align:left">PRN码(伪随机噪声码),第3信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
+</tr>
+<tr>
+<td style="text-align:center">字段6</td>
+<td style="text-align:left">PRN码(伪随机噪声码),第4信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
+</tr>
+<tr>
+<td style="text-align:center">字段7</td>
+<td style="text-align:left">PRN码(伪随机噪声码)第5信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
+</tr>
+<tr>
+<td style="text-align:center">字段8</td>
+<td style="text-align:left">PRN码(伪随机噪声码),第6信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
+</tr>
+<tr>
+<td style="text-align:center">字段9</td>
+<td style="text-align:left">PRN码(伪随机噪声码),第7信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
+</tr>
+<tr>
+<td style="text-align:center">字段10</td>
+<td style="text-align:left">PRN码(伪随机噪声码),第8信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
+</tr>
+<tr>
+<td style="text-align:center">字段11</td>
+<td style="text-align:left">PRN码(伪随机噪声码),第9信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
+</tr>
+<tr>
+<td style="text-align:center">字段12</td>
+<td style="text-align:left">PRN码(伪随机噪声码),第10信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
+</tr>
+<tr>
+<td style="text-align:center">字段13</td>
+<td style="text-align:left">PRN码(伪随机噪声码),第11信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
+</tr>
+<tr>
+<td style="text-align:center">字段14</td>
+<td style="text-align:left">PRN码(伪随机噪声码),第12信道正在使用的卫星PRN码编号(00)(前导位数不足则补0)</td>
+</tr>
+<tr>
+<td style="text-align:center">字段15</td>
+<td style="text-align:left">PDOP综合位置精度因子(0.5 - 99.9)</td>
+</tr>
+<tr>
+<td style="text-align:center">字段16</td>
+<td style="text-align:left">HDOP水平精度因子(0.5 - 99.9)</td>
+</tr>
+<tr>
+<td style="text-align:center">字段17</td>
+<td style="text-align:left">VDOP垂直精度因子(0.5 - 99.9)</td>
+</tr>
+<tr>
+<td style="text-align:center">字段18</td>
+<td style="text-align:left">校验值</td>
+</tr>
+</tbody>
+</table>
 
           
         
@@ -560,7 +830,7 @@ c.NotebookApp.notebook_dir = &apos;d:\\python_notebook&apos;
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/adfc7e63.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/bab5f202.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -579,7 +849,7 @@ c.NotebookApp.notebook_dir = &apos;d:\\python_notebook&apos;
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/adfc7e63.html" itemprop="url">深度学习之Keras安装和教程</a></h1>
+                <a class="post-title-link" href="/post/bab5f202.html" itemprop="url">python之串口读取和发送数据</a></h1>
         
 
         <div class="post-meta">
@@ -591,7 +861,7 @@ c.NotebookApp.notebook_dir = &apos;d:\\python_notebook&apos;
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-14T00:00:00+08:00">2019-07-14</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-26T00:00:00+08:00">2019-08-26</time>
             
 
             
@@ -630,392 +900,392 @@ c.NotebookApp.notebook_dir = &apos;d:\\python_notebook&apos;
       
         
           
-            <h2 id="Keras安装"><a href="#Keras安装" class="headerlink" title="Keras安装"></a>Keras安装</h2><ul>
-<li><p>安装miniconda的python3.5版本</p>
-</li>
-<li><p>打开Anaconda Prompt,并运行：</p>
-</li>
+            <h2 id="串口读取数据"><a href="#串口读取数据" class="headerlink" title="串口读取数据"></a>串口读取数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python  </span><br><span class="line"># -*- coding: utf-8 -*  </span><br><span class="line">import serial</span><br><span class="line"></span><br><span class="line">def read_serial(serial_port=&apos;COM8&apos;,read_num=100,filen_name=&apos;ins_data.txt&apos;):</span><br><span class="line">    ser = serial.Serial(serial_port, baudrate=115200, bytesize=8, parity=&apos;N&apos;, stopbits=1, timeout=5, xonxoff=0, rtscts=0)</span><br><span class="line">    ##配置并打开串口</span><br><span class="line">    if not ser.isOpen():</span><br><span class="line">        ser.open()</span><br><span class="line">    </span><br><span class="line">    for i in range(read_num):</span><br><span class="line">        ser_return = ser.readline()</span><br><span class="line">        print(ser_return)</span><br><span class="line"></span><br><span class="line">    ser.close()</span><br><span class="line"></span><br><span class="line">if __name__==&apos;__main__&apos;:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    read_serial(&apos;COM8&apos;,10000,&apos;ins_data.txt&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="通过串口发送字符串数据"><a href="#通过串口发送字符串数据" class="headerlink" title="通过串口发送字符串数据"></a>通过串口发送字符串数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python  </span><br><span class="line"># -*- coding: utf-8 -*  </span><br><span class="line">import serial  </span><br><span class="line">import time</span><br><span class="line">from datetime import datetime</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">读取文本文件</span><br><span class="line">通过Virtual Serial Port模拟串口发送字符串</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">##返回系统当前时间的小时，分钟，秒，微秒     </span><br><span class="line">def get_time_detail():</span><br><span class="line">    tm=datetime.now()</span><br><span class="line">    return str(tm.hour)+&apos;:&apos;+str(tm.minute)+&apos;:&apos;+str(tm.second)+&apos;.&apos;+str(tm.microsecond/1000)</span><br><span class="line"></span><br><span class="line">##模拟串口循环发送字符串</span><br><span class="line">def simulate_serial_port(_port_name=&apos;COM7&apos;,_baudrate=115200,_text_file_name=&apos;&apos;):</span><br><span class="line">    print(&apos;sending ins data to &apos; + _port_name)</span><br><span class="line">    print(get_time_detail())</span><br><span class="line">    file_content = open(_text_file_name,&quot;rb&quot;).readlines()[1:]</span><br><span class="line"></span><br><span class="line">    ##通过串口发送数据</span><br><span class="line">    ser = serial.Serial(port=_port_name, baudrate=_baudrate, bytesize=8, parity=&apos;N&apos;, stopbits=1, timeout=5, xonxoff=0, rtscts=0)</span><br><span class="line">    try:</span><br><span class="line">        ##配置并打开串口</span><br><span class="line">        if not ser.isOpen():</span><br><span class="line">            ser.open()</span><br><span class="line">        ##循环向串口发送数据    </span><br><span class="line">        while True:</span><br><span class="line">            for line in file_content:</span><br><span class="line">                print(line)</span><br><span class="line">                ser.write(line)</span><br><span class="line">                time.sleep(0.1)</span><br><span class="line"></span><br><span class="line">    except EnvironmentError as err:</span><br><span class="line">        print(err)</span><br><span class="line">    finally:    </span><br><span class="line">        ser.close()</span><br><span class="line"></span><br><span class="line">if __name__==&apos;__main__&apos;:</span><br><span class="line">    simulate_serial_port(&apos;COM7&apos;,115200,&apos;merged_dataframe.csv&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="通过串口发送16进制数据"><a href="#通过串口发送16进制数据" class="headerlink" title="通过串口发送16进制数据"></a>通过串口发送16进制数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python  </span><br><span class="line"># -*- coding: utf-8 -*  </span><br><span class="line">import serial  </span><br><span class="line"></span><br><span class="line">def simulate_ins_data():</span><br><span class="line">    file_content = open(&quot;comdata.hex&quot;,&quot;rb&quot;).read()</span><br><span class="line">    byte_list = list(file_content)##转换文件内容为list、</span><br><span class="line">    ##通过串口发送数据</span><br><span class="line">    ser = serial.Serial(port=&apos;COM7&apos;, baudrate=115200, bytesize=8, parity=&apos;N&apos;, stopbits=1, timeout=5, xonxoff=0, rtscts=0)</span><br><span class="line"></span><br><span class="line">    ##配置并打开串口</span><br><span class="line">    if not ser.isOpen():</span><br><span class="line">        ser.open()</span><br><span class="line">    while True:</span><br><span class="line">        for b in byte_list:</span><br><span class="line">            ser.write(b)</span><br><span class="line">            print(hex(ord(b)))</span><br><span class="line">##            time.sleep(0.01)</span><br><span class="line">    ser.close()</span><br><span class="line">        </span><br><span class="line">if __name__==&apos;__main__&apos;:</span><br><span class="line">    simulate_ins_data()</span><br></pre></td></tr></table></figure>
+<h3 id="python通过post传递数据"><a href="#python通过post传递数据" class="headerlink" title="python通过post传递数据"></a>python通过post传递数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># !/usr/bin/python</span><br><span class="line"># encoding:utf-8</span><br><span class="line">import requests</span><br><span class="line">#下面替换成您的数据</span><br><span class="line">postdata=&#123;&apos;name&apos;:&apos;xiaochong&apos;&#125;</span><br><span class="line">r=requests.post(&apos;http://localhost/post&apos;,data=postdata)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/3c903284.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/3c903284.html" itemprop="url">python之jieba中文分词</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-19T00:00:00+08:00">2019-08-19</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="安装jieba"><a href="#安装jieba" class="headerlink" title="安装jieba"></a>安装jieba</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jieba</span><br></pre></td></tr></table></figure>
+<h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># encoding=utf-8</span><br><span class="line">import jieba</span><br><span class="line"></span><br><span class="line">seg_list = jieba.cut(&quot;我来到北京清华大学&quot;, cut_all=True)</span><br><span class="line">print(&quot;Full Mode: &quot; + &quot;/ &quot;.join(seg_list))  # 全模式</span><br><span class="line"></span><br><span class="line">seg_list = jieba.cut(&quot;我来到北京清华大学&quot;, cut_all=False)</span><br><span class="line">print(&quot;Default Mode: &quot; + &quot;/ &quot;.join(seg_list))  # 精确模式</span><br><span class="line"></span><br><span class="line">seg_list = jieba.cut(&quot;他来到了网易杭研大厦&quot;)  # 默认是精确模式</span><br><span class="line">print(&quot;, &quot;.join(seg_list))</span><br><span class="line"></span><br><span class="line">seg_list = jieba.cut_for_search(&quot;小明硕士毕业于中国科学院计算所，后在日本京都大学深造&quot;)  # 搜索引擎模式</span><br><span class="line">print(&quot;, &quot;.join(seg_list))</span><br></pre></td></tr></table></figure>
+<p>输出:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">【全模式】: 我/ 来到/ 北京/ 清华/ 清华大学/ 华大/ 大学</span><br><span class="line"></span><br><span class="line">【精确模式】: 我/ 来到/ 北京/ 清华大学</span><br><span class="line"></span><br><span class="line">【新词识别】：他, 来到, 了, 网易, 杭研, 大厦    (此处，“杭研”并没有在词典中，但是也被Viterbi算法识别出来了)</span><br><span class="line"></span><br><span class="line">【搜索引擎模式】： 小明, 硕士, 毕业, 于, 中国, 科学, 学院, 科学院, 中国科学院, 计算, 计算所, 后, 在, 日本, 京都, 大学, 日本京都大学, 深造</span><br></pre></td></tr></table></figure>
+<h3 id="词频统计"><a href="#词频统计" class="headerlink" title="词频统计"></a>词频统计</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import jieba</span><br><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line"># 创建停用词list</span><br><span class="line">def stopwordslist(filepath):</span><br><span class="line">    stopwords = [line.strip() for line in open(filepath, &apos;r&apos;, encoding=&apos;utf-8&apos;).readlines()]</span><br><span class="line">    return stopwords</span><br><span class="line"></span><br><span class="line"># 对句子进行分词</span><br><span class="line">def seg_sentence(string_for_seg):</span><br><span class="line">    ##jieba.load_userdict(&apos;user_dict.txt&apos;)</span><br><span class="line">    sentence_seged = jieba.cut(string_for_seg.strip())</span><br><span class="line">    ##stopwords = stopwordslist(&apos;stopwords.txt&apos;)  # 这里加载停用词的路径</span><br><span class="line">    outstr = []</span><br><span class="line">    for word in sentence_seged:</span><br><span class="line">        ##if word not in stopwords:</span><br><span class="line">            if word != &apos;\t&apos;:</span><br><span class="line">##                print(word)</span><br><span class="line">                outstr.append(word)</span><br><span class="line">    return outstr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 对分词进行词频展示</span><br><span class="line">def word_frequency(str_list):</span><br><span class="line">    c = Counter()</span><br><span class="line">    for x in str_list:</span><br><span class="line">        if len(x) &gt; 1 and x != &apos;\r\n&apos;:</span><br><span class="line">            c[x] += 1</span><br><span class="line"></span><br><span class="line">    content_list=[]</span><br><span class="line">    for (k, v) in c.most_common():</span><br><span class="line">##        file_content=file_content+k.encode(&apos;gbk&apos;)+&apos; : &apos;+str(v)+&apos;\n&apos;</span><br><span class="line">        content_list.append((k,v))</span><br><span class="line">    return content_list</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">if __name__==&apos;__main__&apos;:</span><br><span class="line">    ##读取文件内容并替换掉换行符</span><br><span class="line">    lines = open(&apos;data.txt&apos;, &apos;r&apos;).read().replace(&quot;\n&quot;, &quot;&quot;)</span><br><span class="line">    </span><br><span class="line">    str_list = seg_sentence(lines)  # 这里的返回值是列表</span><br><span class="line">    content_list = word_frequency(str_list)  # 取词频</span><br><span class="line">    for it in content_list[:100]:</span><br><span class="line">        print(it[0])</span><br><span class="line">    print(u&apos;完成&apos;)</span><br><span class="line">##    input()</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/96f9699e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/96f9699e.html" itemprop="url">python之读写json文件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-19T00:00:00+08:00">2019-08-19</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="python中json-dump-和-json-dumps-有那些区别？"><a href="#python中json-dump-和-json-dumps-有那些区别？" class="headerlink" title="python中json.dump() 和 json.dumps() 有那些区别？"></a>python中json.dump() 和 json.dumps() 有那些区别？</h2><ul>
+<li>JSON字符串用json.dumps, json.loads JSON文件名用json.dump, json.load</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install keras</span><br><span class="line">pip install tensorflow</span><br><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure>
-<h2 id="Keras教程"><a href="#Keras教程" class="headerlink" title="Keras教程"></a>Keras教程</h2><p>[]: <a href="https://tensorflow.google.cn/tutorials/keras/basic_classification" target="_blank" rel="noopener">https://tensorflow.google.cn/tutorials/keras/basic_classification</a></p>
-<p>[]: <a href="https://tensorflow.google.cn/tutorials/" target="_blank" rel="noopener">https://tensorflow.google.cn/tutorials/</a></p>
-<p>[]: <a href="https://tensorflow.google.cn/guide/keras" target="_blank" rel="noopener">https://tensorflow.google.cn/guide/keras</a></p>
-<p>[]: <a href="https://keras.io/zh/metrics/" target="_blank" rel="noopener">https://keras.io/zh/metrics/</a></p>
-<h3 id="EOFError-Compressed-file-ended-before-the-end-of-stream-marker-was-reached解决办法"><a href="#EOFError-Compressed-file-ended-before-the-end-of-stream-marker-was-reached解决办法" class="headerlink" title="EOFError: Compressed file ended before the end-of-stream marker was reached解决办法"></a>EOFError: Compressed file ended before the end-of-stream marker was reached解决办法</h3><ul>
-<li><p>删除文件夹   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\username\.keras\datasets\fashion-mnist</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<h2 id="json-dumps将json对象编码为字符串"><a href="#json-dumps将json对象编码为字符串" class="headerlink" title="json.dumps将json对象编码为字符串"></a>json.dumps将json对象编码为字符串</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">data =[&#123;&apos;a&apos;:4,&apos;b&apos;:5,&apos;c&apos;:6,&apos;d&apos;:7,&apos;e&apos;:8&#125;]</span><br><span class="line">json_string = json.dumps(data)</span><br><span class="line">print(json_string)</span><br></pre></td></tr></table></figure>
+<h2 id="json-loads将字符串解码JSON-对象"><a href="#json-loads将字符串解码JSON-对象" class="headerlink" title="json.loads将字符串解码JSON 对象"></a>json.loads将字符串解码JSON 对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">jsonData =&apos;&#123;&quot;a&quot;:4,&quot;b&quot;:5,&quot;c&quot;:6,&quot;d&quot;:7,&quot;e&quot;:8&#125;&apos;;</span><br><span class="line">text = json.loads(jsonData)</span><br><span class="line">print(text)</span><br></pre></td></tr></table></figure>
+<h3 id="将数据保存为-json文件"><a href="#将数据保存为-json文件" class="headerlink" title="将数据保存为.json文件"></a>将数据保存为.json文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model=&#123;&#125; #数据</span><br><span class="line">with open(&quot;./hmm.json&quot;,&apos;w&apos;) as json_file:</span><br><span class="line">        json.dump(model,json_file,ensure_ascii=False)</span><br></pre></td></tr></table></figure>
+<h3 id="读取-json文件"><a href="#读取-json文件" class="headerlink" title="读取.json文件"></a>读取.json文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model=&#123;&#125; #存放读取的数据</span><br><span class="line">with open(&quot;./hmm.json&quot;,&apos;r&apos;,encoding=&apos;utf-8&apos;) as json_file:</span><br><span class="line">        model=json.load(json_file)</span><br></pre></td></tr></table></figure>
+<h3 id="格式化json文件并读取到dataframe"><a href="#格式化json文件并读取到dataframe" class="headerlink" title="格式化json文件并读取到dataframe"></a>格式化json文件并读取到dataframe</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import json</span><br><span class="line">import pandas as pd</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">无法读取json文件时需要使用notepad++格式化json文件:</span><br><span class="line">全选-&gt;编码-&gt;使用utf-8编码</span><br><span class="line">插件-&gt;JSTool-&gt;JSformat</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">if __name__==&apos;__main__&apos;:</span><br><span class="line"></span><br><span class="line">    df=pd.read_json(&apos;stations_location.json&apos;,orient=&apos;records&apos;)</span><br><span class="line">    print(df)</span><br><span class="line">##    df=df.drop([&apos;latitute&apos;],axis=1)##删除列</span><br><span class="line">    </span><br><span class="line">    df.to_json(&apos;test.json&apos;,orient=&apos;records&apos;,force_ascii=False)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/c2d4664b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/c2d4664b.html" itemprop="url">Python2.7版本的安装</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-14T00:00:00+08:00">2019-08-14</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="下载安装Python2-7"><a href="#下载安装Python2-7" class="headerlink" title="下载安装Python2.7"></a>下载安装Python2.7</h2><p><a href="https://www.python.org/downloads/release/python-2716/" target="_blank" rel="noopener">下载Python2.7</a></p>
 <ul>
-<li>重新运行程序</li>
+<li>安装时需要选择<u>Add python.exe to Path</u>,以便python程序的运行</li>
 </ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/fc3c8ff7.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/fc3c8ff7.html" itemprop="url">python之sftp上传和下载</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-11T00:00:00+08:00">2019-07-11</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="python使用sftp上传和下载"><a href="#python使用sftp上传和下载" class="headerlink" title="python使用sftp上传和下载"></a>python使用sftp上传和下载</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">import paramiko</span><br><span class="line">import datetime</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">##上传文件</span><br><span class="line">def put_file(local_file, remote_file, hostname, port, username,password):</span><br><span class="line">    t = paramiko.Transport((hostname, port))</span><br><span class="line">    t.connect(username=username, password=password)</span><br><span class="line">    sftp = paramiko.SFTPClient.from_transport(t)#如果连接需要密钥，则要加上一个参数，hostkey=&quot;密钥&quot;</span><br><span class="line">    print(&apos;put:&apos;, local_file)</span><br><span class="line">    sftp.put(local_file, remote_file)#将本地的Windows.txt文件上传至服务器/root/Windows.txt</span><br><span class="line">     </span><br><span class="line">    t.close()#关闭连接</span><br><span class="line">    </span><br><span class="line">##下载文件</span><br><span class="line">def get_file(remote_file,local_file, hostname, port, username,password): </span><br><span class="line">    t = paramiko.Transport((hostname, port))</span><br><span class="line">    t.connect(username=username, password=password)</span><br><span class="line">    sftp = paramiko.SFTPClient.from_transport(t)#如果连接需要密钥，则要加上一个参数，hostkey=&quot;密钥&quot;</span><br><span class="line">    print(&apos;get:&apos;, remote_file)</span><br><span class="line">    sftp.get(remote_file,local_file)#将Linux上的/root/Linux.txt下载到本地</span><br><span class="line">     </span><br><span class="line">    t.close()#关闭连接</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##上传文件夹</span><br><span class="line">def upload_dir(local_dir, remote_dir, hostname, port, username, password):</span><br><span class="line">    try:</span><br><span class="line">        t = paramiko.Transport((hostname, port))</span><br><span class="line">        t.connect(username=username, password=password)</span><br><span class="line">        sftp = paramiko.SFTPClient.from_transport(t)</span><br><span class="line"></span><br><span class="line">        try:</span><br><span class="line">            sftp.mkdir(remote_dir)</span><br><span class="line">        except Exception as e:</span><br><span class="line">            print(e)</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        print(&apos;upload file start %s &apos; % datetime.datetime.now())</span><br><span class="line">        for root, dirs, files in os.walk(local_dir):</span><br><span class="line">            print(&apos;[%s][%s][%s]&apos; % (root, dirs, files))</span><br><span class="line">            for filespath in files:</span><br><span class="line">                local_file = os.path.join(root, filespath)</span><br><span class="line">                print(11, &apos;[%s][%s][%s][%s]&apos; % (root, filespath, local_file, local_dir))</span><br><span class="line">                a = local_file.replace(local_dir, &apos;&apos;).replace(&apos;\\&apos;, &apos;/&apos;).lstrip(&apos;/&apos;)</span><br><span class="line">                print(&apos;01&apos;, a, &apos;[%s]&apos; % remote_dir)</span><br><span class="line">                remote_file = os.path.join(remote_dir, a).replace(&apos;\\&apos;, &apos;/&apos;)</span><br><span class="line">                print(22, remote_file)</span><br><span class="line">                try:</span><br><span class="line">                    sftp.put(local_file, remote_file)</span><br><span class="line">                except Exception as e:</span><br><span class="line">                    sftp.mkdir(os.path.split(remote_file)[0])</span><br><span class="line">                    sftp.put(local_file, remote_file)</span><br><span class="line">                    print(&quot;66 upload %s to remote %s&quot; % (local_file, remote_file))</span><br><span class="line">            for name in dirs:</span><br><span class="line">                local_path = os.path.join(root, name)</span><br><span class="line">                print(0, local_path, local_dir)</span><br><span class="line">                a = local_path.replace(local_dir, &apos;&apos;).replace(&apos;\\&apos;, &apos;/&apos;).lstrip(&apos;/&apos;)</span><br><span class="line">                print(1, a)</span><br><span class="line">                print(1, remote_dir)</span><br><span class="line">                # remote_path = os.path.join(remote_dir, a).replace(&apos;\\&apos;, &apos;/&apos;)</span><br><span class="line">                remote_path = remote_dir + a</span><br><span class="line">                print(33, remote_path)</span><br><span class="line">                try:</span><br><span class="line">                    sftp.mkdir(remote_path)</span><br><span class="line">                    print(44, &quot;mkdir path %s&quot; % remote_path)</span><br><span class="line">                except Exception as e:</span><br><span class="line">                    print(55, e)</span><br><span class="line">        print(&apos;77,upload file success %s &apos; % datetime.datetime.now())</span><br><span class="line">        t.close()</span><br><span class="line">    except Exception as e:</span><br><span class="line">        print(88, e)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    # 选择上传到那个服务器</span><br><span class="line"></span><br><span class="line">    hostname = &apos;180.1.1.1&apos;</span><br><span class="line">    username = &apos;root&apos;</span><br><span class="line">    password = &apos;12345678&apos;</span><br><span class="line">    port = 22</span><br><span class="line"></span><br><span class="line">##    upload_dir(r&apos;./source/&apos;, r&apos;/root/upload/source/&apos;, hostname=hostname, port=port, username=username,password=password)</span><br><span class="line">##    put_file(r&apos;./markdown_source_2019-7-11.zip&apos;, r&apos;/root/upload/markdown_source_2019-7-11.zip&apos;, hostname, port, username,password)</span><br><span class="line"></span><br><span class="line">    get_file(r&apos;/root/upload/markdown_source_2019-7-11.zip&apos;,r&apos;./markdown_source_2019-7-11-get.zip&apos;,  hostname=hostname, port=port, username=username,password=password)</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/81f44367.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/81f44367.html" itemprop="url">CSharp拼接串口数据</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-10T21:24:54+08:00">2019-07-10</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="串口DataReceived事件触发时，读取数据并加入队列缓存"><a href="#串口DataReceived事件触发时，读取数据并加入队列缓存" class="headerlink" title="串口DataReceived事件触发时，读取数据并加入队列缓存"></a>串口DataReceived事件触发时，读取数据并加入队列缓存</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">byte[] buf = new byte[serialPort1.BytesToRead];</span><br><span class="line">int len = serialPort1.Read(buf, 0, buf.Length);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for (int i = 0; i &lt; len; i++)</span><br><span class="line">&#123;</span><br><span class="line">    buffer_que.Enqueue(buf[i]);//数据加入队列</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if (buffer_que.Count &gt; 177)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    //将队列里的数据copy到byte数组</span><br><span class="line">    byte[] b = new byte[buffer_que.Count];</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; buffer_que.Count; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        b[i] = (byte)buffer_que.Dequeue();</span><br><span class="line">    &#125;</span><br><span class="line">    buffer_que.Clear();//清空队列</span><br><span class="line">    byte[] byte_rest=extract_ins_byte_array(b);</span><br><span class="line">	//将剩余的数据存入队列，和串口新读取的数据合并</span><br><span class="line">    for (int i = 0; i &lt; byte_rest.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        buffer_que.Enqueue(byte_rest[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="截取byte数组中特征字符串之间的数据，返回剩余的数据"><a href="#截取byte数组中特征字符串之间的数据，返回剩余的数据" class="headerlink" title="截取byte数组中特征字符串之间的数据，返回剩余的数据"></a>截取byte数组中特征字符串之间的数据，返回剩余的数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">//提取ins数据速度更快</span><br><span class="line">private byte[] extract_ins_byte_array(byte[] b)</span><br><span class="line">&#123;</span><br><span class="line">    int j = 0;</span><br><span class="line">    for (; j &lt; b.Length; )</span><br><span class="line">    &#123;</span><br><span class="line">        if (b[j] == 0x55 &amp;&amp; b[j + 1] == 0xAA)</span><br><span class="line">        &#123;</span><br><span class="line">            if (j + 88 &gt; b.Length)</span><br><span class="line">            &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                // str_buffer = byteToHexStr(b.Skip(j).Take(88).ToArray());</span><br><span class="line">				//从byte数组中截取固定长度的数据</span><br><span class="line">                double[] dblarr = analyse_ins(b.Skip(j).Take(88).ToArray());</span><br><span class="line">                //将double数据转换为字符串，以便显示</span><br><span class="line">                str_buffer = pub_lib.double_array_to_string(dblarr);</span><br><span class="line">				//计数器增加</span><br><span class="line">                j = j + 86;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">	//返回剩余的数据</span><br><span class="line">    return b.Skip(j).Take(b.Length-j).ToArray();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/c3e9ebd1.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/c3e9ebd1.html" itemprop="url">CSharp字节处理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-10T15:06:27+08:00">2019-07-10</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="C-字节数组截取"><a href="#C-字节数组截取" class="headerlink" title="C# 字节数组截取"></a>C# 字节数组截取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">byte[] data = new byte[] &#123; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 &#125;;</span><br><span class="line">//从第5位开始截取3个字节则 </span><br><span class="line">data.Skip(5).Take(3).ToArray()；</span><br></pre></td></tr></table></figure>
-<h2 id="字符串与字节数组间的互相转化"><a href="#字符串与字节数组间的互相转化" class="headerlink" title="字符串与字节数组间的互相转化"></a>字符串与字节数组间的互相转化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string str = &quot;内存大小&quot;;</span><br><span class="line">byte[] temp = Encoding.UTF8.GetBytes (str);        // 字符串转化为字节数组</span><br><span class="line">string s = Encoding.UTF8.GetString (temp);        // 字节数组转化为字符串</span><br></pre></td></tr></table></figure>
-<h2 id="使用MemoryStream将文件保存到内存"><a href="#使用MemoryStream将文件保存到内存" class="headerlink" title="使用MemoryStream将文件保存到内存"></a>使用MemoryStream将文件保存到内存</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">namespace MemoryStreamApp  </span><br><span class="line">&#123;  </span><br><span class="line">    class Program  </span><br><span class="line">    &#123;  </span><br><span class="line">        static void Main(string[] args)  </span><br><span class="line">        &#123;  </span><br><span class="line">            //构造MemoryStream实例，并输出初始分配容量及使用大小  </span><br><span class="line">            MemoryStream mem = new MemoryStream();  </span><br><span class="line">            Console.WriteLine(&quot;初始分配容量:&#123;0&#125;&quot; , mem.Capacity);  </span><br><span class="line">            Console.WriteLine(&quot;初始使用量：&#123;0&#125;&quot; , mem.Length);  </span><br><span class="line">            //将待写入的数据从字符串转换为字节数组  </span><br><span class="line">            UnicodeEncoding encoder = new UnicodeEncoding();  </span><br><span class="line">            byte[] bytes = encoder.GetBytes(&quot;新增数据&quot;);  </span><br><span class="line">            //向内存流中写入数据  </span><br><span class="line">            for (int i = 1; i &lt; 4; i++)  </span><br><span class="line">            &#123;  </span><br><span class="line">                Console.WriteLine(&quot;第&#123;0&#125;次写入新数据&quot;, i);  </span><br><span class="line">                mem.Write(bytes, 0, bytes.Length);  </span><br><span class="line">            &#125;  </span><br><span class="line">            //写入数据后 MemoryStream 实例的容量和使用大小  </span><br><span class="line">            Console.WriteLine(&quot;当前分配容量：&#123;0&#125;&quot;,mem.Capacity);  </span><br><span class="line">            Console.WriteLine(&quot;当前使用量：&#123;0&#125;&quot;,mem.Length);  </span><br><span class="line">            Console.ReadLine();  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="C-队列"><a href="#C-队列" class="headerlink" title="C# 队列"></a>C# 队列</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections;</span><br><span class="line"></span><br><span class="line">namespace CollectionsApplication</span><br><span class="line">&#123;</span><br><span class="line">   class Program</span><br><span class="line">   &#123;</span><br><span class="line">      static void Main(string[] args)</span><br><span class="line">      &#123;</span><br><span class="line">         Queue q = new Queue();</span><br><span class="line"></span><br><span class="line">         q.Enqueue(&apos;A&apos;);</span><br><span class="line">         q.Enqueue(&apos;M&apos;);</span><br><span class="line">         q.Enqueue(&apos;G&apos;);</span><br><span class="line">         q.Enqueue(&apos;W&apos;);</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(&quot;Current queue: &quot;);</span><br><span class="line">         foreach (char c in q)</span><br><span class="line">            Console.Write(c + &quot; &quot;);</span><br><span class="line">         Console.WriteLine();</span><br><span class="line">         q.Enqueue(&apos;V&apos;);</span><br><span class="line">         q.Enqueue(&apos;H&apos;);</span><br><span class="line">         Console.WriteLine(&quot;Current queue: &quot;);         </span><br><span class="line">         foreach (char c in q)</span><br><span class="line">            Console.Write(c + &quot; &quot;);</span><br><span class="line">         Console.WriteLine();</span><br><span class="line">         Console.WriteLine(&quot;Removing some values &quot;);</span><br><span class="line">         char ch = (char)q.Dequeue();</span><br><span class="line">         Console.WriteLine(&quot;The removed value: &#123;0&#125;&quot;, ch);</span><br><span class="line">         ch = (char)q.Dequeue();</span><br><span class="line">         Console.WriteLine(&quot;The removed value: &#123;0&#125;&quot;, ch);</span><br><span class="line">         q.Clear();//清空队列</span><br><span class="line">         Console.ReadKey();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="pip安装常用模块"><a href="#pip安装常用模块" class="headerlink" title="pip安装常用模块"></a>pip安装常用模块</h2><ul>
+<li>保存为install_py_module.bat并执行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple baidu-aip</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple beautifulsoup4</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple bs4</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple chardet</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple click</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple cntk</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple cycler</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple Cython</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple decorator</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple Django</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple docker-py</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple Flask</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple geopy</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple html5lib</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ipython</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple jsonschema</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple jupyter-client</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple jupyter-core</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple Keras</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple Markdown</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple matplotlib</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple mp3play</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple nltk</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple notebook</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple numpy</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple opencv-python</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pandas</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pandocfilters</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple paramiko</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple Pillow</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple plotly</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pycurl</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple PyInstaller</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pymongo</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pymssql</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple PyPDF2</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pyserial</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-dateutil</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pywin32</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pywin32-ctypes</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple redis</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple scikit-learn</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple scipy</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple six</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple sklearn</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple tushare</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple urllib3</span><br></pre></td></tr></table></figure>
+<h2 id="使用pip源至国内镜像"><a href="#使用pip源至国内镜像" class="headerlink" title="使用pip源至国内镜像"></a>使用pip源至国内镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pandas</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r r.csv</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1055,7 +1325,7 @@ c.NotebookApp.notebook_dir = &apos;d:\\python_notebook&apos;
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/19/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/21/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/19/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/21/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1100,7 +1370,7 @@ c.NotebookApp.notebook_dir = &apos;d:\\python_notebook&apos;
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">165</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1193,33 +1463,7 @@ c.NotebookApp.notebook_dir = &apos;d:\\python_notebook&apos;
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1259,7 +1503,7 @@ c.NotebookApp.notebook_dir = &apos;d:\\python_notebook&apos;
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

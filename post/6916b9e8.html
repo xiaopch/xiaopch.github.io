@@ -343,7 +343,7 @@
       
 
       
-        <h3 id="Paddlehub图像分割并显示"><a href="#Paddlehub图像分割并显示" class="headerlink" title="Paddlehub图像分割并显示"></a>Paddlehub图像分割并显示</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import paddlehub as hub</span><br><span class="line">import matplotlib.pyplot as plt </span><br><span class="line">import matplotlib.image as mpimg</span><br><span class="line">import matplotlib</span><br><span class="line">matplotlib.use('TkAgg')</span><br><span class="line"><span class="meta">#</span>加载模型ace2p</span><br><span class="line">module = hub.Module(name="ace2p")</span><br><span class="line">test_img_path = "test_image.jpg"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> set input dict</span><br><span class="line">input_dict = &#123;"image": [test_img_path]&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> execute predict and print the result</span><br><span class="line">results = module.segmentation(data=input_dict,output_dir='./')</span><br><span class="line">for result in results:</span><br><span class="line">    print(result)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 预测结果展示</span><br><span class="line">test_img_path = "./test_image_processed.png"</span><br><span class="line">img = mpimg.imread(test_img_path)</span><br><span class="line">plt.imshow(img) </span><br><span class="line">plt.axis('off') </span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+        <h3 id="Paddlehub图像分割并显示"><a href="#Paddlehub图像分割并显示" class="headerlink" title="Paddlehub图像分割并显示"></a>Paddlehub图像分割并显示</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import paddlehub as hub</span><br><span class="line">import matplotlib.pyplot as plt </span><br><span class="line">import matplotlib.image as mpimg</span><br><span class="line">import matplotlib</span><br><span class="line">matplotlib.use('TkAgg')</span><br><span class="line"><span class="meta">#</span><span class="bash">加载模型ace2p</span></span><br><span class="line">module = hub.Module(name="ace2p")</span><br><span class="line">test_img_path = "test_image.jpg"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">set</span> input dict</span></span><br><span class="line">input_dict = &#123;"image": [test_img_path]&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> execute predict and <span class="built_in">print</span> the result</span></span><br><span class="line">results = module.segmentation(data=input_dict,output_dir='./')</span><br><span class="line">for result in results:</span><br><span class="line">    print(result)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 预测结果展示</span></span><br><span class="line">test_img_path = "./test_image_processed.png"</span><br><span class="line">img = mpimg.imread(test_img_path)</span><br><span class="line">plt.imshow(img) </span><br><span class="line">plt.axis('off') </span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -376,8 +376,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/b5d1947d.html" rel="next" title="Paddlehub文本生成">
-                <i class="fa fa-chevron-left"></i> Paddlehub文本生成
+              <a href="/post/f81e8835.html" rel="next" title="python之Scrapy 爬虫框架">
+                <i class="fa fa-chevron-left"></i> python之Scrapy 爬虫框架
               </a>
             
           </div>
@@ -386,8 +386,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/post/5b4e165d.html" rel="prev" title="You Raise Me Up">
-                You Raise Me Up <i class="fa fa-chevron-right"></i>
+              <a href="/post/b5d1947d.html" rel="prev" title="Paddlehub文本生成">
+                Paddlehub文本生成 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -464,7 +464,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">165</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -557,33 +557,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -639,7 +613,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

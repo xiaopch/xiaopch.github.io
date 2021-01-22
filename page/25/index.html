@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/7c6c732d.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/8b6ce2d6.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -292,7 +292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/7c6c732d.html" itemprop="url">docker-Dockerfile制作镜像</a></h1>
+                <a class="post-title-link" href="/post/8b6ce2d6.html" itemprop="url">hexo安装和github部署配置</a></h1>
         
 
         <div class="post-meta">
@@ -304,7 +304,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-12T10:23:12+08:00">2018-07-12</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-11T00:00:00+08:00">2019-06-11</time>
             
 
             
@@ -342,294 +342,19 @@
 
       
         
-          
-            <h2 id="Dockerfile-制作镜像"><a href="#Dockerfile-制作镜像" class="headerlink" title="Dockerfile 制作镜像"></a>Dockerfile 制作镜像</h2><pre><code>FROM alpine:3.7
-MAINTAINER xiaopch
-#更新Alpine的软件源为国内（清华大学）的站点
-RUN echo https://mirror.tuna.tsinghua.edu.cn/alpine/v3.4/main/ &gt; /etc/apk/repositories
-
-RUN apk update \
-        &amp;&amp; apk upgrade \
-        &amp;&amp; apk add --no-cache bash \
-        bash-doc \
-        bash-completion \
-        &amp;&amp; rm -rf /var/cache/apk/* \
-        &amp;&amp; /bin/bash
-RUN apk add python
-RUN apk add py-pip
-
-WORKDIR /home/python
-COPY . .
-# Install Python dependencies
-RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  --upgrade pip
-RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  -r requirements.txt
-#RUN pip install -r requirements.txt
-
-RUN apk add openssh
-# Port to expose
-EXPOSE 8000
-
-# Copy entrypoint script into the image
-WORKDIR /home/python
-</code></pre><h2 id="Docker-tensorflow-tensorflow"><a href="#Docker-tensorflow-tensorflow" class="headerlink" title="Docker tensorflow/tensorflow"></a>Docker tensorflow/tensorflow</h2><pre><code>docker run -it -p 8888:8888 tensorflow/tensorflow
-
-docker run -it -v D:\docker:/notebooks/docker -p 8888:8888 tensorflow/tensorflow bash
-</code></pre><p>Go to your browser on <a href="http://localhost:8888/" target="_blank" rel="noopener">http://localhost:8888/</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/633535ca.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/633535ca.html" itemprop="url">docker在windows下安装和配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-10T10:23:12+08:00">2018-07-10</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Docker-下载地址"><a href="#Docker-下载地址" class="headerlink" title="Docker 下载地址"></a>Docker 下载地址</h2><p><a href="https://download.docker.com/win/stable/Docker for Windows Installer.exe" target="_blank" rel="noopener">https://download.docker.com/win/stable/Docker for Windows Installer.exe</a><br><a href="https://download.docker.com/win/stable/InstallDocker.msi" target="_blank" rel="noopener">https://download.docker.com/win/stable/InstallDocker.msi</a><br><a href="https://download.docker.com/win/edge/Docker for Windows Installer.exe" target="_blank" rel="noopener">https://download.docker.com/win/edge/Docker for Windows Installer.exe</a></p>
-<h2 id="使用阿里云docker镜像加速"><a href="#使用阿里云docker镜像加速" class="headerlink" title="使用阿里云docker镜像加速"></a>使用阿里云docker镜像加速</h2><ul>
-<li>Docker-Settings-Docker Engine</li>
+          <h3 id="下载安装git"><a href="#下载安装git" class="headerlink" title="下载安装git"></a>下载安装git</h3><p>下载地址：<a href="https://www.git-scm.com/download/win" target="_blank" rel="noopener">https://www.git-scm.com/download/win</a></p>
+<h3 id="安装nodejs-和npm"><a href="#安装nodejs-和npm" class="headerlink" title="安装nodejs 和npm"></a>安装nodejs 和npm</h3><ul>
+<li><p>linux下执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nodejs</span><br><span class="line">sudo apt-get install npm</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  registry-mirrors: [&quot;https://jbfwyau7.mirror.aliyuncs.com&quot;],</span><br><span class="line">  insecure-registries: [],</span><br><span class="line">  debug: true,</span><br><span class="line">  experimental: false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="创建Mongodb服务器"><a href="#创建Mongodb服务器" class="headerlink" title="创建Mongodb服务器"></a>创建Mongodb服务器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker volume create --name mongodata</span><br><span class="line">docker ps -a</span><br><span class="line">docker run --name some-mongo --rm -d -p 27017:27017 -v mongodata:/data/db mongo:3.2</span><br><span class="line">cmd /k docker ps -a</span><br></pre></td></tr></table></figure>
-<h3 id="打开Mongodb客户端"><a href="#打开Mongodb客户端" class="headerlink" title="打开Mongodb客户端"></a>打开Mongodb客户端</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd /k docker exec  -it some-mongo sh</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/69e6d380.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/69e6d380.html" itemprop="url">windows常用的命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-06T00:00:00+08:00">2018-07-06</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="AutoHotKey教程"><a href="#AutoHotKey教程" class="headerlink" title="AutoHotKey教程"></a>AutoHotKey教程</h2><p>原文地址：<a href="http://www.autohotkey.com/docs/Tutorial.htm" target="_blank" rel="noopener">http://www.autohotkey.com/docs/Tutorial.htm</a></p>
-<hr>
-<h3 id="下载AutoHotKey"><a href="#下载AutoHotKey" class="headerlink" title="下载AutoHotKey"></a>下载AutoHotKey</h3><p><a href="http://www.autohotkey.com/download/" target="_blank" rel="noopener">http://www.autohotkey.com/download/</a></p>
-<h3 id="notepad新建以-ahk结尾的文本文档。例如：Test-ahk"><a href="#notepad新建以-ahk结尾的文本文档。例如：Test-ahk" class="headerlink" title="notepad新建以.ahk结尾的文本文档。例如：Test.ahk"></a>notepad新建以.ahk结尾的文本文档。例如：Test.ahk</h3><p>输入以下内容：</p>
-<pre><code># space::Run www.baidu.com
-</code></pre>
+<ul>
+<li>windows下需要下载相应的window版本：</li>
+</ul>
+<p>　　<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/post/69e6d380.html#more" rel="contents">
+            <a class="btn" href="/post/8b6ce2d6.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -682,7 +407,7 @@ docker run -it -v D:\docker:/notebooks/docker -p 8888:8888 tensorflow/tensorflow
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/e45a147c.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/846432c7.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -701,7 +426,7 @@ docker run -it -v D:\docker:/notebooks/docker -p 8888:8888 tensorflow/tensorflow
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/e45a147c.html" itemprop="url">python之画图模块</a></h1>
+                <a class="post-title-link" href="/post/846432c7.html" itemprop="url">轨检车的局限</a></h1>
         
 
         <div class="post-meta">
@@ -713,7 +438,7 @@ docker run -it -v D:\docker:/notebooks/docker -p 8888:8888 tensorflow/tensorflow
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-27T00:00:00+08:00">2018-05-27</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-01T09:07:12+08:00">2019-06-01</time>
             
 
             
@@ -752,27 +477,14 @@ docker run -it -v D:\docker:/notebooks/docker -p 8888:8888 tensorflow/tensorflow
       
         
           
-            <h2 id="echart画图"><a href="#echart画图" class="headerlink" title="echart画图"></a>echart画图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from pyecharts import Map</span><br><span class="line">value = [155, 10, 66, 78, 33, 80, 190, 53, 49.6]</span><br><span class="line">attr = [福建, 山东, 北京, 上海, 甘肃, 新疆, 河南, 广西, 西藏]</span><br><span class="line">map = Map(Map 结合 VisualMap 示例, width=1200, height=600)</span><br><span class="line">map.add(, attr, value, maptype=&apos;china&apos;, is_visualmap=True, visual_text_color=&apos;#000&apos;)</span><br><span class="line">map.show_config()</span><br><span class="line">map.render()</span><br><span class="line"></span><br><span class="line">import webbrowser</span><br><span class="line">webbrowser.open(&apos;render.html&apos;)</span><br></pre></td></tr></table></figure>
-<h3 id="pyecharts画wordcloud"><a href="#pyecharts画wordcloud" class="headerlink" title="pyecharts画wordcloud"></a>pyecharts画wordcloud</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from pyecharts import options as opts</span><br><span class="line">from pyecharts.charts import Page, WordCloud</span><br><span class="line">from pyecharts.globals import SymbolType</span><br><span class="line"></span><br><span class="line">words = [</span><br><span class="line">    (&quot;python&quot;, 10000),</span><br><span class="line">    (&quot;javascript&quot;, 6181),</span><br><span class="line">    (&quot;C#&quot;, 4386),</span><br><span class="line">    (&quot;C++&quot;, 4055),</span><br><span class="line">    (&quot;nodejs&quot;, 2467),</span><br><span class="line">    (&quot;go&quot;, 2244),</span><br><span class="line">    (&quot;github&quot;, 1868),</span><br><span class="line">]</span><br><span class="line">worldcloud=(</span><br><span class="line">    WordCloud()</span><br><span class="line">    .add(&quot;&quot;, words, word_size_range=[20, 100])</span><br><span class="line">    .set_global_opts(title_opts=opts.TitleOpts(title=&quot;WordCloud-基本示例&quot;))</span><br><span class="line">    )</span><br><span class="line">worldcloud.render(&apos;wordcloud.html&apos;)</span><br></pre></td></tr></table></figure>
-<h3 id="pyecharts根据文件画wordcloud"><a href="#pyecharts根据文件画wordcloud" class="headerlink" title="pyecharts根据文件画wordcloud"></a>pyecharts根据文件画wordcloud</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">from collections import Counter</span><br><span class="line">from pyecharts import WordCloud  ##安装模块: pip install pyecharts==0.5.11</span><br><span class="line">import jieba.analyse</span><br><span class="line">import webbrowser</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 将counter拆分成两个list</span><br><span class="line">def counter2list(counter):</span><br><span class="line">    keyList,valueList = [],[]</span><br><span class="line">    for c in counter:</span><br><span class="line">        keyList.append(c[0])</span><br><span class="line">        valueList.append(c[1])</span><br><span class="line">    return keyList,valueList</span><br><span class="line"></span><br><span class="line"># 使用jieba提取关键词并计算权重</span><br><span class="line">def extractTag(content,tagsList):</span><br><span class="line">    keyList,valueList = [],[]</span><br><span class="line">    if content:</span><br><span class="line">        tags = jieba.analyse.extract_tags(content, topK=100, withWeight=True)</span><br><span class="line">        for tex, widget in tags:</span><br><span class="line">            tagsList[tex] += int(widget*10000)</span><br><span class="line"></span><br><span class="line">def drawWorldCloud(content,count,outputFile = &apos;wordcloud.html&apos;):</span><br><span class="line">    </span><br><span class="line">    cloud = WordCloud(outputFile, width=1024, height=820, title_pos=&apos;center&apos;)</span><br><span class="line">    cloud.add(&apos;&apos;,content,count,</span><br><span class="line">        shape=&apos;cardioid&apos;,# &apos;circle&apos;, &apos;cardioid&apos;, &apos;diamond&apos;, &apos;triangle-forward&apos;, &apos;triangle&apos;, &apos;pentagon&apos;</span><br><span class="line">        background_color=&apos;white&apos;,</span><br><span class="line">        max_words=200 </span><br><span class="line">    )</span><br><span class="line">    cloud.render(outputFile)</span><br><span class="line">    webbrowser.open(outputFile)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    c = Counter()   #建一个容器</span><br><span class="line">    filePath = &apos;jintiankaishi.txt&apos;   #分析的文档路径</span><br><span class="line">    with open(filePath) as file_object:</span><br><span class="line">        contents = file_object.read()</span><br><span class="line">        extractTag(contents, c)</span><br><span class="line"></span><br><span class="line">    contentList,countList = counter2list(c.most_common(100))</span><br><span class="line">    drawWorldCloud(contentList, countList,filePath+&apos;.html&apos;)</span><br></pre></td></tr></table></figure>
-<h3 id="matplotlib中文显示"><a href="#matplotlib中文显示" class="headerlink" title="matplotlib中文显示"></a>matplotlib中文显示</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">from sklearn.datasets import make_blobs, load_iris</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"># 支持中文</span><br><span class="line">plt.rcParams[&apos;font.sans-serif&apos;] = [&apos;SimHei&apos;]  # 用来正常显示中文标签</span><br><span class="line">plt.rcParams[&apos;axes.unicode_minus&apos;] = False  # 用来正常显示负号</span><br><span class="line"></span><br><span class="line">n_samples = 1500</span><br><span class="line">random_state = 170</span><br><span class="line">x, y = make_blobs(n_samples=n_samples, random_state=random_state)</span><br><span class="line"># x, y = load_iris(True) # 莺尾花</span><br><span class="line">print(x.shape, y.shape)</span><br><span class="line">plt.scatter(x[:, 0], x[:, 1], c=y)</span><br><span class="line">plt.title(u&quot;原始数据分布&quot;)</span><br><span class="line">plt.show()</span><br><span class="line">##原文链接：https://blog.csdn.net/u010472607/article/details/82789887</span><br></pre></td></tr></table></figure>
-<h2 id="matplotlib键盘事件绑定"><a href="#matplotlib键盘事件绑定" class="headerlink" title="matplotlib键盘事件绑定"></a>matplotlib键盘事件绑定</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">def on_key_press(event):</span><br><span class="line">    print(&quot;you pressed&quot; ,event.key, event.xdata, event.ydata)#键盘值，鼠标位置x,y</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">fig.canvas.mpl_connect(&apos;key_press_event&apos;, on_key_press)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<h2 id="16进制字符串转byte数组"><a href="#16进制字符串转byte数组" class="headerlink" title="16进制字符串转byte数组"></a>16进制字符串转byte数组</h2><pre><code>line=&apos;55 AA F6 28 5C 0F 0C B2 16 41 AF 0A 6E C9 E5 93&apos;
-print(line.replace(&apos; &apos;,&apos;&apos;).decode(&apos;hex&apos;))
-</code></pre><h2 id="plotly绘制gantt图"><a href="#plotly绘制gantt图" class="headerlink" title="plotly绘制gantt图"></a>plotly绘制gantt图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import plotly as py</span><br><span class="line">import plotly.figure_factory as ff</span><br><span class="line">##import plotly.graph_objs as gob</span><br><span class="line"></span><br><span class="line">## 离线作图</span><br><span class="line">pyplt = py.offline.plot</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df = [dict(Task=u&quot;项目1&quot;, Start=&apos;2019-01-01&apos;, Finish=&apos;2019-02-02&apos;, Resource=&apos;Complete&apos;),</span><br><span class="line">   dict(Task=u&quot;项目2&quot;, Start=&apos;2019-02-15&apos;, Finish=&apos;2019-03-15&apos;, Resource=&apos;Incomplete&apos;),</span><br><span class="line">   dict(Task=u&quot;项目3&quot;, Start=&apos;2019-01-17&apos;, Finish=&apos;2019-02-17&apos;, Resource=&apos;Complete&apos;),</span><br><span class="line">   dict(Task=u&quot;项目4&quot;, Start=&apos;2019-04-01&apos;, Finish=&apos;2019-04-20&apos;, Resource=&apos;Not Started&apos;),</span><br><span class="line">   dict(Task=u&quot;项目5&quot;, Start=&apos;2019-05-18&apos;, Finish=&apos;2019-06-18&apos;, Resource=&apos;Not Started&apos;),</span><br><span class="line">   dict(Task=u&quot;项目6&quot;, Start=&apos;2019-01-14&apos;, Finish=&apos;2019-03-14&apos;, Resource=&apos;Complete&apos;)]</span><br><span class="line"></span><br><span class="line">colors = &#123;&apos;Not Started&apos;:&apos;rgb(220, 0, 0)&apos;,&apos;Incomplete&apos;:(1, 0.9, 0.16),&apos;Complete&apos;: &apos;rgb(0, 255, 100)&apos;&#125;</span><br><span class="line">fig = ff.create_gantt(df, colors=colors, index_col=&apos;Resource&apos;,show_colorbar=True, title=u&apos;可视化软件&apos;, showgrid_x=True,group_tasks=True)</span><br><span class="line">pyplt(fig, filename=&apos;gantt-simple-gantt-chart.html&apos;)</span><br></pre></td></tr></table></figure>
-<h2 id="读取csv文件并用matplotlib作图"><a href="#读取csv文件并用matplotlib作图" class="headerlink" title="读取csv文件并用matplotlib作图"></a>读取csv文件并用matplotlib作图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">from math import cos,sin,pi</span><br><span class="line">import collections,os</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">if __name__==&quot;__main__&quot;:</span><br><span class="line">    df = pd.read_csv(&apos;standard_50rail_profile.csv&apos;,encoding=&apos;gbk&apos;).astype(&apos;float&apos;)</span><br><span class="line">    df=df.dropna()</span><br><span class="line">    df=df.sort_values(by=&apos;x&apos;)</span><br><span class="line">    ##获取3的倍数的行</span><br><span class="line">    df=df.loc[::3,:]</span><br><span class="line">##    df.to_csv(&apos;standard_50rail_profile.sorted.csv&apos;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    print(df)</span><br><span class="line">##    df.plot()</span><br><span class="line">##    plt.plot(df[&apos;x&apos;],df[&apos;y&apos;],c=&apos;r&apos;)</span><br><span class="line">    plt.scatter(df[&apos;x&apos;],df[&apos;y&apos;],marker=&apos;.&apos;,c=&apos;b&apos;)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
-<h1 id="matplotlib的颜色及线条控制的示例"><a href="#matplotlib的颜色及线条控制的示例" class="headerlink" title="matplotlib的颜色及线条控制的示例"></a>matplotlib的颜色及线条控制的示例</h1><ul>
-<li>linestyle可选参数</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&apos;-&apos;  solid line style </span><br><span class="line">&apos;--&apos;  dashed line style </span><br><span class="line">&apos;-.&apos;  dash-dot line style </span><br><span class="line">&apos;:&apos;  dotted line style</span><br></pre></td></tr></table></figure>
-<ul>
-<li>marker可选参数</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&apos;.&apos;  point marker </span><br><span class="line">&apos;,&apos;  pixel marker </span><br><span class="line">&apos;o&apos;  circle marker </span><br><span class="line">&apos;v&apos;  triangle_down marker </span><br><span class="line">&apos;^&apos;  triangle_up marker </span><br><span class="line">&apos;&lt;&apos;  triangle_left marker </span><br><span class="line">&apos;&gt;&apos;  triangle_right marker </span><br><span class="line">&apos;1&apos;  tri_down marker </span><br><span class="line">&apos;2&apos;  tri_up marker </span><br><span class="line">&apos;3&apos;  tri_left marker </span><br><span class="line">&apos;4&apos;  tri_right marker </span><br><span class="line">&apos;s&apos;  square marker </span><br><span class="line">&apos;p&apos;  pentagon marker </span><br><span class="line">&apos;*&apos;  star marker </span><br><span class="line">&apos;h&apos;  hexagon1 marker </span><br><span class="line">&apos;H&apos;  hexagon2 marker </span><br><span class="line">&apos;+&apos;  plus marker </span><br><span class="line">&apos;x&apos;  x marker </span><br><span class="line">&apos;D&apos;  diamond marker </span><br><span class="line">&apos;d&apos;  thin_diamond marker </span><br><span class="line">&apos;|&apos;  vline marker </span><br><span class="line">&apos;_&apos;  hline marker</span><br></pre></td></tr></table></figure>
-<ul>
-<li>color可用的颜色</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line">cnames = &#123;</span><br><span class="line">&apos;aliceblue&apos;:            &apos;#F0F8FF&apos;,</span><br><span class="line">&apos;antiquewhite&apos;:         &apos;#FAEBD7&apos;,</span><br><span class="line">&apos;aqua&apos;:                 &apos;#00FFFF&apos;,</span><br><span class="line">&apos;aquamarine&apos;:           &apos;#7FFFD4&apos;,</span><br><span class="line">&apos;azure&apos;:                &apos;#F0FFFF&apos;,</span><br><span class="line">&apos;beige&apos;:                &apos;#F5F5DC&apos;,</span><br><span class="line">&apos;bisque&apos;:               &apos;#FFE4C4&apos;,</span><br><span class="line">&apos;black&apos;:                &apos;#000000&apos;,</span><br><span class="line">&apos;blanchedalmond&apos;:       &apos;#FFEBCD&apos;,</span><br><span class="line">&apos;blue&apos;:                 &apos;#0000FF&apos;,</span><br><span class="line">&apos;blueviolet&apos;:           &apos;#8A2BE2&apos;,</span><br><span class="line">&apos;brown&apos;:                &apos;#A52A2A&apos;,</span><br><span class="line">&apos;burlywood&apos;:            &apos;#DEB887&apos;,</span><br><span class="line">&apos;cadetblue&apos;:            &apos;#5F9EA0&apos;,</span><br><span class="line">&apos;chartreuse&apos;:           &apos;#7FFF00&apos;,</span><br><span class="line">&apos;chocolate&apos;:            &apos;#D2691E&apos;,</span><br><span class="line">&apos;coral&apos;:                &apos;#FF7F50&apos;,</span><br><span class="line">&apos;cornflowerblue&apos;:       &apos;#6495ED&apos;,</span><br><span class="line">&apos;cornsilk&apos;:             &apos;#FFF8DC&apos;,</span><br><span class="line">&apos;crimson&apos;:              &apos;#DC143C&apos;,</span><br><span class="line">&apos;cyan&apos;:                 &apos;#00FFFF&apos;,</span><br><span class="line">&apos;darkblue&apos;:             &apos;#00008B&apos;,</span><br><span class="line">&apos;darkcyan&apos;:             &apos;#008B8B&apos;,</span><br><span class="line">&apos;darkgoldenrod&apos;:        &apos;#B8860B&apos;,</span><br><span class="line">&apos;darkgray&apos;:             &apos;#A9A9A9&apos;,</span><br><span class="line">&apos;darkgreen&apos;:            &apos;#006400&apos;,</span><br><span class="line">&apos;darkkhaki&apos;:            &apos;#BDB76B&apos;,</span><br><span class="line">&apos;darkmagenta&apos;:          &apos;#8B008B&apos;,</span><br><span class="line">&apos;darkolivegreen&apos;:       &apos;#556B2F&apos;,</span><br><span class="line">&apos;darkorange&apos;:           &apos;#FF8C00&apos;,</span><br><span class="line">&apos;darkorchid&apos;:           &apos;#9932CC&apos;,</span><br><span class="line">&apos;darkred&apos;:              &apos;#8B0000&apos;,</span><br><span class="line">&apos;darksalmon&apos;:           &apos;#E9967A&apos;,</span><br><span class="line">&apos;darkseagreen&apos;:         &apos;#8FBC8F&apos;,</span><br><span class="line">&apos;darkslateblue&apos;:        &apos;#483D8B&apos;,</span><br><span class="line">&apos;darkslategray&apos;:        &apos;#2F4F4F&apos;,</span><br><span class="line">&apos;darkturquoise&apos;:        &apos;#00CED1&apos;,</span><br><span class="line">&apos;darkviolet&apos;:           &apos;#9400D3&apos;,</span><br><span class="line">&apos;deeppink&apos;:             &apos;#FF1493&apos;,</span><br><span class="line">&apos;deepskyblue&apos;:          &apos;#00BFFF&apos;,</span><br><span class="line">&apos;dimgray&apos;:              &apos;#696969&apos;,</span><br><span class="line">&apos;dodgerblue&apos;:           &apos;#1E90FF&apos;,</span><br><span class="line">&apos;firebrick&apos;:            &apos;#B22222&apos;,</span><br><span class="line">&apos;floralwhite&apos;:          &apos;#FFFAF0&apos;,</span><br><span class="line">&apos;forestgreen&apos;:          &apos;#228B22&apos;,</span><br><span class="line">&apos;fuchsia&apos;:              &apos;#FF00FF&apos;,</span><br><span class="line">&apos;gainsboro&apos;:            &apos;#DCDCDC&apos;,</span><br><span class="line">&apos;ghostwhite&apos;:           &apos;#F8F8FF&apos;,</span><br><span class="line">&apos;gold&apos;:                 &apos;#FFD700&apos;,</span><br><span class="line">&apos;goldenrod&apos;:            &apos;#DAA520&apos;,</span><br><span class="line">&apos;gray&apos;:                 &apos;#808080&apos;,</span><br><span class="line">&apos;green&apos;:                &apos;#008000&apos;,</span><br><span class="line">&apos;greenyellow&apos;:          &apos;#ADFF2F&apos;,</span><br><span class="line">&apos;honeydew&apos;:             &apos;#F0FFF0&apos;,</span><br><span class="line">&apos;hotpink&apos;:              &apos;#FF69B4&apos;,</span><br><span class="line">&apos;indianred&apos;:            &apos;#CD5C5C&apos;,</span><br><span class="line">&apos;indigo&apos;:               &apos;#4B0082&apos;,</span><br><span class="line">&apos;ivory&apos;:                &apos;#FFFFF0&apos;,</span><br><span class="line">&apos;khaki&apos;:                &apos;#F0E68C&apos;,</span><br><span class="line">&apos;lavender&apos;:             &apos;#E6E6FA&apos;,</span><br><span class="line">&apos;lavenderblush&apos;:        &apos;#FFF0F5&apos;,</span><br><span class="line">&apos;lawngreen&apos;:            &apos;#7CFC00&apos;,</span><br><span class="line">&apos;lemonchiffon&apos;:         &apos;#FFFACD&apos;,</span><br><span class="line">&apos;lightblue&apos;:            &apos;#ADD8E6&apos;,</span><br><span class="line">&apos;lightcoral&apos;:           &apos;#F08080&apos;,</span><br><span class="line">&apos;lightcyan&apos;:            &apos;#E0FFFF&apos;,</span><br><span class="line">&apos;lightgoldenrodyellow&apos;: &apos;#FAFAD2&apos;,</span><br><span class="line">&apos;lightgreen&apos;:           &apos;#90EE90&apos;,</span><br><span class="line">&apos;lightgray&apos;:            &apos;#D3D3D3&apos;,</span><br><span class="line">&apos;lightpink&apos;:            &apos;#FFB6C1&apos;,</span><br><span class="line">&apos;lightsalmon&apos;:          &apos;#FFA07A&apos;,</span><br><span class="line">&apos;lightseagreen&apos;:        &apos;#20B2AA&apos;,</span><br><span class="line">&apos;lightskyblue&apos;:         &apos;#87CEFA&apos;,</span><br><span class="line">&apos;lightslategray&apos;:       &apos;#778899&apos;,</span><br><span class="line">&apos;lightsteelblue&apos;:       &apos;#B0C4DE&apos;,</span><br><span class="line">&apos;lightyellow&apos;:          &apos;#FFFFE0&apos;,</span><br><span class="line">&apos;lime&apos;:                 &apos;#00FF00&apos;,</span><br><span class="line">&apos;limegreen&apos;:            &apos;#32CD32&apos;,</span><br><span class="line">&apos;linen&apos;:                &apos;#FAF0E6&apos;,</span><br><span class="line">&apos;magenta&apos;:              &apos;#FF00FF&apos;,</span><br><span class="line">&apos;maroon&apos;:               &apos;#800000&apos;,</span><br><span class="line">&apos;mediumaquamarine&apos;:     &apos;#66CDAA&apos;,</span><br><span class="line">&apos;mediumblue&apos;:           &apos;#0000CD&apos;,</span><br><span class="line">&apos;mediumorchid&apos;:         &apos;#BA55D3&apos;,</span><br><span class="line">&apos;mediumpurple&apos;:         &apos;#9370DB&apos;,</span><br><span class="line">&apos;mediumseagreen&apos;:       &apos;#3CB371&apos;,</span><br><span class="line">&apos;mediumslateblue&apos;:      &apos;#7B68EE&apos;,</span><br><span class="line">&apos;mediumspringgreen&apos;:    &apos;#00FA9A&apos;,</span><br><span class="line">&apos;mediumturquoise&apos;:      &apos;#48D1CC&apos;,</span><br><span class="line">&apos;mediumvioletred&apos;:      &apos;#C71585&apos;,</span><br><span class="line">&apos;midnightblue&apos;:         &apos;#191970&apos;,</span><br><span class="line">&apos;mintcream&apos;:            &apos;#F5FFFA&apos;,</span><br><span class="line">&apos;mistyrose&apos;:            &apos;#FFE4E1&apos;,</span><br><span class="line">&apos;moccasin&apos;:             &apos;#FFE4B5&apos;,</span><br><span class="line">&apos;navajowhite&apos;:          &apos;#FFDEAD&apos;,</span><br><span class="line">&apos;navy&apos;:                 &apos;#000080&apos;,</span><br><span class="line">&apos;oldlace&apos;:              &apos;#FDF5E6&apos;,</span><br><span class="line">&apos;olive&apos;:                &apos;#808000&apos;,</span><br><span class="line">&apos;olivedrab&apos;:            &apos;#6B8E23&apos;,</span><br><span class="line">&apos;orange&apos;:               &apos;#FFA500&apos;,</span><br><span class="line">&apos;orangered&apos;:            &apos;#FF4500&apos;,</span><br><span class="line">&apos;orchid&apos;:               &apos;#DA70D6&apos;,</span><br><span class="line">&apos;palegoldenrod&apos;:        &apos;#EEE8AA&apos;,</span><br><span class="line">&apos;palegreen&apos;:            &apos;#98FB98&apos;,</span><br><span class="line">&apos;paleturquoise&apos;:        &apos;#AFEEEE&apos;,</span><br><span class="line">&apos;palevioletred&apos;:        &apos;#DB7093&apos;,</span><br><span class="line">&apos;papayawhip&apos;:           &apos;#FFEFD5&apos;,</span><br><span class="line">&apos;peachpuff&apos;:            &apos;#FFDAB9&apos;,</span><br><span class="line">&apos;peru&apos;:                 &apos;#CD853F&apos;,</span><br><span class="line">&apos;pink&apos;:                 &apos;#FFC0CB&apos;,</span><br><span class="line">&apos;plum&apos;:                 &apos;#DDA0DD&apos;,</span><br><span class="line">&apos;powderblue&apos;:           &apos;#B0E0E6&apos;,</span><br><span class="line">&apos;purple&apos;:               &apos;#800080&apos;,</span><br><span class="line">&apos;red&apos;:                  &apos;#FF0000&apos;,</span><br><span class="line">&apos;rosybrown&apos;:            &apos;#BC8F8F&apos;,</span><br><span class="line">&apos;royalblue&apos;:            &apos;#4169E1&apos;,</span><br><span class="line">&apos;saddlebrown&apos;:          &apos;#8B4513&apos;,</span><br><span class="line">&apos;salmon&apos;:               &apos;#FA8072&apos;,</span><br><span class="line">&apos;sandybrown&apos;:           &apos;#FAA460&apos;,</span><br><span class="line">&apos;seagreen&apos;:             &apos;#2E8B57&apos;,</span><br><span class="line">&apos;seashell&apos;:             &apos;#FFF5EE&apos;,</span><br><span class="line">&apos;sienna&apos;:               &apos;#A0522D&apos;,</span><br><span class="line">&apos;silver&apos;:               &apos;#C0C0C0&apos;,</span><br><span class="line">&apos;skyblue&apos;:              &apos;#87CEEB&apos;,</span><br><span class="line">&apos;slateblue&apos;:            &apos;#6A5ACD&apos;,</span><br><span class="line">&apos;slategray&apos;:            &apos;#708090&apos;,</span><br><span class="line">&apos;snow&apos;:                 &apos;#FFFAFA&apos;,</span><br><span class="line">&apos;springgreen&apos;:          &apos;#00FF7F&apos;,</span><br><span class="line">&apos;steelblue&apos;:            &apos;#4682B4&apos;,</span><br><span class="line">&apos;tan&apos;:                  &apos;#D2B48C&apos;,</span><br><span class="line">&apos;teal&apos;:                 &apos;#008080&apos;,</span><br><span class="line">&apos;thistle&apos;:              &apos;#D8BFD8&apos;,</span><br><span class="line">&apos;tomato&apos;:               &apos;#FF6347&apos;,</span><br><span class="line">&apos;turquoise&apos;:            &apos;#40E0D0&apos;,</span><br><span class="line">&apos;violet&apos;:               &apos;#EE82EE&apos;,</span><br><span class="line">&apos;wheat&apos;:                &apos;#F5DEB3&apos;,</span><br><span class="line">&apos;white&apos;:                &apos;#FFFFFF&apos;,</span><br><span class="line">&apos;whitesmoke&apos;:           &apos;#F5F5F5&apos;,</span><br><span class="line">&apos;yellow&apos;:               &apos;#FFFF00&apos;,</span><br><span class="line">&apos;yellowgreen&apos;:          &apos;#9ACD32&apos;&#125;</span><br></pre></td></tr></table></figure>
+            <h2 id="专用轨检车的局限"><a href="#专用轨检车的局限" class="headerlink" title="专用轨检车的局限"></a>专用轨检车的局限</h2><pre><code>  专用的轨检车和综合检测列车能够有效地检测和评估轨道的整体状况，并指导制定轨道养护计划。
+但是，轨道几何状态的精密测量不仅要求准确测出轨道的变形量和轨道不平顺幅度，还必须精确定
+位出轨道不平顺发生的位置。从这个角度看，即使是目前最先进的轨检车或综合轨道列车也难
+Ｗ满足送一要求。首先，专用轨检车和综合检测列车造价昂贵，作业过程中需要很多部口配合执行
+，对机车构置、人员的作业成本都很高，不适合用于局部问题路段的精密测量。其次，难精确确
+定轨道变形发生的位置；
+</code></pre><h2 id="轨道不平顺的测量方法"><a href="#轨道不平顺的测量方法" class="headerlink" title="轨道不平顺的测量方法"></a>轨道不平顺的测量方法</h2><p>主要有弦测法和惯性基准法两大类</p>
+
           
         
       
@@ -822,7 +534,7 @@ print(line.replace(&apos; &apos;,&apos;&apos;).decode(&apos;hex&apos;))
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/d7a82017.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2c9ebefb.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -841,7 +553,7 @@ print(line.replace(&apos; &apos;,&apos;&apos;).decode(&apos;hex&apos;))
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/d7a82017.html" itemprop="url">linux学习笔记-1</a></h1>
+                <a class="post-title-link" href="/post/2c9ebefb.html" itemprop="url">Python之leveldb数据库</a></h1>
         
 
         <div class="post-meta">
@@ -853,7 +565,7 @@ print(line.replace(&apos; &apos;,&apos;&apos;).decode(&apos;hex&apos;))
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T08:37:23+08:00">2018-03-28</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-27T09:07:12+08:00">2019-05-27</time>
             
 
             
@@ -892,48 +604,312 @@ print(line.replace(&apos; &apos;,&apos;&apos;).decode(&apos;hex&apos;))
       
         
           
-            <h2 id="使用Screen后台执行任务，防止SSH中断"><a href="#使用Screen后台执行任务，防止SSH中断" class="headerlink" title="使用Screen后台执行任务，防止SSH中断"></a>使用Screen后台执行任务，防止SSH中断</h2><p>Screen，虚拟终端管理器。可以在后台管理终端界面，防止SSH断开以后任务停止运行</p>
-<h3 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h3><pre><code>sudo apt-get install screen
-</code></pre><h3 id="创建虚拟终端，使用putty登录树莓派后执行"><a href="#创建虚拟终端，使用putty登录树莓派后执行" class="headerlink" title="创建虚拟终端，使用putty登录树莓派后执行"></a>创建虚拟终端，使用putty登录树莓派后执行</h3><pre><code>screen -S terminal1
-</code></pre><p>这样即可创建一个名为terminal1的终端.此时便可以随意执行操作,例如执行sudo apt-get upgrade，或者其它消耗时间比较长的工作，像编译内核等等。按<strong>ctrl+A后再按D</strong>保存虚拟终端，系统提示deatached即为保存成功接下来可以断开SSH终端，虚拟终端仍会执行.</p>
-<h3 id="访问已经创建好的终端"><a href="#访问已经创建好的终端" class="headerlink" title="访问已经创建好的终端"></a>访问已经创建好的终端</h3><pre><code>screen -ls
-</code></pre><p>列出已经创建的正在后台运行的终端,进入终端</p>
-<pre><code>screen -r terminal1
-</code></pre><h3 id="彻底退出"><a href="#彻底退出" class="headerlink" title="彻底退出"></a>彻底退出</h3><p>screen -r 进入终端后执行<br>    exit</p>
-<p>即可完全退出</p>
-<h2 id="linux下串口转TCP-IP的终端服务器实现"><a href="#linux下串口转TCP-IP的终端服务器实现" class="headerlink" title="linux下串口转TCP-IP的终端服务器实现"></a>linux下串口转TCP-IP的终端服务器实现</h2><h3 id="串口与网络IP、端口号完成映射的脚本。"><a href="#串口与网络IP、端口号完成映射的脚本。" class="headerlink" title="串口与网络IP、端口号完成映射的脚本。"></a>串口与网络IP、端口号完成映射的脚本。</h3><pre><code>##ttyusb.sh
-#!/bin/bash
-TCP_PORT=5021
-SERIAL_PORT=/dev/ttyUSB0
-BAUDRATE=9600
-while (true)
-    do
-    stty -F $SERIAL_PORT $BAUDRATE
-    stty -F $SERIAL_PORT line 0
-    stty -F $SERIAL_PORT eof ^A
-    stty -F $SERIAL_PORT min 1
-    stty -F $SERIAL_PORT time 0
-    stty -F $SERIAL_PORT -brkint
-    stty -F $SERIAL_PORT -icrnl
-    stty -F $SERIAL_PORT ixoff
-    stty -F $SERIAL_PORT -imaxbel
-    stty -F $SERIAL_PORT -opost
-    stty -F $SERIAL_PORT -onlcr
-    stty -F $SERIAL_PORT -isig
-    stty -F $SERIAL_PORT -icanon
-    stty -F $SERIAL_PORT -iexten
-    stty -F $SERIAL_PORT -echo
-    stty -F $SERIAL_PORT -echoe
-    stty -F $SERIAL_PORT -echok
-    stty -F $SERIAL_PORT -echoctl
-    stty -F $SERIAL_PORT -echoke
+            <h3 id="python操作leveldb"><a href="#python操作leveldb" class="headerlink" title="python操作leveldb"></a>python操作leveldb</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">下载windows版本的python的leveldb</span><br><span class="line">https://github.com/happynear/py-leveldb-windows/</span><br><span class="line">Copy leveldb.pyd to YOUR_PYTHON_ROOT/Lib/site-packages.</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">import leveldb</span><br><span class="line"></span><br><span class="line">db = leveldb.LevelDB(&apos;./db&apos;)</span><br><span class="line"></span><br><span class="line">db.Put(&apos;hello&apos;, &apos;world&apos;) </span><br><span class="line">print(db.Get(&apos;hello&apos;))</span><br><span class="line"></span><br><span class="line">db.Delete(&apos;hello&apos;) </span><br><span class="line">print(db.Get(&apos;hello&apos;))</span><br><span class="line"></span><br><span class="line">batch = leveldb.WriteBatch() </span><br><span class="line">batch.Put(&apos;hello&apos;, &apos;world&apos;) </span><br><span class="line">batch.Put(&apos;hello again&apos;, &apos;world&apos;) </span><br><span class="line">batch.Delete(&apos;hello&apos;)</span><br><span class="line">db.Write(batch, sync = True)</span><br></pre></td></tr></table></figure>
 
-    nc -l 192.168.1.33 $TCP_PORT &lt; $SERIAL_PORT &gt; $SERIAL_PORT
-done
-</code></pre><h3 id="串口转TCP简单脚本"><a href="#串口转TCP简单脚本" class="headerlink" title="串口转TCP简单脚本"></a>串口转TCP简单脚本</h3><pre><code>while (true)
-    do
-    sudo socat file:/dev/ttyUSB0,b115200,inlcr=1 tcp-listen:9501 
-done
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/a7d0179d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/a7d0179d.html" itemprop="url">Python之mongodb数据库</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-27T09:07:12+08:00">2019-05-27</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>mongodb是一种非关系型数据库，数据存取的形式与Python中的字典很相似，所以在Python中使用mongodb是一个不错的选择</li>
+</ul>
+<h2 id="安装pymongo"><a href="#安装pymongo" class="headerlink" title="安装pymongo"></a>安装pymongo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pymongodb</span><br></pre></td></tr></table></figure>
+<h2 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from pymongo import MongoClient</span><br><span class="line">client = MongoClient()</span><br><span class="line">#创建数据库，两种方式</span><br><span class="line">db = client.peopleinfo     #方式一</span><br><span class="line">db = client[&apos;peopleinfo&apos;]  #方式二</span><br><span class="line">#创建数据表，两种方式</span><br><span class="line">collection = db.person</span><br><span class="line">collection = db[&apos;person&apos;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>首先从pymongo中导入MongoClient，如果mongodb是运行在本地电脑上的，则MongoClient()中不需要任何参数，如果是在远程服务器上运行的，则实例化时需要参数，参数就是IP和端口，有两种形式，参数形式和URI形式如下：</p>
+</li>
+<li><p>参数形式</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client = MongoClient(host=&apos;远程IP&apos;, port=27017) #端口号默认为27017是数值</span><br></pre></td></tr></table></figure>
+<ul>
+<li>URI形式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client = MongoClient(&apos;mongodb://远程IP:27017&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><ul>
+<li>mongodb的插入操作使用的是insert()函数，插入的内容就是Python的字典，如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;&apos;id&apos;:123, &apos;name&apos;:&apos;Neil&apos;, &apos;age&apos;:80, &apos;sex&apos;:&apos;male&apos;&#125;</span><br><span class="line">collection.insert(data)</span><br></pre></td></tr></table></figure>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><ul>
+<li><p>将第一个男性年龄改为20</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">collection.update_one(&#123;&apos;sex&apos;:&apos;male&apos;&#125;, &#123;&apos;$set&apos;:&#123;&apos;age&apos;:20&#125;&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>collection有男性年龄改为20</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">collection.update_many(&#123;&apos;sex&apos;:&apos;male&apos;&#125;,&#123;&apos;$set&apos;:&#123;&apos;age&apos;:20&#125;&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><ul>
+<li>mongodb实现查找的功能的函数是：find(参数)、find_one(参数)，参数为字典，顾名思义，find_one(参数)一次直返回一条信息,参数也collection略：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cursor = collection.find()#返回集合col中的所有内容</span><br><span class="line">cursor = collection.find(&#123;&apos;age&apos;:20&#125;)#查找所有年龄为20的记录信息</span><br><span class="line">#遍历数据表</span><br><span class="line">for obj in cursor:</span><br><span class="line">	print(obj[&apos;_id&apos;])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><ul>
+<li>删除使用的方法同样也是两个：delete_one(参数)，delete_many(参数)，参数也都是字典，delete_one(参数)删除collection合条件的记录，delete_many(参数)删除所有符合条件的记录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">collection.delete_one(&#123;&apos;name&apos;:&apos;Neil&apos;&#125;)#删除名字为Neil的记录</span><br><span class="line">collection.delete_many(&#123;&apos;age&apos;:20&#125;)#删除所有年龄为20的记录</span><br></pre></td></tr></table></figure>
+<h2 id="读取collection到dataframe并保存为csv文件"><a href="#读取collection到dataframe并保存为csv文件" class="headerlink" title="读取collection到dataframe并保存为csv文件"></a>读取collection到dataframe并保存为csv文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cursor = collection.find().limit(10)</span><br><span class="line">df = pd.DataFrame(list(cursor))</span><br><span class="line">df.to_csv(&apos;find_result.csv&apos;, encoding=&quot;utf_8_sig&quot;) # 处理中文乱码问题</span><br></pre></td></tr></table></figure>
+<h2 id="将pandas的DataFrame插入到数据库的collection中"><a href="#将pandas的DataFrame插入到数据库的collection中" class="headerlink" title="将pandas的DataFrame插入到数据库的collection中"></a>将pandas的DataFrame插入到数据库的collection中</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df=pd.read_csv(&apos;find_results.csv&apos;,encoding=&apos;gbk&apos;)</span><br><span class="line">collection.insert_many(df.to_dict(orient=&apos;records&apos;))</span><br><span class="line">##result = collection.insert(list(df.to_dict(orient=&apos;index&apos;)))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>想要深入了解更多的内容可以参考pymongo的官方文档：<br><a href="https://docs.mongodb.com/getting-started/python/client/" target="_blank" rel="noopener">https://docs.mongodb.com/getting-started/python/client/</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/1d6d637d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/1d6d637d.html" itemprop="url">轨道不平顺的概念</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-24T13:57:12+08:00">2019-05-24</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="轨道不平顺的概念"><a href="#轨道不平顺的概念" class="headerlink" title="轨道不平顺的概念"></a>轨道不平顺的概念</h2><h3 id="高低"><a href="#高低" class="headerlink" title="高低"></a>高低</h3><pre><code>高低不平顺是指轨道沿钢轨长度方向在垂向的凸凹不平。
+</code></pre><h3 id="轨距"><a href="#轨距" class="headerlink" title="轨距"></a>轨距</h3><p><img src="/uploads/Rail_Inspection/轨距.png" alt></p>
+<pre><code>轨距偏差即在轨顶面以下16mm处量得的左右两轨内侧距离相对于标准轨距的偏差。
+</code></pre><h3 id="轨向"><a href="#轨向" class="headerlink" title="轨向"></a>轨向</h3><p><img src="/uploads/Rail_Inspection/轨向.png" alt><br>    轨道方向不平顺（常简称轨向不平顺或方向不平顺）是指轨头内侧面沿长度方向的横向凹凸不平顺。<br>    左、右轨方向变化往往不同，尤其在扣件薄弱的区段差异更大，因此需要区分左轨方向和右轨方向。<br>    并将左、右轨方向的平均值作为轨道的中心线方向偏差。</p>
+<h3 id="水平"><a href="#水平" class="headerlink" title="水平"></a>水平</h3><pre><code>同一轨道横截面上左右钢轨顶面所在水平面（设计理论高程）的高度差。不含圆曲线上
+设置的超高和缓和曲线上超高顺坡量。
+</code></pre><h3 id="超高"><a href="#超高" class="headerlink" title="超高"></a>超高</h3><pre><code>曲线地段外轨顶面与内轨顶面的水平高度之差。
+</code></pre><h3 id="三角坑"><a href="#三角坑" class="headerlink" title="三角坑"></a>三角坑</h3><pre><code>三角坑定义为左右两轨顶面相对轨道平面的扭曲，用相距一定基长水平的代数差表示。
+</code></pre><h3 id="车体振动加速度"><a href="#车体振动加速度" class="headerlink" title="车体振动加速度"></a>车体振动加速度</h3><h3 id="轨距变化率"><a href="#轨距变化率" class="headerlink" title="轨距变化率"></a>轨距变化率</h3><h3 id="曲率"><a href="#曲率" class="headerlink" title="曲率"></a>曲率</h3><h3 id="曲率变化率"><a href="#曲率变化率" class="headerlink" title="曲率变化率"></a>曲率变化率</h3><h2 id="轨道不平顺成因分析总结"><a href="#轨道不平顺成因分析总结" class="headerlink" title="轨道不平顺成因分析总结"></a>轨道不平顺成因分析总结</h2><pre><code>1、高低：起道过量，接头低扣、大轨缝、轨面塌坍、掉块、桥头、道口、涵洞等路基软硬接合部。
+它是由线路施工和大修作业的高程偏差，桥梁挠曲变形，道床和路基残余变形沉降不均匀，轨道各
+部件间的间隙不相等，吊板以及轨道垂向弹性不一致等造成的。
+
+2、轨距：轨距超限、轨距递减不顺、方向不良、肥边、硬弯、不均匀侧磨、木枕失效、道钉浮离、
+轨撑或轨距拉杆失效、扣件爬离、轨距挡板磨耗、道岔基本轨刨切、扣件扣压力不足、弹性挤开、
+轨距加宽设置差异等。通常由扣件不良、轨枕挡肩失效、轨头侧面磨耗等造成。
+
+3、轨向：直线不平直、曲线不圆顺(正矢不良)，由铺轨施工、整道作业的轨道中心线定位偏差，
+轨排横向残余变形积累和轨头侧面磨耗不均匀、扣件失效、轨道横向弹性不一致等原因造成。
+
+4、水平：一股钢轨抬高、两股钢轨下沉量不一致、空吊、暗坑、超高顺坡不良等。个别在直缓点附
+近，由于曲线正矢不良，造成直线和曲线分界不明，而将超高判为水平。
+</code></pre><h3 id="轨道几何参数分类"><a href="#轨道几何参数分类" class="headerlink" title="轨道几何参数分类"></a>轨道几何参数分类</h3><pre><code>轨道几何参数可分为绝对参数和相对参数。绝对参数是指轨道实测中线、高程与设计理论值的
+偏差，偏差越小，精度越高。相对参数是指轨距偏差、轨距变化率、水平偏差、水平变化率
+（扭曲）、轨向和高低，数值越小轨道越平顺。
 </code></pre>
           
         
@@ -984,7 +960,7 @@ done
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/ac798998.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/c9c89e88.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -1003,7 +979,7 @@ done
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/ac798998.html" itemprop="url">树莓派之无线AP和录音</a></h1>
+                <a class="post-title-link" href="/post/c9c89e88.html" itemprop="url">CSharp创建PDF</a></h1>
         
 
         <div class="post-meta">
@@ -1015,7 +991,7 @@ done
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T16:08:36+08:00">2018-03-16</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-07T10:16:04+08:00">2019-05-07</time>
             
 
             
@@ -1054,38 +1030,98 @@ done
       
         
           
-            <h2 id="树莓派3利用create-ap软件变身无线AP"><a href="#树莓派3利用create-ap软件变身无线AP" class="headerlink" title="树莓派3利用create_ap软件变身无线AP"></a>树莓派3利用create_ap软件变身无线AP</h2><ul>
-<li><p>安装依赖库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install util-linux procps hostapd iproute2 iw haveged dnsmasq</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这么简单几个命令就能安装好全部环境,接下来保证你的网线插在pi3上并且能上网就行了。</p>
-</li>
-<li><p>安装create_ap</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br><span class="line">git clone https://github.com/oblique/create_ap.git</span><br><span class="line">cd create_ap</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>输入下面的命令启动无线AP：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##sudo create_ap wlan0 eth0 热点名 密码</span><br><span class="line">nohup sudo create_ap wlan0 eth0 tp-link zxcvbnm123 --no-virt &amp;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>接下来就去打开手机wifi看看有没有上面命令中设置的热点名</p>
-</li>
+            <h2 id="C-创建pdf文件"><a href="#C-创建pdf文件" class="headerlink" title="C#创建pdf文件"></a>C#创建pdf文件</h2><p>###下载开源插件iTextSharp.dll并添加引用</p>
+<ul>
+<li>利用开源iTextSharp创建PDF文件</li>
+<li>在“解决方案资源管理器”中右键单击“引用”，从弹出的菜单中选择“添加引用”， 在“.NET”选项夹中选择“浏览”，添加iTextSharp.dll</li>
+<li><p>在代码窗口顶部添加两个引用：</p>
+<pre><code>using iTextSharp.text;
+using iTextSharp.text.pdf;
+</code></pre></li>
 </ul>
-<h2 id="树莓派录音"><a href="#树莓派录音" class="headerlink" title="树莓派录音"></a>树莓派录音</h2><ul>
-<li><p>先更新软件包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装必要的程序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install alsa-utils alsa-tools #alsa-tools-gui alsamixergui</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这里安装了本次必要的录音工具，同时也安装了2个图形界面工具，这样就可以用图形界面来设置音量等，操作会比较方便。</p>
-</li>
-<li><p>安装完成后，就可以使用树莓派来录音了。来录个60秒试试：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arecord -D plughw:1,0 -d 60 test.wav</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>其中，这里的plughw:1,0就是外置声卡设备，-D表示指定设备。这里值得一提的是，如<br>果后面没有设置输出文件的话，执行命令后录音产生的数据会直接显示在终端上，所以其实你<br>也可以这样写：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arecord -D plughw:1,0 -d 60 &gt; /dev/test.wav</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<pre><code> private void SavePDF(HttpContext context)
+{
+    Document document = new Document();
+    //中文字体
+    string chinese = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), &quot;KAIU.TTF&quot;);
+    BaseFont baseFont = BaseFont.CreateFont(chinese, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+    //文字大小12，文字样式
+    Font cn = new Font(baseFont, 12, Font.NORMAL);
 
+    PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(@&quot;D:\temp.pdf&quot;, FileMode.Create));
+    document.Open();
+    //最后一个参数是颜色，这里可以是rgb格式，也可以是默认定义的
+    var title = new Paragraph(&quot;\n 这是一条标题0.0  hello &quot;, new Font(baseFont, 14, Font.BOLD, BaseColor.RED));
+    //居中
+    title.Alignment = Element.ALIGN_CENTER;
+    document.Add(title);
+
+    Paragraph p = new Paragraph(&quot; \n this is Second title \n &quot;, cn);
+    //Phrase p = new Phrase(&quot;这是一条标题0.0  hello&quot;, cn);
+    p.Alignment = Element.ALIGN_CENTER;
+    document.Add(p);
+
+    //添加表格
+    PdfPTable table = new PdfPTable(3);
+    PdfPCell cell = new PdfPCell();
+
+    table.AddCell(&quot;Row&quot;);
+    cell = new PdfPCell(new Phrase(&quot;Cell&quot;));
+    cell.Colspan = 2;
+    table.AddCell(cell);
+
+    table.AddCell(&quot;row&quot;);
+    cell = new PdfPCell(new Phrase(&quot;Cell&quot;));
+    cell.Colspan = 2;
+    table.AddCell(cell);
+
+    cell = new PdfPCell(new Phrase(&quot;Row&quot;));
+    cell.Rowspan = 2;
+    table.AddCell(cell);
+    table.AddCell(&quot;Cell&quot;);
+    table.AddCell(&quot;Cell&quot;);
+    table.AddCell(&quot;Cell&quot;);
+    table.AddCell(&quot;Cell&quot;);
+
+    table.HorizontalAlignment = Element.ALIGN_CENTER;
+    document.Add(table);
+
+    //新页面
+    document.NewPage();
+    document.Add(new Paragraph(&quot;Second page pic&quot;, cn));
+    Image img = Image.GetInstance(&quot;E:/VsTest/testWeb/testWeb/Files/ts20171204.002.jpeg&quot;);
+
+    float percentage = 1;
+    //这里都是图片最原始的宽度与高度  
+    float resizedWidht = img.Width;
+    float resizedHeight = img.Height;
+
+    //这时判断图片宽度是否大于页面宽度减去也边距，如果是，那么缩小，如果还大，继续缩小，  
+    //这样这个缩小的百分比percentage会越来越小  
+    while (resizedWidht &gt; (document.PageSize.Width - document.LeftMargin - document.RightMargin) * 0.8)
+    {
+        percentage = percentage * 0.9f;
+        resizedHeight = img.Height * percentage;
+        resizedWidht = img.Width * percentage;
+    }
+
+    while (resizedHeight &gt; (document.PageSize.Height - document.TopMargin - document.BottomMargin) * 0.8)
+    {
+        percentage = percentage * 0.9f;
+        resizedHeight = img.Height * percentage;
+        resizedWidht = img.Width * percentage;
+    }
+
+    //这里用计算出来的百分比来缩小图片  
+    img.ScalePercent(percentage * 100);
+    //图片定位，页面总宽283，高416；这里设置0,0的话就是页面的左下角 让图片的中心点与页面的中心店进行重合  
+    img.SetAbsolutePosition(document.PageSize.Width / 2 - resizedWidht / 2, document.PageSize.Height / 2 - resizedHeight / 2);
+    writer.DirectContent.AddImage(img);
+
+    document.Close();
+
+}
+</code></pre>
           
         
       
@@ -1124,7 +1160,7 @@ done
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/24/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><span class="page-number current">25</span><a class="page-number" href="/page/26/">26</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/26/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/24/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><span class="page-number current">25</span><a class="page-number" href="/page/26/">26</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/26/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1169,7 +1205,7 @@ done
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">165</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1262,33 +1298,7 @@ done
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1328,7 +1338,7 @@ done
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

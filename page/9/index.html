@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/837d50a8.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2974af77.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -292,7 +292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/837d50a8.html" itemprop="url">Node.js 连接 MongoDB</a></h1>
+                <a class="post-title-link" href="/post/2974af77.html" itemprop="url">编译Bootstrap定制自己的模板</a></h1>
         
 
         <div class="post-meta">
@@ -304,7 +304,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-16T00:00:00+08:00">2020-04-16</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-08T00:00:00+08:00">2020-05-08</time>
             
 
             
@@ -343,49 +343,142 @@
       
         
           
-            <p>MongoDB是一种文档导向数据库管理系统，由C++撰写而成。</p>
-<p>本章节我们将为大家介绍如何使用 Node.js 来连接 MongoDB，并对数据库进行操作。</p>
-<p>如果你还没有 MongoDB 的基本知识，可以参考我们的教程：<a href="https://www.runoob.com/mongodb/mongodb-tutorial.html" target="_blank" rel="noopener">MongoDB 教程</a>。</p>
-<h2 id="安装驱动"><a href="#安装驱动" class="headerlink" title="安装驱动"></a>安装驱动</h2><p>本教程使用了<a href="https://www.runoob.com/nodejs/nodejs-npm.html#taobaonpm" target="_blank" rel="noopener">淘宝定制的 cnpm 命令</a>进行安装：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install mongodb</span><br></pre></td></tr></table></figure>
-<p>接下来我们来实现增删改查功能。</p>
-<hr>
-<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>要在 MongoDB 中创建一个数据库，首先我们需要创建一个 MongoClient 对象，然后配置好指定的 URL 和 端口号。</p>
-<p>如果数据库不存在，MongoDB 将创建数据库并建立连接。</p>
-<h2 id="创建连接"><a href="#创建连接" class="headerlink" title="创建连接"></a>创建连接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var MongoClient = require(&apos;mongodb&apos;).MongoClient;</span><br><span class="line">var url = &quot;mongodb://localhost:27017/runoob&quot;;</span><br><span class="line"> </span><br><span class="line">MongoClient.connect(url, &#123; useNewUrlParser: true &#125;, function(err, db) &#123;</span><br><span class="line">  if (err) throw err;</span><br><span class="line">  console.log(&quot;数据库已创建!&quot;);</span><br><span class="line">  db.close();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="创建集合"><a href="#创建集合" class="headerlink" title="创建集合"></a>创建集合</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var MongoClient = require(&apos;mongodb&apos;).MongoClient;</span><br><span class="line">var url = &apos;mongodb://localhost:27017/runoob&apos;;</span><br><span class="line">MongoClient.connect(url, &#123; useNewUrlParser: true &#125;, function (err, db) &#123;</span><br><span class="line">    if (err) throw err;</span><br><span class="line">    console.log(&apos;数据库已创建&apos;);</span><br><span class="line">    var dbase = db.db(&quot;runoob&quot;);</span><br><span class="line">    dbase.createCollection(&apos;site&apos;, function (err, res) &#123;</span><br><span class="line">        if (err) throw err;</span><br><span class="line">        console.log(&quot;创建集合!&quot;);</span><br><span class="line">        db.close();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="数据库操作-CURD"><a href="#数据库操作-CURD" class="headerlink" title="数据库操作( CURD )"></a>数据库操作( CURD )</h2><p>与 MySQL 不同的是 MongoDB 会自动创建数据库和集合，所以使用前我们不需要手动去创建。</p>
-<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><p>以下实例我们连接数据库 runoob 的 site 表，并插入一条数据条数据，使用 <strong>insertOne()</strong>：</p>
-<h3 id="插入一条数据"><a href="#插入一条数据" class="headerlink" title="插入一条数据"></a>插入一条数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var MongoClient = require(&apos;mongodb&apos;).MongoClient;</span><br><span class="line">var url = &quot;mongodb://localhost:27017/&quot;;</span><br><span class="line"> </span><br><span class="line">MongoClient.connect(url, &#123; useNewUrlParser: true &#125;, function(err, db) &#123;</span><br><span class="line">    if (err) throw err;</span><br><span class="line">    var dbo = db.db(&quot;runoob&quot;);</span><br><span class="line">    var myobj = &#123; name: &quot;菜鸟教程&quot;, url: &quot;www.runoob&quot; &#125;;</span><br><span class="line">    dbo.collection(&quot;site&quot;).insertOne(myobj, function(err, res) &#123;</span><br><span class="line">        if (err) throw err;</span><br><span class="line">        console.log(&quot;文档插入成功&quot;);</span><br><span class="line">        db.close();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>执行以下命令输出就结果为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node test.js</span><br><span class="line">文档插入成功</span><br></pre></td></tr></table></figure>
-<p>从输出结果来看，数据已插入成功。</p>
-<p>我们也可以打开 MongoDB 的客户端查看数据，如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; show dbs</span><br><span class="line">runoob  0.000GB          # 自动创建了 runoob 数据库</span><br><span class="line">&gt; show tables</span><br><span class="line">site                     # 自动创建了 site 集合（数据表）</span><br><span class="line">&gt; db.site.find()</span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;5a794e36763eb821b24db854&quot;), &quot;name&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;www.runoob&quot; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-<p>如果要插入多条数据可以使用 <strong>insertMany()</strong>：</p>
-<h3 id="插入多条数据"><a href="#插入多条数据" class="headerlink" title="插入多条数据"></a>插入多条数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var MongoClient = require(&apos;mongodb&apos;).MongoClient;</span><br><span class="line">var url = &quot;mongodb://localhost:27017/&quot;;</span><br><span class="line"> </span><br><span class="line">MongoClient.connect(url, &#123; useNewUrlParser: true &#125;, function(err, db) &#123;</span><br><span class="line">    if (err) throw err;</span><br><span class="line">    var dbo = db.db(&quot;runoob&quot;);</span><br><span class="line">    var myobj =  [</span><br><span class="line">        &#123; name: &apos;菜鸟工具&apos;, url: &apos;https://c.runoob.com&apos;, type: &apos;cn&apos;&#125;,</span><br><span class="line">        &#123; name: &apos;Google&apos;, url: &apos;https://www.google.com&apos;, type: &apos;en&apos;&#125;,</span><br><span class="line">        &#123; name: &apos;Facebook&apos;, url: &apos;https://www.google.com&apos;, type: &apos;en&apos;&#125;</span><br><span class="line">       ];</span><br><span class="line">    dbo.collection(&quot;site&quot;).insertMany(myobj, function(err, res) &#123;</span><br><span class="line">        if (err) throw err;</span><br><span class="line">        console.log(&quot;插入的文档数量为: &quot; + res.insertedCount);</span><br><span class="line">        db.close();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h2><p>可以使用 find() 来查找数据, find() 可以返回匹配条件的所有数据。 如果未指定条件，find() 返回集合中的所有数据。</p>
-<h2 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var MongoClient = require(&apos;mongodb&apos;).MongoClient;</span><br><span class="line">var url = &quot;mongodb://localhost:27017/&quot;;</span><br><span class="line"> </span><br><span class="line">MongoClient.connect(url, &#123; useNewUrlParser: true &#125;, function(err, db) &#123;</span><br><span class="line">    if (err) throw err;</span><br><span class="line">    var dbo = db.db(&quot;runoob&quot;);</span><br><span class="line">    dbo.collection(&quot;site&quot;). find(&#123;&#125;).toArray(function(err, result) &#123; // 返回集合中所有数据</span><br><span class="line">        if (err) throw err;</span><br><span class="line">        console.log(result);</span><br><span class="line">        db.close();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>以下实例检索 name 为 “菜鸟教程” 的实例：</p>
-<h3 id="查询指定条件的数据"><a href="#查询指定条件的数据" class="headerlink" title="查询指定条件的数据"></a>查询指定条件的数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var MongoClient = require(&apos;mongodb&apos;).MongoClient;</span><br><span class="line">var url = &quot;mongodb://localhost:27017/&quot;;</span><br><span class="line"> </span><br><span class="line">MongoClient.connect(url, &#123; useNewUrlParser: true &#125;, function(err, db) &#123;</span><br><span class="line">    if (err) throw err;</span><br><span class="line">    var dbo = db.db(&quot;runoob&quot;);</span><br><span class="line">     var whereStr = &#123;&quot;name&quot;:&apos;菜鸟教程&apos;&#125;;  // 查询条件</span><br><span class="line">    dbo.collection(&quot;site&quot;).find(whereStr).toArray(function(err, result) &#123;</span><br><span class="line">        if (err) throw err;</span><br><span class="line">        console.log(result);</span><br><span class="line">        db.close();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>执行以下命令输出就结果为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[ &#123; _id: 5a794e36763eb821b24db854,</span><br><span class="line">    name: &apos;菜鸟教程&apos;,</span><br><span class="line">    url: &apos;www.runoob&apos; &#125; ]</span><br></pre></td></tr></table></figure>
-<h2 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h2><p>我们也可以对数据库的数据进行修改，以下实例将 name 为 “菜鸟教程” 的 url 改为 <a href="https://www.runoob.com：" target="_blank" rel="noopener">https://www.runoob.com：</a></p>
-<h3 id="更新一条数据"><a href="#更新一条数据" class="headerlink" title="更新一条数据"></a>更新一条数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var MongoClient = require(&apos;mongodb&apos;).MongoClient;</span><br><span class="line">var url = &quot;mongodb://localhost:27017/&quot;;</span><br><span class="line"> </span><br><span class="line">MongoClient.connect(url, &#123; useNewUrlParser: true &#125;, function(err, db) &#123;</span><br><span class="line">    if (err) throw err;</span><br><span class="line">    var dbo = db.db(&quot;runoob&quot;);</span><br><span class="line">    var whereStr = &#123;&quot;name&quot;:&apos;菜鸟教程&apos;&#125;;  // 查询条件</span><br><span class="line">    var updateStr = &#123;$set: &#123; &quot;url&quot; : &quot;https://www.runoob.com&quot; &#125;&#125;;</span><br><span class="line">    dbo.collection(&quot;site&quot;).updateOne(whereStr, updateStr, function(err, res) &#123;</span><br><span class="line">        if (err) throw err;</span><br><span class="line">        console.log(&quot;文档更新成功&quot;);</span><br><span class="line">        db.close();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>执行成功后，进入 mongo 管理工具查看数据已修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.site.find().pretty()</span><br><span class="line">&#123;</span><br><span class="line">    &quot;_id&quot; : ObjectId(&quot;5a794e36763eb821b24db854&quot;),</span><br><span class="line">    &quot;name&quot; : &quot;菜鸟教程&quot;,</span><br><span class="line">    &quot;url&quot; : &quot;https://www.runoob.com&quot;     // 已修改为 https</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果要更新所有符合条的文档数据可以使用 <strong>updateMany()</strong>：</p>
-<h3 id="更新多条数据"><a href="#更新多条数据" class="headerlink" title="更新多条数据"></a>更新多条数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var MongoClient = require(&apos;mongodb&apos;).MongoClient;</span><br><span class="line">var url = &quot;mongodb://localhost:27017/&quot;;</span><br><span class="line"> </span><br><span class="line">MongoClient.connect(url, &#123; useNewUrlParser: true &#125;, function(err, db) &#123;</span><br><span class="line">    if (err) throw err;</span><br><span class="line">    var dbo = db.db(&quot;runoob&quot;);</span><br><span class="line">    var whereStr = &#123;&quot;type&quot;:&apos;en&apos;&#125;;  // 查询条件</span><br><span class="line">    var updateStr = &#123;$set: &#123; &quot;url&quot; : &quot;https://www.runoob.com&quot; &#125;&#125;;</span><br><span class="line">    dbo.collection(&quot;site&quot;).updateMany(whereStr, updateStr, function(err, res) &#123;</span><br><span class="line">        if (err) throw err;</span><br><span class="line">         console.log(res.result.nModified + &quot; 条文档被更新&quot;);</span><br><span class="line">        db.close();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p>以下实例将 name 为 “菜鸟教程” 的数据删除 :</p>
-<h3 id="删除一条数据"><a href="#删除一条数据" class="headerlink" title="删除一条数据"></a>删除一条数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var MongoClient = require(&apos;mongodb&apos;).MongoClient;</span><br><span class="line">var url = &quot;mongodb://localhost:27017/&quot;;</span><br><span class="line"> </span><br><span class="line">MongoClient.connect(url, &#123; useNewUrlParser: true &#125;, function(err, db) &#123;</span><br><span class="line">    if (err) throw err;</span><br><span class="line">    var dbo = db.db(&quot;runoob&quot;);</span><br><span class="line">    var whereStr = &#123;&quot;name&quot;:&apos;菜鸟教程&apos;&#125;;  // 查询条件</span><br><span class="line">    dbo.collection(&quot;site&quot;).deleteOne(whereStr, function(err, obj) &#123;</span><br><span class="line">        if (err) throw err;</span><br><span class="line">        console.log(&quot;文档删除成功&quot;);</span><br><span class="line">        db.close();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>执行成功后，进入 mongo 管理工具查看数据已删除：</p>
-<p>如果要删除多条语句可以使用 <strong>deleteMany()</strong> 方法</p>
-<p>以下实例将 type 为 en 的所有数据删除 :</p>
-<h3 id="删除多条数据"><a href="#删除多条数据" class="headerlink" title="删除多条数据"></a>删除多条数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var MongoClient = require(&apos;mongodb&apos;).MongoClient;</span><br><span class="line">var url = &quot;mongodb://localhost:27017/&quot;;</span><br><span class="line"> </span><br><span class="line">MongoClient.connect(url, &#123; useNewUrlParser: true &#125;, function(err, db) &#123;</span><br><span class="line">    if (err) throw err;</span><br><span class="line">    var dbo = db.db(&quot;runoob&quot;);</span><br><span class="line">    var whereStr = &#123; type: &quot;en&quot; &#125;;  // 查询条件</span><br><span class="line">    dbo.collection(&quot;site&quot;).deleteMany(whereStr, function(err, obj) &#123;</span><br><span class="line">        if (err) throw err;</span><br><span class="line">        console.log(obj.result.n + &quot; 条文档被删除&quot;);</span><br><span class="line">        db.close();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="删除集合"><a href="#删除集合" class="headerlink" title="删除集合"></a>删除集合</h3><p>我们可以使用 <strong>drop()</strong> 方法来删除集合：</p>
-<h2 id="drop"><a href="#drop" class="headerlink" title="drop()"></a>drop()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var MongoClient = require(&apos;mongodb&apos;).MongoClient;</span><br><span class="line">var url = &quot;mongodb://localhost:27017/&quot;;</span><br><span class="line"> </span><br><span class="line">MongoClient.connect(url, &#123; useNewUrlParser: true &#125;, function(err, db) &#123;</span><br><span class="line">    if (err) throw err;</span><br><span class="line">    var dbo = db.db(&quot;runoob&quot;);</span><br><span class="line">    // 删除 test 集合</span><br><span class="line">    dbo.collection(&quot;test&quot;).drop(function(err, delOK) &#123;  // 执行成功 delOK 返回 true，否则返回 false</span><br><span class="line">        if (err) throw err;</span><br><span class="line">        if (delOK) console.log(&quot;集合已删除&quot;);</span><br><span class="line">        db.close();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+            <h3 id="编译Bootstrap定制自己的模板"><a href="#编译Bootstrap定制自己的模板" class="headerlink" title="编译Bootstrap定制自己的模板"></a>编译Bootstrap定制自己的模板</h3><h4 id="1-下载安装nodejs"><a href="#1-下载安装nodejs" class="headerlink" title="1.下载安装nodejs"></a>1.下载安装nodejs</h4><h4 id="2-下载安装bootstrap-3-3-7"><a href="#2-下载安装bootstrap-3-3-7" class="headerlink" title="2.下载安装bootstrap-3.3.7"></a>2.下载安装bootstrap-3.3.7</h4><p><a href="http://getbootstrap.com/" target="_blank" rel="noopener">http://getbootstrap.com/</a></p>
+<p><a href="https://codeload.github.com/twbs/bootstrap/zip/v3.3.7" target="_blank" rel="noopener">https://codeload.github.com/twbs/bootstrap/zip/v3.3.7</a></p>
+<h4 id="3-安装grunt"><a href="#3-安装grunt" class="headerlink" title="3.安装grunt"></a>3.安装grunt</h4><ul>
+<li>安装grunt</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install grunt --save</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装其grunt-cli</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g grunt-cli</span><br></pre></td></tr></table></figure>
+<h4 id="4-安装BS用的组件"><a href="#4-安装BS用的组件" class="headerlink" title="4.安装BS用的组件"></a>4.安装BS用的组件</h4><ul>
+<li>进入bootstrap-3.3.7目录执行：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install</span><br></pre></td></tr></table></figure>
+<h4 id="5-编译BS"><a href="#5-编译BS" class="headerlink" title="5.编译BS"></a>5.编译BS</h4><p>在bootstrap-3.3.7目录下执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grunt dist</span><br><span class="line">grunt docs</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/7218f050.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/7218f050.html" itemprop="url">python生成词云图片</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-07T00:00:00+08:00">2020-05-07</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="python生成词云图片"><a href="#python生成词云图片" class="headerlink" title="python生成词云图片"></a>python生成词云图片</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: cp936 -*-</span></span><br><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud,ImageColorGenerator,STOPWORDS</span><br><span class="line"><span class="keyword">import</span>  matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建停用词list</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">stopwordslist</span><span class="params">(filepath)</span>:</span></span><br><span class="line">    stopwords = [line.strip() <span class="keyword">for</span> line <span class="keyword">in</span> open(filepath, <span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>).readlines()]</span><br><span class="line">    <span class="keyword">return</span> stopwords</span><br><span class="line"></span><br><span class="line"><span class="string">'''对句子进行分词'''</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">seg_sentence</span><span class="params">(string_for_seg)</span>:</span></span><br><span class="line">    <span class="comment">##jieba.load_userdict('user_dict.txt')</span></span><br><span class="line">    sentence_seged = jieba.cut(string_for_seg.strip())</span><br><span class="line">    <span class="comment">##stopwords = stopwordslist('stopwords.txt')  # 这里加载停用词的路径</span></span><br><span class="line">    outstr = []</span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> sentence_seged:</span><br><span class="line">        <span class="comment">##if word not in stopwords:</span></span><br><span class="line">            <span class="keyword">if</span> word != <span class="string">'\t'</span>:</span><br><span class="line"><span class="comment">##                print(word)</span></span><br><span class="line">                outstr.append(word)</span><br><span class="line">    <span class="keyword">return</span> outstr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">'''对分词进行词频统计'''</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">word_frequency</span><span class="params">(str_list)</span>:</span></span><br><span class="line">    c = Counter()</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> str_list:</span><br><span class="line">        <span class="keyword">if</span> len(x) &gt; <span class="number">1</span> <span class="keyword">and</span> x != <span class="string">'\r\n'</span>:</span><br><span class="line">            c[x] += <span class="number">1</span></span><br><span class="line"><span class="comment">##    print(type(c.most_common()))</span></span><br><span class="line">    </span><br><span class="line">    freq_dict = &#123;&#125;          </span><br><span class="line">    <span class="keyword">for</span> (k, v) <span class="keyword">in</span> c.most_common():</span><br><span class="line">        freq_dict[k]=v</span><br><span class="line"><span class="comment">##        file_content=file_content+k.encode('gbk')+' : '+str(v)+'\n'</span></span><br><span class="line">    <span class="keyword">return</span> freq_dict</span><br><span class="line">        </span><br><span class="line"><span class="string">'''生成词云'''</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_wordcloud</span><span class="params">(wd_freq_dic,image_file_name=<span class="string">'wordcloud.jpg'</span>)</span>:</span></span><br><span class="line">    <span class="comment">#设置图片模板，生成词云的形状与模板一致</span></span><br><span class="line">    image=np.array(Image.open(<span class="string">'mask.jpg'</span>)) </span><br><span class="line">    <span class="comment">#设置字体</span></span><br><span class="line">    font=<span class="string">r'C:\\Windows\\fonts\\simhei.ttf'</span></span><br><span class="line">    my_wordcloud = WordCloud(scale=<span class="number">4</span>,font_path=font,mask=image,background_color=<span class="string">'white'</span>,max_words = <span class="number">100</span>,max_font_size =<span class="number">70</span>,random_state=<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">    my_wordcloud.generate_from_frequencies(wd_freq_dic)<span class="comment">#根据给定词频生成词.generate(wl_space_split) </span></span><br><span class="line"></span><br><span class="line">    my_wordcloud.to_file(image_file_name)</span><br><span class="line">    <span class="comment">#显示生成的词云 </span></span><br><span class="line">    plt.imshow(my_wordcloud)</span><br><span class="line">    plt.axis(<span class="string">"off"</span>) </span><br><span class="line">    plt.show() </span><br><span class="line">    <span class="comment">###保存生成的图片</span></span><br><span class="line">    <span class="comment">##my_wordcloud.to_file('result.jpg')</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment">#读取文本数据文件</span></span><br><span class="line">    source_filename=<span class="string">'jingangjing.txt'</span></span><br><span class="line">    <span class="comment">##读取文件内容并替换掉换行符</span></span><br><span class="line">    lines = open(source_filename, <span class="string">'r'</span>).read().replace(<span class="string">"\n"</span>, <span class="string">""</span>)</span><br><span class="line">    </span><br><span class="line">    str_list = seg_sentence(lines)  <span class="comment"># 这里的返回值是列表</span></span><br><span class="line">    freq_dict = word_frequency(str_list)  <span class="comment"># 取词频</span></span><br><span class="line"><span class="comment">#     print(freq_dict)</span></span><br><span class="line">    generate_wordcloud(freq_dict,source_filename+<span class="string">'.jpg'</span>)</span><br><span class="line"><span class="comment">##    print(u'完成')</span></span><br></pre></td></tr></table></figure>
 
           
         
@@ -436,7 +529,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/67eb8ec9.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2fdfbd2c.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -455,7 +548,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/67eb8ec9.html" itemprop="url">python生成钢轨轨检数据变化趋势</a></h1>
+                <a class="post-title-link" href="/post/2fdfbd2c.html" itemprop="url">python爬取网络数据</a></h1>
         
 
         <div class="post-meta">
@@ -467,7 +560,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-14T08:00:00+08:00">2020-04-14</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-02T08:00:00+08:00">2020-05-02</time>
             
 
             
@@ -506,10 +599,7 @@
       
         
           
-            <h2 id="生成钢轨轨检数据变化趋势并保存到mongodb"><a href="#生成钢轨轨检数据变化趋势并保存到mongodb" class="headerlink" title="生成钢轨轨检数据变化趋势并保存到mongodb"></a>生成钢轨轨检数据变化趋势并保存到mongodb</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> interpolate</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment">#生成模拟钢轨的历史变化趋势</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_trend</span><span class="params">(n_samples = <span class="number">18</span>,n_out_of_gauge = <span class="number">15</span>,n_noise = <span class="number">1.5</span>,interval=<span class="number">0.50</span>)</span>:</span></span><br><span class="line"><span class="comment">#     n_samples = 18 #样本点数</span></span><br><span class="line"><span class="comment">#     n_out_of_gauge = 15#超限数据</span></span><br><span class="line"><span class="comment">#     n_noise=1.5 #随机噪音</span></span><br><span class="line">    <span class="comment"># print(x)</span></span><br><span class="line">    x=np.arange(n_samples)</span><br><span class="line">    y=n_out_of_gauge*(x+n_noise*np.random.rand(n_samples))/(n_samples+n_noise)</span><br><span class="line">    <span class="comment">#插值法之后的x轴值，表示从0到10间距为0.5的200个数</span></span><br><span class="line">    xnew =np.arange(<span class="number">0</span>,n_samples<span class="number">-1</span>,interval)</span><br><span class="line">    <span class="comment">#实现函数</span></span><br><span class="line">    func = interpolate.interp1d(x,y,kind=<span class="string">'cubic'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#利用xnew和func函数生成ynew,xnew数量等于ynew数量</span></span><br><span class="line">    ynew = func(xnew)</span><br><span class="line"><span class="comment">#     print('length of x,y:',len(x),len(y))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#     print('length of xnew,ynew:',len(xnew),len(ynew))</span></span><br><span class="line">    n=range(len(ynew))</span><br><span class="line"><span class="comment">#     print()</span></span><br><span class="line">    data_dict=&#123;<span class="string">'n'</span>:n,<span class="string">'y'</span>:sorted(ynew)&#125;</span><br><span class="line">    df=pd.DataFrame(data_dict)</span><br><span class="line">    <span class="keyword">return</span> df</span><br><span class="line"></span><br><span class="line"><span class="comment">#生成钢轨上一个位置的历史趋势数据</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_one_position</span><span class="params">()</span>:</span></span><br><span class="line">    df = pd.DataFrame()</span><br><span class="line">    n_samples=<span class="number">10</span></span><br><span class="line">    interval=<span class="number">0.3</span></span><br><span class="line">    n_noise=<span class="number">3.2</span></span><br><span class="line">    n_out_of_gauge=<span class="number">10</span></span><br><span class="line">    df[<span class="string">'n'</span>]=generate_trend(n_samples = n_samples,n_out_of_gauge = n_out_of_gauge,n_noise = <span class="number">1.3</span>,interval=interval)[<span class="string">'n'</span>]</span><br><span class="line">    df[<span class="string">'左顶磨'</span>]=generate_trend(n_samples = n_samples,n_out_of_gauge = n_out_of_gauge,n_noise = n_noise,interval=interval)[<span class="string">'y'</span>]</span><br><span class="line">    df[<span class="string">'右顶磨'</span>]=generate_trend(n_samples = n_samples,n_out_of_gauge = n_out_of_gauge,n_noise =n_noise,interval=interval)[<span class="string">'y'</span>]</span><br><span class="line">    df[<span class="string">'左侧磨'</span>]=generate_trend(n_samples = n_samples,n_out_of_gauge = n_out_of_gauge,n_noise = n_noise,interval=interval)[<span class="string">'y'</span>]</span><br><span class="line">    df[<span class="string">'右侧磨'</span>]=generate_trend(n_samples = n_samples,n_out_of_gauge = n_out_of_gauge,n_noise = n_noise,interval=interval)[<span class="string">'y'</span>]</span><br><span class="line">    <span class="comment"># print(df)</span></span><br><span class="line">    <span class="keyword">return</span> df</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建公里标字符串序列</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_kmp</span><span class="params">(points_num=<span class="number">10</span>)</span>:</span></span><br><span class="line">    n_list=[]</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">1</span>,points_num):</span><br><span class="line">        n_list.extend(sorted(n+np.random.rand(<span class="number">4</span>)))</span><br><span class="line">    collection_list=[str(x) <span class="keyword">for</span> x <span class="keyword">in</span> n_list]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> collection_list</span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line"><span class="comment">###以公里标为collection的名称,生成每一个公里标所对应的的点的历史变化趋势</span></span><br><span class="line">    collection_name_list=create_kmp(<span class="number">2</span>)</span><br><span class="line">    <span class="comment">#连接mongodb数据库</span></span><br><span class="line">    client = MongoClient()</span><br><span class="line">    <span class="comment">#创建数据库，没有则创建</span></span><br><span class="line">    db = client[<span class="string">'mohao'</span>]  </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> cn <span class="keyword">in</span> collection_name_list:</span><br><span class="line">        print(cn)</span><br><span class="line">        <span class="comment">#生成一个点的历史数据</span></span><br><span class="line">        df = generate_one_position()</span><br><span class="line">        <span class="comment">#创建数据表</span></span><br><span class="line">        collection = db[cn]</span><br><span class="line">        <span class="comment">#插入数据到数据库</span></span><br><span class="line">        collection.insert_many(df.to_dict(orient=<span class="string">'records'</span>))</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        <span class="comment">#显示数据框的统计信息</span></span><br><span class="line"><span class="comment">#         print(df.describe())</span></span><br><span class="line">        <span class="comment">#保存数据框到csv文件</span></span><br><span class="line">        <span class="comment"># df.to_csv('磨耗变化趋势.csv')</span></span><br></pre></td></tr></table></figure>
-<h3 id="趋势数据可视化"><a href="#趋势数据可视化" class="headerlink" title="趋势数据可视化"></a>趋势数据可视化</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 趋势数据可视化</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="comment"># 支持中文</span></span><br><span class="line">plt.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">'SimHei'</span>]  <span class="comment"># 用来正常显示中文标签</span></span><br><span class="line">plt.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="literal">False</span>  <span class="comment"># 用来正常显示负号</span></span><br><span class="line"><span class="comment">#平滑处理后曲线</span></span><br><span class="line">plt.plot(df.n,df[<span class="string">'左顶磨'</span>],color=<span class="string">"blue"</span>,marker=<span class="string">"o"</span>)</span><br><span class="line"><span class="comment">#原始曲线</span></span><br><span class="line"><span class="comment"># plt.plot(x,y)</span></span><br><span class="line">plt.plot(df.n,<span class="number">5</span>*np.ones_like(df.n),color=<span class="string">"yellow"</span>,label=<span class="string">'预警'</span>)</span><br><span class="line">plt.plot(df.n,<span class="number">10</span>*np.ones_like(df.n),color=<span class="string">"red"</span>,label=<span class="string">'超限'</span>)</span><br><span class="line"><span class="comment">#设置x,y轴代表意思</span></span><br><span class="line">plt.xlabel(<span class="string">"测量次数"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"60钢轨总磨耗值(mm)"</span>)</span><br><span class="line"><span class="comment">#设置标题</span></span><br><span class="line">plt.title(<span class="string">"钢轨磨耗变化趋势"</span>)</span><br><span class="line"><span class="comment">#设置x,y轴的坐标范围</span></span><br><span class="line"><span class="comment"># plt.xlim(0,n_samples,8)</span></span><br><span class="line"><span class="comment"># plt.ylim(0,n_out_of_gauge)</span></span><br><span class="line">plt.legend()</span><br><span class="line">plt.savefig(<span class="string">'钢轨磨耗变化趋势.png'</span>, dpi=<span class="number">200</span>, bbox_inches=<span class="string">'tight'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<h3 id="生成日期字符串序列"><a href="#生成日期字符串序列" class="headerlink" title="生成日期字符串序列"></a>生成日期字符串序列</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="comment">#根据起始日期和结束日期生成日期列表</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_date_list</span><span class="params">(datestart = None,dateend = None)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> datestart <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        datestart = <span class="string">'2016-01-01'</span></span><br><span class="line">    <span class="keyword">if</span> dateend <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        dateend = datetime.datetime.now().strftime(<span class="string">'%Y-%m-%d'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 转为日期格式</span></span><br><span class="line">    datestart=datetime.datetime.strptime(datestart,<span class="string">'%Y-%m-%d'</span>)</span><br><span class="line">    dateend=datetime.datetime.strptime(dateend,<span class="string">'%Y-%m-%d'</span>)</span><br><span class="line">    date_list = []</span><br><span class="line">    date_list.append(datestart.strftime(<span class="string">'%Y-%m-%d'</span>))</span><br><span class="line">    <span class="keyword">while</span> datestart&lt;dateend:</span><br><span class="line">        <span class="comment"># 日期叠加一天</span></span><br><span class="line">        datestart+=datetime.timedelta(days=+<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># 日期转字符串存入列表</span></span><br><span class="line">        date_list.append(datestart.strftime(<span class="string">'%Y-%m-%d'</span>))</span><br><span class="line">    print(date_list)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    create_date_list(<span class="string">"2020-01-01"</span>,<span class="string">"2020-03-20"</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="numpy生成随机list列表"><a href="#numpy生成随机list列表" class="headerlink" title="numpy生成随机list列表"></a>numpy生成随机list列表</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">lst = sorted(range(<span class="number">5</span>)+np.random.rand(<span class="number">5</span>))</span><br><span class="line">[str(i) <span class="keyword">for</span> i <span class="keyword">in</span> lst]</span><br></pre></td></tr></table></figure>
+            <h3 id="python爬取网络数据"><a href="#python爬取网络数据" class="headerlink" title="python爬取网络数据"></a>python爬取网络数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">import uuid</span><br><span class="line">#添加请求头</span><br><span class="line">headers = &#123;</span><br><span class="line">    &apos;User-Agent&apos;:&apos;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36 QIHU 360SE&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">reponse = requests.get(url=&quot;http://news.baidu.com/&quot;,headers=headers)</span><br><span class="line">reponse.encoding = reponse.apparent_encoding</span><br><span class="line"># print(reponse.text)</span><br><span class="line">#获取文本原来编码，使两者编码一致才能正确显示</span><br><span class="line">soup = BeautifulSoup(reponse.text,&apos;html.parser&apos;)#使用的是html解析，一般使用lxml解析更好</span><br><span class="line">#target = soup.find(id=&quot;auto-channel-lazyload-article&quot;)#find根据属性去获取对象，id,attr,tag...自定义属性</span><br><span class="line">a_list = soup.find_all(&apos;a&apos;) #查找所有的超链接</span><br><span class="line"></span><br><span class="line">for a_tag in a_list: </span><br><span class="line">    href = a_tag.attrs.get(&quot;href&quot;)#属性是字典形式，使用get获取指定属性</span><br><span class="line">    target = a_tag.attrs.get(&quot;target&quot;)</span><br><span class="line">    if target==&apos;_blank&apos;:</span><br><span class="line">        if(a_tag.string is not None):</span><br><span class="line">            if(len(a_tag.string)&gt;20):</span><br><span class="line">                print(str(uuid.uuid4()))#生成一个不重复的字符串</span><br><span class="line">                print(a_tag.string)</span><br></pre></td></tr></table></figure>
 
           
         
@@ -560,7 +650,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/1897551e.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2cde219e.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -579,7 +669,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/1897551e.html" itemprop="url">python模拟生成轨检随机数据</a></h1>
+                <a class="post-title-link" href="/post/2cde219e.html" itemprop="url">python之头像动漫化</a></h1>
         
 
         <div class="post-meta">
@@ -591,7 +681,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-14T08:00:00+08:00">2020-04-14</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-02T00:00:00+08:00">2020-05-02</time>
             
 
             
@@ -630,8 +720,7 @@
       
         
           
-            <h3 id="模拟生成轨检随机数据"><a href="#模拟生成轨检随机数据" class="headerlink" title="模拟生成轨检随机数据"></a>模拟生成轨检随机数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##功能:随机生成轨距数据并作图</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -*- coding: cp936 -*-</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line">data_length = <span class="number">100</span></span><br><span class="line">mileage = np.random.normal(<span class="number">600</span>, <span class="number">80</span>, data_length) <span class="comment">##里程</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##我国铁路的标准轨距为1435毫米</span></span><br><span class="line">track_gauge = np.random.normal(<span class="number">1435</span>, <span class="number">2</span>, data_length)  <span class="comment"># mean ,standard deviation,data length</span></span><br><span class="line"></span><br><span class="line">left_rail_height = np.random.normal(<span class="number">2</span>, <span class="number">0.5</span>, data_length) <span class="comment">##左轨高低 </span></span><br><span class="line">right_rail_height = np.random.normal(<span class="number">3</span>, <span class="number">0.2</span>, data_length)  <span class="comment">##右轨高低 </span></span><br><span class="line"></span><br><span class="line">left_rail_alignment = np.random.normal(<span class="number">2</span>, <span class="number">0.5</span>, data_length)  <span class="comment">##左轨轨向 </span></span><br><span class="line">right_rail_alignment = np.random.normal(<span class="number">2</span>, <span class="number">0.5</span>, data_length)  <span class="comment">##右轨轨向 </span></span><br><span class="line"></span><br><span class="line">superelevation = np.random.normal(<span class="number">5</span>, <span class="number">0.5</span>, data_length)  <span class="comment">##超高</span></span><br><span class="line"></span><br><span class="line">left_vertical_wear = np.random.normal(<span class="number">4</span>, <span class="number">0.5</span>, data_length)  <span class="comment">##垂直磨耗</span></span><br><span class="line">right_vertical_wear = np.random.normal(<span class="number">4</span>, <span class="number">0.5</span>, data_length)  <span class="comment">##垂直磨耗</span></span><br><span class="line"></span><br><span class="line">left_side_wear = np.random.normal(<span class="number">3</span>, <span class="number">0.5</span>, data_length)  <span class="comment">####侧面磨耗</span></span><br><span class="line">right_side_wear = np.random.normal(<span class="number">3</span>, <span class="number">0.5</span>, data_length)  <span class="comment">####侧面磨耗</span></span><br><span class="line">velocity = np.random.normal(<span class="number">80</span>, <span class="number">5</span>, data_length)  <span class="comment">##速度</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">lst=np.column_stack((mileage,track_gauge,left_rail_height,right_rail_height,left_rail_alignment,right_rail_alignment,superelevation,left_vertical_wear,right_vertical_wear,left_side_wear,right_side_wear,velocity))  <span class="comment">##按列组合</span></span><br><span class="line"></span><br><span class="line">df=pd.DataFrame(columns=[<span class="string">'mileage'</span>,<span class="string">'track_gauge'</span>,<span class="string">'left_rail_height'</span>,<span class="string">'right_rail_height'</span>,<span class="string">'left_rail_alignment'</span>,<span class="string">'right_rail_alignment'</span>,<span class="string">'superelevation'</span>,<span class="string">'left_vertical_wear'</span>,<span class="string">'right_vertical_wear'</span>,<span class="string">'left_side_wear'</span>,<span class="string">'right_side_wear'</span>,<span class="string">'velocity'</span>],data=lst)<span class="comment">#生成dataframe数据表</span></span><br><span class="line"></span><br><span class="line">df=df.sort_values(by=[<span class="string">'mileage'</span>])</span><br><span class="line">df=df.round(<span class="number">2</span>)</span><br><span class="line"><span class="comment">##df.index=df['mileage']</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##画出生成的数据</span></span><br><span class="line">df[[<span class="string">'left_rail_height'</span>,<span class="string">'superelevation'</span>,<span class="string">'left_vertical_wear'</span>,<span class="string">'left_side_wear'</span>]].plot()</span><br><span class="line">plt.legend()</span><br><span class="line">plt.title(<span class="string">'rail inspection'</span>)</span><br><span class="line">plt.xlabel(<span class="string">u"n"</span>)</span><br><span class="line">plt.ylabel(<span class="string">u"gauge"</span>)</span><br><span class="line">plt.show()</span><br><span class="line">print(df)</span><br><span class="line">df.to_csv(<span class="string">'rail-inspection-random-data.csv'</span>,encoding=<span class="string">'gbk'</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="合成带百度地图点的轨检数据"><a href="#合成带百度地图点的轨检数据" class="headerlink" title="合成带百度地图点的轨检数据"></a>合成带百度地图点的轨检数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="comment">#读取GNSS原始数据文件</span></span><br><span class="line">df_gnss_points = pd.read_csv(<span class="string">'gnss-points.csv'</span>,low_memory=<span class="literal">False</span>)</span><br><span class="line">print(df_gnss_points.shape)</span><br><span class="line"><span class="comment">#读取轨检数据文件</span></span><br><span class="line">df_inspection_data = pd.read_csv(<span class="string">'inspection_data.csv'</span>,low_memory=<span class="literal">False</span>,encoding=<span class="string">'gbk'</span>)</span><br><span class="line">print(df_inspection_data.shape)</span><br><span class="line"></span><br><span class="line">n_len=df_gnss_points.shape[<span class="number">0</span>]</span><br><span class="line">print(n_len)</span><br><span class="line">df_TrackInspection = df_inspection_data[:n_len]</span><br><span class="line"></span><br><span class="line"><span class="comment">#合成轨检数据文件</span></span><br><span class="line"><span class="comment"># df_TrackInspection.insert(loc=10,column='longitude',value=df_gnss_points['longitude'])</span></span><br><span class="line"><span class="comment"># df_TrackInspection.insert(loc=10,column='latitude',value=df_gnss_points['latitude'])</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#合成轨检数据文件</span></span><br><span class="line"><span class="keyword">for</span> index,row <span class="keyword">in</span> df_gnss_points.iterrows():</span><br><span class="line">    df_TrackInspection.loc[index,<span class="string">'经度'</span>]=row[<span class="string">'longitude'</span>]</span><br><span class="line">    df_TrackInspection.loc[index,<span class="string">'纬度'</span>]=row[<span class="string">'latitude'</span>]</span><br><span class="line">    </span><br><span class="line">df_TrackInspection.to_csv(<span class="string">'TrackInspection-Raw-Data.csv'</span>)</span><br></pre></td></tr></table></figure>
+            <h2 id="python之头像动漫化"><a href="#python之头像动漫化" class="headerlink" title="python之头像动漫化"></a>python之头像动漫化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">def get_access_token():</span><br><span class="line">	# 获取token的API</span><br><span class="line">	url = &apos;https://aip.baidubce.com/oauth/2.0/token&apos;</span><br><span class="line">	# 获取access_token需要的参数</span><br><span class="line">	params = &#123;</span><br><span class="line">		# 固定参数</span><br><span class="line">        &apos;grant_type&apos;:&apos;client_credentials&apos;,</span><br><span class="line">        # 必选参数，传入你的API Key</span><br><span class="line">        &apos;client_id&apos;:&apos;***&apos;,</span><br><span class="line">        # 必选参数，传入你的Secret Key</span><br><span class="line">        &apos;client_secret&apos;:&apos;***&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    # 发送请求，获取响应数据</span><br><span class="line">	response = requests.post(url, params)</span><br><span class="line">    # 将响应的数据转成字典类型，然后取出access_token</span><br><span class="line">	access_token = eval(response.text)[&apos;access_token&apos;]</span><br><span class="line">    # 将access_token返回</span><br><span class="line">	return access_token</span><br><span class="line"></span><br><span class="line">##access_token=get_access_token()</span><br><span class="line">##print(access_token)</span><br><span class="line"></span><br><span class="line">import base64</span><br><span class="line">import requests</span><br><span class="line">def img2Cartoon(img):</span><br><span class="line">    img_result=&apos;ct_&apos;+img</span><br><span class="line">    # 头像动漫化的API</span><br><span class="line">    print(&apos;头像动漫化:&apos;+img)</span><br><span class="line">    url = &apos;https://aip.baidubce.com/rest/2.0/image-process/v1/selfie_anime&apos;</span><br><span class="line">    # 以二进制的方式读取原始图片</span><br><span class="line">    origin_im = open(img, &apos;rb&apos;)</span><br><span class="line">    # 将图片进行base64编码</span><br><span class="line">    img = base64.b64encode(origin_im .read())</span><br><span class="line">    # 关闭原图片</span><br><span class="line">    origin_im.close()</span><br><span class="line"></span><br><span class="line">	# 请求的headers信息，固定写法</span><br><span class="line">    headers = &#123;&apos;content-type&apos;:&apos;application/x-www-form-urlencoded&apos;&#125;</span><br><span class="line">	</span><br><span class="line">	# 请求的参数</span><br><span class="line">    params = &#123;</span><br><span class="line">    	# 开始获取的access_token</span><br><span class="line">        &apos;access_token&apos;:get_access_token(),</span><br><span class="line">        # 图片的base64编码</span><br><span class="line">        &apos;image&apos;:img,</span><br><span class="line">    &#125;</span><br><span class="line">    # 发送请求</span><br><span class="line">    response = requests.post(url, data=params, headers=headers)</span><br><span class="line">    # 对响应结果进行处理</span><br><span class="line">    if response:</span><br><span class="line">    	# 打开一个文件</span><br><span class="line">        f = open(img_result, &apos;wb&apos;)</span><br><span class="line">        # 获取动漫头像</span><br><span class="line">        anime = response.json()[&apos;image&apos;]</span><br><span class="line">        # 对返回的头像进行解码</span><br><span class="line">        anime = base64.b64decode(anime)</span><br><span class="line">        # 将头像写入文件当中</span><br><span class="line">        f.write(anime)</span><br><span class="line">        f.close()</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    img2Cartoon(&apos;a4.jpg&apos;)</span><br></pre></td></tr></table></figure>
 
           
         
@@ -682,7 +771,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/adde998.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2475e0e.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -701,7 +790,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/adde998.html" itemprop="url">python调用.net库</a></h1>
+                <a class="post-title-link" href="/post/2475e0e.html" itemprop="url">bootstrap标签式的导航菜单</a></h1>
         
 
         <div class="post-meta">
@@ -713,7 +802,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-07T00:00:00+08:00">2020-04-07</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-30T00:00:00+08:00">2020-04-30</time>
             
 
             
@@ -752,10 +841,7 @@
       
         
           
-            <h2 id="python调用-net库"><a href="#python调用-net库" class="headerlink" title="python调用.net库"></a>python调用.net库</h2><h3 id="安装pythonnet模块"><a href="#安装pythonnet模块" class="headerlink" title="安装pythonnet模块"></a>安装pythonnet模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pythonnet</span><br></pre></td></tr></table></figure>
-<h3 id="VS生成dll库文件"><a href="#VS生成dll库文件" class="headerlink" title="VS生成dll库文件"></a>VS生成dll库文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line"></span><br><span class="line">namespace ClassLibrary1</span><br><span class="line">&#123;</span><br><span class="line">    public class Class1</span><br><span class="line">    &#123;</span><br><span class="line">        public double Add(double x,double y)</span><br><span class="line">        &#123;</span><br><span class="line">            return x + y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="python中调用dll库文件"><a href="#python中调用dll库文件" class="headerlink" title="python中调用dll库文件"></a>python中调用dll库文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line"></span><br><span class="line">import clr  #clr是公共运行时环境，这个模块是与C#交互的核心</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">sys.path.append(&quot;.&quot;)##将dll路径加入工作路径</span><br><span class="line">clr.FindAssembly(&quot;ClassLibrary1.dll&quot;) ## 加载c#dll文件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">from ClassLibrary1 import *    # 导入命名空间</span><br><span class="line">instance = Class1() #class1是dll里面的类</span><br><span class="line">print(instance.Add(2, 3))#一个简单的加法</span><br></pre></td></tr></table></figure>
-<h3 id="调用-net库生成Form"><a href="#调用-net库生成Form" class="headerlink" title="调用.net库生成Form"></a>调用.net库生成Form</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">import clr</span><br><span class="line"></span><br><span class="line">SWF = clr.AddReference(&quot;System.Windows.Forms&quot;)</span><br><span class="line">print (SWF.Location)</span><br><span class="line">import System.Windows.Forms as WinForms</span><br><span class="line">from System.Drawing import Size, Point</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class HelloApp(WinForms.Form):</span><br><span class="line">    &quot;&quot;&quot;A simple hello world app that demonstrates the essentials of</span><br><span class="line">       winforms programming and event-based programming in Python.&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.Text = &quot;Hello World From Python&quot;</span><br><span class="line">        self.AutoScaleBaseSize = Size(5, 13)</span><br><span class="line">        self.ClientSize = Size(392, 117)</span><br><span class="line">        h = WinForms.SystemInformation.CaptionHeight</span><br><span class="line">        self.MinimumSize = Size(392, (117 + h))</span><br><span class="line"></span><br><span class="line">        # Create the button</span><br><span class="line">        self.button = WinForms.Button()</span><br><span class="line">        self.button.Location = Point(160, 64)</span><br><span class="line">        self.button.Size = Size(820, 20)</span><br><span class="line">        self.button.TabIndex = 2</span><br><span class="line">        self.button.Text = &quot;Click Me!&quot;</span><br><span class="line"></span><br><span class="line">        # Register the event handler</span><br><span class="line">        self.button.Click += self.button_Click</span><br><span class="line"></span><br><span class="line">        # Create the text box</span><br><span class="line">        self.textbox = WinForms.TextBox()</span><br><span class="line">        self.textbox.Text = &quot;Hello World&quot;</span><br><span class="line">        self.textbox.TabIndex = 1</span><br><span class="line">        self.textbox.Size = Size(1260, 40)</span><br><span class="line">        self.textbox.Location = Point(160, 24)</span><br><span class="line"></span><br><span class="line">        # Add the controls to the form</span><br><span class="line">        self.AcceptButton = self.button</span><br><span class="line">        self.Controls.Add(self.button)</span><br><span class="line">        self.Controls.Add(self.textbox)</span><br><span class="line"></span><br><span class="line">    def button_Click(self, sender, args):</span><br><span class="line">        &quot;&quot;&quot;Button click event handler&quot;&quot;&quot;</span><br><span class="line">        print (&quot;Click&quot;)</span><br><span class="line">        WinForms.MessageBox.Show(&quot;Please do not press this button again.&quot;)</span><br><span class="line"></span><br><span class="line">    def run(self):</span><br><span class="line">        WinForms.Application.Run(self)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    form = HelloApp()</span><br><span class="line">    print (&quot;form created&quot;)</span><br><span class="line">    app = WinForms.Application</span><br><span class="line">    print (&quot;app referenced&quot;)</span><br><span class="line">    app.Run(form)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+            <h2 id="实例-标签式的导航菜单"><a href="#实例-标签式的导航菜单" class="headerlink" title="实例 - 标签式的导航菜单"></a>实例 - 标签式的导航菜单</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=&quot;utf-8&quot;&gt; </span><br><span class="line">	&lt;title&gt;Bootstrap 实例 - 标签式的导航菜单&lt;/title&gt;</span><br><span class="line">	&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css&quot;&gt;  </span><br><span class="line">	&lt;script src=&quot;https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">	&lt;script src=&quot;https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;标签式的导航菜单&lt;/p&gt;</span><br><span class="line">&lt;ul class=&quot;nav nav-tabs&quot;&gt;</span><br><span class="line">	&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=&quot;#&quot;&gt;SVN&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=&quot;#&quot;&gt;iOS&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=&quot;#&quot;&gt;VB.Net&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Java&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=&quot;#&quot;&gt;PHP&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -806,7 +892,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/adde998.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/1c18721b.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -825,7 +911,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/adde998.html" itemprop="url">python调用.net库</a></h1>
+                <a class="post-title-link" href="/post/1c18721b.html" itemprop="url">nodejs常用的工具</a></h1>
         
 
         <div class="post-meta">
@@ -837,7 +923,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-07T00:00:00+08:00">2020-04-07</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-29T00:00:00+08:00">2020-04-29</time>
             
 
             
@@ -876,213 +962,34 @@
       
         
           
-            <h2 id="python调用-net库"><a href="#python调用-net库" class="headerlink" title="python调用.net库"></a>python调用.net库</h2><h3 id="安装pythonnet模块"><a href="#安装pythonnet模块" class="headerlink" title="安装pythonnet模块"></a>安装pythonnet模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pythonnet</span><br></pre></td></tr></table></figure>
-<h3 id="VS生成dll库文件"><a href="#VS生成dll库文件" class="headerlink" title="VS生成dll库文件"></a>VS生成dll库文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line"></span><br><span class="line">namespace ClassLibrary1</span><br><span class="line">&#123;</span><br><span class="line">    public class Class1</span><br><span class="line">    &#123;</span><br><span class="line">        public double Add(double x,double y)</span><br><span class="line">        &#123;</span><br><span class="line">            return x + y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="python中调用dll库文件"><a href="#python中调用dll库文件" class="headerlink" title="python中调用dll库文件"></a>python中调用dll库文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line"></span><br><span class="line">import clr  #clr是公共运行时环境，这个模块是与C#交互的核心</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">sys.path.append(&quot;.&quot;)##将dll路径加入工作路径</span><br><span class="line">clr.FindAssembly(&quot;ClassLibrary1.dll&quot;) ## 加载c#dll文件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">from ClassLibrary1 import *    # 导入命名空间</span><br><span class="line">instance = Class1() #class1是dll里面的类</span><br><span class="line">print(instance.Add(2, 3))#一个简单的加法</span><br></pre></td></tr></table></figure>
-<h3 id="调用-net库生成Form"><a href="#调用-net库生成Form" class="headerlink" title="调用.net库生成Form"></a>调用.net库生成Form</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">import clr</span><br><span class="line"></span><br><span class="line">SWF = clr.AddReference(&quot;System.Windows.Forms&quot;)</span><br><span class="line">print (SWF.Location)</span><br><span class="line">import System.Windows.Forms as WinForms</span><br><span class="line">from System.Drawing import Size, Point</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class HelloApp(WinForms.Form):</span><br><span class="line">    &quot;&quot;&quot;A simple hello world app that demonstrates the essentials of</span><br><span class="line">       winforms programming and event-based programming in Python.&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.Text = &quot;Hello World From Python&quot;</span><br><span class="line">        self.AutoScaleBaseSize = Size(5, 13)</span><br><span class="line">        self.ClientSize = Size(392, 117)</span><br><span class="line">        h = WinForms.SystemInformation.CaptionHeight</span><br><span class="line">        self.MinimumSize = Size(392, (117 + h))</span><br><span class="line"></span><br><span class="line">        # Create the button</span><br><span class="line">        self.button = WinForms.Button()</span><br><span class="line">        self.button.Location = Point(160, 64)</span><br><span class="line">        self.button.Size = Size(820, 20)</span><br><span class="line">        self.button.TabIndex = 2</span><br><span class="line">        self.button.Text = &quot;Click Me!&quot;</span><br><span class="line"></span><br><span class="line">        # Register the event handler</span><br><span class="line">        self.button.Click += self.button_Click</span><br><span class="line"></span><br><span class="line">        # Create the text box</span><br><span class="line">        self.textbox = WinForms.TextBox()</span><br><span class="line">        self.textbox.Text = &quot;Hello World&quot;</span><br><span class="line">        self.textbox.TabIndex = 1</span><br><span class="line">        self.textbox.Size = Size(1260, 40)</span><br><span class="line">        self.textbox.Location = Point(160, 24)</span><br><span class="line"></span><br><span class="line">        # Add the controls to the form</span><br><span class="line">        self.AcceptButton = self.button</span><br><span class="line">        self.Controls.Add(self.button)</span><br><span class="line">        self.Controls.Add(self.textbox)</span><br><span class="line"></span><br><span class="line">    def button_Click(self, sender, args):</span><br><span class="line">        &quot;&quot;&quot;Button click event handler&quot;&quot;&quot;</span><br><span class="line">        print (&quot;Click&quot;)</span><br><span class="line">        WinForms.MessageBox.Show(&quot;Please do not press this button again.&quot;)</span><br><span class="line"></span><br><span class="line">    def run(self):</span><br><span class="line">        WinForms.Application.Run(self)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    form = HelloApp()</span><br><span class="line">    print (&quot;form created&quot;)</span><br><span class="line">    app = WinForms.Application</span><br><span class="line">    print (&quot;app referenced&quot;)</span><br><span class="line">    app.Run(form)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/d2e9273e.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/d2e9273e.html" itemprop="url">curl和wget命令使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-26T00:00:00+08:00">2020-03-26</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="curl命令使用"><a href="#curl命令使用" class="headerlink" title="curl命令使用"></a>curl命令使用</h3><p>在Linux中curl是一个利用URL规则在命令行下工作的文件传输工具，可以说是一款很强大的http命令行工具。它支持文件的上传和下载，是综合传输工具，但按传统，习惯称url为下载工具。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：# curl [option] [url]</span><br></pre></td></tr></table></figure>
-<p>常见参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-A/--user-agent &lt;string&gt;              设置用户代理发送给服务器</span><br><span class="line">-b/--cookie &lt;name=string/file&gt;    cookie字符串或文件读取位置</span><br><span class="line">-c/--cookie-jar &lt;file&gt;                    操作结束后把cookie写入到这个文件中</span><br><span class="line">-C/--continue-at &lt;offset&gt;            断点续转</span><br><span class="line">-D/--dump-header &lt;file&gt;              把header信息写入到该文件中</span><br><span class="line">-e/--referer                                  来源网址</span><br><span class="line">-f/--fail                                          连接失败时不显示http错误</span><br><span class="line">-o/--output                                  把输出写到该文件中</span><br><span class="line">-O/--remote-name                      把输出写到该文件中，保留远程文件的文件名</span><br><span class="line">-r/--range &lt;range&gt;                      检索来自HTTP/1.1或FTP服务器字节范围</span><br><span class="line">-s/--silent                                    静音模式。不输出任何东西</span><br><span class="line">-T/--upload-file &lt;file&gt;                  上传文件</span><br><span class="line">-u/--user &lt;user[:password]&gt;      设置服务器的用户和密码</span><br><span class="line">-w/--write-out [format]                什么输出完成后</span><br><span class="line">-x/--proxy &lt;host[:port]&gt;              在给定的端口上使用HTTP代理</span><br><span class="line">-#/--progress-bar                        进度条显示当前的传送状态</span><br></pre></td></tr></table></figure>
-<p>例子：<br>1、基本用法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl http://www.linux.com</span><br></pre></td></tr></table></figure>
-<p>执行后，<a href="http://www.linux.com" target="_blank" rel="noopener">www.linux.com</a> 的html就会显示在屏幕上了<br>Ps：由于安装linux的时候很多时候是没有安装桌面的，也意味着没有浏览器，因此这个方法也经常用于测试一台服务器是否可以到达一个网站</p>
-<p>2、保存访问的网页<br>2.1:使用linux的重定向功能保存</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl http://www.linux.com &gt;&gt; linux.html</span><br></pre></td></tr></table></figure>
-<p>2.2:可以使用curl的内置option:-o(小写)保存网页</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -o linux.html http://www.linux.com</span><br></pre></td></tr></table></figure>
-<p>执行完成后会显示如下界面，显示100%则表示保存成功</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">% Total    % Received % Xferd  Average Speed  Time    Time    Time  Current</span><br><span class="line">                                Dload  Upload  Total  Spent    Left  Speed</span><br><span class="line">100 79684    0 79684    0    0  3437k      0 --:--:-- --:--:-- --:--:-- 7781k</span><br></pre></td></tr></table></figure>
-<p>2.3:可以使用curl的内置option:-O(大写)保存网页中的文件<br>要注意这里后面的url要具体到某个文件，不然抓不下来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -O http://www.linux.com/hello.sh</span><br></pre></td></tr></table></figure>
-<p>3、测试网页返回值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -o /dev/null -s -w %&#123;http_code&#125; www.linux.com</span><br></pre></td></tr></table></figure>
-<p>Ps:在脚本中，这是很常见的测试网站是否正常的用法</p>
-<p>4、指定proxy服务器以及其端口<br>很多时候上网需要用到代理服务器(比如是使用代理服务器上网或者因为使用curl别人网站而被别人屏蔽IP地址的时候)，幸运的是curl通过使用内置option：-x来支持设置代理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -x 192.168.100.100:1080 http://www.linux.com</span><br></pre></td></tr></table></figure>
-<p>5、cookie<br>有些网站是使用cookie来记录session信息。对于chrome这样的浏览器，可以轻易处理cookie信息，但在curl中只要增加相关参数也是可以很容易的处理cookie<br>5.1:保存http的response里面的cookie信息。内置option:-c（小写）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -c cookiec.txt  http://www.linux.com</span><br></pre></td></tr></table></figure>
-<p>执行后cookie信息就被存到了cookiec.txt里面了</p>
-<p>5.2:保存http的response里面的header信息。内置option: -D</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -D cookied.txt http://www.linux.com</span><br></pre></td></tr></table></figure>
-<p>执行后cookie信息就被存到了cookied.txt里面了</p>
-<p>注意：-c(小写)产生的cookie和-D里面的cookie是不一样的。</p>
-<p>5.3:使用cookie<br>很多网站都是通过监视你的cookie信息来判断你是否按规矩访问他们的网站的，因此我们需要使用保存的cookie信息。内置option: -b</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -b cookiec.txt http://www.linux.com</span><br></pre></td></tr></table></figure>
-<p>6、模仿浏览器<br>有些网站需要使用特定的浏览器去访问他们，有些还需要使用某些特定的版本。curl内置option:-A可以让我们指定浏览器去访问网站</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -A &quot;Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.0)&quot; http://www.linux.com</span><br></pre></td></tr></table></figure>
-<p>这样服务器端就会认为是使用IE8.0去访问的</p>
-<p>7、伪造referer（盗链）<br>很多服务器会检查http访问的referer从而来控制访问。比如：你是先访问首页，然后再访问首页中的邮箱页面，这里访问邮箱的referer地址就是访问首页成功后的页面地址，如果服务器发现对邮箱页面访问的referer地址不是首页的地址，就断定那是个盗连了<br>curl中内置option：-e可以让我们设定referer</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -e &quot;www.linux.com&quot; http://mail.linux.com</span><br></pre></td></tr></table></figure>
-<p>这样就会让服务器其以为你是从<a href="http://www.linux.com点击某个链接过来的" target="_blank" rel="noopener">www.linux.com点击某个链接过来的</a></p>
-<p>8、下载文件<br>8.1：利用curl下载文件。<br>#使用内置option：-o(小写)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -o dodo1.jpg http:www.linux.com/dodo1.JPG</span><br></pre></td></tr></table></figure>
-<p>#使用内置option：-O（大写)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -O http://www.linux.com/dodo1.JPG</span><br></pre></td></tr></table></figure>
-<p>这样就会以服务器上的名称保存文件到本地</p>
-<p>8.2：循环下载<br>有时候下载图片可以能是前面的部分名称是一样的，就最后的尾椎名不一样</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -O http://www.linux.com/dodo[1-5].JPG</span><br></pre></td></tr></table></figure>
-<p>这样就会把dodo1，dodo2，dodo3，dodo4，dodo5全部保存下来</p>
-<p>8.3：下载重命名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -O http://www.linux.com/&#123;hello,bb&#125;/dodo[1-5].JPG</span><br></pre></td></tr></table></figure>
-<p>由于下载的hello与bb中的文件名都是dodo1，dodo2，dodo3，dodo4，dodo5。因此第二次下载的会把第一次下载的覆盖，这样就需要对文件进行重命名。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -o #1_#2.JPG http://www.linux.com/&#123;hello,bb&#125;/dodo[1-5].JPG</span><br></pre></td></tr></table></figure>
-<p>这样在hello/dodo1.JPG的文件下载下来就会变成hello_dodo1.JPG,其他文件依此类推，从而有效的避免了文件被覆盖</p>
-<p>8.4：分块下载<br>有时候下载的东西会比较大，这个时候我们可以分段下载。使用内置option：-r</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># curl -r 0-100 -o dodo1_part1.JPG http://www.linux.com/dodo1.JPG</span><br><span class="line"># curl -r 100-200 -o dodo1_part2.JPG http://www.linux.com/dodo1.JPG</span><br><span class="line"># curl -r 200- -o dodo1_part3.JPG http://www.linux.com/dodo1.JPG</span><br><span class="line"># cat dodo1_part* &gt; dodo1.JPG</span><br></pre></td></tr></table></figure>
-<p>这样就可以查看dodo1.JPG的内容了</p>
-<p>8.5：通过ftp下载文件<br>curl可以通过ftp下载文件，curl提供两种从ftp中下载的语法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># curl -O -u 用户名:密码 ftp://www.linux.com/dodo1.JPG</span><br><span class="line"># curl -O ftp://用户名:密码@www.linux.com/dodo1.JPG</span><br></pre></td></tr></table></figure>
-<p>8.6：显示下载进度条</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -# -O http://www.linux.com/dodo1.JPG</span><br></pre></td></tr></table></figure>
-<p>8.7：不会显示下载进度信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -s -O http://www.linux.com/dodo1.JPG</span><br></pre></td></tr></table></figure>
-<p>9、断点续传<br>在windows中，我们可以使用迅雷这样的软件进行断点续传。curl可以通过内置option:-C同样可以达到相同的效果<br>如果在下载dodo1.JPG的过程中突然掉线了，可以使用以下的方式续传</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -C -O http://www.linux.com/dodo1.JPG</span><br></pre></td></tr></table></figure>
-<p>10、上传文件<br>curl不仅仅可以下载文件，还可以上传文件。通过内置option:-T来实现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -T dodo1.JPG -u 用户名:密码 ftp://www.linux.com/img/</span><br></pre></td></tr></table></figure>
-<p>这样就向ftp服务器上传了文件dodo1.JPG</p>
-<p>11、显示抓取错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># curl -f http://www.linux.com/error</span><br></pre></td></tr></table></figure>
-<h3 id="wget命令使用"><a href="#wget命令使用" class="headerlink" title="wget命令使用"></a>wget命令使用</h3><p>wget是<a href="http://www.bitscn.com/os/linux/" target="_blank" rel="noopener">Linux</a>系统中用来下载文件的工具，其功能还是比较多的，能够下载单个文件，也可以分段下载。</p>
-<p>实例1 ：下载单个文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># wget http://mirror.nbrc.ac.in/CentOS/7.0.1406/isos/x86_64/CentOS-7.0-1406-x86_64-DVD.iso</span><br></pre></td></tr></table></figure>
-<p>该命令会下载CentOS 7 ISO文件到用户当前工作目录中。</p>
-<p>实例2：续传分段下载文件</p>
-<p>　　总有那么一些场景，当我们开始下载一个大文件时，中途互联网却断开了。那样的话，我们可以使用wget命令的‘-c’选项，让下载从断点续传。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># wget -c http://mirror.nbrc.ac.in/centos/7.0.1406/isos/x86_64/CentOS-7.0-1406-x86_64-DVD.iso</span><br></pre></td></tr></table></figure>
-<p>实例3：后台下载文件</p>
-<p>　　我们可以通过在wget命令中使用‘-b’选项来让它在后台下载文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -b http://mirror.nbrc.ac.in/centos/7.0.1406/isos/x86_64/CentOS-7.0-1406-x86_64-DVD.iso</span><br></pre></td></tr></table></figure>
-<p>实例4：限制下载速率</p>
-<p>默认情况下，wget命令尝试以全速下载，但是有时候你可能使用的是共享互联网，那么如果你尝试使用wget来下载庞大的文件时，就会把其它用户的网络拖慢。这时，你如果使用‘-limit-rate’选项来限制下载速率，就可以避免这种情况的发生。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#wget --limit-rate=100k http://mirror.nbrc.ac.in/centos/7.0.1406/isos/x86_64/CentOS-7.0-1406-x86_64-DVD.iso</span><br></pre></td></tr></table></figure>
-<p>实例5：下载整个网站用于本地查看</p>
-<p>　　<code># wget --mirror -p --convert-links -P./《Local-Folder》 website-url</code></p>
-<p>　　<code>–mirror</code> ： 开启适用于镜像的选项。</p>
-<p>　　<code>-p</code> ： 下载所有能正确显示指定HTML网页的全部必要文件。</p>
-<p>　　<code>–convert-links</code>： 下载完成后，转换文档中的链接以用于本地查看。</p>
-<p>　　<code>-P ./Local-Folder</code> ： 保存所有文件和目录到指定的目录。</p>
+            <h3 id="Node自动重启工具-nodemon"><a href="#Node自动重启工具-nodemon" class="headerlink" title="Node自动重启工具 nodemon"></a>Node自动重启工具 nodemon</h3><p>​    修改代码后，需要重新启动 Express 应用，所做的修改才能生效。若之后的每次代码修改都要重复这样的操作，势必会影响开发效率，本文将详细介绍Nodemon，它会监测项目中的所有文件，一旦发现文件有改动，Nodemon 会自动重启应用</p>
+<ul>
+<li>全局安装 nodemon 包，这样新创建的 Node.js 应用都能使用 Nodemon 运行起来了</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nodemon</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装完成之后，Nodemon 就可以启动 Express 应用了，先关闭当前正在执行的应用程序，然后再执行命令：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodemon server.js</span><br></pre></td></tr></table></figure>
+<ul>
+<li>默认地，nodemon会自动打开index.js。所以，也可以使用如下命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodemon</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过 Nodemon 启动应用之后，不管是修改了代码，还是安装了新的 npm 包，Nodemon 都会重新启动应用</li>
+</ul>
+<h3 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<h3 id="npm批量导出与还原模块"><a href="#npm批量导出与还原模块" class="headerlink" title="npm批量导出与还原模块"></a>npm批量导出与还原模块</h3><h4 id="备份已安装的模块"><a href="#备份已安装的模块" class="headerlink" title="备份已安装的模块"></a>备份已安装的模块</h4><ul>
+<li>在包含node_modules文件夹的目录下运行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+<ul>
+<li>生成package.json文件</li>
+</ul>
+<h4 id="批量安装模块"><a href="#批量安装模块" class="headerlink" title="批量安装模块"></a>批量安装模块</h4><ul>
+<li>在包含package.json文件的目录下运行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --dependencies</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1122,7 +1029,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1167,7 +1074,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">165</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1260,33 +1167,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1326,7 +1207,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

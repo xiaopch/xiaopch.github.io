@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/fc382fa7.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/ada4ed2.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -292,7 +292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/fc382fa7.html" itemprop="url">ubuntu系统开启ssh服务并优化精简</a></h1>
+                <a class="post-title-link" href="/post/ada4ed2.html" itemprop="url">python之PaddleHub的OCR图像识别</a></h1>
         
 
         <div class="post-meta">
@@ -304,7 +304,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-28T00:00:00+08:00">2020-04-28</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-13T00:00:00+08:00">2020-06-13</time>
             
 
             
@@ -343,16 +343,8 @@
       
         
           
-            <h3 id="Ubuntu18开启ssh服务"><a href="#Ubuntu18开启ssh服务" class="headerlink" title="Ubuntu18开启ssh服务"></a>Ubuntu18开启ssh服务</h3><ul>
-<li>Ubuntu默认不会开启ssh服务。所以我们无法对Ubuntu进行远程连接，这对Ubuntu的运维造成了很大不便。本文详细讲解如何在Ubuntu18下开启ssh服务。<em>关键指令(root用户下，非root用户所有指令前加sudo)</em></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 查看ssh服务是否开启</span><br><span class="line">sudo ps -e | grep ssh</span><br><span class="line"></span><br><span class="line">#安装ssh客户端程序</span><br><span class="line">sudo apt-get install openssh-client</span><br><span class="line"></span><br><span class="line">#安装ssh服务端程序</span><br><span class="line">sudo apt-get install openssh-server</span><br><span class="line"></span><br><span class="line">#开启ssh服务</span><br><span class="line">sudo service ssh start 或者 /etc/init.d/ssh start</span><br><span class="line"></span><br><span class="line">#关闭ssh服务</span><br><span class="line">sudo service ssh stop 或者 /etc/init.d/ssh stop</span><br></pre></td></tr></table></figure>
-<h3 id="ubuntu系统精简"><a href="#ubuntu系统精简" class="headerlink" title="ubuntu系统精简"></a>ubuntu系统精简</h3><p>更新系统</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get dist-upgrade</span><br></pre></td></tr></table></figure>
-<p>删除无用的软件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">apt-get purge mdadm \</span><br><span class="line">    git \</span><br><span class="line">    acpid \</span><br><span class="line">    vim* \</span><br><span class="line">    ubuntu-cloudimage-keyring \</span><br><span class="line">    ubuntu-core-launcher \</span><br><span class="line">    software-properties-common \</span><br><span class="line">    lxc* \</span><br><span class="line">    lxd* \</span><br><span class="line">    perl</span><br><span class="line"></span><br><span class="line">apt-get autoremove</span><br></pre></td></tr></table></figure>
-<p>清理文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get clean all</span><br></pre></td></tr></table></figure>
+            <h3 id="安装依赖模块"><a href="#安装依赖模块" class="headerlink" title="安装依赖模块"></a>安装依赖模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#由于PaddleHub升级比较快，建议大家直接升级到最新版本的PaddleHub，无需指定版本升级</span><br><span class="line">!pip install paddlehub --upgrade -i https://pypi.tuna.tsinghua.edu.cn/simple </span><br><span class="line">#该Module依赖于第三方库shapely、pyclipper，使用该Module之前，请先安装shapely、pyclipper</span><br><span class="line">!pip install shapely -i https://pypi.tuna.tsinghua.edu.cn/simple </span><br><span class="line">!pip install pyclipper -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt </span><br><span class="line">import matplotlib.image as mpimg</span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">#收集当前目录下待预测的png图片</span><br><span class="line">test_img_path=[]</span><br><span class="line">for f in os.listdir(&apos;.&apos;):</span><br><span class="line">    if f.endswith(&apos;png&apos;):</span><br><span class="line">        print(f)</span><br><span class="line">        test_img_path.append(f)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##test_img_path = [&quot;./carnum.png&quot;,  &quot;./id.png&quot;]</span><br><span class="line">##</span><br><span class="line"># 展示其中图片</span><br><span class="line">##img1 = mpimg.imread(test_img_path[1]) </span><br><span class="line">##plt.imshow(img1) </span><br><span class="line">##plt.axis(&apos;off&apos;) </span><br><span class="line">##plt.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import paddlehub as hub</span><br><span class="line"></span><br><span class="line"># 加载移动端预训练模型</span><br><span class="line">ocr = hub.Module(name=&quot;chinese_ocr_db_crnn_mobile&quot;)</span><br><span class="line"># 服务端可以加载大模型，效果更好 </span><br><span class="line"># ocr = hub.Module(name=&quot;chinese_ocr_db_crnn_server&quot;)</span><br><span class="line"></span><br><span class="line">import cv2</span><br><span class="line"></span><br><span class="line"># 读取测试文件夹test.txt中的照片路径</span><br><span class="line">np_images =[cv2.imread(image_path) for image_path in test_img_path] </span><br><span class="line"></span><br><span class="line">results = ocr.recognize_text(</span><br><span class="line">                    images=np_images,         # 图片数据，ndarray.shape 为 [H, W, C]，BGR格式；</span><br><span class="line">                    use_gpu=False,            # 是否使用 GPU；若使用GPU，请先设置CUDA_VISIBLE_DEVICES环境变量</span><br><span class="line">                    output_dir=&apos;ocr_result&apos;,  # 图片的保存路径，默认设为 ocr_result；</span><br><span class="line">                    visualization=True,       # 是否将识别结果保存为图片文件；</span><br><span class="line">                    box_thresh=0.5,           # 检测文本框置信度的阈值；</span><br><span class="line">                    text_thresh=0.5)          # 识别中文文本置信度的阈值；</span><br><span class="line"></span><br><span class="line">for result in results:</span><br><span class="line">    data = result[&apos;data&apos;]</span><br><span class="line">    save_path = result[&apos;save_path&apos;]</span><br><span class="line">    for infomation in data:</span><br><span class="line">        print(&apos;text: &apos;, infomation[&apos;text&apos;], &apos;\nconfidence: &apos;, infomation[&apos;confidence&apos;], &apos;\ntext_box_position: &apos;, infomation[&apos;text_box_position&apos;])</span><br></pre></td></tr></table></figure>
 
           
         
@@ -403,7 +395,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2e1e9680.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/32962849.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -422,7 +414,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/2e1e9680.html" itemprop="url">树莓派安装nodejs</a></h1>
+                <a class="post-title-link" href="/post/32962849.html" itemprop="url">python之PaddleHub判断是否戴口罩</a></h1>
         
 
         <div class="post-meta">
@@ -434,7 +426,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-28T00:00:00+08:00">2020-04-28</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-13T00:00:00+08:00">2020-06-13</time>
             
 
             
@@ -473,30 +465,8 @@
       
         
           
-            <h3 id="树莓派安装配置nodejs"><a href="#树莓派安装配置nodejs" class="headerlink" title="树莓派安装配置nodejs"></a>树莓派安装配置nodejs</h3><ul>
-<li><a href="https://nodejs.org/en/download/找到armv7的链接地址" target="_blank" rel="noopener">https://nodejs.org/en/download/找到armv7的链接地址</a></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://nodejs.org/dist/v10.16.3/node-v10.16.3-linux-armv7l.tar.xz</span><br></pre></td></tr></table></figure>
-<ul>
-<li>输入命令解压文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf node-x-linux-armv7l.tar.xz</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>移动目录并建立软连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mv ./node-v10.16.3-linux-armv7l /usr/local/node</span><br><span class="line">sudo ln -s /usr/local/node/bin/node /usr/bin/node</span><br><span class="line">sudo ln -s /usr/local/node/bin/npm /usr/bin/npm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试一下 node 是否能正常使用：</p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">node --version</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt; v10.0.0</span></span><br><span class="line">npm --version</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;</span></span><br><span class="line">5.6.0</span><br></pre></td></tr></table></figure>
-<h3 id="Raspbian解决安装依赖问题"><a href="#Raspbian解决安装依赖问题" class="headerlink" title="Raspbian解决安装依赖问题"></a>Raspbian解决安装依赖问题</h3><ul>
-<li>解决方法是安装aptitude，能智能添加依赖文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install aptitude</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装完成后就可以使用这个命令进行安装软件了</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo aptitude install npm</span><br></pre></td></tr></table></figure>
+            <h3 id="安装依赖模块"><a href="#安装依赖模块" class="headerlink" title="安装依赖模块"></a>安装依赖模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#由于PaddleHub升级比较快，建议大家直接升级到最新版本的PaddleHub，无需指定版本升级</span><br><span class="line">!pip install paddlehub --upgrade -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt </span><br><span class="line">import matplotlib.image as mpimg</span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">#收集当前目录下待预测的png图片</span><br><span class="line">test_img_path=[]</span><br><span class="line">for f in os.listdir(&apos;.&apos;):</span><br><span class="line">    if f.endswith(&apos;png&apos;) or f.endswith(&apos;jpg&apos;):</span><br><span class="line">        print(f)</span><br><span class="line">        test_img_path.append(f)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#加载预训练模型</span><br><span class="line">import paddlehub as hub</span><br><span class="line"></span><br><span class="line">##module = hub.Module(name=&quot;pyramidbox_lite_mobile_mask&quot;)</span><br><span class="line">module = hub.Module(name=&quot;pyramidbox_lite_server_mask&quot;)</span><br><span class="line"></span><br><span class="line">import cv2</span><br><span class="line">imgs = [cv2.imread(img) for img in test_img_path]</span><br><span class="line">##print(imgs)</span><br><span class="line"></span><br><span class="line"># 口罩检测预测</span><br><span class="line"># visualization=True 将预测结果保存图片可视化</span><br><span class="line"># output_dir=&apos;detection_result&apos; 预测结果图片保存在当前运行路径下detection_result文件夹下</span><br><span class="line">results = module.face_detection(images=imgs, use_multi_scale=True, shrink=0.6, visualization=True, output_dir=&apos;detection_result&apos;)</span><br><span class="line">for result in results:</span><br><span class="line">    print(result)</span><br></pre></td></tr></table></figure>
 
           
         
@@ -547,7 +517,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/2b7777.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/ad8febd4.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -566,7 +536,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/2b7777.html" itemprop="url">numpy提取矩阵的某行或某列</a></h1>
+                <a class="post-title-link" href="/post/ad8febd4.html" itemprop="url">PaddleHub一键预测和迁移学习</a></h1>
         
 
         <div class="post-meta">
@@ -578,7 +548,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-21T00:00:00+08:00">2020-04-21</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-12T00:00:00+08:00">2020-06-12</time>
             
 
             
@@ -617,22 +587,82 @@
       
         
           
-            <h3 id="numpy提取矩阵的某行或某列"><a href="#numpy提取矩阵的某行或某列" class="headerlink" title="numpy提取矩阵的某行或某列"></a>numpy提取矩阵的某行或某列</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a=np.arange(<span class="number">9</span>).reshape(<span class="number">3</span>,<span class="number">3</span>)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
-<pre><code>[[0 1 2]
- [3 4 5]
- [6 7 8]]
-</code></pre><h3 id="选取矩阵的某一行"><a href="#选取矩阵的某一行" class="headerlink" title="选取矩阵的某一行"></a>选取矩阵的某一行</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-<pre><code>array([3, 4, 5])
-</code></pre><h3 id="选取矩阵的某一列"><a href="#选取矩阵的某一列" class="headerlink" title="选取矩阵的某一列"></a>选取矩阵的某一列</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[:,<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-<pre><code>array([1, 4, 7])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b=np.eye(<span class="number">3</span>,<span class="number">3</span>)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
-<h3 id="把矩阵a的第2列赋值给矩阵b的第1列"><a href="#把矩阵a的第2列赋值给矩阵b的第1列" class="headerlink" title="把矩阵a的第2列赋值给矩阵b的第1列"></a>把矩阵a的第2列赋值给矩阵b的第1列</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b[:,<span class="number">0</span>]=a[:,<span class="number">1</span>]</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
-<h3 id="将numpy的array赋值给pandas的DataFrame的列"><a href="#将numpy的array赋值给pandas的DataFrame的列" class="headerlink" title="将numpy的array赋值给pandas的DataFrame的列"></a>将numpy的array赋值给pandas的DataFrame的列</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">df=pd.DataFrame(b,columns=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>])</span><br><span class="line">df[<span class="string">'b'</span>]=np.random.rand(<span class="number">3</span>)</span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
-<pre><code>     a         b    c
-0  1.0  0.437490  0.0
-1  4.0  0.326646  0.0
-2  7.0  0.063509  1.0
-</code></pre><h3 id="将pandas的DataFrame转化成numpy数组"><a href="#将pandas的DataFrame转化成numpy数组" class="headerlink" title="将pandas的DataFrame转化成numpy数组"></a>将pandas的DataFrame转化成numpy数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.array(df[[u&apos;经度&apos;,u&apos;纬度&apos;]])</span><br></pre></td></tr></table></figure>
+            <h3 id="Pytorch-Hub-V-S-PaddleHub"><a href="#Pytorch-Hub-V-S-PaddleHub" class="headerlink" title="Pytorch Hub V.S PaddleHub"></a><strong>Pytorch Hub V.S PaddleHub</strong></h3><p><strong>支持模型数量</strong></p>
+<p>Pytorch Hub 目前支持18个模型，PaddleHub支持29个，包含16个model和13个module，model可以直接使用，module提供了预训练模型的参数，支持命令行调用</p>
+<p><strong>目前PytorchHub不支持命令行运行，但PaddleHub支持</strong>，命令行运行就是指我们安装PaddleHub后，可以无需进入python环境，即可快速体验PaddleHub无需代码、一键预测的命令行功能。需要注意的是，在PaddleHub中，既可以支持命令行使用，即在终端输入，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hub run XXX（nlp模型） --input_text XXX(需要预测的内容)  </span><br><span class="line">$ hub run XXX（cv模型） --input_path XXX(需要预测的内容)</span><br></pre></td></tr></table></figure>
+<p>也可以支持调用api，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import paddlehub as hub   </span><br><span class="line">hub.finetune_and_eval(  </span><br><span class="line">    task,   </span><br><span class="line">    data_reader,   </span><br><span class="line">    feed_list,   </span><br><span class="line">    config=None)</span><br></pre></td></tr></table></figure>
+<p><strong>PaddleHub安装</strong></p>
+<ul>
+<li>环境依赖</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Python&gt;=3.5 </span><br><span class="line">PaddlePaddle&gt;=1.4.0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install paddlehub</span><br></pre></td></tr></table></figure>
+<p><strong>命令行快速体验</strong></p>
+<p> 安装好后，不需要进入python环境import就可以直接先体验hub的便捷，因为在PaddleHub中hub可以作为一个独立的模块直接运行。PaddleHub目前包含图像分类、目标检测、词法分析、Transformer、情感分析五大类。</p>
+<p> 一行代码预测</p>
+<ul>
+<li>分词</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 使用百度LAC进行分词 </span><br><span class="line">hub run lac --input_text &quot;今天的你真好看&quot; </span><br><span class="line">[&#123;&apos;tag&apos;: [&apos;TIME&apos;, &apos;u&apos;, &apos;r&apos;, &apos;d&apos;, &apos;a&apos;], &apos;word&apos;: [&apos;今天&apos;, &apos;的&apos;, &apos;你&apos;, &apos;真&apos;, &apos;好看&apos;]&#125;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>情感分析</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 使用百度Senta情感分析模型对句子进行预测 </span><br><span class="line">hub run senta_bilstm --input_text &quot;老铁666，带你开黑&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>目标检测</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#使用SSD检测模型对图片进行目标检测 </span><br><span class="line">hub run ssd_mobilenet_v1_pascal --input_path test_img_bird.jpg</span><br></pre></td></tr></table></figure>
+<ul>
+<li>图像识别</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 使用resnet-50做图像识别 </span><br><span class="line">hub run resnet_v2_50_imagenet --input_path test_img_bird.jpg </span><br><span class="line">Install Module resnet_v2_50_imagenet </span><br><span class="line">Downloading resnet_v2_50_imagenet </span><br><span class="line">[==================================================] 100.00% </span><br><span class="line">Uncompress /root/.paddlehub/cache/resnet_v2_50_imagenet </span><br><span class="line">[==================================================] 100.00% </span><br><span class="line">Successfully installed resnet_v2_50_imagenet-1.0.0 </span><br><span class="line">[[&#123;&apos;brambling&apos;: 0.4907981&#125;]]</span><br></pre></td></tr></table></figure>
+<p>注：模型未下载时会先下载再预测，也可以先试用hub install model_name 下载好模型再使用hub run预测,也可直接运行hub run。hub一共有十个命令，其他命令可参考PaddleHub命令行工具（参考文献2）</p>
+<p><strong>支持29种模型</strong></p>
+<p>PaddleHub目前支持29种模型，主要以CV和NLP模型为主，包括NLP目前最火的BERT和百度自己自己研发开源的ERNIE，以及CV中的ssd-mobilenet、resnet-50、resnet-152等。</p>
+<ul>
+<li><p>NLP预测</p>
+<p>数据通过 —input_text或—input_file导入来实现单次预测和批量预测</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 单文本预测 </span><br><span class="line">hub run lac --input_text &quot;今天是个好日子&quot; </span><br><span class="line"># 多文本分析 </span><br><span class="line">hub run lac --input_file test.txt</span><br></pre></td></tr></table></figure>
+<ul>
+<li>CV预测</li>
+</ul>
+<p>数据通过—input_path或—input_file导入来实现单次预测和批量预测</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 单张照片预测  </span><br><span class="line">hub run ssd_mobilenet_v1_pascal --input_path test.jpg  </span><br><span class="line"># 多张照片预测  </span><br><span class="line">hub run ssd_mobilenet_v1_pascal --input_file test.txt</span><br></pre></td></tr></table></figure>
+<p><strong>支持迁移学习，Fine-tune更Easy</strong></p>
+<p>​     Fine-tune是迁移学习中使用最多的方式之一，通常我们可以在预训练好的模型上进行微调来实现模型迁移，从而达到模型适应新领域(Domain)数据的目的。上图是做一个完整的迁移学习需要的步骤，下面举个实例教大家如何用PaddleHub做图像分类迁移学习： </p>
+<p><strong>1.准备工作</strong></p>
+<p>安装PaddlePaddle和PaddleHub</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install paddlepaddle( 推荐安装1.4.0版本以上) </span><br><span class="line">pip install paddlehub</span><br></pre></td></tr></table></figure>
+<p><strong>2.选择模型</strong></p>
+<p>此处使用经典的ResNet-50作为预训练模型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">module_map = &#123;  </span><br><span class="line">    &quot;resnet50&quot;: &quot;resnet_v2_50_imagenet&quot;,  </span><br><span class="line">    &quot;resnet101&quot;: &quot;resnet_v2_101_imagenet&quot;,  </span><br><span class="line">    &quot;resnet152&quot;: &quot;resnet_v2_152_imagenet&quot;,  </span><br><span class="line">    &quot;mobilenet&quot;: &quot;mobilenet_v2_imagenet&quot;,  </span><br><span class="line">    &quot;nasnet&quot;: &quot;nasnet_imagenet&quot;,  </span><br><span class="line">    &quot;pnasnet&quot;: &quot;pnasnet_imagenet&quot;  </span><br><span class="line">&#125;   </span><br><span class="line">module_name = module_map[&quot;resnet50&quot;]  </span><br><span class="line">module = hub.Module(name = module_name)</span><br></pre></td></tr></table></figure>
+<p><strong>3.准备数据</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 直接用PaddleHub提供的数据集  </span><br><span class="line">dataset = hub.dataset.DogCat()# 生成readerdata_reader = hub.reader.ImageClassificationReader(  </span><br><span class="line">    image_width=module.get_expected_image_width(),  </span><br><span class="line">    image_height=module.get_expected_image_height(),  </span><br><span class="line">    images_mean=module.get_pretrained_images_mean(),  </span><br><span class="line">    images_std=module.get_pretrained_images_std(),  </span><br><span class="line">    dataset=dataset)</span><br></pre></td></tr></table></figure>
+<p><strong>4.组建Finetune Task</strong></p>
+<p> 由于猫狗分类是一个二分类的任务，而我们下载的分类module是在ImageNet数据集上训练的千分类模型，所以我们需要对模型进行简单的微调，把模型改造为一个二分类模型：</p>
+<p>​    1. 获取module的上下文环境，包括输入和输出的变量，以及Paddle Program；</p>
+<p>​    2.从输出变量中找到特征图提取层feature_map；</p>
+<p>​    3.在feature_map后面接入一个全连接层，生成Task</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">input_dict, output_dict, program = module.context(trainable=True)  </span><br><span class="line">img = input_dict[&quot;image&quot;]  </span><br><span class="line">feature_map = output_dict[&quot;feature_map&quot;]  </span><br><span class="line">  </span><br><span class="line">task = hub.create_img_cls_task(  </span><br><span class="line">    feature=feature_map, num_classes=dataset.num_labels)  </span><br><span class="line">  </span><br><span class="line">feed_list = [img.name, task.variable(&quot;label&quot;).name]# 设置configconfig = hub.RunConfig(    use_cuda=False,  </span><br><span class="line">    num_epoch=1,  </span><br><span class="line">    checkpoint_dir=&quot;cv_finetune_turtorial_demo&quot;,  </span><br><span class="line">    batch_size=32,  </span><br><span class="line">    log_interval=10,  </span><br><span class="line">    eval_interval=50,  </span><br><span class="line">    strategy=hub.finetune.strategy.DefaultFinetuneStrategy())</span><br></pre></td></tr></table></figure>
+<p><strong>5.启动Fine-tune并查看效果</strong></p>
+<p> 可以选择<strong>finetune_and_eval</strong>接口来进行模型训练，这个接口在finetune的过程中，会周期性的进行模型效果的评估，以便我们了解整个训练过程的性能变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hub.finetune_and_eval( </span><br><span class="line">task, feed_list=feed_list, data_reader=data_reader, config=config)</span><br></pre></td></tr></table></figure>
+<p> 训练过程中的性能数据会被记录到本地，我们可以通过VisualDL来可视化这些数据。我们在shell中输入以下命令来启动VisualDL，其中${HOST_IP}为本机IP，需要用户自行指定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">visualdl --logdir ./cv_finetune_turtorial_demo/vdllog --host $&#123;HOST_IP&#125; --port 8989</span><br></pre></td></tr></table></figure>
+<p> 启动服务后，我们使用浏览器访问${HOST_IP}:8989，可以看到训练以及预测的loss曲线和accuracy曲线。最后再按照常规流程对模型进行预测即可。</p>
+<p><strong>参考资料：</strong></p>
+<p>1.PaddleHub官方github：<a href="https://link.zhihu.com/?target=https%3A//github.com/PaddlePaddle/PaddleHub" target="_blank" rel="noopener">https://github.com/PaddlePaddle/PaddleHub</a></p>
+<p>2.PaddleHub命令行工具：<a href="https://link.zhihu.com/?target=https%3A//github.com/PaddlePaddle/PaddleHub/wiki/PaddleHub" target="_blank" rel="noopener">https://github.com/PaddlePaddle/PaddleHub/wiki/PaddleHub</a>命令行工具</p>
+<p>3.Paddle-code：<a href="https://link.zhihu.com/?target=https%3A//github.com/huxiaoman7/PaddlePaddle_code" target="_blank" rel="noopener">https://github.com/huxiaoman7/PaddlePaddle_code</a></p>
+<p>4.Paddle-models：<a href="https://link.zhihu.com/?target=https%3A//github.com/PaddlePaddle/models" target="_blank" rel="noopener">https://github.com/PaddlePaddle/models</a></p>
+<p>5.Pytorch Hub：<a href="https://link.zhihu.com/?target=https%3A//pytorch.org/blog/towards-reproducible-research-with-pytorch-hub/" target="_blank" rel="noopener">https://pytorch.org/blog/towards-reproducible-research-with-pytorch-hub/</a></p>
 
           
         
@@ -683,7 +713,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/6ba277d2.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/fc5afc43.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -702,7 +732,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/6ba277d2.html" itemprop="url">Ubuntu配置更换国内源的方法</a></h1>
+                <a class="post-title-link" href="/post/fc5afc43.html" itemprop="url">使用Docker快速搭建Hadoop集群环境</a></h1>
         
 
         <div class="post-meta">
@@ -714,7 +744,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-18T00:00:00+08:00">2020-04-18</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-10T10:23:12+08:00">2020-06-10</time>
             
 
             
@@ -753,13 +783,18 @@
       
         
           
-            <h2 id="Ubuntu更换国内源"><a href="#Ubuntu更换国内源" class="headerlink" title="Ubuntu更换国内源"></a>Ubuntu更换国内源</h2><h3 id="修改source-list前先备份一份"><a href="#修改source-list前先备份一份" class="headerlink" title="修改source.list前先备份一份"></a>修改source.list前先备份一份</h3><p><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.old</code></p>
-<h3 id="修改源命令"><a href="#修改源命令" class="headerlink" title="修改源命令"></a>修改源命令</h3><p> <code>sudo vim /etc/apt/sources.list</code></p>
-<h3 id="把sources-list内容替换成下面其中一个源"><a href="#把sources-list内容替换成下面其中一个源" class="headerlink" title="把sources.list内容替换成下面其中一个源"></a>把sources.list内容替换成下面其中一个源</h3><h3 id="阿里云源"><a href="#阿里云源" class="headerlink" title="阿里云源"></a><strong>阿里云源</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#deb cdrom:[Ubuntu 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.1)]/ xenial main restricted</span><br><span class="line">deb-src http://archive.ubuntu.com/ubuntu xenial main restricted #Added by software-properties</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted multiverse universe #Added by software-properties</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted multiverse universe #Added by software-properties</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse #Added by software-properties</span><br><span class="line">deb http://archive.canonical.com/ubuntu xenial partner</span><br><span class="line">deb-src http://archive.canonical.com/ubuntu xenial partner</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted multiverse universe #Added by software-properties</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse</span><br></pre></td></tr></table></figure>
-<h3 id="清华源"><a href="#清华源" class="headerlink" title="清华源"></a>清华源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure>
-<h3 id="中科大源"><a href="#中科大源" class="headerlink" title="中科大源"></a>中科大源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure>
-<h3 id="更改完成之后执行以下命令"><a href="#更改完成之后执行以下命令" class="headerlink" title="更改完成之后执行以下命令"></a>更改完成之后执行以下命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
-<p>　　</p>
+            <h2 id="使用-Docker-快速搭建-Hadoop-集群环境"><a href="#使用-Docker-快速搭建-Hadoop-集群环境" class="headerlink" title="使用 Docker 快速搭建 Hadoop 集群环境"></a>使用 Docker 快速搭建 Hadoop 集群环境</h2><h4 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h4><ul>
+<li>首先需要搜索一下hadoop的镜像，我们使用docker hub上的镜像</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search hadoop</span><br></pre></td></tr></table></figure>
+<h4 id="下载hadoop镜像"><a href="#下载hadoop镜像" class="headerlink" title="下载hadoop镜像"></a>下载hadoop镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull docker.io/sequenceiq/hadoop-docker  </span><br><span class="line">#此镜像星级比较高</span><br></pre></td></tr></table></figure>
+<ul>
+<li>然后使用docker images命令检查</li>
+</ul>
+<h4 id="创建hadoop容器"><a href="#创建hadoop容器" class="headerlink" title="创建hadoop容器"></a>创建hadoop容器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name hadoop -p 8088:8088 -p 8020:8020 -p 50010:50010 -p 50020:50020 -p 50075:50075 -p 8021:8021 -p 50030:50030 -p 50060:50060 -p 50070:50070 -p 50090:50090 sequenceiq/hadoop-docker /etc/bootstrap.sh -bash</span><br></pre></td></tr></table></figure>
+<h4 id="测试mapreduce"><a href="#测试mapreduce" class="headerlink" title="测试mapreduce"></a>测试mapreduce</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cd $HADOOP_PREFIX</span><br><span class="line"># run the mapreduce</span><br><span class="line">./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar grep input output &apos;dfs[a-z.]+&apos;</span><br><span class="line"></span><br><span class="line"># check the output</span><br><span class="line">./bin/hdfs dfs -cat output/*</span><br><span class="line"></span><br><span class="line">#增加user用户目录的写入权限</span><br><span class="line">./bin/hadoop fs -chmod 777 /user</span><br><span class="line">#显示根目录</span><br><span class="line">./bin/hdfs dfs -ls -R /</span><br></pre></td></tr></table></figure>
+<h4 id="python与Hadoop交互"><a href="#python与Hadoop交互" class="headerlink" title="python与Hadoop交互"></a>python与Hadoop交互</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from hdfs import *</span><br><span class="line">client=Client(&quot;http://127.0.0.1:50070&quot;)</span><br><span class="line">##print(client.status(&quot;/&quot;))</span><br><span class="line">print(client.list(&quot;/user&quot;))</span><br><span class="line">client.makedirs(&quot;/user/data3&quot;,permission=777)</span><br><span class="line">##client.upload(&quot;/user/data&quot;,&quot;./a.txt&quot;)</span><br><span class="line">print(client.list(&quot;/user&quot;))</span><br></pre></td></tr></table></figure>
+<h4 id="进入webg管理界面"><a href="#进入webg管理界面" class="headerlink" title="进入webg管理界面"></a>进入webg管理界面</h4><p><a href="http://localhost:8088/" target="_blank" rel="noopener">http://localhost:8088/</a></p>
 
           
         
@@ -810,7 +845,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/13754fd0.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/399e2392.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -829,7 +864,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/13754fd0.html" itemprop="url">ubuntu下安装mongodb以及开启远程访问</a></h1>
+                <a class="post-title-link" href="/post/399e2392.html" itemprop="url">bootstrap4用ruby编译</a></h1>
         
 
         <div class="post-meta">
@@ -841,7 +876,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-18T00:00:00+08:00">2020-04-18</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-08T00:00:00+08:00">2020-05-08</time>
             
 
             
@@ -880,29 +915,11 @@
       
         
           
-            <h2 id="ubuntu下安装mongodb"><a href="#ubuntu下安装mongodb" class="headerlink" title="ubuntu下安装mongodb"></a>ubuntu下安装mongodb</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mongodb</span><br></pre></td></tr></table></figure>
-<p>安装好后，查看是否运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgrep mongo -l</span><br></pre></td></tr></table></figure>
-<p>在 terminal 下输入 mongo 进入 mongodb 的 shell</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
-<p>启动 mongodb</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongodb start</span><br></pre></td></tr></table></figure>
-<p>关闭 mongodb</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongodb stop</span><br></pre></td></tr></table></figure>
-<h2 id="开启远程访问"><a href="#开启远程访问" class="headerlink" title="开启远程访问"></a>开启远程访问</h2><ul>
-<li>修改 mongodb.conf</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/mongodb.conf</span><br></pre></td></tr></table></figure>
-<p>将</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind_ip 127.0.0.1</span><br></pre></td></tr></table></figure>
-<p>修改为</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bind_ip 0.0.0.0</span><br><span class="line"># 或者注释掉 #bind_ip 127.0.0.1</span><br><span class="line"></span><br><span class="line">#亦或是按照需求绑定多个指定ip bing ip1, ip2, ..., ipN</span><br></pre></td></tr></table></figure>
-<ul>
-<li>重启服务</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/mongodb restart</span><br></pre></td></tr></table></figure>
-<p>之后就可以远程访问</p>
-<h3 id="卸载MongoDB"><a href="#卸载MongoDB" class="headerlink" title="卸载MongoDB"></a>卸载MongoDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge mongodb*</span><br></pre></td></tr></table></figure>
+            <h3 id="下载安装nodejs"><a href="#下载安装nodejs" class="headerlink" title="下载安装nodejs"></a>下载安装nodejs</h3><h3 id="下载rubyinstaller-devkit-2-6-6"><a href="#下载rubyinstaller-devkit-2-6-6" class="headerlink" title="下载rubyinstaller-devkit-2.6.6"></a>下载rubyinstaller-devkit-2.6.6</h3><p><a href="https://rubyinstaller.org/downloads/" target="_blank" rel="noopener">https://rubyinstaller.org/downloads/</a></p>
+<h3 id="设置RubyGems-国内镜像"><a href="#设置RubyGems-国内镜像" class="headerlink" title="设置RubyGems 国内镜像"></a>设置RubyGems 国内镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/</span><br><span class="line">gem sources -l    # 确保只有 gems.ruby-china.com</span><br><span class="line"></span><br><span class="line">gem -v</span><br></pre></td></tr></table></figure>
+<h3 id="进入bootstrap-4-4-1目录安装捆绑机"><a href="#进入bootstrap-4-4-1目录安装捆绑机" class="headerlink" title="进入bootstrap-4.4.1目录安装捆绑机"></a>进入bootstrap-4.4.1目录安装捆绑机</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gem install bundler </span><br><span class="line">bundle install</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm run dist</span><br><span class="line">npm run docs</span><br><span class="line">npm run docs-serve</span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -952,7 +969,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/7a99468b.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/af94eef0.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -971,7 +988,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/7a99468b.html" itemprop="url">mongodb数据库备份与恢复</a></h1>
+                <a class="post-title-link" href="/post/af94eef0.html" itemprop="url">gvim简单配置运行python和js</a></h1>
         
 
         <div class="post-meta">
@@ -983,7 +1000,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T00:00:00+08:00">2020-04-17</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-08T00:00:00+08:00">2020-05-08</time>
             
 
             
@@ -1022,92 +1039,22 @@
       
         
           
-            <h2 id="MongoDB数据备份"><a href="#MongoDB数据备份" class="headerlink" title="MongoDB数据备份"></a>MongoDB数据备份</h2><p>在Mongodb中我们使用mongodump命令来备份MongoDB数据。该命令可以导出所有数据到指定目录中。</p>
-<p>mongodump命令可以通过参数指定导出的数据量级转存的服务器。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>mongodump命令脚本语法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;mongodump -h dbhost -d dbname -o dbdirectory</span><br></pre></td></tr></table></figure>
+            <h3 id="gvim简单配置运行python"><a href="#gvim简单配置运行python" class="headerlink" title="gvim简单配置运行python"></a>gvim简单配置运行python</h3><ul>
+<li>安装AsyncRun插件</li>
+</ul>
+<p>AsyncRun插件下载地址是<a href="https://github.com/skywind3000/asyncrun.vim" target="_blank" rel="noopener">https://github.com/skywind3000/asyncrun.vim</a></p>
+<p>将AsyncRun的plugin文件夹中asyncrun.vim文件放到vim安装目录\plugin文件夹中</p>
+<p>用AsyncRun插件可以将python运行信息，及时输出到quickfix中，但是不能在python运行中输入信息</p>
 <ul>
-<li><p>-h：</p>
-<p>MongDB所在服务器地址，例如：127.0.0.1，当然也可以指定端口号：127.0.0.1:27017</p>
-</li>
-<li><p>-d：</p>
-<p>需要备份的数据库实例，例如：test</p>
-</li>
-<li><p>-o：</p>
-<p>备份的数据存放位置，例如：c:\data\dump，当然该目录需要提前建立，在备份完成后，系统自动在dump目录下建立一个test目录，这个目录里面存放该数据库实例的备份数据。</p>
-</li>
+<li>在vim安装目录C:\Program Files (x86)\Vim中的_vimrc文件中添加如下配置</li>
 </ul>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>在本地使用 27017 启动你的mongod服务。打开命令提示符窗口，进入MongoDB安装目录的bin目录输入命令mongodump:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongodump</span><br></pre></td></tr></table></figure>
-<p>执行以上命令后，客户端会连接到ip为 127.0.0.1 端口号为 27017 的MongoDB服务上，并备份所有数据到 bin/dump/ 目录中。命令输出结果如下：</p>
-<p>mongodump 命令可选参数列表如下所示：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">语法</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">实例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">mongodump –host HOST_NAME –port PORT_NUMBER</td>
-<td style="text-align:left">该命令将备份所有MongoDB数据</td>
-<td style="text-align:left">mongodump –host runoob.com –port 27017</td>
-</tr>
-<tr>
-<td style="text-align:left">mongodump –dbpath DB_PATH –out BACKUP_DIRECTORY</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">mongodump –dbpath /data/db/ –out /data/backup/</td>
-</tr>
-<tr>
-<td style="text-align:left">mongodump –collection COLLECTION –db DB_NAME</td>
-<td style="text-align:left">该命令将备份指定数据库的集合。</td>
-<td style="text-align:left">mongodump –collection mycol –db test</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="MongoDB数据恢复"><a href="#MongoDB数据恢复" class="headerlink" title="MongoDB数据恢复"></a>MongoDB数据恢复</h2><p>mongodb使用 mongorestore 命令来恢复备份的数据。</p>
-<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><p>mongorestore命令脚本语法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongorestore -h &lt;hostname&gt;&lt;:port&gt; -d dbname &lt;path&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">set guifont=Consolas:h12       &quot;设置字体</span><br><span class="line">set tabstop=4                   &quot;tab设置 </span><br><span class="line">set nu                          &quot;显示行号</span><br><span class="line">set ai                          &quot;自动缩进</span><br><span class="line">set si                          &quot;智能缩进　</span><br><span class="line">set guioptions-=T               &quot;不要工具栏</span><br><span class="line">set nobackup                    &quot;不产生~文件　</span><br><span class="line"></span><br><span class="line">&quot;一键运行代码</span><br><span class="line"></span><br><span class="line">&quot;let g:asyncrun_encs=&apos;gbk&apos;      &quot;跟系统编码一致，解决输出中文乱码</span><br><span class="line"></span><br><span class="line">let $PYTHONUNBUFFERED=1            &quot;禁用python stdout缓冲</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936</span><br><span class="line">&quot;set termencoding=utf-8</span><br><span class="line">&quot;set encoding=utf-8</span><br><span class="line"></span><br><span class="line">func! CompileRunCode()</span><br><span class="line">    exec &quot;w&quot;</span><br><span class="line">    if &amp;filetype == &apos;cpp&apos;</span><br><span class="line">        exec &apos;!g++ -std=c++11 % -o /tmp/a.out &amp;&amp; /tmp/a.out&lt;&apos;</span><br><span class="line">        exec &quot;!time ./%&lt;&quot;</span><br><span class="line">    elseif &amp;filetype == &apos;javascript&apos;</span><br><span class="line">        exec &apos;!node %&apos;</span><br><span class="line">	elseif &amp;filetype == &quot;python&quot;</span><br><span class="line">		exec &quot;!python %&quot;</span><br><span class="line">		&quot;exec &quot;AsyncRun -raw python %&quot;</span><br><span class="line">		&quot;cope8                         &quot;启动 quickfix窗口,设置窗口大小为8</span><br><span class="line">    elseif &amp;filetype == &apos;java&apos;</span><br><span class="line">        exec &apos;!javac %&apos;</span><br><span class="line">        exec &apos;!java %&lt;&apos;</span><br><span class="line">    elseif &amp;filetype == &apos;sh&apos;</span><br><span class="line">        :!time bash %</span><br><span class="line">    endif</span><br><span class="line">endfunc</span><br><span class="line"></span><br><span class="line">map &lt;F5&gt; :call CompileRunCode()&lt;CR&gt;</span><br><span class="line">imap &lt;F5&gt; &lt;ESC&gt;:call CompileRunCode()&lt;CR&gt;</span><br><span class="line">vmap &lt;F5&gt; &lt;ESC&gt;:call CompileRunCode()&lt;CR&gt;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>–host &lt;:port&gt;, -h &lt;:port&gt;：</p>
-<p>MongoDB所在服务器地址，默认为： localhost:27017</p>
+<li><p>git工具下载地址:<a href="https://github.com/git-for-windows/git/releases" target="_blank" rel="noopener">https://github.com/git-for-windows/git/releases</a></p>
 </li>
-<li><p>–db , -d ：</p>
-<p>需要恢复的数据库实例，例如：test，当然这个名称也可以和备份时候的不一样，比如test2</p>
-</li>
-<li><p>–drop：</p>
-<p>恢复的时候，先删除当前数据，然后恢复备份的数据。就是说，恢复后，备份后添加修改的数据都会被删除，慎用哦！</p>
-</li>
-<li><p><path>：</path></p>
-<p>mongorestore 最后的一个参数，设置备份数据所在位置，例如：c:\data\dump\test。</p>
-<p>你不能同时指定 <path> 和 –dir 选项，–dir也可以设置备份目录。</path></p>
-</li>
-<li><p>–dir：</p>
-<p>指定备份的目录</p>
-<p>你不能同时指定 <path> 和 –dir 选项。</path></p>
+<li><p>gvim下载地址:<a href="https://github.com/vim/vim-win32-installer/releases" target="_blank" rel="noopener">https://github.com/vim/vim-win32-installer/releases</a></p>
 </li>
 </ul>
-<p>接下来我们执行以下命令恢复所有数据库:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongorestore</span><br></pre></td></tr></table></figure>
-<h2 id="数据导出与导入"><a href="#数据导出与导入" class="headerlink" title="数据导出与导入"></a>数据导出与导入</h2><h2 id="mongoexport用法"><a href="#mongoexport用法" class="headerlink" title="mongoexport用法"></a>mongoexport用法</h2><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>mongoexport 支持将mongodb数据表导出为json或csv格式，可在导出时指定一定的查询条件实现过滤。<br>命令的执行要求当前用户对数据库有read权限；<br>在mongos或副本集上执行时，默认采用primary readperference选项，即优先从主库上读取。</p>
-<h3 id="示例用法"><a href="#示例用法" class="headerlink" title="示例用法"></a>示例用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongoexport --host 127.0.0.1 --port 27017 -d appdb -c T_TEST_DATA -u appuser -p appuser@2016 -o export/T_TEST_DATA.json</span><br><span class="line"></span><br><span class="line">mongoexport --host 127.0.0.1 --port 27017 -d Ali_spider -c cup -f _id,store,price,order,feedback,image_urls,images --type=csv -o export/Ali_spider.csv</span><br></pre></td></tr></table></figure>
-<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><p>参数名    参数值<br>host[h] : 主机<br>port : 端口<br>db[d] : 目标数据库<br>username[u] : 用户名<br>password[p] : 密码<br>authenticationDatabase : 鉴权数据库，不指定则使用database参数<br>collection[c] : 目标Collection<br>query[q] : 查询过滤条件，不指定则导出全表<br>out[o] : 目标输出文件<br>type : 格式类型，默认json<br>skip : skip条件<br>limit : limit条件<br>sort : sort条件</p>
-<h3 id="其他用法"><a href="#其他用法" class="headerlink" title="其他用法"></a>其他用法</h3><ul>
-<li>按分页导出</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoexport -d test -c records --sort &apos;&#123;a: 1&#125;&apos; --limit 100 --skip 100 --out export.1.json</span><br></pre></td></tr></table></figure>
-<ul>
-<li>按查询条件导出</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoexport -d test -c records -q &apos;&#123; a: &#123; $gte: 3 &#125; &#125;&apos; --out exportdir/myRecords.json</span><br></pre></td></tr></table></figure>
-<h2 id="mongoimport用法"><a href="#mongoimport用法" class="headerlink" title="mongoimport用法"></a>mongoimport用法</h2><h3 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h3><p>mongoimport 支持将json或csv格式的数据文件导入到mongodb数据库，该命令与mongoexport结合使用。<br>命令的执行要求当前用户对数据库有readWrite权限；<br>导入命令要求在mongos或副本集主节点上执行。</p>
-<h3 id="示例用法-1"><a href="#示例用法-1" class="headerlink" title="示例用法"></a>示例用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoimport --host 127.0.0.1 --port 27017 -d appdb -c T_TEST_DATA_1 -u appuser -p appuser@2016 --numInsertionWorkers 50 --file export/T_TEST_DATA.json</span><br></pre></td></tr></table></figure>
-<h3 id="参数说明-1"><a href="#参数说明-1" class="headerlink" title="参数说明"></a>参数说明</h3><p>参数名    参数值<br>host[h] : 主机<br>port : 端口<br>db[d] : 目标数据库<br>username[u] : 用户名<br>password[p] : 密码<br>authenticationDatabase : 鉴权数据库，不指定则使用database参数<br>collection[c] : 目标Collection，不指定则采用文件名称<br>drop : 指定该选项，则导入前删除表<br>file : 目标导入文件<br>type : 格式类型，默认json<br>mode : 导入模式，有insert、upsert、merge，默认insert<br>numInsertionWorkers : 并发数<br>导入模式<br>upsert模式 : 会将已有数据替换；<br>merge模式 : 会将已有数据进行合并；</p>
-<h2 id="执行效率"><a href="#执行效率" class="headerlink" title="执行效率"></a>执行效率</h2><p>使用insert的性能最高，建议使用；<br>在多核的环境中，通过numInsertionWorkers可指定并发运行，可提升一定效率。</p>
-<h2 id="参考数据"><a href="#参考数据" class="headerlink" title="参考数据"></a>参考数据</h2><p>使用mongoexport 导出860W的数据记录，文件大小2.9G，共耗时10分钟<br>使用mongoimport 导入860W的数据记录，使用–mode=insert模式，用时3分钟15秒(numInsertionWorkers=50)<br>使用mongoimport 导入860W的数据记录，使用–mode=insert模式，用时5分钟(numInsertionWorkers=1)<br>使用mongoimport 导入860W的数据记录，使用–mode=upsert模式，用时45分钟(numInsertionWorkers=1)<br>使用mongodump 导出为40s，而mongorestore为4分钟。</p>
 
           
         
@@ -1147,7 +1094,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1192,7 +1139,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">165</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1285,33 +1232,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1351,7 +1272,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

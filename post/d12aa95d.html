@@ -100,21 +100,21 @@
 
 
   
-  <meta name="keywords" content="python,">
+  <meta name="keywords" content="net,python,">
 
 
-<meta name="description" content="下载网络文件12345import requestsr=requests.get(&amp;apos;http://*.*.*.228/logo.jpg&amp;apos;)print(type(r.content))with open(&amp;apos;logo.jpg&amp;apos;,&amp;apos;wb&amp;apos;) as f:    f.write(r.content) socket客户端读取数据12345678910">
-<meta name="keywords" content="python">
+<meta name="description" content="下载网络文件12345import requestsr=requests.get(&amp;apos;http://*.*.*.228/logo.jpg&amp;apos;)print(type(r.content))with open(&amp;apos;logo.jpg&amp;apos;,&amp;apos;wb&amp;apos;) as f:    f.write(r.content) BeautifulSoup解析html12345">
+<meta name="keywords" content="net,python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python之socket和网络文件下载">
+<meta property="og:title" content="python之socket和BeautifulSoup">
 <meta property="og:url" content="https://xiaopch.github.io/post/d12aa95d.html">
 <meta property="og:site_name" content="hello world">
-<meta property="og:description" content="下载网络文件12345import requestsr=requests.get(&amp;apos;http://*.*.*.228/logo.jpg&amp;apos;)print(type(r.content))with open(&amp;apos;logo.jpg&amp;apos;,&amp;apos;wb&amp;apos;) as f:    f.write(r.content) socket客户端读取数据12345678910">
+<meta property="og:description" content="下载网络文件12345import requestsr=requests.get(&amp;apos;http://*.*.*.228/logo.jpg&amp;apos;)print(type(r.content))with open(&amp;apos;logo.jpg&amp;apos;,&amp;apos;wb&amp;apos;) as f:    f.write(r.content) BeautifulSoup解析html12345">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-14T01:37:29.379Z">
+<meta property="og:updated_time" content="2020-10-27T08:46:14.784Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python之socket和网络文件下载">
-<meta name="twitter:description" content="下载网络文件12345import requestsr=requests.get(&amp;apos;http://*.*.*.228/logo.jpg&amp;apos;)print(type(r.content))with open(&amp;apos;logo.jpg&amp;apos;,&amp;apos;wb&amp;apos;) as f:    f.write(r.content) socket客户端读取数据12345678910">
+<meta name="twitter:title" content="python之socket和BeautifulSoup">
+<meta name="twitter:description" content="下载网络文件12345import requestsr=requests.get(&amp;apos;http://*.*.*.228/logo.jpg&amp;apos;)print(type(r.content))with open(&amp;apos;logo.jpg&amp;apos;,&amp;apos;wb&amp;apos;) as f:    f.write(r.content) BeautifulSoup解析html12345">
 
 
 
@@ -130,7 +130,7 @@
     sidebar: "",
   };
 </script>
-  <title>python之socket和网络文件下载 | hello world</title>
+  <title>python之socket和BeautifulSoup | hello world</title>
   
 
 
@@ -294,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">python之socket和网络文件下载</h1>
+          <h1 class="post-title" itemprop="name headline">python之socket和BeautifulSoup</h1>
         
 
         <div class="post-meta">
@@ -343,9 +343,10 @@
       
 
       
-        <h2 id="下载网络文件"><a href="#下载网络文件" class="headerlink" title="下载网络文件"></a>下载网络文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">r=requests.get(&apos;http://*.*.*.228/logo.jpg&apos;)</span><br><span class="line">print(type(r.content))</span><br><span class="line">with open(&apos;logo.jpg&apos;,&apos;wb&apos;) as f:</span><br><span class="line">    f.write(r.content)</span><br></pre></td></tr></table></figure>
-<h3 id="socket客户端读取数据"><a href="#socket客户端读取数据" class="headerlink" title="socket客户端读取数据"></a>socket客户端读取数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">socket client读取GNSS数据</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">import socket,time</span><br><span class="line">#定义协议类型,相当于生命socket类型,同时生成socket连接对象</span><br><span class="line">client = socket.socket() </span><br><span class="line">client.connect((&apos;192.168.2.11&apos;,5017))</span><br><span class="line"></span><br><span class="line">read_len=1024</span><br><span class="line">while True:</span><br><span class="line">##    data=client.makefile().readline()##读取一行数据</span><br><span class="line">    data = client.recv(read_len)##每次读4组数据</span><br><span class="line">##    print(data+&apos;******&apos;)</span><br><span class="line"></span><br><span class="line">    dt_split=data.split(&apos;\r\n&apos;)</span><br><span class="line">    ##自动切换socket读取长度</span><br><span class="line">    if len(dt_split):</span><br><span class="line">        print dt_split</span><br><span class="line">        if dt_split[0][0] is not &apos;G&apos;:</span><br><span class="line">            read_len=2048</span><br><span class="line">        else:</span><br><span class="line">            read_len=512</span><br><span class="line"></span><br><span class="line">client.close()</span><br></pre></td></tr></table></figure>
-<h3 id="socket服务器端"><a href="#socket服务器端" class="headerlink" title="socket服务器端"></a>socket服务器端</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&apos;&apos;&apos;</span><br><span class="line">This is a testing program</span><br><span class="line">the program is used to start tcp server</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">import socket</span><br><span class="line">import sys</span><br><span class="line">def start_tcp_server(ip, port):</span><br><span class="line">  #create socket</span><br><span class="line">  sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">  server_address = (ip, port)</span><br><span class="line">  #bind port</span><br><span class="line">  print &apos;starting listen on ip %s, port %s&apos;%server_address</span><br><span class="line">  sock.bind(server_address)</span><br><span class="line">  </span><br><span class="line">  try:</span><br><span class="line">    #starting listening, allow only one connection</span><br><span class="line">    sock.listen(1)</span><br><span class="line">  except socket.error, e:</span><br><span class="line">    print &quot;fail to listen on port %s&quot;%e</span><br><span class="line">    sys.exit(1)</span><br><span class="line">  while True:</span><br><span class="line">    print &quot;waiting for connection&quot;</span><br><span class="line">    client,addr = sock.accept()</span><br><span class="line">    print &apos;having a connection&apos;</span><br><span class="line">    client.close()</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">  start_tcp_server(&apos;127.0.0.1&apos;, 80)</span><br></pre></td></tr></table></figure>
+        <h4 id="下载网络文件"><a href="#下载网络文件" class="headerlink" title="下载网络文件"></a>下载网络文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">r=requests.get(&apos;http://*.*.*.228/logo.jpg&apos;)</span><br><span class="line">print(type(r.content))</span><br><span class="line">with open(&apos;logo.jpg&apos;,&apos;wb&apos;) as f:</span><br><span class="line">    f.write(r.content)</span><br></pre></td></tr></table></figure>
+<h4 id="BeautifulSoup解析html"><a href="#BeautifulSoup解析html" class="headerlink" title="BeautifulSoup解析html"></a>BeautifulSoup解析html</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">import requests</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">import tushare as ts</span><br><span class="line">headers=&#123;&apos;user-agent&apos;: &apos;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36&apos;&#125;</span><br><span class="line"></span><br><span class="line">def get_fund_price():</span><br><span class="line">    response = requests.get(</span><br><span class="line">        url=&apos;http://quotes.money.163.com/fund/110011.html&apos;,</span><br><span class="line">        headers=headers</span><br><span class="line">    )</span><br><span class="line">    response.encoding = response.apparent_encoding</span><br><span class="line">    soup = BeautifulSoup(response.text, &apos;html.parser&apos;)</span><br><span class="line"></span><br><span class="line">    main_content = soup.find(name=&apos;div&apos;, attrs=&#123;&quot;class&quot;:&quot;fn_data_trend_total&quot;&#125;)#fund</span><br><span class="line">    print(main_content)</span><br><span class="line">    </span><br><span class="line">get_fund_price()</span><br></pre></td></tr></table></figure>
+<h4 id="socket客户端读取数据"><a href="#socket客户端读取数据" class="headerlink" title="socket客户端读取数据"></a>socket客户端读取数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">socket client读取GNSS数据</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">import socket,time</span><br><span class="line">#定义协议类型,相当于生命socket类型,同时生成socket连接对象</span><br><span class="line">client = socket.socket() </span><br><span class="line">client.connect((&apos;192.168.2.11&apos;,5017))</span><br><span class="line"></span><br><span class="line">read_len=1024</span><br><span class="line">while True:</span><br><span class="line">    data = client.recv(read_len)##每次读4组数据</span><br><span class="line">    dt_split=data.split(&apos;\r\n&apos;)</span><br><span class="line">    ##自动切换socket读取长度</span><br><span class="line">    if len(dt_split):</span><br><span class="line">        print dt_split</span><br><span class="line">        if dt_split[0][0] is not &apos;G&apos;:</span><br><span class="line">            read_len=2048</span><br><span class="line">        else:</span><br><span class="line">            read_len=512</span><br><span class="line"></span><br><span class="line">client.close()</span><br></pre></td></tr></table></figure>
+<h4 id="socket服务器端"><a href="#socket服务器端" class="headerlink" title="socket服务器端"></a>socket服务器端</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&apos;&apos;&apos;</span><br><span class="line">This is a testing program</span><br><span class="line">the program is used to start tcp server</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">import socket</span><br><span class="line">import sys</span><br><span class="line">def start_tcp_server(ip, port):</span><br><span class="line">  #create socket</span><br><span class="line">  sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">  server_address = (ip, port)</span><br><span class="line">  #bind port</span><br><span class="line">  print &apos;starting listen on ip %s, port %s&apos;%server_address</span><br><span class="line">  sock.bind(server_address)</span><br><span class="line">  </span><br><span class="line">  try:</span><br><span class="line">    #starting listening, allow only one connection</span><br><span class="line">    sock.listen(1)</span><br><span class="line">  except socket.error, e:</span><br><span class="line">    print &quot;fail to listen on port %s&quot;%e</span><br><span class="line">    sys.exit(1)</span><br><span class="line">  while True:</span><br><span class="line">    print &quot;waiting for connection&quot;</span><br><span class="line">    client,addr = sock.accept()</span><br><span class="line">    print &apos;having a connection&apos;</span><br><span class="line">    client.close()</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">  start_tcp_server(&apos;127.0.0.1&apos;, 80)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -363,6 +364,8 @@
       
         <div class="post-tags">
           
+            <a href="/tags/net/" rel="tag"># net</a>
+          
             <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
@@ -376,8 +379,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/5aec304c.html" rel="next" title="docker-在windows下安装各种服务器">
-                <i class="fa fa-chevron-left"></i> docker-在windows下安装各种服务器
+              <a href="/post/40c0f56f.html" rel="next" title="CSharp类和接口">
+                <i class="fa fa-chevron-left"></i> CSharp类和接口
               </a>
             
           </div>
@@ -386,8 +389,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/post/db129bce.html" rel="prev" title="python之hex文件转hex字符串">
-                python之hex文件转hex字符串 <i class="fa fa-chevron-right"></i>
+              <a href="/post/d12aa95d.html" rel="prev" title="python之socket模块">
+                python之socket模块 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -464,7 +467,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">165</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -557,33 +560,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -619,7 +596,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载网络文件"><span class="nav-number">1.</span> <span class="nav-text">下载网络文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#socket客户端读取数据"><span class="nav-number">1.1.</span> <span class="nav-text">socket客户端读取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#socket服务器端"><span class="nav-number">1.2.</span> <span class="nav-text">socket服务器端</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载网络文件"><span class="nav-number">1.</span> <span class="nav-text">下载网络文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BeautifulSoup解析html"><span class="nav-number">2.</span> <span class="nav-text">BeautifulSoup解析html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#socket客户端读取数据"><span class="nav-number">3.</span> <span class="nav-text">socket客户端读取数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#socket服务器端"><span class="nav-number">4.</span> <span class="nav-text">socket服务器端</span></a></li></ol></div>
             
 
           </div>
@@ -639,7 +616,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

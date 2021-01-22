@@ -344,7 +344,7 @@
 
       
         <h3 id="Paddlehub文本生成ernie-gen-poetry"><a href="#Paddlehub文本生成ernie-gen-poetry" class="headerlink" title="Paddlehub文本生成ernie_gen_poetry"></a>Paddlehub文本生成ernie_gen_poetry</h3><p>   ERNIE-GEN 是面向生成任务的预训练-微调框架，首次在预训练阶段加入span-by-span 生成任务，让模型每次能够生成一个语义完整的片段。在预训练和微调中通过填充式生成机制和噪声感知机制来缓解曝光偏差问题。此外, ERNIE-GEN 采样多片段-多粒度目标文本采样策略, 增强源文本和目标文本的关联性，加强了编码器和解码器的交互。ernie_gen_poetry采用开源诗歌数据集进行微调，可用于生成诗歌。 </p>
-<h4 id="命令行预测"><a href="#命令行预测" class="headerlink" title="命令行预测"></a>命令行预测</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> hub run ernie_gen_poetry --input_text="江湖一尊酒，风雨五更秋。" --use_gpu True --beam_width 5</span><br></pre></td></tr></table></figure>
+<h4 id="命令行预测"><a href="#命令行预测" class="headerlink" title="命令行预测"></a>命令行预测</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hub run ernie_gen_poetry --input_text=<span class="string">"江湖一尊酒，风雨五更秋。"</span> --use_gpu True --beam_width 5</span></span><br></pre></td></tr></table></figure>
 <h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate</span><span class="params">(texts, use_gpu=False, beam_width=<span class="number">5</span>)</span>:</span></span><br></pre></td></tr></table></figure>
 <p>预测API，输入诗歌开头，输出诗歌下文。</p>
 <p><strong>参数</strong></p>
@@ -361,7 +361,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> paddlehub <span class="keyword">as</span> hub</span><br><span class="line"></span><br><span class="line">module = hub.Module(name=<span class="string">"ernie_gen_poetry"</span>)</span><br><span class="line"></span><br><span class="line">test_texts = [<span class="string">'江湖一尊酒，风雨五更秋。'</span>, <span class="string">'地僻无尘到，天高有月临。'</span>]</span><br><span class="line">results = module.generate(texts=test_texts, use_gpu=<span class="literal">False</span>, beam_width=<span class="number">5</span>)</span><br><span class="line"><span class="keyword">for</span> result <span class="keyword">in</span> results:</span><br><span class="line">    print(result)</span><br></pre></td></tr></table></figure>
 <h4 id="服务部署"><a href="#服务部署" class="headerlink" title="服务部署"></a>服务部署</h4><p>PaddleHub Serving 可以部署在线服务。</p>
 <h5 id="第一步：启动PaddleHub-Serving"><a href="#第一步：启动PaddleHub-Serving" class="headerlink" title="第一步：启动PaddleHub Serving"></a>第一步：启动PaddleHub Serving</h5><p>运行启动命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> hub serving start -m ernie_gen_poetry -p 8866</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hub serving start -m ernie_gen_poetry -p 8866</span></span><br></pre></td></tr></table></figure>
 <p>这样就完成了一个服务化API的部署，默认端口号为8866。</p>
 <p><strong>NOTE:</strong> 如使用GPU预测，则需要在启动服务之前，请设置CUDA_VISIBLE_DEVICES环境变量，否则不用设置。</p>
 <h5 id="第二步：发送预测请求"><a href="#第二步：发送预测请求" class="headerlink" title="第二步：发送预测请求"></a>第二步：发送预测请求</h5><p>配置好服务端，以下数行代码即可实现发送预测请求，获取预测结果</p>
@@ -399,8 +399,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/f81e8835.html" rel="next" title="python之Scrapy 爬虫框架">
-                <i class="fa fa-chevron-left"></i> python之Scrapy 爬虫框架
+              <a href="/post/6916b9e8.html" rel="next" title="Paddlehub图像分割并显示">
+                <i class="fa fa-chevron-left"></i> Paddlehub图像分割并显示
               </a>
             
           </div>
@@ -409,8 +409,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/post/6916b9e8.html" rel="prev" title="Paddlehub图像分割并显示">
-                Paddlehub图像分割并显示 <i class="fa fa-chevron-right"></i>
+              <a href="/post/b6299662.html" rel="prev" title="Paddlehub安装和运行">
+                Paddlehub安装和运行 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -487,7 +487,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">165</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -580,33 +580,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -662,7 +636,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

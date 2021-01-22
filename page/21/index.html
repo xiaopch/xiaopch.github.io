@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/749ad7d8.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/fd0723ad.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -292,7 +292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/749ad7d8.html" itemprop="url">docker常用命令</a></h1>
+                <a class="post-title-link" href="/post/fd0723ad.html" itemprop="url">numpy常用的功能</a></h1>
         
 
         <div class="post-meta">
@@ -304,7 +304,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-10T09:06:12+08:00">2019-07-10</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-10T00:00:00+08:00">2019-08-10</time>
             
 
             
@@ -343,72 +343,24 @@
       
         
           
-            <h2 id="docker-run命令"><a href="#docker-run命令" class="headerlink" title="docker run命令"></a>docker run命令</h2><p>-创建一个新的容器并运行一个命令</p>
-<p>语法<br>docker run [OPTIONS] IMAGE [COMMAND] [ARG…]<br>OPTIONS说明：</p>
-<p>-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；</p>
-<p>-d: 后台运行容器，并返回容器ID；</p>
-<p>-i: 以交互模式运行容器，通常与 -t 同时使用；</p>
-<p>-P: 随机端口映射，容器内部端口随机映射到主机的高端口</p>
-<p>-p: 指定端口映射，格式为：主机(宿主)端口:容器端口</p>
-<p>-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；</p>
-<p>–name=”nginx-lb”: 为容器指定一个名称；</p>
-<p>–dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致；</p>
-<p>–dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致；</p>
-<p>-h “mars”: 指定容器的hostname；</p>
-<p>-e username=”ritchie”: 设置环境变量；</p>
-<p>–env-file=[]: 从指定文件读入环境变量；</p>
-<p>–cpuset=”0-2” or –cpuset=”0,1,2”: 绑定容器到指定CPU运行；</p>
-<p>-m :设置容器使用内存最大值；</p>
-<p>–net=”bridge”: 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型；</p>
-<p>–link=[]: 添加链接到另一个容器；</p>
-<p>–expose=[]: 开放一个端口或一组端口；</p>
-<p>–volume , -v:    绑定一个卷</p>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>使用docker镜像nginx:latest以后台模式启动一个容器,并将容器命名为mynginx。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mynginx -d nginx:latest</span><br></pre></td></tr></table></figure>
-<p>使用镜像nginx:latest以后台模式启动一个容器,并将容器的80端口映射到主机随机端口。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -P -d nginx:latest</span><br></pre></td></tr></table></figure>
-<p>使用镜像 nginx:latest，以后台模式启动一个容器,将容器的 80 端口映射到主机的 80 端口,主机的目录 /data 映射到容器的 /data。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 80:80 -v /data:/data -d nginx:latest</span><br></pre></td></tr></table></figure>
-<p>绑定容器的 8080 端口，并将其映射到本地主机 127.0.0.1 的 80 端口上。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 127.0.0.1:80:8080/tcp ubuntu bash</span><br></pre></td></tr></table></figure>
-<p>使用镜像nginx:latest以交互模式启动一个容器,在容器内执行/bin/bash命令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it nginx:latest /bin/bash</span><br></pre></td></tr></table></figure>
-<h3 id="启动已被停止的容器myrunoob"><a href="#启动已被停止的容器myrunoob" class="headerlink" title="启动已被停止的容器myrunoob"></a>启动已被停止的容器myrunoob</h3><pre><code>docker start myrunoob
-</code></pre><h3 id="停止运行中的容器myrunoob"><a href="#停止运行中的容器myrunoob" class="headerlink" title="停止运行中的容器myrunoob"></a>停止运行中的容器myrunoob</h3><pre><code>docker stop myrunoob
-</code></pre><h3 id="重启容器myrunoob"><a href="#重启容器myrunoob" class="headerlink" title="重启容器myrunoob"></a>重启容器myrunoob</h3><pre><code>docker restart myrunoob
-</code></pre><h2 id="导出-export-导入-import"><a href="#导出-export-导入-import" class="headerlink" title="导出 export - 导入 import"></a>导出 export - 导入 import</h2><ul>
-<li><p>格式：docker export CONTAINER(容器)<br>使用 docker ps -a 查看本机已有的容器，如： 我们使用容器 furious_bell，现在要将这个容器保存为一个文件 myunbuntu.tar</p>
-<p>   docker export furious_bell &gt;  myunbuntu.tar  </p>
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li><p>NumPy(Numerical Python) 是 Python 语言的一个扩展程序库，支持大量的维度数组与矩阵运算，此外也针对数组运算提供大量的数学函数库。</p>
 </li>
-<li><p>导出完成后，就可以使用 import 导入了</p>
-<p>   docker import myubuntu.tar</p>
+<li><p>NumPy 的前身 Numeric 最早是由 Jim Hugunin 与其它协作者共同开发，2005 年，Travis Oliphant 在 Numeric 中结合了另一个同性质的程序库 Numarray 的特色，并加入了其它扩展而开发了 NumPy。NumPy 为开放源代码并且由许多协作者共同维护开发。</p>
 </li>
 </ul>
-<h2 id="交互模式运行"><a href="#交互模式运行" class="headerlink" title="交互模式运行"></a>交互模式运行</h2><pre><code>docker run --rm -it ubuntu bash
-</code></pre><h2 id="docker-编译"><a href="#docker-编译" class="headerlink" title="docker 编译"></a>docker 编译</h2><p>在Dockerfile所在的文件夹下执行<br>    docker build -t alpine:t .<br>这条命令，然后镜像就被构建了。</p>
-<h2 id="重命名镜像"><a href="#重命名镜像" class="headerlink" title="重命名镜像"></a>重命名镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker tag IMAGEID(镜像id) REPOSITORY:TAG（仓库：标签）</span><br><span class="line">docker tag ca1b6b825289 xiaopch.top/chrome:v1.0</span><br><span class="line">docker tag 75b02a692455 selenium/standalone-chrome:latest</span><br></pre></td></tr></table></figure>
-<h2 id="获取所有容器名称及其IP地址只需一个命令。"><a href="#获取所有容器名称及其IP地址只需一个命令。" class="headerlink" title="获取所有容器名称及其IP地址只需一个命令。"></a>获取所有容器名称及其IP地址只需一个命令。</h2><pre><code>docker inspect -f &apos;{{.Name}} - {{.NetworkSettings.IPAddress }}&apos; $(docker ps -aq)
-docker inspect --format=&apos;{{.NetworkSettings.IPAddress}}&apos; $(docker ps -a -q)
-</code></pre><h2 id="nginx-配置"><a href="#nginx-配置" class="headerlink" title="nginx 配置"></a>nginx 配置</h2><pre><code>docker run  -p 80:80 -v D:\docker\github\public:/usr/share/nginx/html -d nginx
-</code></pre><h3 id="win10中docker共享文件夹"><a href="#win10中docker共享文件夹" class="headerlink" title="win10中docker共享文件夹"></a>win10中docker共享文件夹</h3><ul>
-<li>docker-settings-Shared Drives-勾选D</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   docker run -it -v D:/docker:/home/docker ubuntu:latest bash</span><br><span class="line">docker run -it -v D:/docker:/home/docker centos:latest bash</span><br><span class="line">   docker run -it -v D:/docker:/home/docker alpine</span><br></pre></td></tr></table></figure>
-<h2 id="chrome集群"><a href="#chrome集群" class="headerlink" title="chrome集群"></a>chrome集群</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker pull selenium/hub</span><br><span class="line">docker pull selenium/node-chrome</span><br><span class="line"></span><br><span class="line">docker images</span><br><span class="line"></span><br><span class="line">docker run -d -P --name selenium-hub selenium/hub</span><br><span class="line">docker run -d --link selenium-hub:hub selenium/node-chrome</span><br><span class="line">docker run -d -e HUB_HOST=192.168.2.252 -e HUB_PORT=4444 selenium/node-chrome</span><br></pre></td></tr></table></figure>
-<h2 id="chrome-standalone"><a href="#chrome-standalone" class="headerlink" title="chrome standalone"></a>chrome standalone</h2><pre><code>docker run -d -p 4444:4444 --restart=always selenium/standalone-chrome
-</code></pre><h3 id="树莓派-redis"><a href="#树莓派-redis" class="headerlink" title="树莓派 redis"></a>树莓派 redis</h3><pre><code>docker run -p 6379:6379 -d  --restart=always arm32v7/redis
-</code></pre><h2 id="docker容器间通讯"><a href="#docker容器间通讯" class="headerlink" title="docker容器间通讯"></a>docker容器间通讯</h2><ul>
-<li><p>下面启动两个容器 bbox1 和 bbox2：<br>  docker run -it –network=xiaopch –name=bbox1 ubuntu</p>
-<p>  docker run -it –network=xiaopch –name=bbox2 ubuntu</p>
+<h3 id="reshape-函数来调整数组大小"><a href="#reshape-函数来调整数组大小" class="headerlink" title="reshape 函数来调整数组大小"></a>reshape 函数来调整数组大小</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np </span><br><span class="line"></span><br><span class="line">a = np.array([[1,2,3],[4,5,6]]) </span><br><span class="line">b = a.reshape(3,2)  </span><br><span class="line">print (b)</span><br></pre></td></tr></table></figure>
+<h3 id="生成随机数"><a href="#生成随机数" class="headerlink" title="生成随机数"></a>生成随机数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import numpy as np</span><br><span class="line">rnd=np.random.rand(100)#生成长度为100的随机数list</span><br><span class="line">lst=range(100)</span><br><span class="line">print(sorted(lst+rnd))</span><br></pre></td></tr></table></figure>
+<h3 id="randn-和rand-的区别"><a href="#randn-和rand-的区别" class="headerlink" title="randn()和rand()的区别"></a>randn()和rand()的区别</h3><ul>
+<li><p><strong>numpy.random.randn(d0, d1, …, dn)</strong> 是从标准正态分布中返回一个或多个样本值。</p>
+</li>
+<li><p><strong>numpy.random.rand(d0, d1, …, dn)</strong> 的随机样本位于[0, 1)中。</p>
 </li>
 </ul>
-<p>然后，bbox2 就可以直接 ping 到 bbox1 了</p>
-<h2 id="轻量级linux-alpine"><a href="#轻量级linux-alpine" class="headerlink" title="轻量级linux - alpine"></a>轻量级linux - alpine</h2><pre><code>docker pull alpine
-</code></pre><h2 id="Using-TensorFlow-via-Docker"><a href="#Using-TensorFlow-via-Docker" class="headerlink" title="Using TensorFlow via Docker"></a>Using TensorFlow via Docker</h2><pre><code>docker run -it -p 8888:8888 tensorflow/tensorflow
-</code></pre><h2 id="Docker-Hexo"><a href="#Docker-Hexo" class="headerlink" title="Docker Hexo"></a>Docker Hexo</h2><pre><code>docker run  -it --name hexo -p 80:80 -v D:/docker/github:/home/hexo alpine-hexo sh
-docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /home/hexo&amp;&amp;hexo s -p 80
-</code></pre><h2 id="alpine中安装python2-7"><a href="#alpine中安装python2-7" class="headerlink" title="alpine中安装python2.7"></a>alpine中安装python2.7</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run  -it --name hexo -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh</span><br><span class="line"></span><br><span class="line">docker run -it -p 80:80 -v D:/docker/app:/home/python/app alpine-bash</span><br><span class="line"></span><br><span class="line">##echo https://mirror.tuna.tsinghua.edu.cn/alpine/v3.4/main/ &gt; /etc/apk/repositories</span><br><span class="line"></span><br><span class="line">##yum install http://download.oray.com/peanuthull/linux/phddns-3.0.2.x86_64.rpm</span><br></pre></td></tr></table></figure>
-<h2 id="vsftp服务器配置"><a href="#vsftp服务器配置" class="headerlink" title="vsftp服务器配置"></a>vsftp服务器配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br><span class="line">mkdir D:\docker\data\ftp</span><br><span class="line">cmd /k docker run -d -p 20:20 -p 21:21 -p 21100-21110:21100-21110 -v D:\docker\data\ftp:/home/vsftpd -e FTP_USER=pi -e FTP_PASS=xp -e PASV_ADDRESS=127.0.0.1 -e PASV_MIN_PORT=21100 -e PASV_MAX_PORT=21110 --name vsftpd --restart=always fauria/vsftpd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np </span><br><span class="line">arr1 = np.random.randn(2,4)</span><br><span class="line">print(arr1)</span><br><span class="line">print(&apos;******************************************************************&apos;)</span><br><span class="line">arr2 = np.random.rand(2,4)</span><br><span class="line">print(arr2)</span><br></pre></td></tr></table></figure>
+<h2 id="傅里叶变换与反变换"><a href="#傅里叶变换与反变换" class="headerlink" title="傅里叶变换与反变换"></a>傅里叶变换与反变换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">x=np.linspace(0,2*np.pi,50)</span><br><span class="line">wave=np.sin(x)</span><br><span class="line">transformed=np.fft.fft(wave) #傅里叶变换</span><br><span class="line">#print(transformed)</span><br><span class="line">plt.plot(x,transformed) #绘制变换后的信号</span><br><span class="line">plt.plot(np.fft.ifft(transformed)) #傅里叶反变换</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h2 id="矩阵运算"><a href="#矩阵运算" class="headerlink" title="矩阵运算"></a>矩阵运算</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 2-D array: 2 x 3</span></span><br><span class="line">a = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], </span><br><span class="line">              [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</span><br><span class="line"></span><br><span class="line">b = np.array([[<span class="number">3</span>, <span class="number">2</span>, <span class="number">3</span>], </span><br><span class="line">              [<span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>]])</span><br><span class="line"><span class="comment"># 2-D array: 3 x 2</span></span><br><span class="line">c = np.array([[<span class="number">1</span>, <span class="number">2</span>], </span><br><span class="line">              [<span class="number">3</span>, <span class="number">4</span>], </span><br><span class="line">              [<span class="number">5</span>, <span class="number">6</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对应元素相加</span></span><br><span class="line">print(a+b)</span><br><span class="line"><span class="comment"># 对应元素相乘 element-wise product</span></span><br><span class="line">print(a*b)</span><br><span class="line"><span class="comment"># 对应元素相除</span></span><br><span class="line">print(a/b)</span><br><span class="line"><span class="comment">#矩阵乘法</span></span><br><span class="line">print(np.dot(a, c))</span><br></pre></td></tr></table></figure>
+<h3 id="Numpy中常用的数据保存与读取方法"><a href="#Numpy中常用的数据保存与读取方法" class="headerlink" title="Numpy中常用的数据保存与读取方法"></a>Numpy中常用的数据保存与读取方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">print(np.arange(5))</span><br><span class="line">arr = np.random.randn(3,4)</span><br><span class="line">print(arr)</span><br><span class="line">#保存数组.默认后缀npy</span><br><span class="line">np.save(&apos;arr&apos;,arr)</span><br><span class="line">x=np.load(&apos;arr.npy&apos;)</span><br><span class="line">print(x)</span><br><span class="line">np.savetxt(&apos;arr.txt&apos;,arr)</span><br><span class="line">np.savetxt(&apos;arr.out&apos;, arr,delimiter=&apos;#&apos;,footer=&apos;abc&apos;)</span><br></pre></td></tr></table></figure>
 
           
         
@@ -459,7 +411,7 @@ docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /ho
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/db129bce.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/c50f03d5.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -478,7 +430,7 @@ docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /ho
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/db129bce.html" itemprop="url">python之hex文件转hex字符串</a></h1>
+                <a class="post-title-link" href="/post/c50f03d5.html" itemprop="url">python之曲线拟合</a></h1>
         
 
         <div class="post-meta">
@@ -490,7 +442,7 @@ docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /ho
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-09T09:10:00+08:00">2019-07-09</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-09T00:00:00+08:00">2019-08-09</time>
             
 
             
@@ -529,12 +481,8 @@ docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /ho
       
         
           
-            <h2 id="hex文件转hex字符串"><a href="#hex文件转hex字符串" class="headerlink" title="hex文件转hex字符串"></a>hex文件转hex字符串</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line">infile = file(&quot;com4data.hex&quot;,&quot;rb&quot;)</span><br><span class="line">outfile = file(&quot;com4data.hex.txt&quot;,&quot;wb&quot;)</span><br><span class="line">def main():</span><br><span class="line">    while True:</span><br><span class="line">        c = infile.read(1)</span><br><span class="line">        if not c:</span><br><span class="line">            break</span><br><span class="line">        outfile.write(hex(ord(c)))</span><br><span class="line">    outfile.close()</span><br><span class="line">    infile.close()</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<h3 id="16进制字符串转double"><a href="#16进制字符串转double" class="headerlink" title="16进制字符串转double"></a>16进制字符串转double</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hex_str=&apos;94ff1e854c0d1b41&apos; ##8位16进制</span><br><span class="line">print(struct.unpack(&apos;d&apos;, hex_str.decode(&apos;hex&apos;))[0])</span><br><span class="line">##输出结果:443219.130001</span><br></pre></td></tr></table></figure>
-<h2 id="hex文件转hex字符串，并自动换行"><a href="#hex文件转hex字符串，并自动换行" class="headerlink" title="hex文件转hex字符串，并自动换行"></a>hex文件转hex字符串，并自动换行</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#coding:utf-8</span><br><span class="line">#程序目标，读取hex文件，然后以16进制字符串的方式写到txt文件</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    f = open(&quot;comdata.hex&quot;,&quot;rb&quot;)</span><br><span class="line">    outfile = open(&quot;comdata.hex.txt&quot;,&quot;wb&quot;)</span><br><span class="line">    i = 0</span><br><span class="line">    while 1:</span><br><span class="line">        c = f.read(1)</span><br><span class="line">        i = i + 1</span><br><span class="line">        if not c:</span><br><span class="line">            break</span><br><span class="line">        if i%32 == 0:</span><br><span class="line">            outfile.write(&quot;\n&quot;)</span><br><span class="line">        else:</span><br><span class="line">            if ord(c) &lt;= 15:</span><br><span class="line">                outfile.write(&quot;0x0&quot;+hex(ord(c))[2:]+&quot; &quot;)</span><br><span class="line">            else:</span><br><span class="line">                outfile.write(hex(ord(c))+&quot; &quot;)</span><br><span class="line">    outfile.close()</span><br><span class="line">    f.close()</span><br><span class="line">         </span><br><span class="line">if __name__==&quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<h2 id="hex文件转hex字符串，并去除0x-自动换行"><a href="#hex文件转hex字符串，并去除0x-自动换行" class="headerlink" title="hex文件转hex字符串，并去除0x,自动换行"></a>hex文件转hex字符串，并去除0x,自动换行</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#coding:utf-8</span><br><span class="line"># 程序目标，读取com4data.hex，然后以16进制方式写到txt文件</span><br><span class="line"> </span><br><span class="line">def main():</span><br><span class="line">    f = open(&quot;com4data.hex&quot;,&quot;rb&quot;)</span><br><span class="line">    outfile = open(&quot;com4data.hex.txt&quot;,&quot;wb&quot;)</span><br><span class="line">    i = 0</span><br><span class="line">    while 1:</span><br><span class="line">        c = f.read(1)</span><br><span class="line">        i = i + 1</span><br><span class="line">        if not c:</span><br><span class="line">            break</span><br><span class="line">        if i%88 == 0:</span><br><span class="line">            outfile.write(&quot;\n&quot;)</span><br><span class="line">        else:</span><br><span class="line">            if ord(c) &lt;= 15:</span><br><span class="line">                outfile.write((&quot;0x0&quot;+hex(ord(c))[2:])[2:]+&quot; &quot;)</span><br><span class="line">            else:</span><br><span class="line">                outfile.write((hex(ord(c)))[2:]+&quot; &quot;)</span><br><span class="line">    outfile.close()</span><br><span class="line">    f.close()</span><br><span class="line">         </span><br><span class="line">if __name__==&quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<h2 id="读取comdata-hex，以分隔符为55aa换行写入输出文件"><a href="#读取comdata-hex，以分隔符为55aa换行写入输出文件" class="headerlink" title="读取comdata.hex，以分隔符为55aa换行写入输出文件"></a>读取comdata.hex，以分隔符为55aa换行写入输出文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#coding:utf-8</span><br><span class="line">##读取comdata.hex，然后以16进制字符方式写到txt文件，分隔符为55aa</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    newline = 0</span><br><span class="line">    file_content = open(&quot;comdata.hex&quot;,&quot;rb&quot;).read()</span><br><span class="line">    outfile = open(&quot;comdata.hex.txt&quot;,&quot;wb&quot;)##输出文件</span><br><span class="line">    byte_list = list(file_content)##转换文件内容为list</span><br><span class="line">    file_len = len(byte_list)</span><br><span class="line"></span><br><span class="line">    for i in range(0,file_len):##遍历list</span><br><span class="line">##        print(hex(ord(byte_list[i])))</span><br><span class="line">        if hex(ord(byte_list[i]))==&apos;0x55&apos; and hex(ord(byte_list[i+1]))==&apos;0xaa&apos;:</span><br><span class="line">            outfile.write(&quot;\n&quot;)</span><br><span class="line"></span><br><span class="line">        if ord(byte_list[i]) &lt;= 15:</span><br><span class="line">            outfile.write((&quot;0x0&quot;+hex(ord(byte_list[i]))[2:])[2:]+&quot; &quot;)</span><br><span class="line">        else:</span><br><span class="line">            outfile.write((hex(ord(byte_list[i])))[2:]+&quot; &quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    outfile.close()</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__==&quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
+            <h2 id="python最小二乘法拟合圆"><a href="#python最小二乘法拟合圆" class="headerlink" title="python最小二乘法拟合圆"></a>python最小二乘法拟合圆</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">#! /usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">This program is debugged by Harden Qiu</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">from numpy import *</span><br><span class="line">from scipy import optimize</span><br><span class="line">import functools</span><br><span class="line">from matplotlib import pyplot as p, cm, colors</span><br><span class="line">import pandas as pd</span><br><span class="line">method_2  = &quot;Fitting Circle&quot;</span><br><span class="line"></span><br><span class="line">df=pd.read_csv(&apos;profile_circle.csv&apos;)</span><br><span class="line"></span><br><span class="line"># Coordinates of the 2D points</span><br><span class="line">x = df[&apos;x&apos;]</span><br><span class="line">#x = r_[36, 36, 19, 18, 33, 26]</span><br><span class="line">y = df[&apos;z&apos;]</span><br><span class="line">#y = r_[14, 10, 28, 31, 18, 26]</span><br><span class="line">print(df)</span><br><span class="line">basename = &apos;arc&apos;</span><br><span class="line"></span><br><span class="line"># 质心坐标</span><br><span class="line">x_m = mean(x)</span><br><span class="line">y_m = mean(y)</span><br><span class="line"></span><br><span class="line">print(x_m,y_m)</span><br><span class="line"></span><br><span class="line">def calc_R(xc, yc):</span><br><span class="line"></span><br><span class="line">    return sqrt((x - xc) ** 2 + (y - yc) ** 2)</span><br><span class="line"></span><br><span class="line">def f_2(c):</span><br><span class="line">    Ri = calc_R(*c)</span><br><span class="line">    return Ri - Ri.mean()</span><br><span class="line"></span><br><span class="line">#圆心估计</span><br><span class="line">center_estimate = x_m, y_m</span><br><span class="line">center_2, _ = optimize.leastsq(f_2, center_estimate)</span><br><span class="line">xc_2, yc_2 = center_2</span><br><span class="line">Ri_2       = calc_R(xc_2, yc_2)</span><br><span class="line">#拟合圆的半径</span><br><span class="line">R_2        = Ri_2.mean()</span><br><span class="line">residu_2   = sum((Ri_2 - R_2)**2)</span><br><span class="line">residu2_2  = sum((Ri_2**2-R_2**2)**2)</span><br><span class="line"></span><br><span class="line">#输出结果</span><br><span class="line"></span><br><span class="line">print(&apos;center:&apos;, xc_2 , yc_2 , &apos;diameter:&apos;,R_2*2  , Ri_2.std() , residu_2 , residu2_2)</span><br><span class="line">##</span><br><span class="line">#####################################################################</span><br><span class="line">#输出图</span><br><span class="line">p.close(&apos;all&apos;)</span><br><span class="line"></span><br><span class="line">def plot_all(residu2=False):</span><br><span class="line"></span><br><span class="line">    p.figure(facecolor=&apos;white&apos;)  # figsize=(7, 5.4), dpi=72,</span><br><span class="line">    p.axis(&apos;equal&apos;)</span><br><span class="line"></span><br><span class="line">    theta_fit = linspace(-pi, pi, 180)</span><br><span class="line"></span><br><span class="line">    x_fit2 = xc_2 + R_2 * cos(theta_fit)</span><br><span class="line">    y_fit2 = yc_2 + R_2 * sin(theta_fit)</span><br><span class="line">    p.plot(x_fit2, y_fit2, &apos;k--&apos;, label=method_2, lw=2)</span><br><span class="line"></span><br><span class="line">    p.plot([xc_2], [yc_2], &apos;gD&apos;, mec=&apos;r&apos;, mew=1)</span><br><span class="line"></span><br><span class="line">    # draw</span><br><span class="line">    p.xlabel(&apos;x&apos;)</span><br><span class="line">    p.ylabel(&apos;y&apos;)</span><br><span class="line"></span><br><span class="line">    # 数据</span><br><span class="line">    p.plot(x, y, &apos;ro&apos;, label=&apos;data&apos;, ms=8, mec=&apos;b&apos;, mew=1)</span><br><span class="line">    p.legend(loc=&apos;best&apos;, labelspacing=0.1)</span><br><span class="line"></span><br><span class="line">    #标题</span><br><span class="line">    # p.grid()</span><br><span class="line">    p.title(&apos;Least Squares Circle&apos;)</span><br><span class="line"></span><br><span class="line">    p.savefig(&apos;%s_residu%d.png&apos; % (basename, 2 if residu2 else 1))</span><br><span class="line"></span><br><span class="line"># plot_all(residu2=False)</span><br><span class="line">plot_all(residu2=True )</span><br><span class="line"></span><br><span class="line">p.show()</span><br></pre></td></tr></table></figure>
+<h2 id="3点法计算圆的半径"><a href="#3点法计算圆的半径" class="headerlink" title="3点法计算圆的半径"></a>3点法计算圆的半径</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import numpy as np</span><br><span class="line">import math</span><br><span class="line"></span><br><span class="line">##三点法计算圆的半径，圆上三点坐标[x1,y1,x2,y2,x3,y3]</span><br><span class="line">def calculate_radius(points):</span><br><span class="line">    x1 = points[0]</span><br><span class="line">    x2 = points[2]</span><br><span class="line">    x3 = points[4]</span><br><span class="line">    y1 = points[1]</span><br><span class="line">    y2 = points[3]</span><br><span class="line">    y3 = points[5]</span><br><span class="line">    a = x1 - x2</span><br><span class="line">    b = y1 - y2</span><br><span class="line">    c = x1 - x3</span><br><span class="line">    d = y1 - y3</span><br><span class="line">    e = ((x1 * x1 - x2 * x2) + (y1 * y1 - y2 * y2)) / 2.0</span><br><span class="line">    f = ((x1 * x1 - x3 * x3) + (y1 * y1 - y3 * y3)) / 2.0</span><br><span class="line">    det = b * c - a * d</span><br><span class="line">    if math.fabs(det) &lt; 0.00001:</span><br><span class="line">        return -1</span><br><span class="line">    x0 = -(d * e - b * f) / det</span><br><span class="line">    y0 = -(a * f - c * e) / det</span><br><span class="line">    radius = math.hypot(x1 - x0, y1 - y0)</span><br><span class="line">    return radius</span><br><span class="line"></span><br><span class="line">radius= calculate_radius([-43.1316,300.437,-34.5907,293.8275,-11.6362,303.9797])</span><br><span class="line"></span><br><span class="line">print(radius)</span><br></pre></td></tr></table></figure>
           
         
       
@@ -584,7 +532,7 @@ docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /ho
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/d12aa95d.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/b258e54c.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -603,7 +551,7 @@ docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /ho
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/d12aa95d.html" itemprop="url">python之socket和网络文件下载</a></h1>
+                <a class="post-title-link" href="/post/b258e54c.html" itemprop="url">Python之网络扫描</a></h1>
         
 
         <div class="post-meta">
@@ -615,7 +563,7 @@ docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /ho
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-09T00:00:00+08:00">2019-07-09</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-09T00:00:00+08:00">2019-08-09</time>
             
 
             
@@ -654,271 +602,13 @@ docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /ho
       
         
           
-            <h2 id="下载网络文件"><a href="#下载网络文件" class="headerlink" title="下载网络文件"></a>下载网络文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">r=requests.get(&apos;http://*.*.*.228/logo.jpg&apos;)</span><br><span class="line">print(type(r.content))</span><br><span class="line">with open(&apos;logo.jpg&apos;,&apos;wb&apos;) as f:</span><br><span class="line">    f.write(r.content)</span><br></pre></td></tr></table></figure>
-<h3 id="socket客户端读取数据"><a href="#socket客户端读取数据" class="headerlink" title="socket客户端读取数据"></a>socket客户端读取数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">socket client读取GNSS数据</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">import socket,time</span><br><span class="line">#定义协议类型,相当于生命socket类型,同时生成socket连接对象</span><br><span class="line">client = socket.socket() </span><br><span class="line">client.connect((&apos;192.168.2.11&apos;,5017))</span><br><span class="line"></span><br><span class="line">read_len=1024</span><br><span class="line">while True:</span><br><span class="line">##    data=client.makefile().readline()##读取一行数据</span><br><span class="line">    data = client.recv(read_len)##每次读4组数据</span><br><span class="line">##    print(data+&apos;******&apos;)</span><br><span class="line"></span><br><span class="line">    dt_split=data.split(&apos;\r\n&apos;)</span><br><span class="line">    ##自动切换socket读取长度</span><br><span class="line">    if len(dt_split):</span><br><span class="line">        print dt_split</span><br><span class="line">        if dt_split[0][0] is not &apos;G&apos;:</span><br><span class="line">            read_len=2048</span><br><span class="line">        else:</span><br><span class="line">            read_len=512</span><br><span class="line"></span><br><span class="line">client.close()</span><br></pre></td></tr></table></figure>
-<h3 id="socket服务器端"><a href="#socket服务器端" class="headerlink" title="socket服务器端"></a>socket服务器端</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&apos;&apos;&apos;</span><br><span class="line">This is a testing program</span><br><span class="line">the program is used to start tcp server</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">import socket</span><br><span class="line">import sys</span><br><span class="line">def start_tcp_server(ip, port):</span><br><span class="line">  #create socket</span><br><span class="line">  sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">  server_address = (ip, port)</span><br><span class="line">  #bind port</span><br><span class="line">  print &apos;starting listen on ip %s, port %s&apos;%server_address</span><br><span class="line">  sock.bind(server_address)</span><br><span class="line">  </span><br><span class="line">  try:</span><br><span class="line">    #starting listening, allow only one connection</span><br><span class="line">    sock.listen(1)</span><br><span class="line">  except socket.error, e:</span><br><span class="line">    print &quot;fail to listen on port %s&quot;%e</span><br><span class="line">    sys.exit(1)</span><br><span class="line">  while True:</span><br><span class="line">    print &quot;waiting for connection&quot;</span><br><span class="line">    client,addr = sock.accept()</span><br><span class="line">    print &apos;having a connection&apos;</span><br><span class="line">    client.close()</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">  start_tcp_server(&apos;127.0.0.1&apos;, 80)</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/5aec304c.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/5aec304c.html" itemprop="url">docker-在windows下安装各种服务器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-01T10:23:12+08:00">2019-07-01</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="MongoDB的创建"><a href="#MongoDB的创建" class="headerlink" title="MongoDB的创建"></a>MongoDB的创建</h2><h4 id="MongoDB的server的创建"><a href="#MongoDB的server的创建" class="headerlink" title="MongoDB的server的创建"></a>MongoDB的server的创建</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">##创建volume来使数据持久化，与容器无关</span><br><span class="line">docker volume create --name mongodata </span><br><span class="line">docker ps -a</span><br><span class="line">docker run --name some-mongo -d -p 27017:27017 -v mongodata:/data/db mongo:3.2</span><br><span class="line">cmd /k docker ps -a</span><br></pre></td></tr></table></figure>
-<h4 id="MongoDB的client的连接MongoDB服务器"><a href="#MongoDB的client的连接MongoDB服务器" class="headerlink" title="MongoDB的client的连接MongoDB服务器"></a>MongoDB的client的连接MongoDB服务器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd /k docker exec  -it some-mongo sh</span><br></pre></td></tr></table></figure>
-<h2 id="Redis的server的创建"><a href="#Redis的server的创建" class="headerlink" title="Redis的server的创建"></a>Redis的server的创建</h2><h4 id="使用本地文件夹数据持久化"><a href="#使用本地文件夹数据持久化" class="headerlink" title="使用本地文件夹数据持久化"></a>使用本地文件夹数据持久化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir D:\docker\redis\data</span><br><span class="line">docker run -p 6379:6379 -v D:\docker\redis\data:/data --restart=always --name redis -d docker.io/redis redis-server</span><br><span class="line">cmd /k docker ps -a</span><br></pre></td></tr></table></figure>
-<h4 id="使用volume持久化"><a href="#使用volume持久化" class="headerlink" title="使用volume持久化"></a>使用volume持久化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">##docker volume create --name redisodata </span><br><span class="line">docker run -p 6379:6379 -v redisdata:/data --restart=always --name redis -d docker.io/redis redis-server</span><br><span class="line">cmd /k docker ps -a</span><br></pre></td></tr></table></figure>
-<h4 id="Redis的client的创建"><a href="#Redis的client的创建" class="headerlink" title="Redis的client的创建"></a>Redis的client的创建</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd /k docker exec -i -t redis /bin/bash -c &quot;redis-cli&quot;</span><br></pre></td></tr></table></figure>
-<h4 id="python操作redis的例子"><a href="#python操作redis的例子" class="headerlink" title="python操作redis的例子"></a>python操作redis的例子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import redis</span><br><span class="line">host = &apos;127.0.0.1&apos;</span><br><span class="line">port = 6379</span><br><span class="line">pool = redis.ConnectionPool(host=host, port=port)</span><br><span class="line"></span><br><span class="line">r = redis.Redis(connection_pool=pool)</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">set(name, value, ex=None, px=None, nx=False, xx=False)　　</span><br><span class="line"></span><br><span class="line">在Redis中设置值，默认，不存在则创建，存在则修改</span><br><span class="line">参数：</span><br><span class="line">     ex，过期时间（秒）</span><br><span class="line">     px，过期时间（毫秒）</span><br><span class="line">     nx，如果设置为True，则只有name不存在时，当前set操作才执行</span><br><span class="line">     xx，如果设置为True，则只有name存在时，岗前set操作才执行</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line">r.set(&apos;foo&apos;, &apos;bar&apos;)</span><br><span class="line">print(r.get(&apos;foo&apos;))</span><br><span class="line"></span><br><span class="line">r.setnx(&apos;age&apos;, 22)</span><br><span class="line">print(r.get(&apos;age&apos;))</span><br></pre></td></tr></table></figure>
-<h2 id="删除所有mongodb容器的python代码"><a href="#删除所有mongodb容器的python代码" class="headerlink" title="删除所有mongodb容器的python代码"></a>删除所有mongodb容器的python代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import sys</span><br><span class="line">import time</span><br><span class="line">docker_containers = os.popen(&apos;docker ps -a -q&apos;).read().split()</span><br><span class="line"></span><br><span class="line">for ctn in docker_containers:</span><br><span class="line">    print(&apos;stop &apos; + ctn)</span><br><span class="line">    os.popen(&apos;docker stop &apos;+ctn)</span><br><span class="line">    print(&apos;remove &apos; + ctn) </span><br><span class="line">    os.popen(&apos;docker rm &apos;+ctn)</span><br><span class="line">os.system(&apos;docker ps -a&apos;)</span><br><span class="line">time.sleep(5)</span><br></pre></td></tr></table></figure>
-<h2 id="通过python插入数据到Mongodb"><a href="#通过python插入数据到Mongodb" class="headerlink" title="通过python插入数据到Mongodb"></a>通过python插入数据到Mongodb</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line"></span><br><span class="line">from pymongo import MongoClient</span><br><span class="line"></span><br><span class="line">conn = MongoClient(&apos;127.0.0.1&apos;, 27017)</span><br><span class="line">db = conn.mydb  #连接mydb数据库，没有则自动创建</span><br><span class="line"></span><br><span class="line">my_set = db.mycollection ##使用test_set集合，没有则自动创建</span><br><span class="line"></span><br><span class="line">#添加多条数据到集合中</span><br><span class="line">users=[&#123;&quot;name&quot;:&quot;Xiaopch&quot;,&quot;age&quot;:18&#125;,&#123;&quot;name&quot;:&quot;Mr.Liu&quot;,&quot;age&quot;:20&#125;]  </span><br><span class="line">my_set.insert(users)</span><br></pre></td></tr></table></figure>
-<h2 id="将Mongodb的collection和pandas的dataframe相互转化"><a href="#将Mongodb的collection和pandas的dataframe相互转化" class="headerlink" title="将Mongodb的collection和pandas的dataframe相互转化"></a>将Mongodb的collection和pandas的dataframe相互转化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import pymongo </span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">client = pymongo.MongoClient(host=&apos;localhost&apos;, port=27017)</span><br><span class="line">db = client[&apos;db&apos;]</span><br><span class="line">collection = db[&apos;n_data&apos;]</span><br><span class="line"></span><br><span class="line">####将collection转换为dataframe</span><br><span class="line">cursor = collection.find()##.limit(10)</span><br><span class="line">df = pd.DataFrame(list(cursor))</span><br><span class="line"></span><br><span class="line">####将dataframe转化为collection</span><br><span class="line">result = collection.insert(df.to_dict(orient=&apos;records&apos;))</span><br><span class="line">##result = collection.insert(list(df.to_dict(orient=&apos;index&apos;)))</span><br></pre></td></tr></table></figure>
-<h2 id="MySQL的server的创建"><a href="#MySQL的server的创建" class="headerlink" title="MySQL的server的创建"></a>MySQL的server的创建</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir  D:\docker\mysql\data</span><br><span class="line">docker run -p 3306:3306 --name some-mysql  -v D:\docker\mysql\data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.6</span><br><span class="line">docker ps -a </span><br><span class="line">ping -n 3 127.0.0.1&gt;nul</span><br></pre></td></tr></table></figure>
-<h2 id="MySQL的client的创建"><a href="#MySQL的client的创建" class="headerlink" title="MySQL的client的创建"></a>MySQL的client的创建</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd /c docker exec -it some-mysql mysql -uroot –p</span><br></pre></td></tr></table></figure>
-<h2 id="通过python操作MySQL"><a href="#通过python操作MySQL" class="headerlink" title="通过python操作MySQL"></a>通过python操作MySQL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import pymysql</span><br><span class="line">try:</span><br><span class="line">    ####创建数据库</span><br><span class="line">    db = pymysql.connect(host=&apos;localhost&apos;,user=&apos;root&apos;, password=&apos;123456&apos;, port=3306)</span><br><span class="line">    cursor = db.cursor()</span><br><span class="line">    cursor.execute(&apos;SELECT VERSION()&apos;)</span><br><span class="line">    data = cursor.fetchone()</span><br><span class="line">    print(&apos;Database version:&apos;, data)</span><br><span class="line">    cursor.execute(&quot;CREATE DATABASE xiaopch DEFAULT CHARACTER SET utf8&quot;)</span><br><span class="line">    db.close()</span><br><span class="line">except:</span><br><span class="line">    print(&apos;database error&apos;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">####创建数据表</span><br><span class="line"># 连接数据库 并添加cursor游标</span><br><span class="line">conn = pymysql.connect(&apos;localhost&apos;,&apos;root&apos;,&apos;123456&apos;,&apos;xiaopch&apos;)</span><br><span class="line">cursor = conn.cursor()</span><br><span class="line">#  创建数据表的sql 语句  并设置name_id 为主键自增长不为空</span><br><span class="line">sql_createTb = &quot;&quot;&quot;CREATE TABLE MONEY (</span><br><span class="line">                 name_id INT NOT NULL AUTO_INCREMENT,</span><br><span class="line">                 LAST_NAME  CHAR(20),</span><br><span class="line">                 AGE INT,</span><br><span class="line">                 SEX CHAR(1),</span><br><span class="line">                 PRIMARY KEY(name_id))</span><br><span class="line">                 &quot;&quot;&quot;</span><br><span class="line"># 插入一条数据到moneytb 里面。</span><br><span class="line">sql_insert = &quot;insert into MONEY(LAST_NAME,AGE,SEX) values(&apos;de2&apos;,18,&apos;0&apos;)&quot;</span><br><span class="line"></span><br><span class="line"># 在 execute里面执行SQL语句</span><br><span class="line">##cursor.execute(sql_createTb)</span><br><span class="line">cursor.execute(sql_insert)</span><br><span class="line">print(cursor.rowcount)</span><br><span class="line">conn.commit()</span><br><span class="line">conn.close()</span><br><span class="line">cursor.close()</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/40c0f56f.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/40c0f56f.html" itemprop="url">CSharp类和接口</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T10:16:04+08:00">2019-06-24</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="C-中的构造函数与析构函数"><a href="#C-中的构造函数与析构函数" class="headerlink" title="C#中的构造函数与析构函数"></a>C#中的构造函数与析构函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">namespace LineApplication</span><br><span class="line">&#123;</span><br><span class="line">   class Line</span><br><span class="line">   &#123;</span><br><span class="line">      private double length;   //线条的长度</span><br><span class="line">      public Line()  // 构造函数</span><br><span class="line">      &#123;</span><br><span class="line">         Console.WriteLine(&quot;对象已创建&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">      ~Line() //析构函数</span><br><span class="line">      &#123;</span><br><span class="line">         Console.WriteLine(&quot;对象已删除&quot;);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      public void setLength( double len )</span><br><span class="line">      &#123;</span><br><span class="line">         length = len;</span><br><span class="line">      &#125;</span><br><span class="line">      public double getLength()</span><br><span class="line">      &#123;</span><br><span class="line">         return length;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      static void Main(string[] args)</span><br><span class="line">      &#123;</span><br><span class="line">         Line line = new Line();</span><br><span class="line">         // 设置线条长度</span><br><span class="line">         line.setLength(6.0);</span><br><span class="line">         Console.WriteLine(&quot;线条的长度： &#123;0&#125;&quot;, line.getLength());           </span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="C-接口代码"><a href="#C-接口代码" class="headerlink" title="C#接口代码"></a>C#接口代码</h2><ul>
-<li><p>接口定义了所有类继承接口时应遵循的语法合同。接口定义了语法合同 “是什么” 部分，派生类定义了语法合同 “怎么做” 部分。</p>
-</li>
-<li><p>接口定义了属性、方法和事件，这些都是接口的成员。接口只包含了成员的声明。成员的定义是派生类的责任。接口提供了派生类应遵循的标准结构。</p>
-</li>
-<li><p>接口使得实现接口的类或结构在形式上保持一致。</p>
-</li>
+            <h3 id="扫描局域网ip的活动端口"><a href="#扫描局域网ip的活动端口" class="headerlink" title="扫描局域网ip的活动端口"></a>扫描局域网ip的活动端口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import socket</span><br><span class="line"></span><br><span class="line">def get_ip_status(ip,port):</span><br><span class="line">    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    server.settimeout(0.2)</span><br><span class="line">    try:</span><br><span class="line">        server.connect((ip,port))</span><br><span class="line">        print(&apos;&#123;0&#125; port &#123;1&#125; is open&apos;.format(ip, port))</span><br><span class="line">    except Exception as err:</span><br><span class="line">        print(&apos;&#123;0&#125; port &#123;1&#125; is not open&apos;.format(ip,port))</span><br><span class="line">    finally:</span><br><span class="line">        server.close()</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    for ip in range(1,254):        </span><br><span class="line">        host = &apos;192.168.2.&apos;+str(ip)</span><br><span class="line">        for port in range(22,23):</span><br><span class="line">            get_ip_status(host,port)</span><br></pre></td></tr></table></figure>
+<h2 id="扫描局域网MAC"><a href="#扫描局域网MAC" class="headerlink" title="扫描局域网MAC"></a>扫描局域网MAC</h2><ul>
+<li>下载依赖包:<a href="https://www.winpcap.org/" target="_blank" rel="noopener">https://www.winpcap.org/</a></li>
+<li>mac_scan.py代码</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line">namespace ConsoleApplication_interface</span><br><span class="line">&#123;</span><br><span class="line">    //公共接口: &quot;动物&quot;</span><br><span class="line">    public interface IAnimal</span><br><span class="line">    &#123;  void Behavior();  &#125;</span><br><span class="line"></span><br><span class="line">    //类: 狗</span><br><span class="line">    public class Dog : IAnimal</span><br><span class="line">    &#123;        </span><br><span class="line">        public void Behavior()</span><br><span class="line">        &#123; Console.WriteLine(&quot;我晚上睡觉,白天活动&quot;); &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //类: 猫</span><br><span class="line">    public class Cat : IAnimal</span><br><span class="line">    &#123;        </span><br><span class="line">        public void Behavior()</span><br><span class="line">        &#123; Console.WriteLine(&quot;我白天睡觉,晚上活动&quot;); &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //类: 龟</span><br><span class="line">    public class Tortoise : IAnimal</span><br><span class="line">    &#123;</span><br><span class="line">        public void Behavior()</span><br><span class="line">        &#123; Console.WriteLine(&quot;我可以不活动，一睡就睡五千年!&quot;); &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    class Program</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            Dog myDog = new Dog();</span><br><span class="line">            myDog.Behavior(); //输出: &quot;我晚上睡觉,白天活动&quot;</span><br><span class="line"></span><br><span class="line">            Cat myCat = new Cat();</span><br><span class="line">            myCat.Behavior(); //输出: &quot;我白天睡觉,晚上活动&quot;</span><br><span class="line"></span><br><span class="line">            Tortoise tortoise = new Tortoise();</span><br><span class="line">            tortoise.Behavior(); </span><br><span class="line">            Console.Read();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">from scapy.all import srp,Ether,ARP,conf</span><br><span class="line">ipscan=&apos;192.168.2.1/24&apos;</span><br><span class="line">try:</span><br><span class="line">    ans,unans = srp(Ether(dst=&quot;FF:FF:FF:FF:FF:FF&quot;)/ARP(pdst=ipscan),timeout=2,verbose=True)</span><br><span class="line">except Exception,e:</span><br><span class="line">    print str(e)</span><br><span class="line">else:</span><br><span class="line">##    print(ans)</span><br><span class="line">    for snd,rcv in ans:</span><br><span class="line">        list_mac=rcv.sprintf(&quot;%Ether.src% - %ARP.psrc%&quot;)</span><br><span class="line">        if list_mac.startswith(&apos;b8&apos;):print(&apos;**&apos;)</span><br><span class="line">        print list_mac</span><br><span class="line"></span><br><span class="line">input()</span><br></pre></td></tr></table></figure>
+<h3 id="扫描局域网活动主机"><a href="#扫描局域网活动主机" class="headerlink" title="扫描局域网活动主机"></a>扫描局域网活动主机</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import os</span><br><span class="line">import time</span><br><span class="line">import subprocess</span><br><span class="line">def ping_call():</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    fnull = open(os.devnull, &apos;w&apos;)</span><br><span class="line">    for i in range(1, 256):</span><br><span class="line">        ipaddr = &apos;ping 192.168.2.&apos; + str(i)</span><br><span class="line">        result = subprocess.call(ipaddr + &apos; -n 2&apos;, shell=True, stdout=fnull, stderr=fnull)</span><br><span class="line">        current_time = time.strftime(&apos;%Y%m%d-%H:%M:%S&apos;, time.localtime())</span><br><span class="line">        if result:</span><br><span class="line">            print(&apos;时间:&#123;&#125; ip地址:&#123;&#125; ping fall&apos;.format(current_time, ipaddr))</span><br><span class="line">        else:</span><br><span class="line">            print(&apos;时间:&#123;&#125; ip地址:&#123;&#125; ping ok&apos;.format(current_time, ipaddr))</span><br><span class="line">    print(&apos;程序耗时&#123;:.2f&#125;&apos;.format(time.time() - start_time))</span><br><span class="line">    fnull.close()</span><br><span class="line">ping_call()</span><br></pre></td></tr></table></figure>
 
           
         
@@ -969,7 +659,7 @@ docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /ho
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/ff46cb4e.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/67afd67b.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -988,7 +678,7 @@ docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /ho
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/ff46cb4e.html" itemprop="url">CSharp-MongoDB数据库</a></h1>
+                <a class="post-title-link" href="/post/67afd67b.html" itemprop="url">python的opencv库</a></h1>
         
 
         <div class="post-meta">
@@ -1000,7 +690,7 @@ docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /ho
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T09:33:00+08:00">2019-06-24</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T00:00:00+08:00">2019-08-07</time>
             
 
             
@@ -1039,15 +729,258 @@ docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /ho
       
         
           
-            <h3 id="下载驱动2-7-3"><a href="#下载驱动2-7-3" class="headerlink" title="下载驱动2.7.3"></a>下载驱动2.7.3</h3><p><a href="http://mongodb.github.io/mongo-csharp-driver/" target="_blank" rel="noopener">http://mongodb.github.io/mongo-csharp-driver/</a></p>
-<h3 id="添加引用"><a href="#添加引用" class="headerlink" title="添加引用"></a>添加引用</h3><ul>
-<li>程序中添加引用 MongoDB.Bson.dll 和 MongoDB.Driver.dll</li>
-<li>MongoDB.Driver.dll：驱动程序</li>
-<li>MongoDB.Bson.dll：序列化、Json相关</li>
-</ul>
-<h3 id="下载并启动monggodb"><a href="#下载并启动monggodb" class="headerlink" title="下载并启动monggodb"></a>下载并启动monggodb</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd /k mongod --dbpath D:\dev\data\db</span><br></pre></td></tr></table></figure>
-<h3 id="建立一个C-的Console项目-并添加代码"><a href="#建立一个C-的Console项目-并添加代码" class="headerlink" title="建立一个C#的Console项目,并添加代码."></a>建立一个C#的Console项目,并添加代码.</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line">using MongoDB.Bson;</span><br><span class="line">using MongoDB.Driver;</span><br><span class="line"></span><br><span class="line">namespace ConsoleApplication_MongoDB</span><br><span class="line">&#123;</span><br><span class="line">    class Program</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            var connectionString = &quot;mongodb://localhost:27017&quot;;</span><br><span class="line">            var client = new MongoClient(connectionString);</span><br><span class="line">            var db = client.GetDatabase(&quot;foo&quot;);</span><br><span class="line">            var collection = db.GetCollection&lt;BsonDocument&gt;(&quot;bar&quot;);</span><br><span class="line">            var document = new BsonDocument</span><br><span class="line">            &#123;</span><br><span class="line">                &#123; &quot;name&quot;, &quot;MongoDB&quot; &#125;,</span><br><span class="line">                &#123; &quot;type&quot;, &quot;Database&quot; &#125;,</span><br><span class="line">                &#123; &quot;count&quot;, 1 &#125;,</span><br><span class="line">                &#123; &quot;info&quot;, new BsonDocument</span><br><span class="line">                    &#123;</span><br><span class="line">                        &#123; &quot;x&quot;, 203 &#125;,</span><br><span class="line">                        &#123; &quot;y&quot;, 102 &#125;</span><br><span class="line">                    &#125;&#125;</span><br><span class="line">            &#125;;</span><br><span class="line">            collection.InsertOne(document);</span><br><span class="line">            collection.InsertOne(new BsonDocument(&quot;Name&quot;, &quot;Jack&quot;));</span><br><span class="line">            Console.WriteLine(document.ToString());</span><br><span class="line">            Console.ReadLine();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="C-添加数组到BsonDocument"><a href="#C-添加数组到BsonDocument" class="headerlink" title="C#添加数组到BsonDocument"></a>C#添加数组到BsonDocument</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">BsonArray x = new BsonArray();</span><br><span class="line">BsonArray z = new BsonArray();</span><br><span class="line">x.Add(1.2);</span><br><span class="line">x.Add(1.3);</span><br><span class="line">z.Add(2.3);</span><br><span class="line">z.Add(2.5);</span><br><span class="line"></span><br><span class="line">var document = new BsonDocument &#123;</span><br><span class="line">    &#123;&quot;author&quot;, &quot;xiaopch&quot;&#125;,</span><br><span class="line">    &#123;&quot;title&quot;, &quot;standard_50rail_profile&quot;&#125;,</span><br><span class="line">    &#123;&quot;X&quot;,x&#125;,</span><br><span class="line">    &#123;&quot;Z&quot;,z&#125;&#125;;</span><br><span class="line">    collection.InsertOne(document);</span><br></pre></td></tr></table></figure>
+            <h2 id="Python-模块opencv"><a href="#Python-模块opencv" class="headerlink" title="Python 模块opencv"></a>Python 模块opencv</h2><h3 id="模块安装"><a href="#模块安装" class="headerlink" title="模块安装"></a>模块安装</h3><pre><code>pip install numpy Matplotlib #由于opencv依赖numpy
+pip install opencv-python  -i https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre><h3 id="打开摄像头"><a href="#打开摄像头" class="headerlink" title="打开摄像头"></a>打开摄像头</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line"># 打开摄像头并灰度化显示</span><br><span class="line">import cv2</span><br><span class="line"></span><br><span class="line">capture = cv2.VideoCapture(0)</span><br><span class="line">while(True):</span><br><span class="line">    # 获取一帧</span><br><span class="line">    ret, frame = capture.read()</span><br><span class="line">    # 将这帧转换为灰度图</span><br><span class="line">    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</span><br><span class="line">    cv2.imshow(&apos;frame&apos;, gray)</span><br><span class="line">    if cv2.waitKey(1) &amp; 0xFF==ord(&apos;q&apos;):</span><br><span class="line">        break</span><br><span class="line"># When everything done, release the capture</span><br><span class="line">capture.release()</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/e81aae5c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/e81aae5c.html" itemprop="url">深度学习的基本概念</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-27T00:00:00+08:00">2019-07-27</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>  定义：损失函数就一个具体的样本而言，模型预测的值与真实值之间的差距。<br>对于一个样本(xi,yi)其中yi为真实值，而f(xi)为我们的预测值。使用损失函数L(f(xi),yi)来表示真实值和预测值之间的差距。两者差距越小越好，最理想的情况是预测值刚好等于真实值。</p>
+<h2 id="均方差损失函数"><a href="#均方差损失函数" class="headerlink" title="均方差损失函数"></a>均方差损失函数</h2><p>均方误差（MSE）的含义是求一个batch中n个样本的n个输出与期望输出的差的平方的平均值。</p>
+<h2 id="交叉熵代价函数（cross-entropy-cost-function）"><a href="#交叉熵代价函数（cross-entropy-cost-function）" class="headerlink" title="交叉熵代价函数（cross-entropy cost function）"></a>交叉熵代价函数（cross-entropy cost function）</h2><p>交叉熵是用来评估当前训练得到的概率分布与真实分布的差异情况。</p>
+<p><a href="http://180.76.107.228/learning/pub/categorical_crossentropy.pdf" target="_blank" rel="noopener">交叉熵代价函数</a></p>
+<h2 id="ReLU函数的表达式"><a href="#ReLU函数的表达式" class="headerlink" title="ReLU函数的表达式"></a>ReLU函数的表达式</h2><p>y=max(x,0)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/fdd75b96.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/fdd75b96.html" itemprop="url">python之tkinter与matplibplot画图</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-25T00:00:00+08:00">2019-07-25</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="python的Tkinter"><a href="#python的Tkinter" class="headerlink" title="python的Tkinter"></a>python的Tkinter</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from Tkinter import *</span><br><span class="line">master = Tk()</span><br><span class="line">w = Scale(master, from_=0, to=42)</span><br><span class="line">w.pack()</span><br><span class="line">w = Scale(master, from_=0, to=200, orient=HORIZONTAL)</span><br><span class="line">w.pack()</span><br><span class="line">mainloop()</span><br></pre></td></tr></table></figure>
+<h2 id="tkinter和matplotlib作图"><a href="#tkinter和matplotlib作图" class="headerlink" title="tkinter和matplotlib作图"></a>tkinter和matplotlib作图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import matplotlib</span><br><span class="line">matplotlib.use(&apos;TkAgg&apos;)</span><br><span class="line">from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg</span><br><span class="line">from matplotlib.figure import Figure</span><br><span class="line">from tkinter import *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">root = Tk()</span><br><span class="line">root.title(&quot;tkinter and matplotlib&quot;)</span><br><span class="line"></span><br><span class="line">f = Figure(figsize=(5, 4), dpi=100)</span><br><span class="line">f_plot = f.add_subplot(111)</span><br><span class="line"></span><br><span class="line">def other_picture_alg(): #数据相关的算法应该与plot分离开</span><br><span class="line">    x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br><span class="line">    y = [3, 6, 9, 12, 15, 18, 15, 12, 15, 18]</span><br><span class="line">    return x, y</span><br><span class="line"></span><br><span class="line">def draw_picture():</span><br><span class="line">    f_plot.clear()</span><br><span class="line">    x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] #关于数据的部分可以提取出来</span><br><span class="line">    y = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]</span><br><span class="line">    f_plot.plot(x, y)</span><br><span class="line">    canvs.draw()</span><br><span class="line"></span><br><span class="line">def draw_picture2():</span><br><span class="line">    f_plot.clear()</span><br><span class="line">    x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] #关于数据的部分可以提取出来</span><br><span class="line">    y = [2, 4, 6, 8, 10, 8, 6, 4, 2, 0]</span><br><span class="line">    f_plot.plot(x, y)</span><br><span class="line">    canvs.draw()</span><br><span class="line"></span><br><span class="line">def draw_picture3():</span><br><span class="line">    f_plot.clear()</span><br><span class="line">    x, y = other_picture_alg() # 使用由算法生成的数据，可以避免重复的运算过程</span><br><span class="line">    f_plot.plot(x, y)</span><br><span class="line">    canvs.draw()</span><br><span class="line"></span><br><span class="line">canvs = FigureCanvasTkAgg(f, root)</span><br><span class="line">canvs.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)</span><br><span class="line">Button(root, text=&apos;pic&apos;, command=draw_picture).pack()</span><br><span class="line">Button(root, text=&apos;pic2&apos;, command=draw_picture2).pack()</span><br><span class="line">Button(root, text=&apos;pic3&apos;, command=draw_picture3).pack()</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure>
+<h2 id="tkinter的scaler动态作图"><a href="#tkinter的scaler动态作图" class="headerlink" title="tkinter的scaler动态作图"></a>tkinter的scaler动态作图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import matplotlib</span><br><span class="line">matplotlib.use(&apos;TkAgg&apos;)</span><br><span class="line">from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg</span><br><span class="line">from matplotlib.figure import Figure</span><br><span class="line">from tkinter import *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">root = Tk()</span><br><span class="line">root.title(&quot;tkinter and matplotlib&quot;)</span><br><span class="line"></span><br><span class="line">f = Figure(figsize=(5, 4), dpi=100)</span><br><span class="line">f_plot = f.add_subplot(111)</span><br><span class="line"></span><br><span class="line">def call_func(text):</span><br><span class="line">    print(&apos;text = &apos;, text)</span><br><span class="line">    f_plot.clear()</span><br><span class="line">    x = [1, 2, 3, 4, 5, 6, 7, 8, 9, float(v.get())] #关于数据的部分可以提取出来</span><br><span class="line">    y = [3, 6, 9, 12, 15, 18, 21, 24, 27, float(v.get())]</span><br><span class="line">    f_plot.plot(x, y)</span><br><span class="line">    canvs.draw()</span><br><span class="line"></span><br><span class="line">v = StringVar()</span><br><span class="line"></span><br><span class="line">canvs = FigureCanvasTkAgg(f, root)</span><br><span class="line">canvs.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Scale(root, from_=0, to=200.5,</span><br><span class="line">          command=call_func,  # 设置回调函数</span><br><span class="line">          variable=v,  # 绑定变量</span><br><span class="line">          resolution=0.1, orient=HORIZONTAL).pack()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -1086,7 +1019,7 @@ docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /ho
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1131,7 +1064,7 @@ docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /ho
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">165</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1224,33 +1157,7 @@ docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /ho
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1290,7 +1197,7 @@ docker run  -it -p 80:80 -v D:/docker/github:/home/hexo alpine:hexo sh -c cd /ho
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

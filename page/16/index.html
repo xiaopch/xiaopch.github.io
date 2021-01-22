@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/9c8c3e50.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/c2fb4f03.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -292,7 +292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/9c8c3e50.html" itemprop="url">Ubuntu安装最新版nodejs</a></h1>
+                <a class="post-title-link" href="/post/c2fb4f03.html" itemprop="url">tensorflow和keras示例</a></h1>
         
 
         <div class="post-meta">
@@ -304,7 +304,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-23T00:00:00+08:00">2019-09-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-21T17:38:55+08:00">2019-11-21</time>
             
 
             
@@ -343,605 +343,299 @@
       
         
           
-            <h3 id="自动安装"><a href="#自动安装" class="headerlink" title="自动安装"></a>自动安装</h3><ul>
-<li>下载脚本安装</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##如果安装nodejs 10.x版本</span></span><br><span class="line">curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -</span><br><span class="line">sudo apt-get install -y nodejs</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装npm国内镜像</span></span><br><span class="line">sudo npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line">sudo npm install cnpm -g --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<ul>
-<li>常规安装</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update -y</span><br><span class="line">sudo apt install -y nodejs nodejs-legacy npm</span><br><span class="line">sudo npm config set registry https://registry.npm.taobao.org</span><br><span class="line">sudo npm install n -g</span><br><span class="line">sudo n stable</span><br></pre></td></tr></table></figure>
-<ul>
-<li>通过 npm 安装工具 n 来管理 node 版本，升级到最新稳定版</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install n -g</span><br><span class="line">sudo n stable</span><br><span class="line"></span><br><span class="line">n                              #显示已安装的Node版本</span><br><span class="line">n latest                       #安装最新版本Node</span><br><span class="line">n stable                       #安装最新稳定版Node</span><br><span class="line">n lts                          #安装最新长期维护版(lts)Node</span><br><span class="line">n version                      #根据提供的版本号安装Node</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装后，切换版本：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo n           方向键选择已安装的 node 版本，然后回车确认</span><br><span class="line">node -v          检查当期版本</span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果切换后，node的版本居然没有发生变化，解决方案如下：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> NODE_HOME=/usr/<span class="built_in">local</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$NODE_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> NODE_PATH=<span class="variable">$NODE_HOME</span>/lib/node_modules:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
-<h3 id="下载文件安装"><a href="#下载文件安装" class="headerlink" title="下载文件安装"></a>下载文件安装</h3><ul>
-<li>下载并解压</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://nodejs.org/dist/v6.9.5/node-v6.9.5-linux-x64.tar.xz</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>在此目录下解压</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xz -d node-v6.9.5-linux-x64.tar.xz</span><br><span class="line">tar -xvf node-v6.9.5-linux-x64.tar</span><br></pre></td></tr></table></figure>
+            <h3 id="初学者的-TensorFlow-2-0-教程"><a href="#初学者的-TensorFlow-2-0-教程" class="headerlink" title="初学者的 TensorFlow 2.0 教程"></a>初学者的 TensorFlow 2.0 教程</h3><p>下载并安装 TensorFlow 2.0 测试版包。将 TensorFlow 载入你的程序：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> absolute_import, division, print_function, unicode_literals</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br></pre></td></tr></table></figure>
+<p>载入并准备好 <a href="http://yann.lecun.com/exdb/mnist/" target="_blank" rel="noopener">MNIST 数据集</a>。将样本从整数转换为浮点数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mnist = tf.keras.datasets.mnist</span><br><span class="line"></span><br><span class="line">(x_train, y_train), (x_test, y_test) = mnist.load_data()</span><br><span class="line">x_train, x_test = x_train / <span class="number">255.0</span>, x_test / <span class="number">255.0</span></span><br></pre></td></tr></table></figure>
+<p>将模型的各层堆叠起来，以搭建 <code>tf.keras.Sequential</code> 模型。为训练选择优化器和损失函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">model = tf.keras.models.Sequential([</span><br><span class="line">  tf.keras.layers.Flatten(input_shape=(<span class="number">28</span>, <span class="number">28</span>)),</span><br><span class="line">  tf.keras.layers.Dense(<span class="number">128</span>, activation=<span class="string">'relu'</span>),</span><br><span class="line">  tf.keras.layers.Dropout(<span class="number">0.2</span>),</span><br><span class="line">  tf.keras.layers.Dense(<span class="number">10</span>, activation=<span class="string">'softmax'</span>)</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">model.compile(optimizer=<span class="string">'adam'</span>,</span><br><span class="line">              loss=<span class="string">'sparse_categorical_crossentropy'</span>,</span><br><span class="line">              metrics=[<span class="string">'accuracy'</span>])</span><br></pre></td></tr></table></figure>
+<p>训练并验证模型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model.fit(x_train, y_train, epochs=<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">model.evaluate(x_test,  y_test, verbose=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>现在，这个照片分类器的准确度已经达到 98%。想要了解更多，请阅读 <a href="https://www.tensorflow.org/tutorials/" target="_blank" rel="noopener">TensorFlow 教程</a>。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/4f4a8398.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/4f4a8398.html" itemprop="url">couchdb备份和还原</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T00:00:00+08:00">2019-11-08</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g couchdb-dump</span><br></pre></td></tr></table></figure>
+<h2 id="Usage-Examples"><a href="#Usage-Examples" class="headerlink" title="Usage Examples"></a>Usage Examples</h2><p>The following will dump the contents of a CouchDB database called <em>myhugedatabase</em> running on port 5984 on localhost. The output is written to a file called <em>myhugedatabase.json</em>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cdbdump -d myhugedatabase &gt; myhugedatabase.json</span><br></pre></td></tr></table></figure>
+<p>Load all the documents in the <em>myhugedatabase.json</em> file into a CouchDB database called <em>myhugeduplicate</em>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cdbload -d myhugeduplicate &lt; myhugedatabase.json</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/adac2d74.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/adac2d74.html" itemprop="url">curl操作couchdb</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T00:00:00+08:00">2019-11-08</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="curl操作couchdb"><a href="#curl操作couchdb" class="headerlink" title="curl操作couchdb"></a>curl操作couchdb</h3><ul>
+<li><p>http远程管理<br><a href="http://192.168.2.163:5984/_utils/#" target="_blank" rel="noopener">http://192.168.2.163:5984/_utils/#</a> </p>
 </li>
-<li><p>解压后进入到解压后的文件夹。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd node-v6.9.5-linux-x64</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置node和npm为全局变量。(设置软链接)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /home/chuan/chuansoft/node-v6.9.5-linux-x64/bin/node /usr/local/bin/node</span><br><span class="line">ln -s /home/chuan/chuansoft/node-v6.9.5-linux-x64/bin/npm /usr/local/bin/npm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入到其他文件夹测试。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<li><p>测试连接</p>
 </li>
 </ul>
-<p>​    </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/17b0bc0b.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/17b0bc0b.html" itemprop="url">Linux下screen命令的基本用法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T00:00:00+08:00">2019-09-16</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="linux之Screen"><a href="#linux之Screen" class="headerlink" title="linux之Screen"></a>linux之Screen</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装:"></a>安装:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install screen</span><br></pre></td></tr></table></figure>
-<h4 id="运行"><a href="#运行" class="headerlink" title="运行:"></a>运行:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -S terminal1</span><br></pre></td></tr></table></figure>
-<h4 id="进入screen窗口后，想暂时退出"><a href="#进入screen窗口后，想暂时退出" class="headerlink" title="进入screen窗口后，想暂时退出 :"></a>进入screen窗口后，想暂时退出 :</h4><ul>
-<li>按ctrl+a+d这样就保存好一个虚拟终端了，系统会提示deatached</li>
-</ul>
-<h3 id="列出当前所有screen"><a href="#列出当前所有screen" class="headerlink" title="列出当前所有screen:"></a>列出当前所有screen:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -ls</span><br></pre></td></tr></table></figure>
-<h3 id="重新连接"><a href="#重新连接" class="headerlink" title="重新连接:"></a>重新连接:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -r terminal1</span><br></pre></td></tr></table></figure>
-<h3 id="彻底退出"><a href="#彻底退出" class="headerlink" title="彻底退出:"></a>彻底退出:</h3><ul>
-<li>如果一个虚拟终端中的程序执行完毕了，screen -r 进入这个终端后再执行exit就完全退出了。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/78a62ee2.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/78a62ee2.html" itemprop="url">ubuntu卸载桌面环境和配置固定IP</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T00:00:00+08:00">2019-09-16</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="ubuntu卸载桌面环境"><a href="#ubuntu卸载桌面环境" class="headerlink" title="ubuntu卸载桌面环境"></a>ubuntu卸载桌面环境</h3><p>1、卸载掉gnome-shell主程序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove gnome-shell</span><br></pre></td></tr></table></figure>
-<p>2、卸载掉gnome</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove gnome</span><br></pre></td></tr></table></figure>
-<p>3、卸载依赖关系</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure>
-<p>4、彻底卸载删除gnome的相关配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge gnome*</span><br></pre></td></tr></table></figure>
-<p>5、清理安装gnome时下的缓存程序软件包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo apt-get clean</span><br></pre></td></tr></table></figure>
-<h1 id="Ubuntu-配置固定IP"><a href="#Ubuntu-配置固定IP" class="headerlink" title="Ubuntu 配置固定IP"></a>Ubuntu 配置固定IP</h1><ul>
-<li>编辑配置文件 </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/network/interfaces</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl http://127.0.0.1:5984/</span><br><span class="line">curl http://127.0.0.1:5984/_utils/</span><br></pre></td></tr></table></figure>
 <ul>
-<li>修改内容如下</li>
+<li><p><strong>获取一个uuid</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET http://user:123456@192.168.2.163:5984/_uuids</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示所有数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET http://127.0.0.1:5984/_all_dbs</span><br><span class="line">curl -X GET http://user:123456@192.168.2.163:5984/_all_dbs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -X PUT http://127.0.0.1:5984/baseball</span><br><span class="line">curl -X PUT http://user:123456@192.168.2.163:5984/test-remote</span><br><span class="line">curl -X PUT http://user:123456@192.168.2.163:5984/test-remote</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除数据库</p>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># The loopback network interface</span><br><span class="line">auto lo</span><br><span class="line">iface lo inet loopback</span><br><span class="line"># The primary network interface</span><br><span class="line"></span><br><span class="line">auto enp2s0</span><br><span class="line">iface enp2s0 inet static</span><br><span class="line">address 192.168.2.205</span><br><span class="line">gateway 192.168.2.1</span><br><span class="line">netmask 255.255.255.0</span><br><span class="line">dns-nameserver 192.168.2.109</span><br></pre></td></tr></table></figure>
-<h3 id="临时修改DNS"><a href="#临时修改DNS" class="headerlink" title="临时修改DNS"></a>临时修改DNS</h3><ul>
-<li>nano打开文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo nano /etc/resolv.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X DELETE http://user:123456@127.0.0.1:5984/test3</span><br></pre></td></tr></table></figure>
 <ul>
-<li>并修改内容</li>
+<li>删除记录</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nameserver 192.168.2.109</span><br><span class="line">nameserver 202.103.44.150</span><br></pre></td></tr></table></figure>
-<h3 id="永久修改DNS"><a href="#永久修改DNS" class="headerlink" title="永久修改DNS"></a>永久修改DNS</h3><ul>
-<li>修改配置文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/systemd/resolved.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X DELETE http://user:123456@192.168.2.163:5984/test-remote/atwork?rev=1-3c32af07ce6c571fbd43f16066bd92a1</span><br></pre></td></tr></table></figure>
 <ul>
-<li>修改内容如下</li>
+<li><p>查询一条记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET http://user:123456@192.168.2.163:5984/gis/df_red_state_points</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询所有记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET http://user:123456@192.168.2.163:5984/gis/_all_docs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>插入新数据</p>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Resolve]</span><br><span class="line">DNS=192.168.2.109 202.103.44.150</span><br><span class="line">#FallbackDNS=</span><br><span class="line">#Domains=</span><br><span class="line">LLMNR=no</span><br><span class="line">#MulticastDNS=no</span><br><span class="line">#DNSSEC=no</span><br><span class="line">#Cache=yes</span><br><span class="line">#DNSStubListener=yes</span><br></pre></td></tr></table></figure>
-<h3 id="查看修改的结果"><a href="#查看修改的结果" class="headerlink" title="查看修改的结果"></a>查看修改的结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli dev show</span><br></pre></td></tr></table></figure>
-<h3 id="重启机器使网络设置生效"><a href="#重启机器使网络设置生效" class="headerlink" title="重启机器使网络设置生效"></a>重启机器使网络设置生效</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/85883bd1.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/85883bd1.html" itemprop="url">树莓派之MariaDB</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T00:00:00+08:00">2019-09-16</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="安装MariaDB"><a href="#安装MariaDB" class="headerlink" title="安装MariaDB"></a>安装MariaDB</h3><p>MariaDB是MySQL的一个分支</p>
-<p>直接命令行敲入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mariadb-server</span><br></pre></td></tr></table></figure>
-<p>即可完成安装。</p>
-<p>一开始安装完成后不知道是需要初始化，折腾了半天登录不了，改不了密码。后来才知道，安装完成后需要立刻的命令行敲入：</p>
-<p>mysql_secure_installation</p>
-<p>然后会引导进行初始化操作。</p>
-<p>一切正常之后，发现程序如果是非root用户权限下运行的程序，无法连接上数据库。</p>
-<p>包括直接命令行输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-<p>登录发现也被拒绝登录了。显示’Access denied for user ‘root‘@’localhost’ (using password: YES)’</p>
-<p>必须用root权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql -u root -p</span><br></pre></td></tr></table></figure>
-<p>才能登录成功。</p>
-<p>登录成功后进行如下命令修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update mysql.user set plugin=&apos;mysql_native_password&apos; where user=&apos;root&apos;;</span><br><span class="line">update mysql.user set password=password(&quot;您要修改的密码&quot;) where user=&apos;root&apos;; </span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
-<p>最后终于和普通MySQL一样的使用了。</p>
-<p>然后需要进行远程连接数据库访问的话，敲入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all on *.* &apos;root&apos;@&apos;%&apos; identified by &apos;123456&apos;;</span><br></pre></td></tr></table></figure>
-<p>注：by后面是密码。</p>
-<h3 id="远程登录设置"><a href="#远程登录设置" class="headerlink" title="远程登录设置"></a>远程登录设置</h3><p>1、连接服务器: mysql -u root -p</p>
-<p>2、看当前所有数据库：show databases;</p>
-<p>3、进入mysql数据库：use mysql;</p>
-<p>4、查看mysql数据库中所有的表：show tables;</p>
-<p>5、查看user表中的数据：select Host, User,Password from user;</p>
-<p>6、修改user表中的Host:update user set Host=’%’ where User=’root’;</p>
-<p>7、最后刷新一下：flush privileges;</p>
-<h3 id="python连接MariaDB"><a href="#python连接MariaDB" class="headerlink" title="python连接MariaDB"></a>python连接MariaDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line">#coding=utf8</span><br><span class="line">import pymysql</span><br><span class="line">#连接数据库，host、账号、密码、库</span><br><span class="line">db = pymysql.connect(&apos;192.168.2.1&apos;,&apos;root&apos;,&apos;123456&apos;,&apos;testdb&apos;)</span><br><span class="line">#创建游标使用的cursor方法</span><br><span class="line">cursor = db.cursor()</span><br><span class="line">#使用execute方法执行sql语句</span><br><span class="line">cursor.execute(&apos;select version()&apos;)</span><br><span class="line">#使用fetchone方法获取单条数据</span><br><span class="line">data = cursor.fetchone()</span><br><span class="line">print(&apos;Database version:%s&apos; % data)</span><br><span class="line">#关闭游标，并关闭数据库</span><br><span class="line">cursor.close()</span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/81030d59.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaopch">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/81030d59.html" itemprop="url">nodejs操作MongoDB和leveldb</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-09T00:00:00+08:00">2019-09-09</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="nodejs读取json文件并写入MongoDB"><a href="#nodejs读取json文件并写入MongoDB" class="headerlink" title="nodejs读取json文件并写入MongoDB"></a>nodejs读取json文件并写入MongoDB</h3><ul>
-<li><strong>leveldb 是 Google 用 C++ 开发的一个快速的键值对存储数据库，提供从字符串键到字符串值的有序映射。</strong></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -H &quot;Content-Type: application/json&quot; -X PUT http://user:123456@192.168.2.163:5984/test-remote/87658428664f4d3749a04fc11000183d -d  &quot;&#123;\&quot;Name\&quot;:\&quot;Raju\&quot;,\&quot;age\&quot;:\&quot;23\&quot;&#125;&quot;</span><br><span class="line"></span><br><span class="line">curl  -X PUT http://user:123456@192.168.2.163:5984/test-remote/master -d  &quot;&#123;\&quot;Name\&quot;:\&quot;xiaopch\&quot;,\&quot;age\&quot;:\&quot;99\&quot;&#125;&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>附加文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">curl -X PUT http:///user:123456@192.168.2.163:5984/test-remote/atwork/atwork.jpg? --data-binary @atwork.jpg -H &quot;Content-Type:image/jpg&quot; </span><br><span class="line">::atwork.jpg是当前目录下的图片文件</span><br><span class="line"></span><br><span class="line">::上传txt数据文件</span><br><span class="line">curl -X PUT http:///user:123456@192.168.2.163:5984/test-remote/iLevel/iLevel2 --data-binary @iLevel.txt -H &quot;Content-Type:text/plain&quot;</span><br><span class="line"></span><br><span class="line">::上传csv数据文件</span><br><span class="line">curl -X PUT http:///user:123456@192.168.2.163:5984/test-remote/inspection_data/20191106 --data-binary @inspection_data.csv -H &quot;Content-Type:text/plain&quot;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&quot;fs&quot;);</span><br><span class="line">var MongoClient = require(&apos;mongodb&apos;).MongoClient;</span><br><span class="line">var dbName = &quot;test&quot;;</span><br><span class="line">var url = &quot;mongodb://localhost:27017/&quot; + dbName;</span><br><span class="line"></span><br><span class="line">MongoClient.connect(url, function (err, db) &#123;</span><br><span class="line">    if (err)</span><br><span class="line">        throw err;</span><br><span class="line">    console.log(&quot;数据库&quot; + dbName + &quot;已创建!&quot;);</span><br><span class="line">    var dbase = db.db(dbName);</span><br><span class="line"></span><br><span class="line">    //判断集合是否存在</span><br><span class="line">    var collection_name = &quot;json_data&quot;;</span><br><span class="line">	 </span><br><span class="line">    //创建集合，即使集合已经存在，也不会产生异常</span><br><span class="line">    dbase.createCollection(collection_name, function (err, res) &#123;</span><br><span class="line">        if (err)</span><br><span class="line">            throw err;</span><br><span class="line">        console.log(&quot;创建集合&quot; + collection_name + &quot;成功&quot;);</span><br><span class="line"></span><br><span class="line">        //插入tbobjects文件</span><br><span class="line">        var fileName = &quot;cities.json&quot;;</span><br><span class="line">        console.log(&quot;读取json文件：&quot; + fileName);</span><br><span class="line">        var fileContent = fs.readFileSync(fileName);</span><br><span class="line">        if (fileContent) &#123;</span><br><span class="line">            console.log(&quot;fileContent .len=&quot; + fileContent.length);</span><br><span class="line">            //写入数据库</span><br><span class="line">            var tbfile = JSON.parse(fileContent);</span><br><span class="line">            dbase.collection(collection_name).insertOne(tbfile, function (err, res) &#123;</span><br><span class="line">                if (err)</span><br><span class="line">                    throw err;</span><br><span class="line">                console.log(&quot;tbfile文件写入数据库成功&quot;);</span><br><span class="line">                db.close();</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="nodejs读取并写入leveldb"><a href="#nodejs读取并写入leveldb" class="headerlink" title="nodejs读取并写入leveldb"></a>nodejs读取并写入leveldb</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">let level = require(&apos;level&apos;);</span><br><span class="line">let db = level(&quot;./data.db&quot;, &#123;</span><br><span class="line">        valueEncoding: &quot;json&quot;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">db.put(&quot;1003&quot;, &#123;</span><br><span class="line">    id: &quot;1003&quot;,</span><br><span class="line">    name: &quot;xiaop&quot;,</span><br><span class="line">    age: 30</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">db.get(&quot;1003&quot;, function (error, value) &#123;</span><br><span class="line">    if (error) &#123;</span><br><span class="line">        throw error</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(value);</span><br><span class="line">&#125;);</span><br><span class="line">db.del(&quot;1003&quot;, function (error) &#123;</span><br><span class="line">    if (error) &#123;</span><br><span class="line">        throw error</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="读取leveldb数据库的key和value"><a href="#读取leveldb数据库的key和value" class="headerlink" title="读取leveldb数据库的key和value"></a>读取leveldb数据库的key和value</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">var level = require(&apos;level&apos;);</span><br><span class="line">// 1) Create our store</span><br><span class="line">let db = level(&quot;./data&quot;, &#123;</span><br><span class="line">        valueEncoding: &quot;json&quot;</span><br><span class="line">    &#125;);</span><br><span class="line">//读取key的值</span><br><span class="line">var keys = []</span><br><span class="line">db.createKeyStream()</span><br><span class="line">.on(&apos;data&apos;, function (data) &#123;</span><br><span class="line">    console.log(&apos;key=&apos;, data)</span><br><span class="line">    keys.push(data);</span><br><span class="line">&#125;);</span><br><span class="line">//读取value的值</span><br><span class="line">db.createValueStream()</span><br><span class="line">.on(&apos;data&apos;, function (data) &#123;</span><br><span class="line">    console.log(&apos;value=&apos;, data)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">db.createReadStream()</span><br><span class="line">.on(&apos;data&apos;, function (data) &#123;</span><br><span class="line">console.log(data.key+&quot;***&quot;+data.value)</span><br><span class="line">&#125;)</span><br><span class="line">.on(&apos;error&apos;, function (err) &#123;</span><br><span class="line">console.log(&apos;Oh my!&apos;, err)</span><br><span class="line">&#125;)</span><br><span class="line">.on(&apos;close&apos;, function () &#123;</span><br><span class="line">console.log(&apos;Stream closed&apos;)</span><br><span class="line">&#125;)</span><br><span class="line">.on(&apos;end&apos;, function () &#123;</span><br><span class="line">console.log(&apos;Stream ended&apos;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="leveldb更改键的名称"><a href="#leveldb更改键的名称" class="headerlink" title="leveldb更改键的名称"></a>leveldb更改键的名称</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">let level = require(&apos;level&apos;);</span><br><span class="line">let db = level(&quot;./db&quot;, &#123;</span><br><span class="line">        valueEncoding: &quot;json&quot;</span><br><span class="line">    &#125;);</span><br><span class="line">//调用内部函数</span><br><span class="line">rename(&apos;points-xrd&apos;, &apos;points-xrd-new&apos;);</span><br><span class="line"></span><br><span class="line">//普通内部函数</span><br><span class="line">function rename(key_ori, key_new) &#123;</span><br><span class="line">    db.get(key_ori, function (error, value) &#123;</span><br><span class="line">        if (error) &#123;</span><br><span class="line">            throw error</span><br><span class="line">        &#125;</span><br><span class="line">        console.log(key_ori + &apos; -&gt; &apos; + key_new);</span><br><span class="line">		//将原key对应的值保存到新的key</span><br><span class="line">        db.put(key_new, value); </span><br><span class="line">        //删除原来的key和value</span><br><span class="line">        db.del(key_ori, function (error) &#123;</span><br><span class="line">            if (error) &#123;</span><br><span class="line">                throw error</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -992,7 +686,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/ab2ceda0.html">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/d6184f27.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiaopch">
@@ -1011,7 +705,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/post/ab2ceda0.html" itemprop="url">轨检超限的定义</a></h1>
+                <a class="post-title-link" href="/post/d6184f27.html" itemprop="url">python之pycurl网络访问</a></h1>
         
 
         <div class="post-meta">
@@ -1023,7 +717,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-06T00:00:00+08:00">2019-09-06</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T00:00:00+08:00">2019-11-08</time>
             
 
             
@@ -1062,15 +756,267 @@
       
         
           
-            <h3 id="问：-三角坑在什么值是-属于超限？"><a href="#问：-三角坑在什么值是-属于超限？" class="headerlink" title="问： 三角坑在什么值是 属于超限？"></a>问： 三角坑在什么值是 属于超限？</h3><p>答：超过临时补修管理值的属于超限。正线、到发线按速度等级区分。</p>
-<h3 id="问：-三角坑在什么值是属于-超限？"><a href="#问：-三角坑在什么值是属于-超限？" class="headerlink" title="问： 三角坑在什么值是属于 超限？"></a>问： 三角坑在什么值是属于 超限？</h3><p>答：其他线路:轨距+11mm及以上或-5mm及以下，水平、高低 及直线轨向12mm及以上，三角坑11mm及以上，缓和曲线三角坑 8mm及以上为超限。</p>
-<h3 id="问：-三角坑在什么值是属于超限？"><a href="#问：-三角坑在什么值是属于超限？" class="headerlink" title="问： 三角坑在什么值是属于超限？"></a>问： 三角坑在什么值是属于超限？</h3><p>答：允许速度为〃&lt;120 km/h的正线线路;轨距+ 10mm及以上或 -5mm及以下，水平、高低、直线轨向11mm及以上，三角坑10mm及 以上，缓和曲线三角坑8mm及以上为超限。</p>
-<h3 id="问：-三角坑在什么值是属于超限？-1"><a href="#问：-三角坑在什么值是属于超限？-1" class="headerlink" title="问： 三角坑在什么值是属于超限？"></a>问： 三角坑在什么值是属于超限？</h3><p>答：允许速度为d20 km/h的正线道岔:轨距+7mm及以上或 -4mm及以下，水平、高低、直线轨向、三角坑10mm及以上，支距 5mm及以上为超限。</p>
-<h3 id="问：-三角坑在什么值时属-于超限？"><a href="#问：-三角坑在什么值时属-于超限？" class="headerlink" title="问： 三角坑在什么值时属 于超限？"></a>问： 三角坑在什么值时属 于超限？</h3><p>答：其他站线道岔:轨距+7mm及以上或-4mm及以下，水平、高 低、直线轨向、三角坑11mm及以上，支距5mm及以上为超限。</p>
-<h3 id="问：-三角坑在什么值是属于超限？-2"><a href="#问：-三角坑在什么值是属于超限？-2" class="headerlink" title="问： 三角坑在什么值是属于超限？"></a>问： 三角坑在什么值是属于超限？</h3><p>答：允许速度为160 -250 km/h的正线道岔:轨距+6mm及以 上或-3mm及以下，水平、高低8mm及以上，直线轨向7mm及以上， 三角坑7mm及以上，支距5mm及以上为超限。</p>
-<h3 id="问：-三角坑在什么值是属于超限？-3"><a href="#问：-三角坑在什么值是属于超限？-3" class="headerlink" title="问： 三角坑在什么值是属于超限？"></a>问： 三角坑在什么值是属于超限？</h3><p>答：允许速度为120-160 km/h的正线线路^九距+9mm及以上或-5mm及以下，水平、高低、直线轨向9mm及以上，三角坑9mm 及以上，缓和曲线三角坑7mm及以上为超限。</p>
-<h3 id="问：-三角坑在什么值是属于超限？-4"><a href="#问：-三角坑在什么值是属于超限？-4" class="headerlink" title="问： 三角坑在什么值是属于超限？"></a>问： 三角坑在什么值是属于超限？</h3><p>答：允许速度为160-250 km/h的正线线路，轨距 + 7mm及以上或-5mm及以下，水平、高低9mm及以上，直线轨向 8mm及以上，三角坑7mm及以上，缓和曲线三角坑7mm及以上为 超限。</p>
-<h3 id="问：-三角坑在什么值是属于超限？-5"><a href="#问：-三角坑在什么值是属于超限？-5" class="headerlink" title="问： 三角坑在什么值是属于超限？"></a>问： 三角坑在什么值是属于超限？</h3><p>答：允许速度为120,160km/h的正线道岔:轨距+7mm及以上或-3mm及以下，水平、高低、直线轨向、三角坑9mm及以上，支距 5mm及以上为超限。</p>
+            <ul>
+<li>读取网站内容</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import pycurl</span><br><span class="line">from StringIO import StringIO</span><br><span class="line"></span><br><span class="line">buffer = StringIO()</span><br><span class="line">c = pycurl.Curl()</span><br><span class="line">c.setopt(c.URL, &apos;http://baidu.com/&apos;)</span><br><span class="line">c.setopt(c.WRITEDATA, buffer)</span><br><span class="line">c.perform()</span><br><span class="line">c.close()</span><br><span class="line"></span><br><span class="line">body = buffer.getvalue()</span><br><span class="line"># Body is a string in some encoding.</span><br><span class="line"># In Python 2, we can print it without knowing what the encoding is.</span><br><span class="line">print(body)</span><br></pre></td></tr></table></figure>
+<h3 id="pycurl操作couchdb"><a href="#pycurl操作couchdb" class="headerlink" title="pycurl操作couchdb"></a>pycurl操作couchdb</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import pycurl</span><br><span class="line">from StringIO import StringIO</span><br><span class="line">import pandas as pd</span><br><span class="line">import requests</span><br><span class="line">import json</span><br><span class="line"></span><br><span class="line">root_url=&apos;http://abc:123456@120.0.0.2:8000&apos;</span><br><span class="line"></span><br><span class="line">def curl_pub(url,command,header=[&apos;Content-Type:application/json&apos;]):</span><br><span class="line">    sio = StringIO() </span><br><span class="line">    c = pycurl.Curl() </span><br><span class="line">    c.setopt(pycurl.URL,url) </span><br><span class="line">    c.setopt(pycurl.HTTPHEADER,header) </span><br><span class="line">    c.setopt(pycurl.CUSTOMREQUEST,command)          </span><br><span class="line">    c.setopt(pycurl.WRITEFUNCTION, sio.write) </span><br><span class="line">    c.setopt(pycurl.FOLLOWLOCATION, 1) </span><br><span class="line">    c.setopt(pycurl.MAXREDIRS, 5) </span><br><span class="line">    c.perform() </span><br><span class="line">    status = c.getinfo(c.HTTP_CODE) </span><br><span class="line">    data = sio.getvalue()</span><br><span class="line">    print(status)</span><br><span class="line">    sio.close()</span><br><span class="line">    return data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def curl_insert_json(url,json_str):</span><br><span class="line">##    json_str=&apos;&#123;&quot;Name&quot;:&quot;xiaopch&quot;,&quot;age&quot;:&quot;999&quot;&#125;&apos;</span><br><span class="line">    b = StringIO() </span><br><span class="line">    c = pycurl.Curl() </span><br><span class="line">##    print(json_str)</span><br><span class="line">    c.setopt(pycurl.URL,url)</span><br><span class="line">    c.setopt(pycurl.HTTPHEADER,[&apos;Content-Type:application/json&apos;,&apos;Content-Length:&apos;+str(len(json_str))]) </span><br><span class="line">    c.setopt(pycurl.CUSTOMREQUEST,&apos;PUT&apos;)</span><br><span class="line">    c.setopt(pycurl.POSTFIELDS,json_str)         </span><br><span class="line">    c.setopt(pycurl.WRITEFUNCTION, b.write) </span><br><span class="line">    c.setopt(pycurl.FOLLOWLOCATION, 1) </span><br><span class="line">    c.setopt(pycurl.MAXREDIRS, 5) </span><br><span class="line">    c.perform() </span><br><span class="line">    status = c.getinfo(c.HTTP_CODE) </span><br><span class="line">    data = b.getvalue()</span><br><span class="line">    print(status)</span><br><span class="line">    b.close()</span><br><span class="line">    return data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def curl_upload(url,filename,header):</span><br><span class="line">    b = StringIO()</span><br><span class="line">    c = pycurl.Curl()</span><br><span class="line">    c.setopt(c.URL, url)</span><br><span class="line">    c.setopt(c.UPLOAD, 1)</span><br><span class="line">    c.setopt(pycurl.HTTPHEADER,header) </span><br><span class="line">    file = open(filename,&apos;rb&apos;)</span><br><span class="line">    c.setopt(c.READDATA, file)</span><br><span class="line">    c.setopt(pycurl.WRITEFUNCTION, b.write) </span><br><span class="line">    c.perform()</span><br><span class="line">    c.close()</span><br><span class="line">    # File must be kept open while Curl object is using it</span><br><span class="line">    file.close()</span><br><span class="line">    data = b.getvalue()</span><br><span class="line">    b.close()</span><br><span class="line">    return data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def download_csv_to_df(url):</span><br><span class="line">    res = requests.get(url)</span><br><span class="line">    res.encoding = &apos;utf-8&apos; #需要添加这一行，告知html文件解码方式</span><br><span class="line">    res.raise_for_status()</span><br><span class="line">    ##print(res.text)</span><br><span class="line">    sio = StringIO()</span><br><span class="line">    sio.write(res.text)</span><br><span class="line">    sio.seek(0)</span><br><span class="line">    df=pd.read_csv(sio,encoding=&apos;utf-8&apos;)</span><br><span class="line">    return df</span><br><span class="line">    </span><br><span class="line">if __name__==&apos;__main__&apos;:</span><br><span class="line">##    ##创建数据库</span><br><span class="line">##    print(curl_pub(root_url+&apos;/test&apos;,&apos;PUT&apos;))</span><br><span class="line">##    ##显示所有数据库</span><br><span class="line">    print(curl_pub(root_url+&apos;/_all_dbs&apos;,&apos;GET&apos;))</span><br><span class="line">##</span><br><span class="line">##    ##删除数据库</span><br><span class="line">##    print(curl_pub(root_url+&apos;/route&apos;,&apos;DELETE&apos;))</span><br><span class="line">##    ##显示数据库所有记录</span><br><span class="line">##    print(curl_pub(root_url+&apos;/_all_dbs&apos;,&apos;GET&apos;))</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">##    ##显示所有数据库某一记录</span><br><span class="line">##    print(curl_pub(root_url+&apos;/gis/df_red_state_points&apos;,&apos;GET&apos;))</span><br><span class="line">    </span><br><span class="line">    ##插入一条记录</span><br><span class="line">##    print(curl_insert_json(root_url+&apos;/test/er&apos;,&apos;&#123;&quot;Name&quot;:&quot;xiaopch&quot;,&quot;age&quot;:&quot;999&quot;&#125;&apos;))</span><br><span class="line"></span><br><span class="line">    ##上传文件</span><br><span class="line">##    print(curl_upload(root_url+&apos;/test/atwork/atwork.jpg&apos;,&apos;atwork.jpg&apos;,[&apos;Content-Type:image/jpg&apos;]))</span><br><span class="line">##    print(curl_upload(root_url+&apos;/test/20191108a/inspection_data_for_gis2.csv&apos;,&apos;inspection_data_for_gis.csv&apos;,[&apos;Content-Type:text/plain&apos;]))</span><br><span class="line">##</span><br><span class="line">##    ##下载文件</span><br><span class="line">##    with open(&apos;download.csv&apos;,&apos;wb&apos;) as f:</span><br><span class="line">##        f.write(curl_pub(root_url+&apos;/test/20191108a/inspection_data_for_gis2.csv&apos;,&apos;GET&apos;))</span><br><span class="line"></span><br><span class="line">    ##读取记录到pandas的dataframe    </span><br><span class="line">    print(download_csv_to_df(root_url+&apos;/test/20191108a/inspection_data_for_gis2.csv&apos;))</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">##    download_csv_to_df()</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/49615eda.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/49615eda.html" itemprop="url">python之键盘事件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-04T00:00:00+08:00">2019-11-04</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Python有一个keyboard模块，具有许多功能。"><a href="#Python有一个keyboard模块，具有许多功能。" class="headerlink" title="Python有一个keyboard模块，具有许多功能。"></a>Python有一个<a href="https://pypi.python.org/pypi/keyboard" target="_blank" rel="noopener">keyboard</a>模块，具有许多功能。</h3><ul>
+<li>安装使用此命令：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install keyboard</span><br></pre></td></tr></table></figure>
+<p>然后在代码中使用它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import keyboard #Using module keyboard</span><br><span class="line">while True:#making a loop</span><br><span class="line">	#used try so that if user pressed other than the given key error will not be shown</span><br><span class="line">    try: </span><br><span class="line">        if keyboard.is_pressed(&apos;q&apos;):#if key &apos;q&apos; is pressed </span><br><span class="line">            print(&apos;You Pressed A Key!&apos;)</span><br><span class="line">            break#finishing the loop</span><br><span class="line">        else:</span><br><span class="line">            pass</span><br><span class="line">    except:</span><br><span class="line">        break #if user pressed other than the given key the loop will break</span><br></pre></td></tr></table></figure>
+<h3 id="pyhook监视鼠标键盘事件"><a href="#pyhook监视鼠标键盘事件" class="headerlink" title="pyhook监视鼠标键盘事件"></a>pyhook监视鼠标键盘事件</h3><ul>
+<li><p>whl文件下载</p>
+<p><a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyhook" target="_blank" rel="noopener">https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyhook</a> </p>
+</li>
+<li><p>代码中使用</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: cp936 -*-</span><br><span class="line">import pythoncom</span><br><span class="line">import pyHook</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def onMouseEvent(event):</span><br><span class="line">    # 监听鼠标事件</span><br><span class="line">    print(&quot;MessageName:&quot;, event.MessageName)</span><br><span class="line">    print(&quot;Message:&quot;, event.Message)</span><br><span class="line">    print(&quot;Time:&quot;, event.Time)</span><br><span class="line">    print(&quot;Window:&quot;, event.Window)</span><br><span class="line">    print(&quot;WindowName:&quot;, event.WindowName)</span><br><span class="line">    print(&quot;Position:&quot;, event.Position)</span><br><span class="line">    print(&quot;Wheel:&quot;, event.Wheel)</span><br><span class="line">    print(&quot;Injected:&quot;, event.Injected)</span><br><span class="line">    print(&quot;---&quot;)</span><br><span class="line"></span><br><span class="line">    # 返回 True 以便将事件传给其它处理程序</span><br><span class="line">    # 注意，这儿如果返回 False ，则鼠标事件将被全部拦截</span><br><span class="line">    # 也就是说你的鼠标看起来会僵在那儿，似乎失去响应了</span><br><span class="line">    return True</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def onKeyboardEvent(event):</span><br><span class="line">    # 监听键盘事件</span><br><span class="line">    print(&quot;MessageName:&quot;, event.MessageName)</span><br><span class="line">    print(&quot;Message:&quot;, event.Message)</span><br><span class="line">    print(&quot;Time:&quot;, event.Time)</span><br><span class="line">    print(&quot;Window:&quot;, event.Window)</span><br><span class="line">    print(&quot;WindowName:&quot;, event.WindowName)</span><br><span class="line">    print(&quot;Ascii:&quot;, event.Ascii, chr(event.Ascii))</span><br><span class="line">    print(&quot;Key:&quot;, event.Key)</span><br><span class="line">    print(&quot;KeyID:&quot;, event.KeyID)</span><br><span class="line">    print(&quot;ScanCode:&quot;, event.ScanCode)</span><br><span class="line">    print(&quot;Extended:&quot;, event.Extended)</span><br><span class="line">    print(&quot;Injected:&quot;, event.Injected)</span><br><span class="line">    print(&quot;Alt&quot;, event.Alt)</span><br><span class="line">    print(&quot;Transition&quot;, event.Transition)</span><br><span class="line">    print(&quot;---&quot;)</span><br><span class="line">    # 同鼠标事件监听函数的返回值</span><br><span class="line">    return True</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    # 创建一个“钩子”管理对象</span><br><span class="line">    hm = pyHook.HookManager()</span><br><span class="line">    # 监听所有键盘事件</span><br><span class="line">    hm.KeyDown = onKeyboardEvent</span><br><span class="line">    # 设置键盘“钩子”</span><br><span class="line">    hm.HookKeyboard()</span><br><span class="line">    # 监听所有鼠标事件</span><br><span class="line">    hm.MouseAll = onMouseEvent</span><br><span class="line">    # 设置鼠标“钩子”</span><br><span class="line">    hm.HookMouse()</span><br><span class="line">    # 进入循环，如不手动关闭，程序将一直处于监听状态</span><br><span class="line">    pythoncom.PumpMessages()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaopch.github.io/post/629f4ad0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaopch">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/629f4ad0.html" itemprop="url">js之vue框架</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-20T00:00:00+08:00">2019-10-20</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="下载vue-js"><a href="#下载vue-js" class="headerlink" title="下载vue.js"></a>下载vue.js</h3><p><a href="https://cn.vuejs.org/v2/guide/installation.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/installation.html</a></p>
+<h3 id="demo程序"><a href="#demo程序" class="headerlink" title="demo程序"></a>demo程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">&lt;title&gt;&lt;/title&gt;</span><br><span class="line">&lt;script src=&quot;vue.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">	  &#123;&#123; message &#125;&#125; &#123;&#123;name&#125;&#125;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">	var app = new Vue(&#123;</span><br><span class="line">		el: &apos;#app&apos;,</span><br><span class="line">		data: &#123;</span><br><span class="line">			message: &apos;Hello Vue!&apos;,</span><br><span class="line">			name : &quot;Vue&quot;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1110,7 +1056,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1155,7 +1101,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">165</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1248,33 +1194,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1314,7 +1234,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
