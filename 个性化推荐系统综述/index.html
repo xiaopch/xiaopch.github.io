@@ -1,0 +1,977 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术分享">
+      
+      
+        <meta name="author" content="xiaopch">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>个性化推荐系统综述 - 光尘</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.472b142f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.08040f6c.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="None" data-md-color-accent="None">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="光尘" class="md-header__button md-logo" aria-label="光尘" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            光尘
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              个性化推荐系统综述
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/xiaopch/xiaopch.github.io.git" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="光尘" class="md-nav__button md-logo" aria-label="光尘" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    光尘
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/xiaopch/xiaopch.github.io.git" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdocs%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        mkdocs生成项目文档
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          个性化推荐系统综述
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        个性化推荐系统综述
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    推荐系统的概念和定义
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    用户建模模块
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    推荐对象的建模
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    推荐算法模块
+  </a>
+  
+    <nav class="md-nav" aria-label="推荐算法模块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    基于内容的推荐
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    协同过滤推荐
+  </a>
+  
+    <nav class="md-nav" aria-label="协同过滤推荐">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ub-cf" class="md-nav__link">
+    基于用户的协同推荐（UB-CF）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ib-cf" class="md-nav__link">
+    基于项目的协同过滤推荐（IB-CF）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mb-cf" class="md-nav__link">
+    基于模型的协同推荐（MB-CF）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    基于社会网络分析方法的推荐
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    基于网络结构的推荐策略
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    混合推荐
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9F%A5%E7%90%86%E8%8A%92%E6%A0%BC%E7%9A%84100%E4%B8%AA%E6%80%9D%E7%BB%B4%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        查理芒格的100个思维模型
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%89%A9%E7%90%86%E5%AD%A6%E6%A6%82%E8%AE%BA/" class="md-nav__link">
+        物理学概论
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          幽默
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="幽默" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          幽默
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B9%BD%E9%BB%98/%E5%B9%BD%E9%BB%98%E5%A4%B8%E4%BA%BA%E7%9A%84%E5%8F%A5%E5%AD%90%E5%A4%A7%E5%85%A8/" class="md-nav__link">
+        幽默夸人的句子大全
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B9%BD%E9%BB%98/%E6%88%91%E5%A6%88%E4%B8%89%E5%A4%A9%E6%B2%A1%E6%89%93%E6%88%91%E5%95%A6/" class="md-nav__link">
+        我妈三天没打我啦
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B9%BD%E9%BB%98/%E6%9C%89%E8%B6%A3%E7%9A%84%E7%9F%AD%E5%8F%A5%E5%AD%90/" class="md-nav__link">
+        有趣的短句子
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B9%BD%E9%BB%98/%E9%80%97%E4%BA%BA%E5%BC%80%E5%BF%83%E5%8F%AF%E4%BB%A5%E5%8F%91%E6%9C%8B%E5%8F%8B%E5%9C%88%E7%9A%84%E6%96%87%E6%A1%88/" class="md-nav__link">
+        逗人开心可以发朋友圈的文案
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B9%BD%E9%BB%98/%E9%A3%8E%E8%B6%A3%E5%B9%BD%E9%BB%98%E7%9A%84%E5%A4%B8%E4%BA%BA%E8%AF%84%E8%AF%AD/" class="md-nav__link">
+        风趣幽默的夸人评语
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B9%BD%E9%BB%98/%E9%AB%98%E6%83%85%E5%95%86%E5%A4%B8%E4%BA%BA%E6%BC%82%E4%BA%AE%E7%9A%84%E5%8F%A5%E5%AD%90/" class="md-nav__link">
+        高情商夸人漂亮的句子
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          汪曾祺
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="汪曾祺" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          汪曾祺
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B1%AA%E6%9B%BE%E7%A5%BA/%E6%91%98%E5%BD%95-%E4%BA%BA%E9%97%B4%E8%8D%89%E6%9C%A8/" class="md-nav__link">
+        摘录 人间草木
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B1%AA%E6%9B%BE%E7%A5%BA/%E6%91%98%E5%BD%95-%E8%A5%BF%E5%B1%B1%E5%AE%A2%E8%AF%9D/" class="md-nav__link">
+        摘录 西山客话
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B1%AA%E6%9B%BE%E7%A5%BA/%E6%96%87%E6%A1%88-%E4%BA%BA%E9%97%B4%E8%8D%89%E6%9C%A8/" class="md-nav__link">
+        文案 人间草木
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B1%AA%E6%9B%BE%E7%A5%BA/%E6%96%87%E6%A1%88-%E6%98%86%E6%98%8E%E7%9A%84%E9%9B%A8/" class="md-nav__link">
+        文案 昆明的雨
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          生活
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="生活" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          生活
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%94%9F%E6%B4%BB/%E6%96%87%E6%A1%88_%E4%B8%80%E6%9D%AF%E8%8C%B6/" class="md-nav__link">
+        文案 一杯茶
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%94%9F%E6%B4%BB/%E6%A0%87%E5%87%86%E9%9D%A2%E5%8C%85%E5%81%9A%E6%B3%95-%E4%B8%9C%E8%8F%B1%E9%9D%A2%E5%8C%85%E6%9C%BA/" class="md-nav__link">
+        标准面包做法 东菱面包机
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    推荐系统的概念和定义
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    用户建模模块
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    推荐对象的建模
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    推荐算法模块
+  </a>
+  
+    <nav class="md-nav" aria-label="推荐算法模块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    基于内容的推荐
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    协同过滤推荐
+  </a>
+  
+    <nav class="md-nav" aria-label="协同过滤推荐">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ub-cf" class="md-nav__link">
+    基于用户的协同推荐（UB-CF）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ib-cf" class="md-nav__link">
+    基于项目的协同过滤推荐（IB-CF）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mb-cf" class="md-nav__link">
+    基于模型的协同推荐（MB-CF）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    基于社会网络分析方法的推荐
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    基于网络结构的推荐策略
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    混合推荐
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/xiaopch/xiaopch.github.io.git/edit/master/docs/个性化推荐系统综述.md" title="编辑此页" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="_1">个性化推荐系统综述</h1>
+<p>​   互联网的出现和普及给用户带来了大量的信息，满足了用户在信息时代对信息的需求，但随着网络的迅速发展而带来的网上信息量的大幅增长，使得用户在面对大量信息时无法从中获得对自己真正有用的那部分信息，对信息的使用效率反而降低了，这就是所谓的<strong>信息超载</strong>（information overload）问题。</p>
+<p>​   目前，针对信息超载问题的解决办法之一是以<strong>搜索引擎为代表信息检索系统</strong>，比如Google、Baidu等，它们在帮助用户获取网络信息方面发挥着极其重要的作用。但使用搜索引擎的用户在使用同一个关键字搜索信息时，得到的结果是相同的。另一方面来看，信息及其传播是多样化的，而用户对信息的需求是多元化和个性化的，那么通过以搜索引擎为代表的信息检索系统获得的结果不能满足用户的个性化需求，仍然无法很好地解决信息超载问题。</p>
+<p>​   解决信息超载问题另外一个非常有潜力的办法是<strong>个性化推荐系统</strong>，它是根据用户的信息需求、兴趣等，将用户感兴趣的信息、产品等推荐给用户的个性化信息推荐系统。和搜索引擎相比推荐系统通过研究用户的兴趣偏好，进行个性化计算，由系统发现用户的兴趣点，从而引导用户发现自己的信息需求。一个好的推荐系统不仅能为用户提供个性化的服务，还能和用户之间建立密切关系，让用户对推荐产生依赖。个性化推荐系统现已广泛应用于很多领域，其中最典型并具有良好的发展和应用前景的领域就是电子商务领域。</p>
+<h2 id="_2">推荐系统的概念和定义</h2>
+<p>​   推荐系统的定义有不少，但被广泛接受的推荐系统的概念和定义是Resnick和Varian在1997年给出的：“它是利用电子商务网站向客户提供商品信息和建议，帮助用户决定应该购买什么产品，模拟销售人员帮助客户完成购买过程”。</p>
+<p>​   推荐系统有3个重要的模块：用户建模模块、推荐对象模模块、推荐算法模块。推荐系统把用户模型中兴趣需求信息和推荐对象模型中的特征信息匹配，同时使用相应的推荐算法进行计算筛选，找到用户可能感兴趣的推荐对象，然后推荐给用户。</p>
+<h2 id="_3">用户建模模块</h2>
+<p>​   一个好的推荐系统要给用户提供个性化的、高效的、准确的推荐，那么推荐系统应能够获取反映用户多方面的、动态变化的兴趣偏好，推荐系统有必要为用户建立一个用户模型，该模型能获取、表示、存储和修改用户兴趣偏好，能进行推理，对用户进行分类和识别，帮助系统更好地理解用户特征和类别，理解用户的需求和任务，从而更好地实现用户所需要的功能。推荐系统根据用户的模型进行推荐，所以用户描述文件对推荐系统的质量有至关重要的影响。建立用户模型之前，需要考虑下面几个问题：</p>
+<ul>
+<li>[ ] （1）模型的输入数据有哪些，如何获取模型的输入数据。</li>
+<li>[ ] （2）如何考虑用户的兴趣及需求的变化。</li>
+<li>[ ] （3）建模的对象是谁。</li>
+<li>[ ] （4）清楚了上述内容后，怎么建模呢。</li>
+<li>[ ] （5）模型的输出是什么。</li>
+</ul>
+<p>​   获取用户信息就是解决模型输入数据的问题，模型的输入数据主要有以下几种：</p>
+<ul>
+<li>[ ] （1）用户属性：这是用户最基本的信息，包括社会属性和自然属性，比如用户的姓名、年龄、职业、收入、学历等。用用户注册时的自然属性和社会属性进行初始建模。</li>
+<li>[ ] （2）用户手工输入的信息：这部分是用户主动提供给系统的信息，包括用户在搜索引擎中输入的关键词，用户输入的感兴趣的主题、频道。还有一类重要的信息就是用户反馈的信息，包括用户自己对推荐对象的喜好程度[用户标注的浏览页面的感兴趣、不感兴趣或感兴趣的程度等。</li>
+<li>[ ] （3）用户的浏览行为和浏览内容：用户浏览的行为和内容体现了用户的兴趣和需求，它们包括浏览次数、频率、停留时间等，浏览页面时的操作（收藏、保存、复制等）、浏览时用户表情的变化等。服务器端保存的日志也能较好地记录用户的浏览行为和内容。</li>
+<li>[ ] （4）推荐对象的属性特征：不同的推荐对象，用户建模的输入数据也不同。网页等推荐对象通常考虑对象的内容和用户之间的相似性，而产品等推荐对象通常考虑用户对产品的评价。为提高推荐质量，推荐对象的相关的属性也要考虑进去，比如除网页内容以外，还要考虑网页的发布人、时间等。产品类的对象还要考虑产品的品牌、价格、出售时间等。扩展了二维的评价矩阵，综合考虑了影响用户兴趣的各种因素。</li>
+</ul>
+<p>​   获取模型输入数据的方式有显式获取、隐式获取和启发式获取三种方式。显式的获取方式用户主动告之。例如MyYahoo和WebWatcher[15]都要户自己给出感兴趣的栏目和关键。另外一类显式的方式要求用户提供与其兴趣相关的示例及类别属性来建立用户模型，LIRA、Syskill&amp;Webert、WebMate等是该方法的代表。显式获取兴趣偏好的方法是简单而直接的做法，能相对准确地反映用户的需求，同时所得的信息比较具体、全面、客观，结果往往比较可靠。缺点就是很难收到实效，主要原因就是很少用户愿意花时间或不愿向系统表达自己的喜好。而且这一方法灵活性差，存在答案异质性，用户兴趣主题改变时要手动更改系统中用户兴趣等诸多问题，使得该方法的实时性、可操作性很难得到保证。同时该方法对用户不是很友好，具有很大的侵袭性[3]。解决侵袭性问题是推荐系统未来的一个研究方向，来研究用户能够接受的评价方式是什么，比如能够有耐心进行几次评分。文献[16]利用固定负担模型来计量用户评价的负担，将侵袭性问题转化为最优化问题来研究。</p>
+<p>​   隐式获取法是指系统通过跟踪用户行为，通过推理获取用户的兴趣偏好，因为用户的很多动作都能暗示用户的喜好，比如查询、浏览页面和文章、标记书签、反馈信息、点击鼠标、拖动滚动条，Web 日志挖掘 [17-19]等。典型的系统有 ELFILetizia等。隐式的跟踪可以减少用户很多不必要的负担，不会打扰用户的正常生活。这种方法的缺点就是跟踪的结果未必能正确反映用户的兴趣偏好，如在文献[22]中认为利用日志跟踪用户兴趣偏好存在兴趣偏好走样的问题。同时系统若过度跟踪用户的历史记录，有时会引起用户反感，而放弃对当前推荐系统的使用。</p>
+<p>​   上述获取兴趣偏好的方法有时受用户知识背景、资源和经验等方面因素的限制，用户有时意识不到自己的兴趣主题，因此，为用户提供启发式信息，如专家意见、领域术语抽取，可以实现领域知识的复用，为用户间的协同提供支持，提高用户兴趣获取质量。</p>
+<p>​   用户的兴趣和需求会随着时间和情景发生变化，用户建模时要考虑到用户长期兴趣偏好和短期兴趣偏好，还要考虑兴趣的变化，目前很多研究关注了用户的长期兴趣，建立了静态模型，用户兴趣更新的动态模型也受到了很多关注，短期兴趣的关注还比较少。结合长期和短期兴趣的建模将是未来的一个研究方向，文献[23]对此进行了研究。而且采用时间窗方法[24]和遗忘机制[25]来反映用户兴趣的变化。目前的更新机制无法及时跟踪用户兴趣的变化，just-in-time型有更强学习效率和动态变化适应能力的建模也是未来的重要研究方向。</p>
+<p>​   建模的对象有单用户建模和群组建模之分，单用户建模针对单个用户进行建模，比如基于内容的推荐，群组建模是针对群体用户进行建模，比如协同推荐。用户建模的输出即用户模型的表示方法有很多种，使用用户感兴趣的信息主题表示用户模型的主题表示法，比如
+Google、Microsoft AOL。多用于协同推荐的用户-项目评价矩阵表示法，并且文献[11-12]提出了多维空间来扩展用户-项目评价矩阵。利用用户检索过的案例或者与案例相关的一组属性值来表示用户兴趣偏好的案例表示法，如CA SPER系统[26]、WebWatcher、TAGUS 系统、BGP-MS 系统、LIRA、Syskill&amp;Webert等。基于本体论的表示法用一个本体来表示用户感兴趣的领域，例如Quickstep系统和aceMedia系统。文献[21，23]中提出了容易理解那个方便修改和补充的细粒度模型表示法用户模型的建模方法主要有遗传算法、基于机器学习的方法，例如TF-IDF、自动聚类、贝叶斯分类器、决策树归纳和神经网络方法等。遗传算法采用遗传结合、遗传交叉变异以及自然选择等操作实现建模，通过遗传进化满足用户兴趣变化时完成模型的更新[14，27]。</p>
+<p>​   TF-IDF将用户感兴趣的文档表示成关键词向量，并计算出每个关键词权重来建立用户模型；使用贝叶斯分类器的系统计算用户浏览或访问过的推荐对象属于某个给定类的概率，然后依据概率将资源项目分类来建立用户对这些资源项目的偏好模型；使用决策树归纳作为用户模型学习技术的系统将用户偏好的获取过程表达成一棵决策树，用户从根节点开始，被引导来回答一系列问题。树的每个节点表示了决策
+点，所采取的方向取决于对问题的回答或者对可用数据的计算。一旦叶节点被达到，则可得到对用户偏好的完整描述；运用神经网络建模的算法，对系统对用户偏好的输入假设进行学习并调整网络连接权重，直到网络中的所有节点达到稳定激活状态。此时输出层中被激活的节点所对应的模式类，如感兴趣/不感兴趣类，即表示了系统识别的用户偏好；聚类将具有相似特征的项目或用户分组，使用这类技术的系统一般建立用户群组的综合模型。</p>
+<h2 id="_4">推荐对象的建模</h2>
+<p>​   推荐系统应用于不同的领域，它推荐的对象也就各不相同，如何对推荐对象进行描述对推荐系统也有很重要的影响。和用户描述文件一样，要对推荐对象进行描述之前也要考虑以下几个问题：</p>
+<ul>
+<li>[ ] （1）提取推荐对象的什么特征，如何提取，提取的特征用于什么目的。</li>
+<li>[ ] （2）对象的特征描述和用户文件描述之间有关联。</li>
+<li>[ ] （3）提取到的每个对象特征对推荐结果会有什么影响。</li>
+<li>[ ] （4）对象的特征描述文件能否自动更新。</li>
+</ul>
+<p>​   推荐对象的描述文件中的对象特征和用户的描述文件中的兴趣偏好进行推荐计算，获得推荐对象的推荐度，所以推荐对象的描述文件与用户的描述文件密切相关，通常的做法是用同样的方法来表达用户的兴趣偏好和推荐对象。
+​   推荐系统推荐对象包括众多的领域，比如报纸、Usenet新闻、科技文档、Email，还有诸如音乐、电影等多媒体资源等等。不同的对象，特征也不相同，目前并没有一个统一的标准来进行统一描述，主要有<strong>基于内容的方法和基于分类的方法</strong>两大类方法。针对文档类对象的这两个表示方法给以分析。
+​   <strong>基于内容的方法</strong>是从对象本身抽取信息来表示对象，使用最广泛的方法是用加权关键词矢量，该方法通过对一组文档的统计分析得出文档的特征向量。方法很多，比较简单的做法就是计算每个特征的熵，选取具有最大熵值的若干个特征；也可以计算每个特征的信息增量（Information gain），也就是计算每个特征在文档中出现前后的信息熵之差；还可以计算每个特征的互信息（mutual information），也就是计算每个特征和文档的相关性；还可使用 X 2 统计方法。文献[28]的对比研究表明，信息增量方法和 X 2 统计方法表现较好，但这两种方法的计算量比较大。
+​   在完成文档特征的选取后，还得计算每个特征的权值，权值大的对推荐结果的影响就大。目前使用最广泛的是<strong>TF-IDF方法</strong>。
+​   <strong>基于分类的方法</strong>是把推荐对象放入不同类别中，这样可以把同类文档推荐给对该类文档感兴趣的用户了。文本分类的方法有多种，比如朴素贝叶斯（Naive-Bayes），k最近邻方法（KNN）和支持向量机（SVM）等。对象的类别可以预先定义，也可以利用聚类技术自动产
+生，如文献[28]。许多研究表明：聚类的精度非常依赖于文档的数量，而且由自动聚类产生的类型可能对用户来说是毫无意义的，因此可以先使用手工选定的类型来分类文档，在没有对应的候选类型或需要进一步划分某类型时，才使用聚类产生的类型。
+​   文本等对象特征提取技术相对比较成熟，但推荐系统的对象不一定具有文本特征或文本不足以作为描述[29]，尤其是网络上广泛存在的多媒体数据，自动化的特征提取方法需要结合多媒体内容分析领域的相关技术。
+​   推荐系统推荐给用户的对象首先不能与用户看过的对象重复，其次也不能与用户刚刚看过的对象不是太形似或者太不相关，这就是所谓的模型过拟合问题（可扩展性问题）。出现这一问题的本质上来自数据的不完备性，解决的主要的方法是引入随机性，使算法收敛到全局最优或者逼近全局最优，比如遗传算法[30]等。文献[31-32]针对这一问题考察了被推荐的对象的相关性（relevant）和冗余性（redundancy），认为既要保证推荐的多样性，又不能与用户看过的对象重复或毫不相关。关于这一问题的研究是推荐系统研究的一个难点和重点。
+​   推荐系统中出现新的对象时，推荐系统尤其是协同过滤系统中，新对象出现后必须等待一段时间才会有用户查看并进行评价，在此之前推荐系统无法对此对象进行分析和推荐，这就是推荐系统研究的另一个难点和重点——冷启动问题。
+​   目前，解决这一问题的方法就是从推荐方法上考虑，比如使用组合推荐方法来应付。对推荐对象的描述能动态更新会成为研究一个方向。</p>
+<h2 id="_5">推荐算法模块</h2>
+<p>​   推荐算法（或叫推荐策略）是整个推荐系统中最核心和关键的部分，在很大程度上决定了推荐系统类型和性能的优劣，推荐策略的研究是推荐系统最为繁荣的部分，大量的论文和著作都关注了这个方面。目前，出现的推荐策略有很多，对其分类的标准也没有一个统一的标准，但受到大家公认的推荐策略基本包括以下几种：基于内容的推荐、协同过滤推荐、基于知识的推荐、基于网络结构的推荐、组合推荐及其他推荐。
+​   以下来介绍各种推荐策略及其优缺点。</p>
+<h4 id="_6">基于内容的推荐</h4>
+<p>​   基于内容的推荐（content-based recommendation）方法源于信息获取领域[32]，是信息检索领域的重要研究内容。该方法
+是根据用户已经选择的对象，从推荐对象中选择其他特征相似的对象作为推荐结果。这一推荐策略首先提取推荐对象的内容特征，和用户模型中的用户兴趣偏好匹配，匹配度较高的推荐对象就可作为推荐结果推荐给用户。例如在进行音乐推荐时，系统分析用户以前选择的音乐的共性，找到用户的兴趣点。然后从其他音乐中选择和用户兴趣点相似的音乐推荐给用户。</p>
+<p>​   基于内容的推荐策略中的关键就是用户模型描述和推荐对象内容特征描述。其中对推荐对象内容进行特征提取，目前对文本内容进行特征提取方法比较成熟，如浏览页面的推荐、新闻推荐等。但网上的多媒体信息大量涌现，而对这些多媒体数据进行特征提取还有待技术支持，所以多媒体信息还没有大量用于基于内容的推荐。
+基于内容的推荐的优点如下：</p>
+<ul>
+<li>[ ] （1）简单、有效，推荐结果直观，容易理解，不需要领域知识。</li>
+<li>[ ] （2）不需要用户的历史数据，如对对象的评价等。</li>
+<li>[ ] （3）没有关于新推荐对象出现的冷启动问题。</li>
+<li>[ ] （4）没有稀疏问题。</li>
+<li>[ ] （5）比较成熟的分类学习方法能够为该方法提供支持，如数据挖掘、聚类分析等。</li>
+</ul>
+<p>基于内容的推荐的缺点如下：</p>
+<ul>
+<li>[ ] （1）该方法的广泛应用受到了推荐对象特征提取能力的限制较为严重。因为多媒体资源 没有有效的特征提取方法，比如图像、视频、音乐等。既使文本资源，其特征提取方法也只能反映资源的一部分内容，例如，难以提取网页内容的质量，这些特征可能影响到用户的满意度。</li>
+<li>[ ] （2）很难出现新的推荐结果。推荐对象的内容特征和用户的兴趣偏好匹配才能获得推荐，用户将仅限于获得跟以前类似的推荐结果，很难为用户发现新的感兴趣的信息。</li>
+<li>[ ] （3）存在新用户出现时的冷启动问题。当新用户出现时，系统较难获得该用户的兴趣偏好，就不能和推荐对象的内容特征进行匹配，该用户将较难获得满意的推荐结果。</li>
+<li>[ ] （4）对推荐对象内容分类方法需要的数据量较大。目前，尽管分类方法很多，但构造分类器时需要的数据量巨大，给分类带来一定困难。</li>
+<li>[ ] （5）不同语言的描述的用户模型和推荐对象模型无法兼容也是基于内容推荐系统面临的又一个大的问题。</li>
+</ul>
+<h4 id="_7">协同过滤推荐</h4>
+<p>​   协同过滤推荐（collaborative filtering recommendation）是推荐策略中最成功的策略，它于20世纪90年代开始研究并促进了整个推荐系统研究的繁荣。大量论文和研究都属于该类别。比如Grundy书籍推荐系统、Tapestry邮件处理系统，Grouplens、Ringo等推荐系统都属于该类推荐。
+​   协同过滤推荐的基本思想借鉴了日常在选购商品、选择用餐饭店、选择看哪部电影等等的方法。如果自己身边的很多朋友都选购某种商品，那么自己就会很大概率的选择该商品。或者用户喜欢某类商品，当看到和这类商品相似商品并且其他用户对此类商品评价很高时，则购买的概率就会很大。协同推荐的用户模型为用户-项目评价矩阵，如表1中表示Ri，j第i个用户对第j个项目的评分。
+协同过滤推荐一般分为三类：基于用户的协同推荐（Userbased Collaborative Filtering）（或基于内存的协同推荐（Memory-Based Collaborative Filtering））、基于项目的协同推荐（Item-Based Collaborative Filtering）和基于模型的协同推荐
+（Model-Based Collaborative Filtering）。</p>
+<h6 id="ub-cf">基于用户的协同推荐（UB-CF）</h6>
+<p>​   该推荐策略又叫基于内存的推荐（MB-CF），它的基本思想是用户选择某个推荐对象是基于朋友的推荐。也就是说如果一些用户对某些推荐对象的评分比较相似，则说明这些用户的兴趣偏好相似，那么他们对其他推荐对象的评分应该也是相似的。所以协同过滤推荐首先找到和目标用户兴趣偏好相似的最近邻居，然后根据他的最近邻居对推荐对象的评分来预测目标用户对未评分的推荐对象的评分，选择预测评分最高的若干个推荐对象作为推荐结果反馈给用户。</p>
+<h6 id="ib-cf">基于项目的协同过滤推荐（IB-CF）</h6>
+<p>​   如果基于用户的协同推荐的依据是基于朋友的推荐的话，基于项目的协同推荐是基于用户对推荐对象品牌的信任而进行的推荐。基于项目的协同推荐是基于这样一个假设：
+如果大部分用户对一些推荐对象的评分比较相似，则当前用户对这些项的评分也比较相似。就好像很多用户对某个品牌比较信任，则其他用户就比较容易选择该品牌的产品。
+​   基于项目的协同推荐的基本思路[37-38]就是首先找到目标对象的最近邻居，由于当前用户对最近邻居的评分与对目标推荐对象的评分比较类似，所以可以根据当前用户对最近邻居的评分预测当前用户对目标推荐对象的评分，然后选择预测评分最高的若干个目标对象作为推荐结果呈现给当前用户。
+​   基于项目的协同推荐的主要工作有两个，首先是查询目标推荐对象的最近邻居，然后产生推荐。其核心是推荐对象的最近邻居查询。推荐过程如图3所示。
+​   推荐对象最近邻居的查询就是计算推荐对象之间的相似性。度量推荐对象的相似性就是就是计算如图4中所示的向量之间的相似性，而计算对象之间的相似性的方法和计算用户间的相似相似，主要有也是三种方法，分别是余弦相似性、相关相似性（Correlation）和修正余弦函数弦相似性（AdjustedCosine）[34]，仅仅在计算时选取的向量是如图4中的列构成的向量。</p>
+<h6 id="mb-cf">基于模型的协同推荐（MB-CF）</h6>
+<p>​   这类方法是利用用户c对众多对象的评分来得到一个用户c的模型[39-42]，进而对某对象预测打分。和上述两种协同推荐的不同在于对已有数据应用统计和机器学习的方法得到模型进行预测的。Bereese[35]等出了一个基于概率的算法.   这一方法中，建立用户模型是核心，常用的方法有机器学习方法[43]、统计模型[41]、贝叶斯模型[40]、概率相关模型[43]、线性回归模型[38]和最大熵模型[42]。另外还有一些其他的模型，例如Shanideng[26]基于 Markov 链的模型、潜层语义分析模型、语义生成模型，Yu[44]等还提出了输入选择技术，解决给予模型的算法需要对大规模数据进行学习的问题。</p>
+<p><strong>协同过滤的优点：</strong></p>
+<ul>
+<li>[ ] （1）复杂的非结构化的对象可以应用协同过滤，比如电影、音乐、图像等推荐对象。</li>
+<li>[ ] （2）善于发现用户新的兴趣点[46]。协同过滤可以发现内容上完全不相似的资源，用户对推荐信息的内容事先是预料不到的。</li>
+<li>[ ] （3）不需要专业知识即可进行推荐。</li>
+<li>[ ] （4）随着用户的增多，其推荐性能会不断提升。</li>
+<li>[ ] （5）以用户为中心自动进行推荐。</li>
+</ul>
+<p><strong>协同过滤的缺点：</strong></p>
+<ul>
+<li>[ ] （1）存在冷启动问题。新进入的用户由于得不到他们的兴趣偏好而无法获得推荐，新的推荐项目由于没有用户评价
+  它就得不到推荐，这就是冷启动问题。冷启动问题是推荐系统研究的难点和重点。</li>
+<li>[ ] （2）存在稀疏性问题。由于用户数目的大量增长，而且用户之间选择存在差异性，使得用户的评分差别非常大。同时
+  推荐对象的数量也大量增长，使得大量的推荐对象没有经过用户的评价。这些会导致部分用户无法获得推荐，部分推荐
+  对象得不到推荐，这就是稀疏性问题。</li>
+<li>[ ] （3）系统开始时推荐质量差及推荐质量取决于历史数据集</li>
+</ul>
+<h4 id="_8">基于社会网络分析方法的推荐</h4>
+<p>​   基于社会网络分析方法（Social Network Analysis，SNA）的推荐把社会网络分析理论应用于推荐系统的一类方法，目
+前该方法研究是协同过滤推荐的延伸。
+社会网络（social network）是为达到特定的目的，人与人之间、组织之间等进行信息交流时形成的关系网。该网由结
+点和结点间的连线组成，结点可以人、组织、计算机等实体，连</p>
+<p>线表示这些实体之间的信息交互。社会网络分析（SNA）是对社会网络进行研究的一个重要工具，它为多结点之间的关系
+进行描述，并对其价值进行估量的一个工具。目前该方法被广发应用于其他很多跨学科领域，例如信息推荐、Web超链分
+析等。
+用户在购买或浏览网页信息时，形成用户和产品之间的链接关系，从而形成社会网络关系，通过社会网络分析方法可
+以考察结点之间（用户和用户之间或产品之间）的相关性，并依此进行进行推荐[47-48]。文献[49-50]利用结点之间的关系计
+算结点之间信任度，利用它们之间的信任度进行推荐可以比一般的协同推荐获得更高推荐效果。</p>
+<h4 id="_9">基于网络结构的推荐策略</h4>
+<p>​   基于网络结构的推荐策略是一种较新的推荐策略，该策略中不用考虑用户和推荐对象的内容，而是把用户和推荐对象抽象为节点，而用户选择了某一推荐对象就会在用户和对象之间存在选择关系，该策略认为信息就隐藏在该选择关系中。该策略由周涛、Huang、刘建国等人提出。</p>
+<h4 id="_10">混合推荐</h4>
+<p>​   各种推荐方法都有各自的优缺点，在实际应用中可以针对具体问题采用推荐策略的组合进行推荐，即所谓的组合推
+荐。组合推荐的目的是通过组合不同的推荐策略，达到扬长避短的目的，从而产生更符合用户需求的推荐。理论上讲可
+以有很多种的推荐组合方法，但目前研究和应用最多的组合推荐是把基于内容的推荐和系统过滤推荐的组合[58-61]。把它
+们组合方法根据应用场景不同而不同，主要混合思路有两种：</p>
+<ul>
+<li>[ ] （1）推荐结果混合：这是一种最简单的混合方法，就是分别是用两种或多种推荐方法产生推荐结果，然后采用某种算法把推荐结果进行混合而得到最终推荐。如何从众多推荐结果中选择用户需要的推荐结果成为该算法的一个重要研究点。比如采用投票机制来组合推荐结果[60]，采用一定的标准对两者产生的推荐结果判断[61]，从而选择其中之一，利用预测打分的线性组合进行推荐[60-61]，文献[62]选择一个与用户过去的打分相一致的结果进行推荐，也可计算两个推荐结果的可信度从而选择一个[1]等等。</li>
+<li>[ ] （2）推荐算法的混合：以某种推荐策略为框架，混合另外的推荐策略，例如协同推荐的框架内混合基于内容的推荐[63-66]（或相反）、基于协同推荐的框架内混合基于网络结构的推荐[54，56]，社会网络分析法的推荐框架内混合基于内容的推荐[67-68]，基于网络结构的推荐和基于社会网络分析法的推荐的混合等。</li>
+</ul>
+<p>​   还有一些其他的推荐方式，首先就是基于关联规则分析法，Agrawal[69]等提出了Apriori算法进行关联规则分析，Han[70]等对该算法进行了改进。另外还有基于用户购买行为预测产品的出售情况。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+<hr>
+<h2 align="center"> Copyright@Xiaopch <a href="mailto:xiaopch@gmail.com">Email:xiaopch@gmail.com</a></h2>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+    
+  </body>
+</html>
