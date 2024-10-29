@@ -34,4 +34,4 @@ if __name__=='__main__':
 ##    delete_invalid_files()
     for item in glob('./*.png',recursive=False):
         print(item)
-        resize_files(item,400)
+        resize_files(item,600)
