@@ -13,22 +13,22 @@
       
       
       
-        <link rel="prev" href="../10.14-%E5%BC%A0%E5%BE%B7%E8%8A%AC%E8%BA%AB%E4%BD%93%E6%89%AB%E6%8F%8F%E5%BC%95%E5%AF%BC%E8%AF%AD/">
+        <link rel="prev" href="..">
       
       
-        <link rel="next" href="../10.27-GPT%E6%8F%90%E7%A4%BA%E8%AF%8D%E7%94%9F%E6%88%90%E5%99%A8/">
+        <link rel="next" href="../2.27-SELF%E5%BF%83%E7%90%86%E8%87%AA%E5%8A%A9%E7%96%97%E6%B3%95/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.27">
     
     
       
-        <title>10.26 Flux提示词收集 - 随遇而安</title>
+        <title>10.30 OpenAI swarm和Ollama快速构建本地多智能体服务 - 随遇而安</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
       
       
 
@@ -47,7 +47,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#flux" class="md-skip">
+        <a href="#openai-swarmollama" class="md-skip">
           跳转至
         </a>
       
@@ -82,7 +82,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="随遇而安" class="md-header__button md-logo" aria-label="随遇而安" data-md-component="logo">
+    <a href=".." title="随遇而安" class="md-header__button md-logo" aria-label="随遇而安" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              10.26 Flux提示词收集
+              10.30 OpenAI swarm和Ollama快速构建本地多智能体服务
             
           </span>
         </div>
@@ -189,7 +189,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="随遇而安" class="md-nav__button md-logo" aria-label="随遇而安" data-md-component="logo">
+    <a href=".." title="随遇而安" class="md-nav__button md-logo" aria-label="随遇而安" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -219,7 +219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -236,10 +236,28 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../10.30-OpenAI%20swarm%E5%92%8COllama%E5%BF%AB%E9%80%9F%E6%9E%84%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E6%9C%8D%E5%8A%A1/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    10.30 OpenAI swarm和Ollama快速构建本地多智能体服务
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -248,6 +266,69 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#openai-swarmollama" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAI swarm和Ollama快速构建本地多智能体服务
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装步骤
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ollamapython" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装ollama的python接口：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swarm" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装swarm框架：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      服务构建示例
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -259,7 +340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2.27-SELF%E5%BF%83%E7%90%86%E8%87%AA%E5%8A%A9%E7%96%97%E6%B3%95/" class="md-nav__link">
+      <a href="../2.27-SELF%E5%BF%83%E7%90%86%E8%87%AA%E5%8A%A9%E7%96%97%E6%B3%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -279,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../7.29-%E6%B4%BB%E9%A2%A0%E5%80%92%E4%BA%86-%E9%87%91%E6%83%9F%E7%BA%AF/" class="md-nav__link">
+      <a href="../7.29-%E6%B4%BB%E9%A2%A0%E5%80%92%E4%BA%86-%E9%87%91%E6%83%9F%E7%BA%AF/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -299,7 +380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mkdocs%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/" class="md-nav__link">
+      <a href="../mkdocs%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -319,7 +400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%B8%B8%E7%94%A8%E7%BD%91%E5%9D%80/" class="md-nav__link">
+      <a href="../%E5%B8%B8%E7%94%A8%E7%BD%91%E5%9D%80/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -374,7 +455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10.29-%E6%9B%B2%E7%8E%87%E5%BC%95%E6%93%8E%E9%A3%9E%E8%88%B9/%E6%9B%B2%E7%8E%87%E5%BC%95%E6%93%8E%E9%A3%9E%E8%88%B9/" class="md-nav__link">
+      <a href="../10.29-%E6%9B%B2%E7%8E%87%E5%BC%95%E6%93%8E%E9%A3%9E%E8%88%B9/%E6%9B%B2%E7%8E%87%E5%BC%95%E6%93%8E%E9%A3%9E%E8%88%B9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -437,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10.30-%E8%B6%85%E7%BA%A7%E4%B8%AA%E4%BD%93%E6%98%AF%E4%BB%80%E4%B9%88/%E5%8F%A4%E5%85%B8%E8%80%81%E5%B8%88%E7%9A%84%E8%B6%85%E7%BA%A7%E4%B8%AA%E4%BD%93%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+      <a href="../10.30-%E8%B6%85%E7%BA%A7%E4%B8%AA%E4%BD%93%E6%98%AF%E4%BB%80%E4%B9%88/%E5%8F%A4%E5%85%B8%E8%80%81%E5%B8%88%E7%9A%84%E8%B6%85%E7%BA%A7%E4%B8%AA%E4%BD%93%E6%A6%82%E5%BF%B5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -500,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.11-awesome-LLMs-In-China-main/" class="md-nav__link">
+      <a href="../2024/10.11-awesome-LLMs-In-China-main/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -556,7 +637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.12-%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6%E5%9C%BA%E6%96%B9%E7%A8%8B/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6%E5%9C%BA%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+      <a href="../2024/10.12-%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6%E5%9C%BA%E6%96%B9%E7%A8%8B/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6%E5%9C%BA%E6%96%B9%E7%A8%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -620,7 +701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.17-%E5%8A%A0%E6%8B%BF%E5%A4%A7%E7%9A%84%E8%B7%AF%E6%98%93%E6%96%AF%E6%B9%96/%E5%8A%A0%E6%8B%BF%E5%A4%A7%E7%9A%84%E8%B7%AF%E6%98%93%E6%96%AF%E6%B9%96/" class="md-nav__link">
+      <a href="../2024/10.17-%E5%8A%A0%E6%8B%BF%E5%A4%A7%E7%9A%84%E8%B7%AF%E6%98%93%E6%96%AF%E6%B9%96/%E5%8A%A0%E6%8B%BF%E5%A4%A7%E7%9A%84%E8%B7%AF%E6%98%93%E6%96%AF%E6%B9%96/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -684,7 +765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.18-%E5%89%8D%E5%BE%80%E6%96%B0%E5%AE%B6%E5%9B%ADX-24%E6%98%9F%E7%90%83/%E5%89%8D%E5%BE%80%E6%96%B0%E5%AE%B6%E5%9B%ADX-24%E6%98%9F%E7%90%83/" class="md-nav__link">
+      <a href="../2024/10.18-%E5%89%8D%E5%BE%80%E6%96%B0%E5%AE%B6%E5%9B%ADX-24%E6%98%9F%E7%90%83/%E5%89%8D%E5%BE%80%E6%96%B0%E5%AE%B6%E5%9B%ADX-24%E6%98%9F%E7%90%83/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -748,7 +829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.18-%E8%99%AB%E6%B4%9E%E4%B9%8B%E6%AD%8C/Stable%20Diffusion%E6%8F%90%E7%A4%BA%E8%AF%8D%E4%B8%93%E5%AE%B6/" class="md-nav__link">
+      <a href="../2024/10.18-%E8%99%AB%E6%B4%9E%E4%B9%8B%E6%AD%8C/Stable%20Diffusion%E6%8F%90%E7%A4%BA%E8%AF%8D%E4%B8%93%E5%AE%B6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -812,7 +893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.24-%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%B0%8F%E8%AF%B4/%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%B0%8F%E8%AF%B4/" class="md-nav__link">
+      <a href="../2024/10.24-%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%B0%8F%E8%AF%B4/%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%B0%8F%E8%AF%B4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -876,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.27-%E8%BA%AB%E4%BD%93%E6%89%AB%E6%8F%8F%E5%BC%95%E5%AF%BC/%E8%BA%AB%E4%BD%93%E6%89%AB%E6%8F%8F%E5%BC%95%E5%AF%BC/" class="md-nav__link">
+      <a href="../2024/10.27-%E8%BA%AB%E4%BD%93%E6%89%AB%E6%8F%8F%E5%BC%95%E5%AF%BC/%E8%BA%AB%E4%BD%93%E6%89%AB%E6%8F%8F%E5%BC%95%E5%AF%BC/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -940,7 +1021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.28-%E6%B1%89%E6%B1%9F%E8%BE%B9%E7%9A%84%E8%80%81%E4%BA%BA/%E6%B1%89%E6%B1%9F%E8%BE%B9%E7%9A%84%E4%B8%80%E4%B8%AA%E8%80%81%E4%BA%BA/" class="md-nav__link">
+      <a href="../2024/10.28-%E6%B1%89%E6%B1%9F%E8%BE%B9%E7%9A%84%E8%80%81%E4%BA%BA/%E6%B1%89%E6%B1%9F%E8%BE%B9%E7%9A%84%E4%B8%80%E4%B8%AA%E8%80%81%E4%BA%BA/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1004,7 +1085,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.28-%E9%A6%99%E6%A8%9F%E6%A0%91%E4%B8%8B/%E9%A6%99%E6%A8%9F%E6%A0%91%E4%B8%8B%E7%9A%84%E5%A5%B9/" class="md-nav__link">
+      <a href="../2024/10.28-%E9%A6%99%E6%A8%9F%E6%A0%91%E4%B8%8B/%E9%A6%99%E6%A8%9F%E6%A0%91%E4%B8%8B%E7%9A%84%E5%A5%B9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1068,7 +1149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.29-text-to-cad.zoo.dev/Text-to-CAD%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+      <a href="../2024/10.29-text-to-cad.zoo.dev/Text-to-CAD%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1132,7 +1213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.29-%E5%8F%8D%E7%89%A9%E8%B4%A8%E9%A3%9E%E8%88%B9/%E5%8F%8D%E7%89%A9%E8%B4%A8%E9%A3%9E%E8%88%B9/" class="md-nav__link">
+      <a href="../2024/10.29-%E5%8F%8D%E7%89%A9%E8%B4%A8%E9%A3%9E%E8%88%B9/%E5%8F%8D%E7%89%A9%E8%B4%A8%E9%A3%9E%E8%88%B9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1196,7 +1277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.9-%E6%B1%9F%E6%B5%B7%E5%AF%84%E4%BD%99%E7%94%9F/%E6%B1%9F%E6%B5%B7%E5%AF%84%E4%BD%99%E7%94%9F/" class="md-nav__link">
+      <a href="../2024/10.9-%E6%B1%9F%E6%B5%B7%E5%AF%84%E4%BD%99%E7%94%9F/%E6%B1%9F%E6%B5%B7%E5%AF%84%E4%BD%99%E7%94%9F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1260,7 +1341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.26-OpenAI%20Translator/OpenAI%20Translator%20%E9%85%8D%E5%90%88%20Ollama%20%E8%BF%9B%E8%A1%8C%E6%9C%AC%E5%9C%B0%E7%BF%BB%E8%AF%91/" class="md-nav__link">
+      <a href="../2024/9.26-OpenAI%20Translator/OpenAI%20Translator%20%E9%85%8D%E5%90%88%20Ollama%20%E8%BF%9B%E8%A1%8C%E6%9C%AC%E5%9C%B0%E7%BF%BB%E8%AF%91/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1324,7 +1405,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.26-%E9%9D%99%E6%80%9D%E4%B9%8B%E7%A7%8B/%E9%9D%99%E6%80%9D%E4%B9%8B%E7%A7%8B/" class="md-nav__link">
+      <a href="../2024/9.26-%E9%9D%99%E6%80%9D%E4%B9%8B%E7%A7%8B/%E9%9D%99%E6%80%9D%E4%B9%8B%E7%A7%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1388,7 +1469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.29-%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%A5%E6%83%B3%E5%88%86%E5%93%AA%E5%87%A0%E7%A7%8D/%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%A5%E6%83%B3%E5%88%86%E5%93%AA%E5%87%A0%E7%A7%8D/" class="md-nav__link">
+      <a href="../2024/9.29-%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%A5%E6%83%B3%E5%88%86%E5%93%AA%E5%87%A0%E7%A7%8D/%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%A5%E6%83%B3%E5%88%86%E5%93%AA%E5%87%A0%E7%A7%8D/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1452,7 +1533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/" class="md-nav__link">
+      <a href="../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1473,7 +1554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B%E5%85%A8%E6%96%87/" class="md-nav__link">
+      <a href="../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B%E5%85%A8%E6%96%87/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1494,7 +1575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E6%95%85%E4%BA%8B%E6%94%B9%E5%86%99%E5%A4%A7%E5%B8%88/" class="md-nav__link">
+      <a href="../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E6%95%85%E4%BA%8B%E6%94%B9%E5%86%99%E5%A4%A7%E5%B8%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1515,7 +1596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E6%95%85%E4%BA%8B%E7%BC%A9%E5%86%99%E4%B8%93%E5%AE%B6/" class="md-nav__link">
+      <a href="../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E6%95%85%E4%BA%8B%E7%BC%A9%E5%86%99%E4%B8%93%E5%AE%B6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1536,7 +1617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E6%96%87%E5%AD%A6%E4%BD%9C%E5%93%81%E8%A7%A3%E8%AF%BB%E4%B8%93%E5%AE%B6/" class="md-nav__link">
+      <a href="../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E6%96%87%E5%AD%A6%E4%BD%9C%E5%93%81%E8%A7%A3%E8%AF%BB%E4%B8%93%E5%AE%B6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1557,7 +1638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98_%E6%96%87%E6%A1%88_V1.0/" class="md-nav__link">
+      <a href="../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98_%E6%96%87%E6%A1%88_V1.0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1578,7 +1659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB_%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98_%E6%8F%92%E5%9B%BE/" class="md-nav__link">
+      <a href="../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB_%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98_%E6%8F%92%E5%9B%BE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1642,7 +1723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.30-%E5%A4%AA%E9%98%B3%E7%B3%BB%E7%9A%84%E5%B0%8F%E8%A1%8C%E6%98%9F%E5%B8%A6/%E5%A4%A9%E6%96%87%E5%AD%A6%E5%AE%B6/" class="md-nav__link">
+      <a href="../2024/9.30-%E5%A4%AA%E9%98%B3%E7%B3%BB%E7%9A%84%E5%B0%8F%E8%A1%8C%E6%98%9F%E5%B8%A6/%E5%A4%A9%E6%96%87%E5%AD%A6%E5%AE%B6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1663,7 +1744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.30-%E5%A4%AA%E9%98%B3%E7%B3%BB%E7%9A%84%E5%B0%8F%E8%A1%8C%E6%98%9F%E5%B8%A6/%E5%A4%AA%E9%98%B3%E7%B3%BB%E7%9A%84%E5%B0%8F%E8%A1%8C%E6%98%9F%E5%B8%A6/" class="md-nav__link">
+      <a href="../2024/9.30-%E5%A4%AA%E9%98%B3%E7%B3%BB%E7%9A%84%E5%B0%8F%E8%A1%8C%E6%98%9F%E5%B8%A6/%E5%A4%AA%E9%98%B3%E7%B3%BB%E7%9A%84%E5%B0%8F%E8%A1%8C%E6%98%9F%E5%B8%A6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1734,7 +1815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../archive/2023-%E6%88%91%E5%85%81%E8%AE%B8-%E6%B5%B7%E7%81%B5%E6%A0%BC/" class="md-nav__link">
+      <a href="../archive/2023-%E6%88%91%E5%85%81%E8%AE%B8-%E6%B5%B7%E7%81%B5%E6%A0%BC/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1759,19 +1840,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
         
           
           <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
@@ -1785,7 +1864,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_11">
             <span class="md-nav__icon md-icon"></span>
             提示词工程
@@ -1799,7 +1878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../10-13-%E5%90%8D%E8%91%97%E5%90%8C%E6%AC%BE%E9%AB%98%E8%83%BD%E5%BC%80%E5%A4%B4%E5%88%9B%E4%BD%9C%E5%A4%A7%E5%B8%88/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10-13-%E5%90%8D%E8%91%97%E5%90%8C%E6%AC%BE%E9%AB%98%E8%83%BD%E5%BC%80%E5%A4%B4%E5%88%9B%E4%BD%9C%E5%A4%A7%E5%B8%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1820,7 +1899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../10.11-SD-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.11-SD-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1841,7 +1920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../10.14-%E5%BC%A0%E5%BE%B7%E8%8A%AC%E8%BA%AB%E4%BD%93%E6%89%AB%E6%8F%8F%E5%BC%95%E5%AF%BC%E8%AF%AD/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.14-%E5%BC%A0%E5%BE%B7%E8%8A%AC%E8%BA%AB%E4%BD%93%E6%89%AB%E6%8F%8F%E5%BC%95%E5%AF%BC%E8%AF%AD/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1859,28 +1938,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    10.26 Flux提示词收集
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.26-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%94%B6%E9%9B%86/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1889,33 +1950,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#flux" class="md-nav__link">
-    <span class="md-ellipsis">
-      Flux提示词
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1928,7 +1962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../10.27-GPT%E6%8F%90%E7%A4%BA%E8%AF%8D%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.27-GPT%E6%8F%90%E7%A4%BA%E8%AF%8D%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1949,7 +1983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../10.27-SD-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.27-SD-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1970,7 +2004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../10.27-%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%B0%8F%E8%AF%B4%E5%A4%A7%E5%B8%88/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.27-%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%B0%8F%E8%AF%B4%E5%A4%A7%E5%B8%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1991,7 +2025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../10.27-%E5%BF%83%E7%90%86%E6%B4%9E%E5%AF%9F%E8%80%85%E5%92%8C%E6%96%87%E5%AD%A6%E5%88%9B%E4%BD%9C%E8%80%85/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.27-%E5%BF%83%E7%90%86%E6%B4%9E%E5%AF%9F%E8%80%85%E5%92%8C%E6%96%87%E5%AD%A6%E5%88%9B%E4%BD%9C%E8%80%85/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2012,7 +2046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../10.28-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E9%9B%86%E5%90%88/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.28-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E9%9B%86%E5%90%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2033,7 +2067,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../7.28-%E8%AF%BB%E9%A6%96%E8%AF%97%E5%86%8D%E7%9D%A1-%E6%88%91%E5%96%9C%E6%AC%A2/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/7.28-%E8%AF%BB%E9%A6%96%E8%AF%97%E5%86%8D%E7%9D%A1-%E6%88%91%E5%96%9C%E6%AC%A2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2054,7 +2088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../User%20-%20Role-%E5%BF%83%E7%90%86%E6%B4%9E%E5%AF%9F%E8%80%85%E5%92%8C%E6%96%87%E5%AD%A6%E5%88%9B%E4%BD%9C%E8%80%85/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/User%20-%20Role-%E5%BF%83%E7%90%86%E6%B4%9E%E5%AF%9F%E8%80%85%E5%92%8C%E6%96%87%E5%AD%A6%E5%88%9B%E4%BD%9C%E8%80%85/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2075,7 +2109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E6%96%87%E7%AB%A0%E6%B6%A6%E8%89%B2%E4%B8%93%E5%AE%B6/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/%E6%96%87%E7%AB%A0%E6%B6%A6%E8%89%B2%E4%B8%93%E5%AE%B6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2096,7 +2130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E8%B5%84%E6%B7%B1%E5%BF%83%E7%90%86%E6%B2%BB%E7%96%97%E5%B8%88/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/%E8%B5%84%E6%B7%B1%E5%BF%83%E7%90%86%E6%B2%BB%E7%96%97%E5%B8%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2142,9 +2176,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#flux" class="md-nav__link">
+  <a href="#openai-swarmollama" class="md-nav__link">
     <span class="md-ellipsis">
-      Flux提示词
+      OpenAI swarm和Ollama快速构建本地多智能体服务
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装步骤
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ollamapython" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装ollama的python接口：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swarm" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装swarm框架：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      服务构建示例
     </span>
   </a>
   
@@ -2168,25 +2238,88 @@
   
 
 
-  <h1>10.26 Flux提示词收集</h1>
+  <h1>10.30 OpenAI swarm和Ollama快速构建本地多智能体服务</h1>
 
-<h2 id="flux">Flux提示词</h2>
-<hr />
-<p>"A serene and dimly lit room with a calm and meditative atmosphere, where a treatment therapist is guiding a patient through a body scan meditation. The therapist is depicted with a gentle and reassuring demeanor, wearing a simple, loose-fitting garment that signifies tranquility. The patient is lying down on a comfortable surface, eyes closed, with a peaceful expression, fully engaged in the meditation process. The room is adorned with minimalistic decor, with soft ambient lighting that enhances the sense of calm and relaxation. The body scanner, an advanced piece of technology, is emitting a soft, warm glow, subtly scanning the patient's body with a holographic display of their inner energy flow. The artwork should capture the essence of healing and introspection, with a focus on the interaction between the therapist and the patient, and the subtle details of the body scanner's interface. The style should be anime, with a touch of fantasy to emphasize the spiritual aspect of the meditation."</p>
-<hr />
-<p>"A tranquil sleep sachet with lavender, small jasmine flowers, cypress seeds, polygala, cinnamon twigs, white peony roots, rose flowers, and agarwood,", "designed in the whimsical and detailed Studio Ghibli style,", "illuminated by soft natural light,", "featuring a serene and harmonious bedroom setting,", "with delicate watercolor textures,", "highly detailed and rich in natural elements,", "evoking a sense of peace and relaxation,", "in a digital art medium with a soft, dreamy color palette."</p>
-<hr />
-<p>A detailed CAD-style blueprint of a Toyota Land Cruiser, pencil sketch effect with precise dimensions and annotations. The design is set against a pure white background, featuring black lines for the main structure, with selective color highlights on key components such as the wheels, grille, and headlights. The sketch emphasizes the robust and powerful exterior of the Land Cruiser, with clean and technical details, creating a realistic and mechanical blueprint aesthetic --v 6.1 --s 350 --q 2</p>
-<hr />
-<p>Girl, 3D, yellow sweater, some flowers, high resolution, very high resolution, wallpaper, add detail, sharpness enhancement, detail enhancement, upper body</p>
-<hr />
-<p>Deep in the quiet forest, an elf girl sat on the roots of an ancient tree, her eyes clear and bright, as if she could see through the secrets of the forest. She wore a long dress woven from leaves and flowers, and her hair was dotted with flowers and vines. The sun shines through the cracks of the leaves and shines on her body, adding a mysterious aura to her figure. The little animals around her, as if listening to her song.</p>
-<hr />
-<p>​A tranquil figure in a serene mountain meditation pose,making direct eye contact with the viewer,surrounded by lush greenery and a soft mist,in the style of Studio Ghibli with a touch of anime aesthetics,vibrant and dreamy color palette,high detail,peaceful ambiance,digital art,4K resolution,looking at the camera with a introspective expression.,</p>
-<hr />
-<p><strong>1girl,beautiful and aesthetic,the most beautiful form of chaos,elegant,a brutalist designed,Januz Miralles contemporary,watercolor,vivid color,</strong></p>
-<hr />
-<p>A serene young woman sitting tranquilly under a camphor tree, her gaze piercing through the leaves to the depths of the sky. Sunlight filters through the foliage, casting a golden halo around her youthful silhouette. The fragrance of the camphor tree permeates the air, softening the very essence of time. The setting is peaceful, with the gentle rustling of pages turning in the breeze.</p>
+<h2 id="openai-swarmollama">OpenAI swarm和Ollama快速构建本地多智能体服务</h2>
+<h2 id="_1">安装步骤</h2>
+<p>安装ollama，在官网下载对应操作系统的版本即可，下载后用ollama部署大模型，网上教程很多，本文不再描述。</p>
+<h2 id="ollamapython">安装ollama的python接口：</h2>
+<pre><code>pip install ollama
+</code></pre>
+<h2 id="swarm">安装swarm框架：</h2>
+<pre><code>pip install git+https://github.com/openai/swarm.git
+</code></pre>
+<p>注意，这一步的前提是已经安装了git，如果本地没有安装请先行下载安装</p>
+<h2 id="_2">服务构建示例</h2>
+<p>swarm官网给出的使用示例如下：</p>
+<pre><code>from swarm import Swarm, Agent
+
+client = Swarm()
+
+def transfer_to_agent_b():
+    return agent_b
+
+agent_a = Agent(
+    name=&quot;Agent A&quot;,
+    instructions=&quot;You are a helpful agent.&quot;,
+    functions=[transfer_to_agent_b],
+)
+
+agent_b = Agent(
+    name=&quot;Agent B&quot;,
+    instructions=&quot;Only speak in Haikus.&quot;,
+)
+
+response = client.run(
+    agent=agent_a,
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;I want to talk to agent B.&quot;}],
+)
+
+print(response.messages[-1][&quot;content&quot;])
+</code></pre>
+<p>在这个示例的基础上，与ollama以及在ollama中安装的大模型结合的方法如下：</p>
+<pre><code>from swarm import Swarm, Agent
+
+# 利用OpenAI的接口（安装swarm时会自动下载），建立与ollama服务连接的客户端
+
+from openai import OpenAI
+ollama_client = OpenAI(
+    base_url = 'http://localhost:11434/v1',
+    api_key='ollama', # required, but unused
+)
+
+# 在swarm构建时，指定与ollama连接的客户端
+
+client = Swarm(client=ollama_client)
+
+def transfer_to_agent_b():
+    return agent_b
+
+agent_a = Agent(
+    name=&quot;Agent A&quot;,
+    model=&quot;qwen2.5:7b&quot;,   # 在构建智能体时指定ollama中的模型，传入在ollama中构建好的大模型名称即可，例如qwen2.5:7b
+    instructions=&quot;You are a helpful agent.&quot;,
+    functions=[transfer_to_agent_b],
+)
+
+agent_b = Agent(
+    name=&quot;Agent B&quot;,
+    model=&quot;qwen2.5:7b&quot;,   # 在构建智能体时指定ollama中的模型，传入在ollama中构建好的大模型名称即可，例如qwen2.5:7b
+    instructions=&quot;Only speak in Haikus.&quot;,
+)
+
+response = client.run(
+    agent=agent_a,
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;I want to talk to agent B.&quot;}],
+)
+
+print(response.messages[-1][&quot;content&quot;])
+</code></pre>
+<p>总结一下，若想将swarm和ollama结合，比官方示例多了三步，非常简单：</p>
+<p>利用OpenA的接口（安装swarm时会自动下载），建立与ollama服务连接的客户端
+在swarm构建时，指定与ollama连接的客户端
+在构建智能体时指定ollama中的模型
+大家可以利用上述三个步骤自行尝试改造swarm开源代码中提供的示例进行尝试，后面有时间也会讲讲swarm框架的具体用法供大家参考。</p>
 
 
 
@@ -2218,10 +2351,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
       
     
   </body>
