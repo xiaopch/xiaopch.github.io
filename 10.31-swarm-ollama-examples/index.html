@@ -13,22 +13,22 @@
       
       
       
-        <link rel="prev" href="../../10.29-%E6%9B%B2%E7%8E%87%E5%BC%95%E6%93%8E%E9%A3%9E%E8%88%B9/%E6%9B%B2%E7%8E%87%E5%BC%95%E6%93%8E%E9%A3%9E%E8%88%B9/">
+        <link rel="prev" href="../10.30-OpenAI%20swarm%E5%92%8COllama%E5%BF%AB%E9%80%9F%E6%9E%84%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E6%9C%8D%E5%8A%A1/">
       
       
-        <link rel="next" href="../../2024/10.11-awesome-LLMs-In-China-main/">
+        <link rel="next" href="../2.27-SELF%E5%BF%83%E7%90%86%E8%87%AA%E5%8A%A9%E7%96%97%E6%B3%95/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.27">
     
     
       
-        <title>古典老师的超级个体概念 - 随遇而安</title>
+        <title>10.31 swarm ollama examples - 随遇而安</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
       
       
 
@@ -47,7 +47,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#agent_handoffpy" class="md-skip">
           跳转至
         </a>
       
@@ -82,7 +82,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="随遇而安" class="md-header__button md-logo" aria-label="随遇而安" data-md-component="logo">
+    <a href=".." title="随遇而安" class="md-header__button md-logo" aria-label="随遇而安" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              古典老师的超级个体概念
+              10.31 swarm ollama examples
             
           </span>
         </div>
@@ -189,7 +189,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="随遇而安" class="md-nav__button md-logo" aria-label="随遇而安" data-md-component="logo">
+    <a href=".." title="随遇而安" class="md-nav__button md-logo" aria-label="随遇而安" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -219,7 +219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -239,7 +239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10.30-OpenAI%20swarm%E5%92%8COllama%E5%BF%AB%E9%80%9F%E6%9E%84%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E6%9C%8D%E5%8A%A1/" class="md-nav__link">
+      <a href="../10.30-OpenAI%20swarm%E5%92%8COllama%E5%BF%AB%E9%80%9F%E6%9E%84%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E6%9C%8D%E5%8A%A1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -256,10 +256,111 @@
       
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    10.31 swarm ollama examples
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    10.31 swarm ollama examples
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#agent_handoffpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      agent_handoff.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bare_minimumpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      bare_minimum.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context_variablespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      context_variables.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#function_callingpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      function_calling.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simple_loop_no_helperspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      simple_loop_no_helpers.py
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     <li class="md-nav__item">
-      <a href="../../2.27-SELF%E5%BF%83%E7%90%86%E8%87%AA%E5%8A%A9%E7%96%97%E6%B3%95/" class="md-nav__link">
+      <a href="../2.27-SELF%E5%BF%83%E7%90%86%E8%87%AA%E5%8A%A9%E7%96%97%E6%B3%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -279,7 +380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../7.29-%E6%B4%BB%E9%A2%A0%E5%80%92%E4%BA%86-%E9%87%91%E6%83%9F%E7%BA%AF/" class="md-nav__link">
+      <a href="../7.29-%E6%B4%BB%E9%A2%A0%E5%80%92%E4%BA%86-%E9%87%91%E6%83%9F%E7%BA%AF/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -299,7 +400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mkdocs%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/" class="md-nav__link">
+      <a href="../mkdocs%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -319,7 +420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%B8%B8%E7%94%A8%E7%BD%91%E5%9D%80/" class="md-nav__link">
+      <a href="../%E5%B8%B8%E7%94%A8%E7%BD%91%E5%9D%80/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -346,10 +447,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -360,8 +461,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             10.29 曲率引擎飞船
           </label>
@@ -374,7 +475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10.29-%E6%9B%B2%E7%8E%87%E5%BC%95%E6%93%8E%E9%A3%9E%E8%88%B9/%E6%9B%B2%E7%8E%87%E5%BC%95%E6%93%8E%E9%A3%9E%E8%88%B9/" class="md-nav__link">
+      <a href="../10.29-%E6%9B%B2%E7%8E%87%E5%BC%95%E6%93%8E%E9%A3%9E%E8%88%B9/%E6%9B%B2%E7%8E%87%E5%BC%95%E6%93%8E%E9%A3%9E%E8%88%B9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -383,165 +484,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    10.30 超级个体是什么
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8">
-            <span class="md-nav__icon md-icon"></span>
-            10.30 超级个体是什么
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    古典老师的超级个体概念
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    古典老师的超级个体概念
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      独立经营能力
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      自我迭代能力
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      底层元能力
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      复原力
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      热爱领域
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      多维竞争力
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -575,7 +517,7 @@
             
   
   <span class="md-ellipsis">
-    2024
+    10.30 超级个体是什么
   </span>
   
 
@@ -584,6 +526,69 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            10.30 超级个体是什么
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.30-%E8%B6%85%E7%BA%A7%E4%B8%AA%E4%BD%93%E6%98%AF%E4%BB%80%E4%B9%88/%E8%B6%85%E7%BA%A7%E4%B8%AA%E4%BD%93%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    超级个体概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             2024
           </label>
@@ -596,7 +601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.11-awesome-LLMs-In-China-main/" class="md-nav__link">
+      <a href="../2024/10.11-awesome-LLMs-In-China-main/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -624,10 +629,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2" >
         
           
-          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10_2" id="__nav_10_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -638,8 +643,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_2">
             <span class="md-nav__icon md-icon"></span>
             10.12 爱因斯坦场方程
           </label>
@@ -652,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.12-%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6%E5%9C%BA%E6%96%B9%E7%A8%8B/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6%E5%9C%BA%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+      <a href="../2024/10.12-%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6%E5%9C%BA%E6%96%B9%E7%A8%8B/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6%E5%9C%BA%E6%96%B9%E7%A8%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -688,10 +693,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_3" >
         
           
-          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10_3" id="__nav_10_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -702,8 +707,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_3">
             <span class="md-nav__icon md-icon"></span>
             10.17 加拿大的路易斯湖
           </label>
@@ -716,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.17-%E5%8A%A0%E6%8B%BF%E5%A4%A7%E7%9A%84%E8%B7%AF%E6%98%93%E6%96%AF%E6%B9%96/%E5%8A%A0%E6%8B%BF%E5%A4%A7%E7%9A%84%E8%B7%AF%E6%98%93%E6%96%AF%E6%B9%96/" class="md-nav__link">
+      <a href="../2024/10.17-%E5%8A%A0%E6%8B%BF%E5%A4%A7%E7%9A%84%E8%B7%AF%E6%98%93%E6%96%AF%E6%B9%96/%E5%8A%A0%E6%8B%BF%E5%A4%A7%E7%9A%84%E8%B7%AF%E6%98%93%E6%96%AF%E6%B9%96/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -752,10 +757,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4" >
         
           
-          <label class="md-nav__link" for="__nav_9_4" id="__nav_9_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10_4" id="__nav_10_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -766,8 +771,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4">
             <span class="md-nav__icon md-icon"></span>
             10.18 前往新家园X 24星球
           </label>
@@ -780,7 +785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.18-%E5%89%8D%E5%BE%80%E6%96%B0%E5%AE%B6%E5%9B%ADX-24%E6%98%9F%E7%90%83/%E5%89%8D%E5%BE%80%E6%96%B0%E5%AE%B6%E5%9B%ADX-24%E6%98%9F%E7%90%83/" class="md-nav__link">
+      <a href="../2024/10.18-%E5%89%8D%E5%BE%80%E6%96%B0%E5%AE%B6%E5%9B%ADX-24%E6%98%9F%E7%90%83/%E5%89%8D%E5%BE%80%E6%96%B0%E5%AE%B6%E5%9B%ADX-24%E6%98%9F%E7%90%83/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -816,10 +821,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
         
           
-          <label class="md-nav__link" for="__nav_9_5" id="__nav_9_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -830,8 +835,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
             <span class="md-nav__icon md-icon"></span>
             10.18 虫洞之歌
           </label>
@@ -844,7 +849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.18-%E8%99%AB%E6%B4%9E%E4%B9%8B%E6%AD%8C/Stable%20Diffusion%E6%8F%90%E7%A4%BA%E8%AF%8D%E4%B8%93%E5%AE%B6/" class="md-nav__link">
+      <a href="../2024/10.18-%E8%99%AB%E6%B4%9E%E4%B9%8B%E6%AD%8C/Stable%20Diffusion%E6%8F%90%E7%A4%BA%E8%AF%8D%E4%B8%93%E5%AE%B6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -880,10 +885,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
         
           
-          <label class="md-nav__link" for="__nav_9_6" id="__nav_9_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -894,8 +899,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
             <span class="md-nav__icon md-icon"></span>
             10.24 一句话小说
           </label>
@@ -908,7 +913,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.24-%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%B0%8F%E8%AF%B4/%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%B0%8F%E8%AF%B4/" class="md-nav__link">
+      <a href="../2024/10.24-%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%B0%8F%E8%AF%B4/%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%B0%8F%E8%AF%B4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -944,10 +949,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
         
           
-          <label class="md-nav__link" for="__nav_9_7" id="__nav_9_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -958,8 +963,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
             <span class="md-nav__icon md-icon"></span>
             10.27 身体扫描引导
           </label>
@@ -972,7 +977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.27-%E8%BA%AB%E4%BD%93%E6%89%AB%E6%8F%8F%E5%BC%95%E5%AF%BC/%E8%BA%AB%E4%BD%93%E6%89%AB%E6%8F%8F%E5%BC%95%E5%AF%BC/" class="md-nav__link">
+      <a href="../2024/10.27-%E8%BA%AB%E4%BD%93%E6%89%AB%E6%8F%8F%E5%BC%95%E5%AF%BC/%E8%BA%AB%E4%BD%93%E6%89%AB%E6%8F%8F%E5%BC%95%E5%AF%BC/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1008,10 +1013,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_8" >
         
           
-          <label class="md-nav__link" for="__nav_9_8" id="__nav_9_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10_8" id="__nav_10_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1022,8 +1027,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_8">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_8">
             <span class="md-nav__icon md-icon"></span>
             10.28 汉江边的老人
           </label>
@@ -1036,7 +1041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.28-%E6%B1%89%E6%B1%9F%E8%BE%B9%E7%9A%84%E8%80%81%E4%BA%BA/%E6%B1%89%E6%B1%9F%E8%BE%B9%E7%9A%84%E4%B8%80%E4%B8%AA%E8%80%81%E4%BA%BA/" class="md-nav__link">
+      <a href="../2024/10.28-%E6%B1%89%E6%B1%9F%E8%BE%B9%E7%9A%84%E8%80%81%E4%BA%BA/%E6%B1%89%E6%B1%9F%E8%BE%B9%E7%9A%84%E4%B8%80%E4%B8%AA%E8%80%81%E4%BA%BA/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1072,10 +1077,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_9" >
         
           
-          <label class="md-nav__link" for="__nav_9_9" id="__nav_9_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10_9" id="__nav_10_9_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1086,8 +1091,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_9">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_9">
             <span class="md-nav__icon md-icon"></span>
             10.28 香樟树下
           </label>
@@ -1100,7 +1105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.28-%E9%A6%99%E6%A8%9F%E6%A0%91%E4%B8%8B/%E9%A6%99%E6%A8%9F%E6%A0%91%E4%B8%8B%E7%9A%84%E5%A5%B9/" class="md-nav__link">
+      <a href="../2024/10.28-%E9%A6%99%E6%A8%9F%E6%A0%91%E4%B8%8B/%E9%A6%99%E6%A8%9F%E6%A0%91%E4%B8%8B%E7%9A%84%E5%A5%B9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1136,10 +1141,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_10" >
         
           
-          <label class="md-nav__link" for="__nav_9_10" id="__nav_9_10_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10_10" id="__nav_10_10_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1150,8 +1155,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_10">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_10">
             <span class="md-nav__icon md-icon"></span>
             10.29 text to cad.zoo.dev
           </label>
@@ -1164,7 +1169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.29-text-to-cad.zoo.dev/Text-to-CAD%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+      <a href="../2024/10.29-text-to-cad.zoo.dev/Text-to-CAD%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1200,10 +1205,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_11" >
         
           
-          <label class="md-nav__link" for="__nav_9_11" id="__nav_9_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10_11" id="__nav_10_11_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1214,8 +1219,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_11">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_11">
             <span class="md-nav__icon md-icon"></span>
             10.29 反物质飞船
           </label>
@@ -1228,7 +1233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.29-%E5%8F%8D%E7%89%A9%E8%B4%A8%E9%A3%9E%E8%88%B9/%E5%8F%8D%E7%89%A9%E8%B4%A8%E9%A3%9E%E8%88%B9/" class="md-nav__link">
+      <a href="../2024/10.29-%E5%8F%8D%E7%89%A9%E8%B4%A8%E9%A3%9E%E8%88%B9/%E5%8F%8D%E7%89%A9%E8%B4%A8%E9%A3%9E%E8%88%B9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1264,10 +1269,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_12" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_12" >
         
           
-          <label class="md-nav__link" for="__nav_9_12" id="__nav_9_12_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10_12" id="__nav_10_12_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1278,8 +1283,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_12">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_12">
             <span class="md-nav__icon md-icon"></span>
             10.9 江海寄余生
           </label>
@@ -1292,7 +1297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/10.9-%E6%B1%9F%E6%B5%B7%E5%AF%84%E4%BD%99%E7%94%9F/%E6%B1%9F%E6%B5%B7%E5%AF%84%E4%BD%99%E7%94%9F/" class="md-nav__link">
+      <a href="../2024/10.9-%E6%B1%9F%E6%B5%B7%E5%AF%84%E4%BD%99%E7%94%9F/%E6%B1%9F%E6%B5%B7%E5%AF%84%E4%BD%99%E7%94%9F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1328,10 +1333,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_13" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_13" >
         
           
-          <label class="md-nav__link" for="__nav_9_13" id="__nav_9_13_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10_13" id="__nav_10_13_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1342,8 +1347,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_13_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_13">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_13">
             <span class="md-nav__icon md-icon"></span>
             9.26 OpenAI Translator
           </label>
@@ -1356,7 +1361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.26-OpenAI%20Translator/OpenAI%20Translator%20%E9%85%8D%E5%90%88%20Ollama%20%E8%BF%9B%E8%A1%8C%E6%9C%AC%E5%9C%B0%E7%BF%BB%E8%AF%91/" class="md-nav__link">
+      <a href="../2024/9.26-OpenAI%20Translator/OpenAI%20Translator%20%E9%85%8D%E5%90%88%20Ollama%20%E8%BF%9B%E8%A1%8C%E6%9C%AC%E5%9C%B0%E7%BF%BB%E8%AF%91/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1392,10 +1397,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_14" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_14" >
         
           
-          <label class="md-nav__link" for="__nav_9_14" id="__nav_9_14_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10_14" id="__nav_10_14_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1406,8 +1411,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_14_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_14">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_14">
             <span class="md-nav__icon md-icon"></span>
             9.26 静思之秋
           </label>
@@ -1420,7 +1425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.26-%E9%9D%99%E6%80%9D%E4%B9%8B%E7%A7%8B/%E9%9D%99%E6%80%9D%E4%B9%8B%E7%A7%8B/" class="md-nav__link">
+      <a href="../2024/9.26-%E9%9D%99%E6%80%9D%E4%B9%8B%E7%A7%8B/%E9%9D%99%E6%80%9D%E4%B9%8B%E7%A7%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1456,10 +1461,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_15" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_15" >
         
           
-          <label class="md-nav__link" for="__nav_9_15" id="__nav_9_15_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10_15" id="__nav_10_15_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1470,8 +1475,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_15_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_15">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_15">
             <span class="md-nav__icon md-icon"></span>
             9.29 常见的冥想分哪几种
           </label>
@@ -1484,7 +1489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.29-%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%A5%E6%83%B3%E5%88%86%E5%93%AA%E5%87%A0%E7%A7%8D/%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%A5%E6%83%B3%E5%88%86%E5%93%AA%E5%87%A0%E7%A7%8D/" class="md-nav__link">
+      <a href="../2024/9.29-%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%A5%E6%83%B3%E5%88%86%E5%93%AA%E5%87%A0%E7%A7%8D/%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%A5%E6%83%B3%E5%88%86%E5%93%AA%E5%87%A0%E7%A7%8D/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1520,10 +1525,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_16" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_16" >
         
           
-          <label class="md-nav__link" for="__nav_9_16" id="__nav_9_16_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10_16" id="__nav_10_16_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1534,8 +1539,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_16_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_16">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_16">
             <span class="md-nav__icon md-icon"></span>
             9.29 阿西莫夫的《最后的问题》
           </label>
@@ -1548,7 +1553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/" class="md-nav__link">
+      <a href="../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1569,7 +1574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B%E5%85%A8%E6%96%87/" class="md-nav__link">
+      <a href="../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B%E5%85%A8%E6%96%87/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1590,7 +1595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E6%95%85%E4%BA%8B%E6%94%B9%E5%86%99%E5%A4%A7%E5%B8%88/" class="md-nav__link">
+      <a href="../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E6%95%85%E4%BA%8B%E6%94%B9%E5%86%99%E5%A4%A7%E5%B8%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1611,7 +1616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E6%95%85%E4%BA%8B%E7%BC%A9%E5%86%99%E4%B8%93%E5%AE%B6/" class="md-nav__link">
+      <a href="../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E6%95%85%E4%BA%8B%E7%BC%A9%E5%86%99%E4%B8%93%E5%AE%B6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1632,7 +1637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E6%96%87%E5%AD%A6%E4%BD%9C%E5%93%81%E8%A7%A3%E8%AF%BB%E4%B8%93%E5%AE%B6/" class="md-nav__link">
+      <a href="../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E6%96%87%E5%AD%A6%E4%BD%9C%E5%93%81%E8%A7%A3%E8%AF%BB%E4%B8%93%E5%AE%B6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1653,7 +1658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98_%E6%96%87%E6%A1%88_V1.0/" class="md-nav__link">
+      <a href="../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98_%E6%96%87%E6%A1%88_V1.0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1674,7 +1679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB_%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98_%E6%8F%92%E5%9B%BE/" class="md-nav__link">
+      <a href="../2024/9.29-%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB%E7%9A%84%E3%80%8A%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%8B/%E9%98%BF%E8%A5%BF%E8%8E%AB%E5%A4%AB_%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98_%E6%8F%92%E5%9B%BE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1710,10 +1715,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_17" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_17" >
         
           
-          <label class="md-nav__link" for="__nav_9_17" id="__nav_9_17_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10_17" id="__nav_10_17_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1724,8 +1729,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_17_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_17">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_17">
             <span class="md-nav__icon md-icon"></span>
             9.30 太阳系的小行星带
           </label>
@@ -1738,7 +1743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.30-%E5%A4%AA%E9%98%B3%E7%B3%BB%E7%9A%84%E5%B0%8F%E8%A1%8C%E6%98%9F%E5%B8%A6/%E5%A4%A9%E6%96%87%E5%AD%A6%E5%AE%B6/" class="md-nav__link">
+      <a href="../2024/9.30-%E5%A4%AA%E9%98%B3%E7%B3%BB%E7%9A%84%E5%B0%8F%E8%A1%8C%E6%98%9F%E5%B8%A6/%E5%A4%A9%E6%96%87%E5%AD%A6%E5%AE%B6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1759,7 +1764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024/9.30-%E5%A4%AA%E9%98%B3%E7%B3%BB%E7%9A%84%E5%B0%8F%E8%A1%8C%E6%98%9F%E5%B8%A6/%E5%A4%AA%E9%98%B3%E7%B3%BB%E7%9A%84%E5%B0%8F%E8%A1%8C%E6%98%9F%E5%B8%A6/" class="md-nav__link">
+      <a href="../2024/9.30-%E5%A4%AA%E9%98%B3%E7%B3%BB%E7%9A%84%E5%B0%8F%E8%A1%8C%E6%98%9F%E5%B8%A6/%E5%A4%AA%E9%98%B3%E7%B3%BB%E7%9A%84%E5%B0%8F%E8%A1%8C%E6%98%9F%E5%B8%A6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1802,10 +1807,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
         
           
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1816,8 +1821,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
             <span class="md-nav__icon md-icon"></span>
             Archive
           </label>
@@ -1830,7 +1835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../archive/2023-%E6%88%91%E5%85%81%E8%AE%B8-%E6%B5%B7%E7%81%B5%E6%A0%BC/" class="md-nav__link">
+      <a href="../archive/2023-%E6%88%91%E5%85%81%E8%AE%B8-%E6%B5%B7%E7%81%B5%E6%A0%BC/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1865,10 +1870,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
         
           
-          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1879,8 +1884,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_11">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
             提示词工程
           </label>
@@ -1893,7 +1898,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10-13-%E5%90%8D%E8%91%97%E5%90%8C%E6%AC%BE%E9%AB%98%E8%83%BD%E5%BC%80%E5%A4%B4%E5%88%9B%E4%BD%9C%E5%A4%A7%E5%B8%88/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10-13-%E5%90%8D%E8%91%97%E5%90%8C%E6%AC%BE%E9%AB%98%E8%83%BD%E5%BC%80%E5%A4%B4%E5%88%9B%E4%BD%9C%E5%A4%A7%E5%B8%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1914,7 +1919,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.11-SD-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.11-SD-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1935,7 +1940,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.14-%E5%BC%A0%E5%BE%B7%E8%8A%AC%E8%BA%AB%E4%BD%93%E6%89%AB%E6%8F%8F%E5%BC%95%E5%AF%BC%E8%AF%AD/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.14-%E5%BC%A0%E5%BE%B7%E8%8A%AC%E8%BA%AB%E4%BD%93%E6%89%AB%E6%8F%8F%E5%BC%95%E5%AF%BC%E8%AF%AD/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1956,7 +1961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.26-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%94%B6%E9%9B%86/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.26-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%94%B6%E9%9B%86/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1977,7 +1982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.27-GPT%E6%8F%90%E7%A4%BA%E8%AF%8D%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.27-GPT%E6%8F%90%E7%A4%BA%E8%AF%8D%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1998,7 +2003,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.27-SD-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.27-SD-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2019,7 +2024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.27-%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%B0%8F%E8%AF%B4%E5%A4%A7%E5%B8%88/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.27-%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%B0%8F%E8%AF%B4%E5%A4%A7%E5%B8%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2040,7 +2045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.27-%E5%BF%83%E7%90%86%E6%B4%9E%E5%AF%9F%E8%80%85%E5%92%8C%E6%96%87%E5%AD%A6%E5%88%9B%E4%BD%9C%E8%80%85/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.27-%E5%BF%83%E7%90%86%E6%B4%9E%E5%AF%9F%E8%80%85%E5%92%8C%E6%96%87%E5%AD%A6%E5%88%9B%E4%BD%9C%E8%80%85/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2061,7 +2066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.28-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E9%9B%86%E5%90%88/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/10.28-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E9%9B%86%E5%90%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2082,7 +2087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/7.28-%E8%AF%BB%E9%A6%96%E8%AF%97%E5%86%8D%E7%9D%A1-%E6%88%91%E5%96%9C%E6%AC%A2/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/7.28-%E8%AF%BB%E9%A6%96%E8%AF%97%E5%86%8D%E7%9D%A1-%E6%88%91%E5%96%9C%E6%AC%A2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2103,7 +2108,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/User%20-%20Role-%E5%BF%83%E7%90%86%E6%B4%9E%E5%AF%9F%E8%80%85%E5%92%8C%E6%96%87%E5%AD%A6%E5%88%9B%E4%BD%9C%E8%80%85/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/User%20-%20Role-%E5%BF%83%E7%90%86%E6%B4%9E%E5%AF%9F%E8%80%85%E5%92%8C%E6%96%87%E5%AD%A6%E5%88%9B%E4%BD%9C%E8%80%85/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2124,7 +2129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/%E6%96%87%E7%AB%A0%E6%B6%A6%E8%89%B2%E4%B8%93%E5%AE%B6/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/%E6%96%87%E7%AB%A0%E6%B6%A6%E8%89%B2%E4%B8%93%E5%AE%B6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2145,7 +2150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/%E8%B5%84%E6%B7%B1%E5%BF%83%E7%90%86%E6%B2%BB%E7%96%97%E5%B8%88/" class="md-nav__link">
+      <a href="../%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/%E8%B5%84%E6%B7%B1%E5%BF%83%E7%90%86%E6%B2%BB%E7%96%97%E5%B8%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2183,8 +2188,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2193,54 +2196,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#agent_handoffpy" class="md-nav__link">
     <span class="md-ellipsis">
-      独立经营能力
+      agent_handoff.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#bare_minimumpy" class="md-nav__link">
     <span class="md-ellipsis">
-      自我迭代能力
+      bare_minimum.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#context_variablespy" class="md-nav__link">
     <span class="md-ellipsis">
-      底层元能力
+      context_variables.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#function_callingpy" class="md-nav__link">
     <span class="md-ellipsis">
-      复原力
+      function_calling.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#simple_loop_no_helperspy" class="md-nav__link">
     <span class="md-ellipsis">
-      热爱领域
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      多维竞争力
+      simple_loop_no_helpers.py
     </span>
   </a>
   
@@ -2264,35 +2258,141 @@
   
 
 
-<h1 id="_1">古典老师的超级个体概念</h1>
-<p><img alt="" src="../main.webp" /></p>
-<p>古典老师所提出的“超级个体”概念，指的是在未来的职场和生活中，能够独立运作、具有独特竞争力的个人。具体来说，超级个体具备以下几个特点：</p>
-<h4 id="_2">独立经营能力</h4>
-<p>超级个体被定义为“用独特知识满足用户需求，能整合经营全链路的一人公司”。这意味着他们能够独立完成从生产到销售的全过程，具备自我管理和自我营销的能力。</p>
-<h4 id="_3">自我迭代能力</h4>
-<p>超级个体能够持续地进行自我定位和刷新人生认知，拥有自我迭代的能力，能够适应快速变化的环境。</p>
-<h4 id="_4">底层元能力</h4>
-<p>超级个体具备三种底层元能力，包括生产的能力、链接的能力和传播的能力。</p>
-<h4 id="_5">复原力</h4>
-<p>超级个体具有较强的复原力，能够在面对挑战和失败时快速恢复并继续前进。</p>
-<h4 id="_6">热爱领域</h4>
-<p>超级个体在他们热爱的领域内工作，因此他们的工作往往被视为一种“玩”，能够乐在其中。</p>
-<h4 id="_7">多维竞争力</h4>
-<p>超级个体在多个领域具备竞争力，不仅限于专业技能，还包括社交能力、领导力、共情力等多个维度。</p>
-<p>古典老师认为，未来越来越多的专业人士将进入第三产业，提供高价值的商业或个人服务，如咨询顾问、健康管理师、法律顾问等。因此，个人需要准备转型，找到自己的空间和位置，成为能够独立运作的超级个体。这个概念不仅适用于那些在网络上有名气、有粉丝、有产品、能卖货的“网红”，也适用于任何希望通过自己的专业技能和知识服务他人的专业人士。</p>
-<hr />
-<p>masterpiece, highres, --ar 16:9, studio ghibli, imaginative, whimsical, a super individual with extraordinary abilities,  standing in a lush, vibrant forest filled with magical creatures,  soft, warm lighting filtering through the trees,  a serene and enchanting atmosphere, anime style with a touch of realism,  colorful and rich details,  expressing a sense of wonder and adventure, --v 4+</p>
-<hr />
-<p>masterpiece, 1girl, solo entrepreneur, anime style, 
-unique knowledge, full business chain integration, 
-creative, innovative, 
-satisfying customer needs, 
-businesswoman, confident, 
-high-resolution, --ar 16:9, 
-vibrant colors, dynamic pose, 
-futuristic office background, 
-soft lighting, detailed environment, 
---v 5</p>
+  <h1>10.31 swarm ollama examples</h1>
+
+<h2 id="agent_handoffpy">agent_handoff.py</h2>
+<pre><code>from swarm import Swarm, Agent
+
+client = Swarm()
+
+english_agent = Agent(
+    name=&quot;English Agent&quot;,
+    instructions=&quot;You only speak English.&quot;,
+)
+
+spanish_agent = Agent(
+    name=&quot;Spanish Agent&quot;,
+    instructions=&quot;You only speak Spanish.&quot;,
+)
+
+
+def transfer_to_spanish_agent():
+    &quot;&quot;&quot;Transfer spanish speaking users immediately.&quot;&quot;&quot;
+    return spanish_agent
+
+
+english_agent.functions.append(transfer_to_spanish_agent)
+
+messages = [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Hola. ¿Como estás?&quot;}]
+response = client.run(agent=english_agent, messages=messages)
+
+print(response.messages[-1][&quot;content&quot;])
+</code></pre>
+<h2 id="bare_minimumpy">bare_minimum.py</h2>
+<pre><code>from swarm import Swarm, Agent
+
+client = Swarm()
+
+agent = Agent(
+    name=&quot;Agent&quot;,
+    instructions=&quot;You are a helpful agent.&quot;,
+)
+
+messages = [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Hi!&quot;}]
+response = client.run(agent=agent, messages=messages)
+
+print(response.messages[-1][&quot;content&quot;])
+</code></pre>
+<h2 id="context_variablespy">context_variables.py</h2>
+<pre><code>from swarm import Swarm, Agent
+
+client = Swarm()
+
+
+def instructions(context_variables):
+    name = context_variables.get(&quot;name&quot;, &quot;User&quot;)
+    return f&quot;You are a helpful agent. Greet the user by name ({name}).&quot;
+
+
+def print_account_details(context_variables: dict):
+    user_id = context_variables.get(&quot;user_id&quot;, None)
+    name = context_variables.get(&quot;name&quot;, None)
+    print(f&quot;Account Details: {name} {user_id}&quot;)
+    return &quot;Success&quot;
+
+
+agent = Agent(
+    name=&quot;Agent&quot;,
+    instructions=instructions,
+    functions=[print_account_details],
+)
+
+context_variables = {&quot;name&quot;: &quot;James&quot;, &quot;user_id&quot;: 123}
+
+response = client.run(
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Hi!&quot;}],
+    agent=agent,
+    context_variables=context_variables,
+)
+print(response.messages[-1][&quot;content&quot;])
+
+response = client.run(
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Print my account details!&quot;}],
+    agent=agent,
+    context_variables=context_variables,
+)
+print(response.messages[-1][&quot;content&quot;])
+</code></pre>
+<h2 id="function_callingpy">function_calling.py</h2>
+<pre><code>from swarm import Swarm, Agent
+
+client = Swarm()
+
+
+def get_weather(location) -&gt; str:
+    return &quot;{'temp':67, 'unit':'F'}&quot;
+
+
+agent = Agent(
+    name=&quot;Agent&quot;,
+    instructions=&quot;You are a helpful agent.&quot;,
+    functions=[get_weather],
+)
+
+messages = [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;What's the weather in NYC?&quot;}]
+
+response = client.run(agent=agent, messages=messages)
+print(response.messages[-1][&quot;content&quot;])
+</code></pre>
+<h2 id="simple_loop_no_helperspy">simple_loop_no_helpers.py</h2>
+<pre><code>from swarm import Swarm, Agent
+
+client = Swarm()
+
+my_agent = Agent(
+    name=&quot;Agent&quot;,
+    instructions=&quot;You are a helpful agent.&quot;,
+)
+
+
+def pretty_print_messages(messages):
+    for message in messages:
+        if message[&quot;content&quot;] is None:
+            continue
+        print(f&quot;{message['sender']}: {message['content']}&quot;)
+
+
+messages = []
+agent = my_agent
+while True:
+    user_input = input(&quot;&gt; &quot;)
+    messages.append({&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: user_input})
+
+    response = client.run(agent=agent, messages=messages)
+    messages = response.messages
+    agent = response.agent
+    pretty_print_messages(messages)
+</code></pre>
 
 
 
@@ -2324,10 +2424,10 @@ soft lighting, detailed environment,
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
       
     
   </body>
