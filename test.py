@@ -9,8 +9,17 @@ for md_file in glob.glob(os.path.join(directory_path, '*.md')):
     with open(md_file, 'r', encoding='utf-8') as file:
         lines = file.readlines()
 
-    # 处理每一行，确保每行末尾都有换行符
-    new_lines = [line + '\n' if not line.endswith('\n') else line for line in lines]
+    # 处理每一行，确保每行末尾都有换行符，但标题后不添加<br>
+    new_lines = []
+    for line in lines:
+        # 检查是否为标题行（简单的检查，可能需要根据实际情况调整）
+        if line.strip().startswith('#'):
+            new_lines.append(line)  # 标题行，直接添加
+        else:
+            # 非标题行，确保以<br>结束
+            if not line.strip().endswith('<br>'):
+                line += '<br>'
+            new_lines.append(line)
 
     # 将修改后的内容写回文件
     with open(md_file, 'w', encoding='utf-8') as file:
