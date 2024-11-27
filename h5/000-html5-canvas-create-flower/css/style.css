@@ -1,0 +1,8 @@
+#canvas{
+    cursor:crosshair;
+  overflow:hidden;
+}
+
+body{
+  overflow:hidden;
+}

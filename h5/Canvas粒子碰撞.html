@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         *{
+            margin: 0;
+            padding:0;
+        }
+ canvas{
+
+ }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+    <script>
+        var canvas=document.getElementById("canvas");
+        var context=canvas.getContext("2d");
+  var width=canvas.width=window.innerWidth;
+  var height=canvas.height=window.innerHeight;
+     var arr=[];
+     var qiuqiu=setInterval(function(){
+        var maxqiu=200;
+         if(arr.length>=maxqiu){
+             clearInterval(qiuqiu)
+     }
+     var r=Math.floor(Math.random()*256);
+     var g=Math.floor(Math.random()*256);
+     var b=Math.floor(Math.random()*256);
+     var a=Math.random();
+    var x=Math.floor(500+Math.random()*100);
+    var y=Math.floor(500+Math.random()*100);
+    var cr=Math.floor(10+Math.random()*20);
+    var sx=Math.floor(-2+Math.random()*4);
+    var sy=Math.floor(-2+Math.random()*4);
+    var bg="rgba("+r+","+g+","+b+","+a+")";
+    var obj={
+        x:x,
+        y:y,
+        cr:cr,
+        bg:bg,
+        sx:sx,
+        sy:sy
+    }
+    if(obj.sx!=0||obj.sy!=0){
+        arr.push(obj);
+    }
+},30)
+setInterval(function(){
+
+    context.clearRect(0,0,width,height);
+    for(var i=0;i<arr.length;i++){
+       if(arr[i].x+arr[i].cr>width||arr[i].x-arr[i].cr<=0){
+        arr[i].sx=arr[i].sx*-1;
+    }
+     if(arr[i].y+arr[i].cr>height||arr[i].y-arr[i].cr<=0){
+        arr[i].sy=arr[i].sy*-1;
+     }
+     arr[i].x=arr[i].x+arr[i].sx;
+     arr[i].y=arr[i].y+arr[i].sy;
+    context.beginPath();
+    context.fillStyle=arr[i].bg;
+    context.arc(arr[i].x,arr[i].y,arr[i].cr,0,2*Math.PI);
+    context.fill();
+    context.closePath();
+
+    }
+
+},30)
+
+    </script>
+</body>
+</html>
