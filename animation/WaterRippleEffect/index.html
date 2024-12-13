@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML5 Canvas水波纹动画特效DEMO演示</title>
+<style>
+    body {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    #holder {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="js/jquery.waterrippleeffect.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var settings = {
+            image: './1.webp',
+            rippleRadius: 3,
+            width: window.innerWidth,
+            height: window.innerHeight,
+            delay: 1,
+            auto: true
+        };
+
+        var waterRippleEffect = new WaterRippleEffect(document.getElementById('holder'), settings);
+
+        document.getElementById('holder').addEventListener('click', function(e) {
+            waterRippleEffect.disturb(e.layerX, e.layerY);
+        });
+
+        document.getElementById('holder').addEventListener('mousemove', function(e) {
+            waterRippleEffect.disturb(e.layerX, e.layerY);
+        });
+
+        // Adjust settings on window resize
+        window.addEventListener('resize', function() {
+            settings.width = window.innerWidth;
+            settings.height = window.innerHeight;
+            waterRippleEffect.resize(settings.width, settings.height);
+        });
+    });
+</script>
+</head>
+<body>
+<div id="holder" align="center"></div>
+</body>
+</html>
