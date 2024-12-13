@@ -14,7 +14,7 @@ var loader = new THREE.TextureLoader();
 var texture = void 0;
 loader.setCrossOrigin("anonymous");
 loader.load(
-'/noise.png',
+'./noise.png',
 function do_something_with_texture(tex) {
   texture = tex;
   texture.wrapS = THREE.RepeatWrapping;
