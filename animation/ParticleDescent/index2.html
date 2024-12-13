@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Particle System</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script src="./three.min.js"></script>
+    <script>
+        // 创建场景、相机和渲染器
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x111111); // 设置背景颜色为浅蓝色
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // 创建粒子系统
+        const particlesCount = 1000; // 粒子数量
+        const positions = new Float32Array(particlesCount * 3);
+        const colors = new Float32Array(particlesCount * 3);
+
+        for (let i = 0; i < particlesCount; i++) {
+            positions[i * 3] = (Math.random() - 0.5) * 10; // x 坐标
+            positions[i * 3 + 1] = (Math.random() - 0.5) * 10; // y 坐标
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 10; // z 坐标
+
+            // 随机生成粒子的颜色
+            colors[i * 3] = Math.random(); // r
+            colors[i * 3 + 1] = Math.random(); // g
+            colors[i * 3 + 2] = Math.random(); // b
+        }
+
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3)); // 设置粒子颜色
+
+        const material = new THREE.PointsMaterial({
+            size: 0.1, // 粒子大小
+            vertexColors: true, // 使用顶点颜色
+            transparent: true,
+            opacity: 0.8,
+            map: new THREE.TextureLoader().load('/disc.png'), // 粒子纹理
+            blending: THREE.AdditiveBlending, // 混合模式
+            depthWrite: false // 禁用深度写入
+        });
+
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+
+        camera.position.z = 5;
+
+        // 动画函数
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // 更新粒子位置
+            const positions = particles.geometry.attributes.position.array;
+            for (let i = 0; i < particlesCount; i++) {
+                positions[i * 3 + 1] -= 0.01; // 让粒子向下移动
+                if (positions[i * 3 + 1] < -5) {
+                    positions[i * 3 + 1] = 5; // 当粒子移出屏幕时，将其重置到顶部
+                }
+            }
+            particles.geometry.attributes.position.needsUpdate = true; // 更新几何体
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
