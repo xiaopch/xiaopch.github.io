@@ -1,0 +1,2739 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="正念AI">
+      
+      
+        <meta name="author" content="xiaopch">
+      
+      
+      
+        <link rel="prev" href="../2025.2.17-%E5%A4%9A%E5%B7%B4%E8%83%BA%EF%BC%9A%E5%BF%AB%E4%B9%90%E7%9A%84%E2%80%9C%E5%B0%8F%E7%B2%BE%E7%81%B5%E2%80%9D%E5%92%8C%E5%AE%83%E7%9A%84%E2%80%9C%E7%A7%98%E5%AF%86%E2%80%9D/">
+      
+      
+        <link rel="next" href="../%E5%B8%B8%E7%94%A8%E9%93%BE%E6%8E%A5/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>贝叶斯乱杀六门基础学科—道可道Science - 正念AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#science" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="正念AI" class="md-header__button md-logo" aria-label="正念AI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            正念AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              贝叶斯乱杀六门基础学科—道可道Science
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/xiaopch/xiaopch.github.io.git" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="正念AI" class="md-nav__button md-logo" aria-label="正念AI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    正念AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/xiaopch/xiaopch.github.io.git" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2024.7.28-%E8%AF%BB%E9%A6%96%E8%AF%97%E5%86%8D%E7%9D%A1-%E6%88%91%E5%96%9C%E6%AC%A2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.7.28 读首诗再睡 我喜欢
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2024.7.29-%E6%B4%BB%E9%A2%A0%E5%80%92%E4%BA%86-%E9%87%91%E6%83%9F%E7%BA%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.7.29 活颠倒了 金惟纯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2024.7.3-mkdocs%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.7.3 mkdocs生成项目文档
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2025.1.26-%E7%A5%9E%E7%BB%8F%E9%80%92%E8%B4%A8%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.1.26 神经递质及其应用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2025.1.26-%E7%A7%91%E5%AD%A6%E7%9A%84%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.1.26 科学的置信区间
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2025.2.17-%E5%A4%9A%E5%B7%B4%E8%83%BA%EF%BC%9A%E5%BF%AB%E4%B9%90%E7%9A%84%E2%80%9C%E5%B0%8F%E7%B2%BE%E7%81%B5%E2%80%9D%E5%92%8C%E5%AE%83%E7%9A%84%E2%80%9C%E7%A7%98%E5%AF%86%E2%80%9D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.17 多巴胺：快乐的“小精灵”和它的“秘密”
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    贝叶斯乱杀六门基础学科—道可道Science
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    贝叶斯乱杀六门基础学科—道可道Science
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      前言
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      第一部分：什么是贝叶斯主义
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      第二部分：对各学科的置信度及缺陷分析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第二部分：对各学科的置信度及缺陷分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      （一）数学
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      （二）物理学
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      （三）进化论
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      （四）天文学
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      （五）心理学和医学
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      （六）经济学
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      第三部分：贝叶斯主义的计算方法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      第四部分：贝叶斯主义解决的哲学问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第四部分：贝叶斯主义解决的哲学问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      （一）休谟问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      （二）奥卡姆剃刀原理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      第五部分：贝叶斯主义的底层逻辑
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      第六部分：贝叶斯主义的缺陷
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      第七部分：为什么加入这一集半哲学的内容
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      结语
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E9%93%BE%E6%8E%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    常用链接
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    【冥想有关文案】
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            【冥想有关文案】
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/000-%E6%82%A6%E5%BF%83%E5%86%A5%E6%83%B3-30%E5%88%86%E9%92%9F%E6%B7%B1%E5%BA%A6%E7%9D%A1%E7%9C%A0%E5%86%A5%E6%83%B3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    000 悦心冥想 30分钟深度睡眠冥想
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/12.16-%E6%8E%A8%E8%8D%9020%E4%BD%8D%E5%9B%BD%E5%86%85%E8%B5%84%E6%B7%B1%E7%9A%84%E5%BF%83%E7%90%86%E5%92%A8%E8%AF%A2%E5%B8%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    推荐20位国内资深的心理咨询师
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/C%E5%A1%94%E5%86%A5%E6%83%B3-%E5%8D%81%E4%BA%94%E5%88%86%E9%92%9F%E6%B7%B1%E5%BA%A6%E7%9D%A1%E7%9C%A0%E8%BA%AB%E4%BD%93%E6%89%AB%E6%8F%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C塔冥想 十五分钟深度睡眠身体扫描
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/YUEYOGA-%E6%AD%A3%E5%BF%B5%E5%86%A5%E6%83%B3-%E5%8B%87%E6%B0%94%E4%B8%8E%E4%BF%A1%E5%BF%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    YUEYOGA 正念冥想 勇气与信心
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E4%B8%80%E6%96%B9%E5%87%80%E5%9C%9F-15%E5%88%86%E9%92%9F%E6%99%A8%E9%97%B4%E6%AD%A3%E5%BF%B5%E5%86%A5%E6%83%B3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一方净土 15分钟晨间正念冥想
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E4%B8%80%E6%96%B9%E5%87%80%E5%9C%9F-%E5%8D%81%E5%88%86%E9%92%9F%E5%86%A5%E6%83%B3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一方净土 十分钟冥想
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E4%B8%80%E6%96%B9%E5%87%80%E5%9C%9F-%E5%8D%81%E5%88%86%E9%92%9F%E6%AD%A3%E5%BF%B5%E5%86%A5%E6%83%B32/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一方净土 十分钟正念冥想2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E4%B9%94%E5%B8%83%E6%96%AF%E9%AB%98%E9%98%B6%E5%86%A5%E6%83%B3%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    乔布斯高阶冥想法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E5%85%B0%E5%A5%87%E8%AF%BA%E6%A3%AE-15%E5%88%86%E9%92%9F%E6%B7%B1%E5%BA%A6%E5%BC%95%E5%AF%BC%E5%86%A5%E6%83%B3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    兰奇诺森 15分钟深度引导冥想
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E5%8D%81%E5%88%86%E9%92%9F%E5%86%A5%E6%83%B3-%E7%94%9F%E6%88%90%E7%89%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    十分钟冥想-生成版
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E5%9C%86%E6%A1%8C%E6%B4%BE_%E9%99%88%E5%9D%A4%E7%A7%B0%E4%BB%96%E5%86%A5%E6%83%B320%E5%B9%B4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    圆桌派 陈坤称他冥想20年
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E5%B0%8F%E5%87%A1%E8%80%81%E5%B8%88-%E8%BA%AB%E4%BD%93%E8%83%BD%E9%87%8F%E7%9A%84%E6%B8%85%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    小凡老师 身体能量的清理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E5%B1%B1%E5%B3%B0-%E6%94%B9%E5%8F%98%E4%B8%80%E7%94%9F%E7%9A%84%E5%86%A5%E6%83%B3%E4%BD%93%E9%AA%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    山峰 改变一生的冥想体验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E6%82%A6%E5%84%BF%E5%A7%90%E5%A7%90-%E7%91%9C%E4%BC%BD%E4%BC%91%E6%81%AF%E6%94%BE%E6%9D%BE%E6%9C%AF%E5%BC%95%E5%AF%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    悦儿姐姐 瑜伽休息放松术引导
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E6%82%A6%E5%84%BF%E5%A7%90%E5%A7%90-%E7%94%9F%E7%90%86%E6%9C%9F%E6%94%BE%E6%9D%BE%E5%86%A5%E6%83%B3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    悦儿姐姐 生理期放松冥想
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E6%82%A6%E5%84%BF%E5%A7%90%E5%A7%90-%E7%9D%A1%E7%9C%A0%E5%86%A5%E6%83%B3%E5%BC%95%E5%AF%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    悦儿姐姐 睡眠冥想引导
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E6%82%A6%E5%BF%83%E5%86%A5%E6%83%B3-30%E5%88%86%E9%92%9F%E7%96%8F%E8%A7%A3%E7%84%A6%E8%99%91%E5%86%A5%E6%83%B3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    悦心冥想 30分钟疏解焦虑冥想
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E6%82%A6%E5%BF%83%E5%86%A5%E6%83%B3-30%E5%88%86%E9%92%9F%E8%87%AA%E6%88%91%E7%96%97%E6%84%88%E5%86%A5%E6%83%B3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    悦心冥想 30分钟自我疗愈冥想
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E6%82%A6%E5%BF%83%E5%86%A5%E6%83%B3-%E9%9D%99%E5%BF%83%E5%86%A5%E6%83%B3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    悦心冥想 静心冥想
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E6%84%8F%E5%85%AC%E5%AD%90-%E8%BD%AC%E5%BF%B5%E7%9A%84%E5%8A%9B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    意公子 转念的力量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E6%A2%B5%E6%82%A6-%E6%97%A0%E6%9D%A1%E4%BB%B6%E7%88%B1%E8%87%AA%E5%B7%B1%E5%86%A5%E6%83%B3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    梵悦 无条件爱自己冥想
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E6%B5%81%E9%9D%99-%E5%94%A4%E9%86%92%E5%86%85%E5%9C%A8%E7%9A%84%E5%8A%9B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    流静 唤醒内在的力量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E6%B5%81%E9%9D%99-%E6%AD%A3%E5%BF%B5%E5%86%A5%E6%83%B3%E8%BA%AB%E4%BD%93%E6%89%AB%E6%8F%8F%E7%BB%83%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    流静 正念冥想身体扫描练习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E6%B8%85%E9%9F%B5%E5%86%A5%E6%83%B3%E7%96%97%E6%84%88-15%E5%88%86%E9%92%9F%E5%A4%A7%E8%87%AA%E7%84%B6%E5%86%A5%E6%83%B3%E5%BC%95%E5%AF%BC%E5%AE%8C%E6%95%B4%E7%89%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    清韵冥想疗愈 15分钟大自然冥想引导完整版
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E7%AE%80%E6%B3%95%E7%94%9F%E6%B4%BB%E7%BE%8E%E5%AD%A6_%E5%8D%81%E5%88%86%E9%92%9F%E5%86%A5%E6%83%B3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简法生活美学 十分钟冥想
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E8%94%B7%E8%96%87%E7%91%9C%E4%BC%BD-%E7%91%9C%E4%BC%BD%E9%9D%99%E5%9D%90%E5%86%A5%E6%83%B3%E5%BC%95%E5%AF%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    蔷薇瑜伽 瑜伽静坐冥想引导
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E8%9B%8B%E5%A6%9E-%E6%94%B9%E5%8F%98%E4%B8%80%E7%94%9F%E7%9A%84%E5%86%A5%E6%83%B3%E8%AE%AD%E7%BB%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    蛋妞 改变一生的冥想训练
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E5%86%A5%E6%83%B3%E6%9C%89%E5%85%B3%E6%96%87%E6%A1%88%E3%80%91/%E8%BD%BB%E6%9D%BE%E5%85%A5%E7%9D%A1-%E6%AD%A3%E5%BF%B5%E5%86%A5%E6%83%B3%E5%85%A5%E9%97%A8-%E4%B8%8E%E5%B1%B1%E5%90%8C%E5%9D%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    轻松入睡 正念冥想入门 与山同坐
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    【提示词工程2024】
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            【提示词工程2024】
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.10-13-%E5%90%8D%E8%91%97%E5%90%8C%E6%AC%BE%E9%AB%98%E8%83%BD%E5%BC%80%E5%A4%B4%E5%88%9B%E4%BD%9C%E5%A4%A7%E5%B8%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.10 13 名著同款高能开头创作大师
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.10.14-%E5%BC%A0%E5%BE%B7%E8%8A%AC%E8%BA%AB%E4%BD%93%E6%89%AB%E6%8F%8F%E5%BC%95%E5%AF%BC%E8%AF%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.10.14 张德芬身体扫描引导语
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.10.14-%E8%B5%84%E6%B7%B1%E5%BF%83%E7%90%86%E6%B2%BB%E7%96%97%E5%B8%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.10.14 资深心理治疗师
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.10.24-%E6%96%87%E7%AB%A0%E6%B6%A6%E8%89%B2%E4%B8%93%E5%AE%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.10.24 文章润色专家
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.10.26-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%94%B6%E9%9B%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.10.26 Flux提示词收集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.10.27-GPT%E6%8F%90%E7%A4%BA%E8%AF%8D%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.10.27 GPT提示词生成器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.10.27-SD-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.10.27 SD Flux提示词工程师
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.10.27-%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%B0%8F%E8%AF%B4%E5%A4%A7%E5%B8%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.10.27 一句话小说大师
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.10.27-%E5%BF%83%E7%90%86%E6%B4%9E%E5%AF%9F%E8%80%85%E5%92%8C%E6%96%87%E5%AD%A6%E5%88%9B%E4%BD%9C%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.10.27 心理洞察者和文学创作者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.10.28-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E9%9B%86%E5%90%88-CAD-Style/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.10.28 Flux提示词集合 CAD Style
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.10.28-Flux%E6%8F%90%E7%A4%BA%E8%AF%8D%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.10.28 Flux提示词集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.10.28-%E5%BF%83%E7%90%86%E6%B4%9E%E5%AF%9F%E8%80%85%E5%92%8C%E6%96%87%E5%AD%A6%E5%88%9B%E4%BD%9C%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.10.28 心理洞察者和文学创作者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.10.30-OpenAI%20swarm%E5%92%8COllama%E5%BF%AB%E9%80%9F%E6%9E%84%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E6%9C%8D%E5%8A%A1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.10.30 OpenAI swarm和Ollama快速构建本地多智能体服务
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.10.30-%E7%AE%A1%E7%90%86%E5%92%A8%E8%AF%A2%E4%B8%93%E5%AE%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.10.30 管理咨询专家
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.10.31-%E6%96%B0%E6%B1%89%E8%AF%AD%E8%A7%A3%E9%87%8A%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.10.31 新汉语解释者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.11.21-ChatGPT%E4%B8%AD%E6%96%87%E6%8F%90%E7%A4%BA%E8%AF%8D-%E6%89%AE%E6%BC%94%E8%A7%92%E8%89%B2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChatGPT中文提示词-扮演角色
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.11.21-GPT%E8%A7%92%E8%89%B2%E6%89%AE%E6%BC%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPT角色扮演
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.11.22-%E6%96%B0%E6%B1%89%E8%AF%AD%E8%A7%A3%E9%87%8A%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    新汉语解释者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.12.10-%E5%88%98%E6%85%88%E6%AC%A3%E3%80%8A%E4%B9%A1%E6%9D%91%E6%95%99%E5%B8%88%E3%80%8B%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12.10-刘慈欣《乡村教师》解读
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.12.25-%E5%88%98%E6%B6%A6%E8%80%81%E5%B8%88%E7%9A%84%E9%A3%8E%E6%A0%BC%E8%AE%B2%E8%BF%B0%E5%88%98%E6%85%88%E6%AC%A3%E7%9A%84%E3%80%8A%E5%BE%AE%E8%A7%82%E5%B0%BD%E5%A4%B4%E3%80%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12.25-刘润的风格讲述刘慈欣的《微观尽头》
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.12.26-%E5%94%90%E5%AE%B6%E4%B8%89%E5%B0%91%E7%9A%84%E9%A3%8E%E6%A0%BC%E8%AE%B2%E8%BF%B0%E5%88%98%E6%85%88%E6%AC%A3%E7%9A%84%E3%80%8A%E5%B1%B1%E3%80%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024.12.26 唐家三少的风格讲述刘慈欣的《山》
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B2024%E3%80%91/2024.12.6-prompt%E5%85%85%E5%BD%93%E9%A9%AC%E4%BA%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12.6-prompt充当马云
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    【高情商接话】
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            【高情商接话】
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.14-%E5%9B%9E%E8%AF%9D%E9%AB%98%E6%89%8B-%E8%AE%B0%E4%BD%8F%E8%BF%9910%E6%9D%A1%E5%9B%9E%E8%AF%9D%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.14 回话高手 记住这10条回话技巧
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.14-%E6%8E%8C%E6%8F%A1%E9%AB%98%E6%83%85%E5%95%86%E5%9B%9E%E8%AF%9D%E6%B3%95%E8%B5%B0%E5%88%B0%E5%93%AA%E9%83%BD%E5%8F%97%E6%AC%A2%E8%BF%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.14 掌握高情商回话法走到哪都受欢迎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.15-31%E4%B8%AA%E7%A5%9E%E5%8F%8D%E8%BD%AC%E6%AE%B5%E5%AD%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.15 31个神反转段子
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.15-%E5%B7%B2%E8%AF%BB%E4%B9%B1%E5%9B%9E%E7%B3%BB%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.15 已读乱回系列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.15-%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.15 高情商接话
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.16-50%E5%8F%A5%E5%B9%BD%E9%BB%98%E8%AF%9D%E8%AF%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.16 50句幽默话语
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.16-%E4%B8%8E%E9%A2%86%E5%AF%BC%E7%9A%84%E8%81%8A%E5%A4%A9%E8%AF%9D%E6%9C%AF-%E8%81%8C%E5%9C%BA%E9%AB%98%E6%83%85%E5%95%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.16 与领导的聊天话术 职场高情商
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.16-%E4%BC%9A%E8%AF%B4%E8%AF%9D%E7%9A%84%E4%BA%BA%E4%B8%80%E5%BC%80%E5%8F%A3%E5%B0%B1%E8%B5%A2%E4%BA%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.16 会说话的人一开口就赢了
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.16-%E5%8F%98%E5%BE%97%E6%9B%B4%E5%B9%BD%E9%BB%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.16 变得更幽默
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.17-%20%E5%8F%A3%E6%89%8D%E5%A8%81%E5%8A%9B%E5%88%B0%E5%BA%95%E6%9C%89%E5%A4%9A%E5%A4%A7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.17  口才威力到底有多大
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.17-%E4%BC%9A%E8%AF%B4%E8%AF%9D%E7%9C%9F%E7%9A%84%E4%BC%9A%E8%B6%8A%E6%9D%A5%E8%B6%8A%E9%A1%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    会说话真的会越来越顺
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.17-%E5%9B%9E%E8%AF%9D%E6%9C%89%E6%8B%9B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.17 回话有招
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.17-%E5%9B%9E%E8%AF%9D%E7%9A%84%E8%89%BA%E6%9C%AF-%E6%81%B0%E5%88%B0%E5%A5%BD%E5%A4%84%E7%9A%84%E5%AF%B9%E7%AD%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.17 回话的艺术 恰到好处的对答
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.17-%E6%9C%80%E5%BF%AB%E8%AE%A9%E5%AE%A2%E6%88%B7%E7%AD%BE%E5%8D%95%E7%9A%84%E6%96%B9%E5%BC%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    最快让客户签单的方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.17_%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7%E8%A2%AB%E4%BA%BA%E5%A5%97%E8%AF%9D%E6%80%8E%E4%B9%88%E5%9B%9E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.17 沟通技巧被人套话怎么回
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.18-100%E4%B8%AA%E9%AB%98%E6%83%85%E5%95%86%E8%AF%B4%E8%AF%9D%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    100个高情商说话技巧
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.18-31%E4%B8%AA%E7%A5%9E%E5%8F%8D%E8%BD%AC%E6%AE%B5%E5%AD%90%EF%BC%9A%E4%B8%80%E5%BC%80%E5%8F%A3%E9%80%97%E7%AC%91%E6%89%80%E6%9C%89%E4%BA%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    31个神反转段子：一开口逗笑所有人
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.18-%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AA%E5%BC%80%E5%8F%A3%E5%B0%B1%E5%BE%88%E2%80%9C%E5%93%87%E5%A1%9E%E2%80%9D%E7%9A%84%E5%A5%B3%E5%AD%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ## 成为一个开口就很“哇塞”的女孩
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.18-%E6%8E%8C%E6%8F%A1%E9%AB%98%E6%83%85%E5%95%86%E5%9B%9E%E8%AF%9D%E9%A2%98%E6%B3%95%E8%B5%B0%E5%88%B0%E5%93%AA%E9%83%BD%E5%8F%97%E6%AC%A2%E8%BF%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.18 掌握高情商回话题法走到哪都受欢迎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.18-%E8%AE%B0%E4%BD%8F%E8%BF%99%E4%BA%94%E5%8F%A5%E8%AF%9D%E4%BD%A0%E5%B0%B1%E6%9C%89%E9%80%86%E5%A4%A9%E6%8E%A5%E8%AF%9D%E8%83%BD%E5%8A%9B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.18 记住这五句话你就有逆天接话能力
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.18-%E8%AF%AD%E8%A8%80%E7%9A%84%E8%89%BA%E6%9C%AF-%E5%A6%82%E4%BD%95%E6%8E%A5%E8%AF%9D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.18 语言的艺术 如何接话
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.18-%E9%AB%98%E6%83%85%E5%95%86%E5%B9%BD%E9%BB%98%E5%9B%9E%E5%BA%94%E6%9C%AF%E4%B8%89%E5%A5%97%E4%B8%87%E8%83%BD%E5%85%AC%E5%BC%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.18 高情商幽默回应术三套万能公式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.19-prompt%E5%8D%81%E4%B9%9D%E4%B8%AA%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.19 prompt十九个沟通技巧
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.19-%E5%8D%A2%E5%A8%81%E9%AB%98%E6%83%85%E5%95%86%E8%A1%A8%E8%BE%BE%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.19 卢威高情商表达技巧
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.19-%E5%BD%93%E4%BB%A3%E5%B9%B4%E8%BD%BB%E4%BA%BA%E7%9A%84%E7%BD%91%E7%BB%9C%E6%96%B0%E5%90%8D%E8%AF%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.19 当代年轻人的网络新名词
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.19-%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.19 高情商接话技巧
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.19-%E9%AB%98%E6%83%85%E5%95%86%E8%AF%9D%E6%9C%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    高情商话术
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%80%90%E9%AB%98%E6%83%85%E5%95%86%E6%8E%A5%E8%AF%9D%E3%80%91/2025.2.19-%E9%AB%98%E6%83%85%E5%95%86%E8%AF%B4%E8%AF%9D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025.2.19 高情商说话
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      前言
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      第一部分：什么是贝叶斯主义
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      第二部分：对各学科的置信度及缺陷分析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第二部分：对各学科的置信度及缺陷分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      （一）数学
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      （二）物理学
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      （三）进化论
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      （四）天文学
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      （五）心理学和医学
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      （六）经济学
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      第三部分：贝叶斯主义的计算方法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      第四部分：贝叶斯主义解决的哲学问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第四部分：贝叶斯主义解决的哲学问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      （一）休谟问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      （二）奥卡姆剃刀原理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      第五部分：贝叶斯主义的底层逻辑
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      第六部分：贝叶斯主义的缺陷
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      第七部分：为什么加入这一集半哲学的内容
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      结语
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="science">贝叶斯乱杀六门基础学科—道可道Science</h1>
+<h2 id="_1">前言</h2>
+<p>数学、物理学、进化论、心理学、天文学、经济学各自都有哪些致命的缺陷？这一集我们将花一半的时间回答这个问题，另一半时间我们将探讨三个与科学有关的重大问题。第一个问题，什么是科学？很多人自以为了解科学，但无法给出科学一个明确的定义和界限。这一集我们将科普地球上目前最强势的科学观——贝叶斯主义。第二个问题，休谟问题。休谟问题被誉为悬在科学头上的一把剑，随时都有可能掉下来把科学劈死。什么是休谟问题？贝叶斯主义是怎么解决休谟问题的？第三个问题，奥卡姆剃刀原理在科学和哲学中都很重要，奥卡姆剃刀原理有哪些局限性？在什么情况下不能用奥卡姆剃刀原理？为什么说贝叶斯公式是奥卡姆剃刀原理背后的根源？这个视频将解答这些问题。视频很长，总共三十多分钟，至少凝结了一百多篇学术论文的成果。前四分钟很无聊，四分钟之后非常精彩。</p>
+<hr />
+<h2 id="_2">第一部分：什么是贝叶斯主义</h2>
+<p>科学哲学是一门专门研究“什么是科学”的学科，它经历了四个发展阶段：</p>
+<ol>
+<li>
+<p><strong>1920年左右</strong>：逻辑实证主义。</p>
+</li>
+<li>
+<p><strong>1940年左右</strong>：波普尔的证伪主义，也就是我们经常听说的“科学必须有可证伪性”。但波普尔的证伪主义有很多缺陷。</p>
+</li>
+<li>
+<p><strong>1960年左右</strong>：科学哲学发展到了范式转换阶段。</p>
+</li>
+<li>
+<p><strong>1980年左右</strong>：贝叶斯主义逐渐兴起，成为目前最强势的科学观，它提供了科学最底层的逻辑框架。</p>
+</li>
+</ol>
+<p>那么，贝叶斯主义到底是什么？总共可以概括为三句话：</p>
+<ol>
+<li>
+<p><strong>信念的概率性</strong>：所有的信念都有一个置信度百分比。例如，我们对光速不变原理的信任度是99.999%以上，对维生素C能预防感冒的信任度是60%，对莲花清瘟能治疗新冠的信任程度是1%。贝叶斯主义认为一切信念都是概率的。</p>
+</li>
+<li>
+<p><strong>置信度的动态调整</strong>：当新的实验证据出现后，根据贝叶斯公式更新这个置信度。例如，1915年广义相对论刚刚诞生时，没有几个人相信它，也没有实验证据，所以它的置信度很低，大约只有10%。当广义相对论能解释水星进动现象后，就有了弱的实验证据，其置信度可以提高到30%左右。1919年，当实验观测发现光线经过太阳后会弯曲，符合广义相对论的预测，这时候广义相对论的置信度可以提高到50%左右。1929年，哈勃引力红移现象被发现后，广义相对论的置信度可以提高到80%。2015年，引力波被发现后，广义相对论的置信度可以提高到99%。当然，置信度不仅能提高，也能降低。例如，当我们发现宇宙正在加速膨胀时，有两种解释：要么是存在暗能量，要么就是广义相对论错了，所以我们就降低对广义相对论的信任程度，比如降低到95%。总之，随着新的实验证据出现，我们不断调整对广义相对论的信任程度。</p>
+</li>
+<li>
+<p><strong>个体置信度的差异</strong>：对于同一个理论，每个人的置信度可以不一样。例如，对于暗物质和暗能量，张三的信任程度是80%，李四的信任程度是50%，王五的信任程度是10%。每个人的置信度可以不一样，但如果找一百个人，把暗物质和暗能量的证据详细讲述给他们，最后大多数人的置信度应该差距不大。我估计最后大多数人对暗物质和暗能量的信任程度在50%到70%之间。换句话说，不论初始置信度是多少，只要不断用新证据去修正，最后大多数人的置信度都将趋于一致。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_3">第二部分：对各学科的置信度及缺陷分析</h2>
+<h3 id="_4">（一）数学</h3>
+<ul>
+<li>
+<p><strong>置信度</strong>：99%以上。</p>
+</li>
+<li>
+<p><strong>缺陷分析</strong>：数学由三部分组成——公理、符号定义和逻辑推理。符号定义和逻辑推理没什么问题，数学最大的软肋是它的公理。数学总共有几十条常见的公理，例如集合论有9条公理，算术有5条公理，逻辑学有3条公理，现代几何学有20条公理等。整个数学体系就是建立在这些公理之上，所有的数学公式和理论都可以还原成这些公理。陶哲轩说过，现代数学分析的一个非凡成就是：仅仅从五条算术公理和九条集合论公理出发，就能构造数系，创造函数，并且推导出全部的代数和微积分。所以说，公理是一切数学的基础，是一切数学理论的起点。</p>
+</li>
+</ul>
+<p>如果仔细去看这些公理，你会发现它们都是一些符合常识、符合直觉的废话。例如，“两点之间可以画一条直线”“所有的直角都相等”“如果A、B两个集合有相同的元素，那么A、B两个集合相等”。因此，所有的数学公理都可以等价为常识和直觉。因为所有的数学理论都可以还原成公理，所以数学的正确性等价于公理的正确性。这句话很重要，再强调一遍：数学的正确性等价于公理的正确性。数学为什么那么靠谱？归根结底是因为数学的几十个公理很靠谱。如果某个数学理论错了，一定可以反向推导出某个公理错了。</p>
+<p>那么，数学公理是100%正确的吗？不是的。例如，广义相对论推翻了几何学中的平行线公理——真实的宇宙中不存在平行线。很多数学家怀疑集合论中的选择公理是否正确，很多物理学家怀疑连续性公理是否正确，并且发展出一套拓扑斯理论假说。这个假说认为真实的宇宙不存在点，也不存在连续的实数。甚至还有物理学家怀疑逻辑学中的排中律公理是否正确。排中律是指数学命题要么是真的，要么是假的，不存在其他状态。如果排中律公理错了，那将对数学产生毁灭性打击，因为大多数数学理论都会用到排中律。总之，公理不一定正确，这最终导致数学理论也不是100%正确的。这就是为什么数学只有99%以上的置信度，而不是100%置信度的原因。平行线公理被推翻诞生了广义相对论，如果其他数学公理被推翻，也可能是物理学前进的重大机遇。</p>
+<h3 id="_5">（二）物理学</h3>
+<ul>
+<li>
+<p><strong>置信度</strong>：95%。</p>
+</li>
+<li>
+<p><strong>缺陷分析</strong>：</p>
+</li>
+<li>
+<p><strong>适用范围有限</strong>：所有的物理理论都有一定的适用范围。例如，量子力学的标准模型只是在低能情况下的近似有效理论，广义相对论在黑洞内部会失效，宇宙膨胀破坏了时间的平移对称性，因此宇宙膨胀过程中能量不再守恒。所有的物理理论都是近似有效理论，都有一定的适用范围。</p>
+</li>
+<li>
+<p><strong>数学上的不严谨</strong>：一些物理理论在数学上不够严谨。例如，量子场论的路径积分在数学上是不严谨的，也无法在数学上严格证明杨-米尔斯场论的质量间隙是否存在。数学和物理学的核心区别在于：数学更在乎理论是否逻辑自洽，而物理学更关心理论是否与实验相符。因此，物理学家的心态通常是：只要我算出来的结果与实验在一定精度内符合就行，管它数学上严不严谨呢，理论的严谨性证明那是数学家们的事，跟我无关，我只管拿来计算。但数学严谨性的缺失一定会让物理理论存在很大的隐患。</p>
+</li>
+<li>
+<p><strong>实验误差较大</strong>：广义相对论和标准模型的精度可以达到99.999%以上，但热力学和凝聚态物理就不一样了。这些领域中，一堆唯象模型只是对现象的总结，缺乏第一性原理的支撑，因此误差通常较大。例如，热力学中的能量均分定理，用它来计算双原子分子的比热，误差竟然超过10%。</p>
+</li>
+</ul>
+<h3 id="_6">（三）进化论</h3>
+<ul>
+<li>
+<p><strong>置信度</strong>：平均85%。</p>
+</li>
+<li>
+<p><strong>缺陷分析</strong>：达尔文的进化论有很多错误，但现代进化论已经把达尔文的那些错误都修正了。各个物种之间DNA序列的相似性已经无可辩驳地证明了生物演化的存在，所以我对基因变异、自然选择、共同祖先这个进化论的框架置信度超过95%，与物理学的平均置信度差不多。但进化论不是一个理论，而是一群理论的集合，不同的理论有不同的置信度。例如，进化树的置信度在85%左右，因为它没有考虑到基因的水平转移驱动进化等因素；古人类进化图的置信度只有60%左右，因为从黑猩猩到人进化的细节主要靠化石，而化石的出错率太大；现代人起源于非洲的假说，Y染色体、线粒体染色体以及人类基因组分析已经无可辩驳地证明了现代人起源于非洲，所以这张图的置信度能达到90%以上。总之，进化论里面不同的理论有不同的置信度，平均在80%左右。现代进化论的最大缺点是进化的细节不完善。例如，生命的祖先LUCA是怎么来的，进化到底是以间断平衡为主还是以连续变化为主，中性进化对物种的性状到底有没有影响，从黑猩猩到人大脑是如何一步步演化的，这些进化的细节都不清楚。进化论的大框架是没啥问题的，但进化的细节证据没有那么充分。</p>
+</li>
+</ul>
+<h3 id="_7">（四）天文学</h3>
+<ul>
+<li>
+<p><strong>置信度</strong>：80%。</p>
+</li>
+<li>
+<p><strong>缺陷分析</strong>：天文学最大的缺点就是“近似”。相对论计算起来太复杂了，大多数天文学模型直接用牛顿引力近似计算；磁场计算起来太复杂了，99%的天文学模型都会忽略磁场。如果你去看天文学的教科书，你会发现有大量的约等于符号，还有一堆近似公式。这些离散的点，天文学家会把它们近似成一条直线。这些图片都是从顶级的天文学论文里面扒下来的各种近似。所以说，天文学是一门不是很严格的学科，整体上误差还是挺大的。天体的距离、质量、寿命误差普遍在10%到30%之间，甚至50%的误差在天文学里面都很常见。在天体物理学或者宇宙学中，你建个模型，只要数量级猜对了就很牛逼，就能发一篇不错的论文。有一个笑话是这么说的：在天文学里面，圆周率π等于4，说的就是天文学家喜欢搞近似，相当于把圆周率近似成了4。反正误差都挺大的了，也不差圆周率这点误差了，只要数量级猜对了就行了。这就是为什么天文学里面有大量的数量级估计的原因。例如，银河系的直径是十万光年这个数量级，太阳光穿过地面的时间是几百万年这个数量级，银河系中心有一个四百万倍太阳质量的黑洞。所以说，天文学只能让我们对宇宙有一个大概的框架的了解，具体的精度是不够的。当然，天文学里面也有少量的精确模型，比如微波背景辐射、造父变星、哈勃红移等，但这种精确模型实在是太少了，大多数天文学模型都很粗糙，误差平均在20%左右。所以说，天文学的平均置信度在80%左右。</p>
+</li>
+</ul>
+<h3 id="_8">（五）心理学和医学</h3>
+<ul>
+<li>
+<p><strong>置信度</strong>：心理学平均置信度50%，医学平均置信度65%。</p>
+</li>
+<li>
+<p><strong>缺陷分析</strong>：心理学和医学最大的问题是可重复性不高。什么是可重复性？例如，一篇学术论文说某种药物能治疗心脏病，但我这边重复做了几遍实验发现它不能治，这就是可重复性问题。2015年，科学家选了100篇心理学顶级学术期刊的论文，全部重新做了一遍实验，发现只有36%的论文结论可以重复。2018年，对28个经典的心理学实验又重新做了一遍实验，发现只有50%可以重复。对45篇顶级医学论文又重新做了一遍实验，发现只有44%可以重复。对53项癌症研究重新做了一遍实验，发现只有11%可以重复。心理学和医学论文的可重复性实在是太低了。那为什么可重复性这么低呢？主要原因是心理学和医学一直使用统计显著性，p值小于0.05这个标准。很多人以为p值0.05相当于5%的出错率，实际上不是的，因为p值没有包含假阳性的情况。当p值等于0.05时，出错的概率大概是23%到30%之间。所以当你看到一篇论文使用95%的置信区间或者p值小于0.05这种判定标准时，你应该马上认定这篇论文的出错率至少23%。物理学对可重复性的要求是极高的，误差不能超过五个标准差，相当于p值小于0.000001。所以现在不断有学者呼吁在心理学和医学领域把p值从原来的0.05提高到0.005。如果p值真的提高到0.005，至少一半的心理学和医学论文就废了，因为这些论文的可重复性本来就不高。现在各个学科普遍存在大量的论文造假现象，你让论文的作者自己重复自己的论文，很多都重复不出来。论文造假最严重的领域是医学领域，在被撤稿的学术论文里面，医学论文的数量遥遥领先。有一点要注意，学术论文不等于教科书，学术论文是为了扩大人类知识的边界，非常强调创新性，所以学术论文很容易出错。但教科书就不一样了，教科书是人类几十年、几百年知识的凝练，所以教科书的平均置信度比学术论文要高很多。不过，教科书也经常出错，例如皮亚杰关于儿童认知发展的很多经典心理学实验都写到教科书里面了，但还是被一个个推翻。心理学家对28个教科书里面的理论重新做了一遍实验，发现只有50%可以重复。因此不要太相信心理学的教科书，这就是为什么说心理学平均置信度只有50%左右的原因。</p>
+</li>
+</ul>
+<h3 id="_9">（六）经济学</h3>
+<ul>
+<li>
+<p><strong>置信度</strong>：40%。</p>
+</li>
+<li>
+<p><strong>缺陷分析</strong>：经济学被誉为社会科学之王，经济学正在大举入侵法学、心理学、历史学等其他学科。经济学最大的优点是解释能力很强，最大的缺点是预测能力很弱。凯恩斯说过一句话：“在过去的五次经济危机中，经济学家成功预测出了十五次。”这种预测比瞎猜要好一点，但又好不了太多。经济学的核心是假设，只要选取不同的假设，经济学模型能得出任何结论，能解释任何经济现象。这就是为什么经济学家都是事后诸葛亮的原因——事前几乎不能做出预判，事后又说符合某个经济学的模型。因为经济学以解释为主，预测能力很弱。经济学至少有二十多个门派，比如新古典自由主义、凯恩斯主义、供给学派等，每个门派都有自己的假设和数学模型，各大门派之间还互相打架。可惜这二十多个门派没一个能打的，预测误差都很大。描述现象、解释原理、预测未知是一个学科发展的三个阶段，经济学目前还处于以解释原理为主的阶段，预测能力还很弱。经济学的第二个缺点是过度数学化。一帮数学家进入经济学领域，降维打击了经济学，弄出来了很多无比复杂的数学模型，满屏幕的数学公式，看着挺吓唬人的，但实际上真实效果不怎么样，不论是解释还是预测，误差都很大。科学的核心是实证，不是数学模型，数学只是科学的工具，不是科学的目标，经济学有点舍本逐末了。能够对尚未观察到的现象做出准确的、能验证的实证预测才是检验这二十多个经济学门派的唯一标准。每个经济学门派都说自己武功高强，拉出来打一架，实战才是检验武功的唯一标准。</p>
+</li>
+</ul>
+<hr />
+<h2 id="_10">第三部分：贝叶斯主义的计算方法</h2>
+<p>贝耶斯主义的核心是贝叶斯公式。贝叶斯公式可以分为三部分：右边的P(A)代表原来的置信度，左边的P(A|B)代表新的置信度，中间这一部分叫似然度。举个例子，广义相对论原来的置信度是60%，那么P(A)就是0.6。当引力波被发现后，广义相对论新的置信度变成了90%，那么P(A|B)就是0.9，中间这一部分代表了引力波和广义相对论的关联程度。</p>
+<p>再举个例子看看置信度是如何具体计算的。一个商店出售A、B两种类型的箱子，两种箱子数量是一样的，各自50%。它们的区别是：A类型的箱子里面有70%是红色球，B类型的箱子里面有20%是红色球。售货员随机卖给我一个箱子，我想知道我手里的箱子是A类型箱子的概率有多大。于是我就从里面取出一个球，发现是红色球，这时候可以用贝叶斯公式计算出来我手里是A类型箱子的概率是77%。之后我又从箱子里面取出一个球，发现还是红色球，用贝叶斯公式计算一下概率变成了92%。也就是说，对于我手里的箱子是A类型箱子这个信念，最开始的置信度是50%，从箱子里面取出一个红色球之后置信度变成了77%，再取出一个红色球置信度变成了92%。广义相对论置信度的变化计算方法跟这个一模一样，哈勃红移实验、引力波实验可以看成从箱子里面取球，通过从箱子里面取球更新A类型箱子的置信度，通过引力波实验更新广义相对论置信度。总结一下，贝叶斯主义科学观：所有的信念都有一个置信度，根据实证和贝叶斯公式不断调整我们对这个信念的置信度。</p>
+<hr />
+<h2 id="_11">第四部分：贝叶斯主义解决的哲学问题</h2>
+<h3 id="_12">（一）休谟问题</h3>
+<p>休谟问题被誉为悬在科学头上的达摩克利斯之剑，随时都有可能掉下来把科学劈死。休谟问题是这样的：一个农场里有一群火鸡，农场主每天上午10点准时给它们喂食。火鸡中有一个“爱因斯坦”，它发现了一个伟大的“科学理论”——每天上午10点就有食物降临，上午10点和食物降临是等价的。但是在感恩节那天，这群火鸡被宰杀后吃掉了，这条火鸡界的“科学定律”就失效了，上午10点和食物降临不再等价。那么，人类目前发现的科学理论有没有可能也会像这条火鸡理论一样失效呢？我们现在认为质量和能量是等价的，未来也一定等价吗？我们现在认为光速不变，一万亿年之后光速有没有可能发生改变？牛顿第二定律告诉我们力是改变物体运动速度的原因，力是原因，速度改变是结果，这就是因果律。那火鸡世界里面也可以这么认为，上午10点是原因，食物降临是结果，但是这个原因推导不出结果啊。所以我们反思一下，人类发现的力和速度改变之间的关系真的是100%成立的因果关系吗？我们无从得知，因果之间的关系只能得知某些事物总是会连接在一起，这就是休谟问题。例如，力和速度变化一直连接在一起，上午10点和食物出现一直连接在一起，质量和能量一直连接在一起，但是它们之间不一定有因果律。科学里面有大量的因果推理，而因果律又不一定存在，所以说休谟问题是悬在科学头上的一把剑，困扰了科学两百多年。</p>
+<p>贝叶斯主义是科学哲学里面唯一能解决休谟问题的理论，因为贝叶斯主义认为人类无法发现100%成立的因果性，只能发现概率相关性。上午10点和食物出现只是根据现有的经验推理出的一种置信度99.999%以上的相关性，不是100%成立的因果性。同样的道理，力和物体速度改变之间也只是置信度99.999%以上的相关性。科学发现的所有理论，不论是能量守恒定律还是相对论，它们都是在一定范围内近似成立的理论，不是100%成立的因果性。</p>
+<h3 id="_13">（二）奥卡姆剃刀原理</h3>
+<p>奥卡姆剃刀是宗教最害怕的东西，是科学对付宗教最大的一把思想武器。奥卡姆剃刀原理的内涵是这样的：如果关于同一个问题有多种理论，每一种理论都能做出同样准确的预言，那么应该挑选假设数目最少的那个。简单理解就是假设数目越少越好，如无必要，勿增实体，如果没有必要不要额外增加假设。最不可思议的是，贝叶斯主义已经包含了奥卡姆剃刀原理。我简单解释一下，假如一个理论现在有A、B、C三个假设，它的实验证据为N，根据贝叶斯公式这个理论的置信度是这样的。如果我们额外再增加一个假设T，变成四个假设，这是四个假设的置信度。我们可以在数学上严格推导出它们的比值大于1，也就是说在相同时证的情况下，三个假设的置信度高于四个假设的置信度，这不就是奥卡姆剃刀原理所说的假设数目越少越好吗？如无必要不要额外增加假设。因此在数学上能用贝叶斯公式推导出奥卡姆剃刀原理。</p>
+<p>那奥卡姆剃刀原理一定正确吗？有没有出错的情况？有的，奥卡姆剃刀原理经常出错。我举个例子，量子力学有哥本哈根诠释和多世界诠释两种不同的理论，目前物理学以哥本哈根诠释为主。哥本哈根诠释有五个基础假设，而多世界诠释有四个基础假设，那按照奥卡姆剃刀原理，假设数目越少越好，那物理学不就应该选择多世界诠释吗？为什么最后选择了哥本哈根诠释呢？我们再进一步想一下，如果我们直接假设一切都是上帝设计的，那么按照奥卡姆剃刀原理，上帝设计只有一个假设，假设数目是最少的，那我们不就应该选择相信上帝设计吗？所以假设数目不是越少越好，奥卡姆剃刀原理是有问题的。我们来看一下贝叶斯主义是如何解决这个问题的，贝叶斯主义不仅关心假设的个数，还关心每个假设的置信度。平行世界和上帝设计这两个假设的置信度很低，最终导致右边这两个理论的总置信度降低了很多，就像一粒老鼠屎坏了一锅汤一样。如果某个假设很不靠谱，会导致理论的总置信度很低。哥本哈根诠释虽然有五个假设，但是这些假设都没有那么离谱，最终计算下来哥本哈根诠释的总置信度最高，所以哥本哈根诠释就成了量子力学的主流解释。可以简单这么理解，哥本哈根诠释里面没有“老鼠屎”，其他诠释里面都有“老鼠屎”，所以哥本哈根诠释胜出。我们从数学角度看看他们的区别，奥卡姆剃刀原理只能适用于额外多一个假设T的情况下成立，而贝叶斯主义允许两个理论各自有不同的假设，它会衡量E、F两个假设更靠谱还是G一个假设更靠谱。稍微总结一下，贝叶斯主义能在数学上推导出奥卡姆剃刀原理，又能解决奥卡姆剃刀原理出错的情况，因此贝叶斯主义是一个比奥卡姆剃刀原理更本质的法则。</p>
+<hr />
+<h2 id="_14">第五部分：贝叶斯主义的底层逻辑</h2>
+<p>除了休谟问题和奥卡姆剃刀原理，贝叶斯主义还能解决迪昂-蒯因问题等很多哲学问题，甚至还能包含库恩的范式转换，我就不仔细解释了，感兴趣的朋友可以自己去查。可以这么说，贝叶斯主义是科学最大的盾牌，哲学经常从底层逻辑去攻击科学，绝大多数都能被贝叶斯主义挡回去。那贝叶斯主义为什么这么厉害呢？贝叶斯主义背后更深刻的逻辑是什么呢？</p>
+<p>我们先讲一个故事：上帝开发了一款游戏，这款游戏的名字叫“宇宙”，游戏的源代码就是自然法则，游戏里面的一花一草一木都是由源代码创造的。源代码是原因，游戏世界是结果，这就是第八集讲过的自然神论。自然神论认为这个世界上所有的现象都是由自然法则驱动的，但人类只是宇宙游戏里面的一个角色，不知道源代码是怎么写的，只能根据游戏的内容去反向推测源代码。例如，人类通过苹果落地、地球绕太阳旋转这些自然现象反向推测出万有引力定律。但是很多时候推测方案不止一个，比如弦论、圈量子引力、平行宇宙，我们也不知道哪个理论更接近源代码，于是就用贝叶斯公式去衡量各种理论的置信度。例如，我们用引力波去衡量广义相对论的置信度，用基因和化石去衡量进化论的置信度，这就是贝叶斯主义的底层逻辑——由实验结果去反向推测理论原因成立的概率。</p>
+<p>这句话很重要，我再强调一遍：贝叶斯主义的底层逻辑是由结果去反向推测原因成立的概率，换句话说就是去反向破解宇宙这款游戏。顺便说一下，我之前玩一款游戏，把游戏里面几乎所有的攻击、防御公式都给它反向推导出来了，跟贝叶斯主义非常相似。反向推导游戏是一件非常快乐的事情，因为它能降维打击其他玩家，相当于在作弊。其实人类发展科学就是在破解宇宙这款游戏，目的是为了让人类自己过得更爽点，跟我之前破解游戏一样，都是在作弊。</p>
+<p>好了，总结一下：自然神论是由因到果的过程，由源代码生成了游戏世界；而贝叶斯主义是由果溯因的过程，根据游戏数据反向破解游戏。自然神论和贝叶斯主义是一对互补的组合。这张图很重要，它为我们构建一个基于科学的世界观提供了底层框架。</p>
+<hr />
+<h2 id="_15">第六部分：贝叶斯主义的缺陷</h2>
+<p>每一种哲学上的主义都有缺陷，贝叶斯主义也不例外。那贝叶斯主义有什么缺陷呢？最大的缺陷是初始置信度很难确定。能实验的理论初始置信度是多少都无所谓，因为随着不断被验证，它会慢慢趋向于一个稳定的置信度。比如广义相对论最开始置信度可以是1%，也可以是90%都无所谓，随着广义相对论各种证据出现，最终都会趋向于一个稳定的置信度。但是那些没有任何实验证据的假说就不行了，比如弦论、虫洞、平行宇宙，初始置信度是多少合适呢？只能猜。那怎么猜呢？一个重要的方法是去看这个假说里面假设的合理程度，通过衡量假设的置信度去赋予这个假说一个初始置信度。这几个置信度都是我个人瞎猜的，我把猜的过程和原因放到了评论区，感兴趣的可以到评论区看一下。贝叶斯主义还有一个非常无赖的行为就是允许不同的人有不同的置信度，因为每个人的知识结构、成长环境都不一样，所以对同一个东西信任程度是不一样的。比如中医，有的人认为中医是神，置信度能有80%以上，有的人认为中医是糟粕，置信度不到1%。你认为中医的置信度是多少呢？请用弹幕告诉我你的答案。另外说一下，这个视频里面出现的所有置信度百分比都是我个人的置信度，每个人的置信度都可以不一样。</p>
+<hr />
+<h2 id="_16">第七部分：为什么加入这一集半哲学的内容</h2>
+<p>在一个科普系列的视频中加入这一集半哲学的内容，一个重要原因是我后面要科普天文学，但在写天文学文稿的过程中遇到了精确语言表达的困难。例如，太阳系起源于星云，它的证据有很多，但又不是100%正确，所以你只能说太阳系很大可能起源于星云。有了这一集贝叶斯主义后，我们可以这么表达：太阳系起源于星云的置信度是90%以上。你想啊，物理学平均置信度才95%，这说明太阳系起源于星云是一个证据非常充足的假说。你看这两句话，90%的置信度比起“很大可能”在语言表达方面要准确得多，这就解决了刚才我说的天文学精确语言表达的困难。</p>
+<p>其实，这一集最重要的是这个置信度表格，它为后面几集的科普树立了置信度标杆。比如，暗能量的置信度是50%，这说明暗能量跟心理学是同一个水平的理论，有一定证据，但证据又不足。以后我们会以这个表格为标准去衡量各种理论的置信度。置信度还有一个非常大的好处，能直观地比较各种假说的靠谱程度。例如，黑洞是存在的观点的置信度是95%以上，宇宙大爆炸的置信度是80%，暗物质60%，暗能量50%，虫洞30%，白洞20%。通过置信度百分比，我们可以非常直观地比较不同假说。总之一句话，置信度这个工具对后面几集天文学的科普有非常大的帮助，所以就插入了这一集半哲学的内容。</p>
+<hr />
+<h2 id="_17">结语</h2>
+<p>最后都看到这了，能不能帮我点个赞？其实做视频不怎么赚钱，点赞是我后面继续更新的最大动力。</p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+<hr>
+<h2 align="center">  <a href="mailto:xiaopch@163.com">Copyright@Xiaopch 2024</a></h2>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>
