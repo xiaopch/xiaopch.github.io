@@ -1,0 +1,32 @@
+site_name: 正念AI
+site_description: 正念AI
+site_author: xiaopch
+theme:
+  name: material
+  language: 'zh'
+  custom_dir: custom_theme/
+  highlightjs: true
+
+#theme: readthedocs  material mkdocs
+#markdown_extensions:
+#  - admonition
+#  - codehilite:
+#      guess_lang: false
+#      linenums: false
+#  - toc:
+#      permalink: true
+#  - footnotes
+#  - meta
+#  - def_list
+#  - pymdownx.arithmatex
+#  - pymdownx.betterem:
+#      smart_enable: all
+#  - pymdownx.caret
+#  - pymdownx.critic
+#  - pymdownx.details
+copyright: copyright@xiaopch 2024
+repo_url: https://github.com/xiaopch/xiaopch.github.io.git
+
+# nav:
+#  - Home: index.md
+#  - About: about.md

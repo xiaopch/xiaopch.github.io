@@ -1,0 +1,1 @@
+cmd /k git clone git@github.com:xiaopch/xiaopch.github.io.git
