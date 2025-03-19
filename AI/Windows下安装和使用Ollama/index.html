@@ -829,21 +829,23 @@
 </li>
 <li>
 <p>示例命令：</p>
-<p><code>curl http://localhost:11434/v1/chat/completions \
-     -H "Content-Type: application/json" \
-     -d '{
-         "model": "phi3:medium-128k",
-         "messages": [
-             {
-                 "role": "system",
-                 "content": "You are a helpful assistant."
-             },
-             {
-                 "role": "user",
-                 "content": "天空为什么是蓝色的？"
-             }
-         ]
-     }'</code></p>
+<blockquote>
+<p>curl http://localhost:11434/v1/chat/completions \
+    -H "Content-Type: application/json" \
+    -d '{
+        "model": "phi3:medium-128k",
+        "messages": [
+            {
+                "role": "system",
+                "content": "You are a helpful assistant."
+            },
+            {
+                "role": "user",
+                "content": "天空为什么是蓝色的？"
+            }
+        ]
+    }'</p>
+</blockquote>
 </li>
 </ol>
 <h3 id="_1">四、其他注意事项</h3>
