@@ -10,8 +10,7 @@
 1. **更改模型存放路径**（推荐）：
    - 打开「系统环境变量」，新建一个用户变量：
      - 变量名：`OLLAMA_MODELS`
-     - 变量值：自定义模型存储路径，例如
-     -  `D:\ollama\models`。
+     - 变量值：自定义模型存储路径，例如: `D:\ollama\models`
    - 如果已启动 Ollama，退出后重新启动，使配置生效。
 2. **更改 Ollama API 访问地址和端口**（可选）：
    - 新建用户变量：
@@ -30,11 +29,8 @@
 2. **获取并运行 AI 模型**：
    - 打开命令行工具（如 PowerShell 或命令提示符）。
    
-   - 使用以下命令加载并运行模型：
+   - 使用以下命令加载并运行模型：ollama run <model_name>
      
-     ```
-     ollama run <model_name>
-     ```
      例如：
      
      ```
@@ -49,7 +45,7 @@
      | Llama 3.3 | `ollama run llama3.3` |
      | Mistral   | `ollama run mistral`  |
      | Qwen2.5   | `ollama run qwen2.5`  |
-     
+   
 3. **在命令行中使用模型**：
    - 模型加载完成后，即可在命令行中与 AI 进行交互。
    
@@ -65,23 +61,21 @@
    
    - 示例命令：
      
-     ```
-     curl http://localhost:11434/v1/chat/completions \
-         -H "Content-Type: application/json" \
-         -d '{
-             "model": "phi3:medium-128k",
-             "messages": [
-                 {
-                     "role": "system",
-                     "content": "You are a helpful assistant."
-                 },
-                 {
-                     "role": "user",
-                     "content": "天空为什么是蓝色的？"
-                 }
-             ]
-         }'
-     ```
+     > curl http://localhost:11434/v1/chat/completions \
+     >     -H "Content-Type: application/json" \
+     >     -d '{
+     >         "model": "phi3:medium-128k",
+     >         "messages": [
+     >             {
+     >                 "role": "system",
+     >                 "content": "You are a helpful assistant."
+     >             },
+     >             {
+     >                 "role": "user",
+     >                 "content": "天空为什么是蓝色的？"
+     >             }
+     >         ]
+     >     }'
      
      
 
