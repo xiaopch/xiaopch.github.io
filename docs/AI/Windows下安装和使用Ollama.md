@@ -32,14 +32,10 @@
    
    - 使用以下命令加载并运行模型：
      
-   - 
-     
      ```
      ollama run <model_name>
      ```
      例如：
-     
-     
      
      ```
      ollama run mistral
@@ -53,12 +49,11 @@
      | Llama 3.3 | `ollama run llama3.3` |
      | Mistral   | `ollama run mistral`  |
      | Qwen2.5   | `ollama run qwen2.5`  |
+     
 3. **在命令行中使用模型**：
    - 模型加载完成后，即可在命令行中与 AI 进行交互。
    
    - 例如，使用 Qwen2 模型进行对话：
-     
-   - 
      
      ```
      ollama run qwen2
@@ -69,8 +64,6 @@
    - Ollama 提供了兼容 OpenAI 的 Chat Completions API，可以通过 HTTP 请求调用。
    
    - 示例命令：
-     
-   - 
      
      ```
      curl http://localhost:11434/v1/chat/completions \
@@ -98,7 +91,5 @@
 - **日志查看**：如果遇到问题，可以通过访问 `%LOCALAPPDATA%\Ollama` 查看日志文件。
 
 通过以上步骤，你可以在 Windows 系统上顺利安装、配置并使用 Ollama。
-
-: [Ollama on Windows：本地运行大语言模型的利器 - 系统极客](https://www.xitongjike.com/article/16383.html)
 
 ---
