@@ -434,9 +434,10 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="在 Windows 下使用 Ollama">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#ollama" class="md-nav__link">
     <span class="md-ellipsis">
       一、安装 Ollama
@@ -444,8 +445,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#ollama_1" class="md-nav__link">
     <span class="md-ellipsis">
       二、配置 Ollama
@@ -453,8 +454,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#ollama_2" class="md-nav__link">
     <span class="md-ellipsis">
       三、使用 Ollama
@@ -462,13 +463,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       四、其他注意事项
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -673,9 +679,10 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="在 Windows 下使用 Ollama">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#ollama" class="md-nav__link">
     <span class="md-ellipsis">
       一、安装 Ollama
@@ -683,8 +690,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#ollama_1" class="md-nav__link">
     <span class="md-ellipsis">
       二、配置 Ollama
@@ -692,8 +699,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#ollama_2" class="md-nav__link">
     <span class="md-ellipsis">
       三、使用 Ollama
@@ -701,13 +708,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       四、其他注意事项
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -733,13 +745,13 @@
   <h1>Windows下安装和使用Ollama</h1>
 
 <h2 id="windows-ollama">在 Windows 下使用 Ollama</h2>
-<h2 id="ollama">一、安装 Ollama</h2>
+<h3 id="ollama">一、安装 Ollama</h3>
 <ol>
 <li><strong>下载安装程序</strong>：访问 <a href="https://ollama.com/download/windows">Ollama Windows Preview 页面</a> ，点击下载按钮获取 <code>OllamaSetup.exe</code> 安装程序。</li>
 <li><strong>运行安装程序</strong>：双击下载的安装文件，点击「Install」开始安装。安装完成后，Ollama 会在系统托盘中显示图标。</li>
 <li><strong>退出 Ollama</strong>：安装完成后，右键点击系统托盘中的 Ollama 图标，选择「Quit Ollama」退出后台运行。</li>
 </ol>
-<h2 id="ollama_1">二、配置 Ollama</h2>
+<h3 id="ollama_1">二、配置 Ollama</h3>
 <ol>
 <li><strong>更改模型存放路径</strong>（推荐）：</li>
 <li>打开「系统环境变量」，新建一个用户变量：<ul>
@@ -764,33 +776,65 @@
 <li><strong>关闭开机自启动</strong>（可选）：</li>
 <li>访问路径 <code>%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup</code>，删除其中的 <code>Ollama.lnk</code> 快捷方式文件。</li>
 </ol>
-<h2 id="ollama_2">三、使用 Ollama</h2>
+<h3 id="ollama_2">三、使用 Ollama</h3>
 <ol>
 <li><strong>启动 Ollama</strong>：在「开始」菜单中找到并启动 Ollama。</li>
 <li><strong>获取并运行 AI 模型</strong>：</li>
-<li>打开命令行工具（如 PowerShell 或命令提示符）。</li>
-<li>使用以下命令加载并运行模型：
-     <code>bash
-     ollama run &lt;model_name&gt;</code>
-     例如：
-     <code>bash
-     ollama run mistral</code>
-     常用模型及安装命令如下：
-     | 模型      | 安装命令              |
-     | --------- | --------------------- |
-     | Llama 3.3 | <code>ollama run llama3.3</code> |
-     | Mistral   | <code>ollama run mistral</code>  |
-     | Qwen2.5   | <code>ollama run qwen2.5</code>  |</li>
-<li><strong>在命令行中使用模型</strong>：</li>
-<li>模型加载完成后，即可在命令行中与 AI 进行交互。</li>
-<li>例如，使用 Qwen2 模型进行对话：
-     <code>bash
-     ollama run qwen2</code></li>
-<li><strong>通过 API 调用 Ollama</strong>：</li>
-<li>Ollama 提供了兼容 OpenAI 的 Chat Completions API，可以通过 HTTP 请求调用。</li>
-<li>示例命令：
-     <code>bash
-     curl http://localhost:11434/v1/chat/completions \
+<li>
+<p>打开命令行工具（如 PowerShell 或命令提示符）。</p>
+</li>
+<li>
+<p>使用以下命令加载并运行模型：</p>
+</li>
+<li>
+<p><code>ollama run &lt;model_name&gt;</code>
+ 例如：
+ <code>ollama run mistral</code></p>
+<p>常用模型及安装命令如下：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>安装命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llama 3.3</td>
+<td><code>ollama run llama3.3</code></td>
+</tr>
+<tr>
+<td>Mistral</td>
+<td><code>ollama run mistral</code></td>
+</tr>
+<tr>
+<td>Qwen2.5</td>
+<td><code>ollama run qwen2.5</code></td>
+</tr>
+<tr>
+<td>3. <strong>在命令行中使用模型</strong>：</td>
+<td></td>
+</tr>
+<tr>
+<td>- 模型加载完成后，即可在命令行中与 AI 进行交互。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>例如，使用 Qwen2 模型进行对话：
+     <code>ollama run qwen2</code></p>
+</li>
+<li>
+<p><strong>通过 API 调用 Ollama</strong>：</p>
+</li>
+<li>
+<p>Ollama 提供了兼容 OpenAI 的 Chat Completions API，可以通过 HTTP 请求调用。</p>
+</li>
+<li>
+<p>示例命令：
+     <code>curl http://localhost:11434/v1/chat/completions \
          -H "Content-Type: application/json" \
          -d '{
              "model": "phi3:medium-128k",
@@ -804,9 +848,10 @@
                      "content": "天空为什么是蓝色的？"
                  }
              ]
-         }'</code></li>
+         }'</code></p>
+</li>
 </ol>
-<h2 id="_1">四、其他注意事项</h2>
+<h3 id="_1">四、其他注意事项</h3>
 <ul>
 <li><strong>硬件要求</strong>：Ollama 推荐使用 NVIDIA 或 AMD 的 GPU，CPU 运行性能较差。</li>
 <li><strong>模型存储空间</strong>：下载的模型可能占用大量空间，请确保有足够的磁盘空间。</li>
