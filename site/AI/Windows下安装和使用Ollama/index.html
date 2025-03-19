@@ -756,7 +756,8 @@
 <li><strong>更改模型存放路径</strong>（推荐）：</li>
 <li>打开「系统环境变量」，新建一个用户变量：<ul>
 <li>变量名：<code>OLLAMA_MODELS</code></li>
-<li>变量值：自定义模型存储路径，例如 <code>D:\ollama\models</code>。</li>
+<li>变量值：自定义模型存储路径，例如</li>
+<li><code>D:\ollama\models</code>。</li>
 </ul>
 </li>
 <li>如果已启动 Ollama，退出后重新启动，使配置生效。</li>
@@ -788,8 +789,8 @@
 </li>
 <li>
 <p><code>ollama run &lt;model_name&gt;</code>
- 例如：
- <code>ollama run mistral</code></p>
+ 例如：</p>
+<p><code>ollama run mistral</code></p>
 <p>常用模型及安装命令如下：</p>
 <table>
 <thead>
@@ -823,8 +824,10 @@
 </table>
 </li>
 <li>
-<p>例如，使用 Qwen2 模型进行对话：
-     <code>ollama run qwen2</code></p>
+<p>例如，使用 Qwen2 模型进行对话：</p>
+</li>
+<li>
+<p><code>ollama run qwen2</code></p>
 </li>
 <li>
 <p><strong>通过 API 调用 Ollama</strong>：</p>
@@ -833,22 +836,24 @@
 <p>Ollama 提供了兼容 OpenAI 的 Chat Completions API，可以通过 HTTP 请求调用。</p>
 </li>
 <li>
-<p>示例命令：
-     <code>curl http://localhost:11434/v1/chat/completions \
-         -H "Content-Type: application/json" \
-         -d '{
-             "model": "phi3:medium-128k",
-             "messages": [
-                 {
-                     "role": "system",
-                     "content": "You are a helpful assistant."
-                 },
-                 {
-                     "role": "user",
-                     "content": "天空为什么是蓝色的？"
-                 }
-             ]
-         }'</code></p>
+<p>示例命令：</p>
+</li>
+<li>
+<p><code>curl http://localhost:11434/v1/chat/completions \
+     -H "Content-Type: application/json" \
+     -d '{
+         "model": "phi3:medium-128k",
+         "messages": [
+             {
+                 "role": "system",
+                 "content": "You are a helpful assistant."
+             },
+             {
+                 "role": "user",
+                 "content": "天空为什么是蓝色的？"
+             }
+         ]
+     }'</code></p>
 </li>
 </ol>
 <h3 id="_1">四、其他注意事项</h3>
