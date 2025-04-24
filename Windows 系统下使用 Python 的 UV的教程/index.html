@@ -808,14 +808,22 @@
 <ol>
 <li><strong>通过 pip 安装</strong>（推荐）：直接使用 Python 自带的 pip 安装，兼容性最佳。</li>
 </ol>
-<p><code>pip install uv</code>
-2. <strong>使用 PowerShell 脚本安装</strong>：打开 PowerShell，执行：</p>
-<p><code>powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"</code>
-3. <strong>使用 winget 安装</strong>：如果已安装 winget，可以使用以下命令：</p>
-<p><code>winget install --id=astral-sh.uv -e</code>
-4. <strong>使用 pipx 安装</strong>：如果已安装 pipx：</p>
-<p><code>pipx install uv</code>
-5. <strong>直接下载安装包</strong>：从 <a href="https://github.com/astral-sh/uv">UV 官方 GitHub 仓库</a> 下载 <code>uv-x86_64-pc-windows-msvc.zip</code>，解压后将解压后的文件夹目录设置环境变量即可生效。</p>
+<p><code>pip install uv</code></p>
+<ol>
+<li><strong>使用 PowerShell 脚本安装</strong>：打开 PowerShell，执行：</li>
+</ol>
+<p><code>powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"</code></p>
+<ol>
+<li><strong>使用 winget 安装</strong>：如果已安装 winget，可以使用以下命令：</li>
+</ol>
+<p><code>winget install --id=astral-sh.uv -e</code></p>
+<ol>
+<li><strong>使用 pipx 安装</strong>：如果已安装 pipx：</li>
+</ol>
+<p><code>pipx install uv</code></p>
+<ol>
+<li><strong>直接下载安装包</strong>：从 <a href="https://github.com/astral-sh/uv">UV 官方 GitHub 仓库</a> 下载 <code>uv-x86_64-pc-windows-msvc.zip</code>，解压后将解压后的文件夹目录设置环境变量即可生效。</li>
+</ol>
 <h3 id="_1">验证安装</h3>
 <p>安装完成后，打开命令提示符或 PowerShell，输入以下命令来验证 UV 是否安装成功：</p>
 <pre><code>uv --version
@@ -827,30 +835,44 @@
 <p><code>uv venv .venv  # 在当前目录下创建一个名为 .venv 的虚拟环境，使用系统默认的 Python 版本
    uv venv -p 3.12  # 指定 Python 版本（需已安装）</code></p>
 <p>激活虚拟环境：</p>
-<p><code>.venv\Scripts\activate  # Windows</code>
-2. <strong>安装依赖包</strong>：语法与 pip 一致，但速度更快。</p>
+<p><code>.venv\Scripts\activate  # Windows</code></p>
+<ol>
+<li><strong>安装依赖包</strong>：语法与 pip 一致，但速度更快。</li>
+</ol>
 <p><code>uv pip install requests  # 安装 requests 包
    uv pip install Flask==2.2.2  # 安装指定版本的 Flask 包
-   uv pip install -r requirements.txt  # 从 requirements.txt 文件安装所有依赖</code>
-3. <strong>卸载包</strong>：</p>
+   uv pip install -r requirements.txt  # 从 requirements.txt 文件安装所有依赖</code></p>
+<ol>
+<li><strong>卸载包</strong>：</li>
+</ol>
 <p><code>uv pip uninstall requests  # 卸载 requests 包
-   uv pip uninstall Flask Werkzeug  # 卸载多个包</code>
-4. <strong>列出已安装的包</strong>：</p>
+   uv pip uninstall Flask Werkzeug  # 卸载多个包</code></p>
+<ol>
+<li><strong>列出已安装的包</strong>：</li>
+</ol>
 <p><code>uv pip list</code></p>
 <h3 id="_3">项目管理</h3>
 <ol>
 <li><strong>初始化项目</strong>：创建一个新项目，会生成默认的文件和目录结构。</li>
 </ol>
 <p><code>uv init myproject
-   cd myproject</code>
-2. <strong>添加依赖</strong>：</p>
+   cd myproject</code></p>
+<ol>
+<li><strong>添加依赖</strong>：</li>
+</ol>
 <p><code>uv add requests
-   uv add "numpy==1.23.4"</code>
-3. <strong>同步项目依赖</strong>：</p>
-<p><code>uv sync</code>
-4. <strong>运行项目</strong>：</p>
-<p><code>uv run main.py</code>
-5. <strong>导出依赖</strong>：</p>
+   uv add "numpy==1.23.4"</code></p>
+<ol>
+<li><strong>同步项目依赖</strong>：</li>
+</ol>
+<p><code>uv sync</code></p>
+<ol>
+<li><strong>运行项目</strong>：</li>
+</ol>
+<p><code>uv run main.py</code></p>
+<ol>
+<li><strong>导出依赖</strong>：</li>
+</ol>
 <p><code>uv pip freeze &gt; requirements.txt</code></p>
 <h3 id="python">Python 版本管理</h3>
 <ol>
@@ -858,8 +880,10 @@
 </ol>
 <p><code>uv python install 3.12</code></p>
 <p>也可以安装多个版本：</p>
-<p><code>uv python install 3.11 3.12</code>
-2. <strong>查看已安装的 Python 版本</strong>：</p>
+<p><code>uv python install 3.11 3.12</code></p>
+<ol>
+<li><strong>查看已安装的 Python 版本</strong>：</li>
+</ol>
 <p><code>uv python list</code></p>
 <h3 id="_4">更换国内源</h3>
 <ol>
@@ -873,8 +897,10 @@
 <p><code>toml
    [[index]]
    url = "https://pypi.tuna.tsinghua.edu.cn/simple"
-   default = true</code>
-2. <strong>环境变量</strong>：在终端中临时设置：</p>
+   default = true</code></p>
+<ol>
+<li><strong>环境变量</strong>：在终端中临时设置：</li>
+</ol>
 <p><code>uv add --default-index https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple fastmcp</code></p>
 <p>或在系统中永久设置：</p>
 <p><code>vi ~/.bashrc
