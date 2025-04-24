@@ -309,6 +309,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用 PowerShell 脚本安装
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#winget" class="md-nav__link">
     <span class="md-ellipsis">
       使用 winget 安装
@@ -929,6 +938,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用 PowerShell 脚本安装
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#winget" class="md-nav__link">
     <span class="md-ellipsis">
       使用 winget 安装
@@ -1180,13 +1198,10 @@
 <h3 id="pip">通过 pip 安装（推荐）</h3>
 <p>直接使用 Python 自带的 pip 安装，兼容性最佳。</p>
 <pre><code class="language-bash">pip install uv
-
-### 使用 PowerShell 脚本安装
-
-打开 PowerShell，执行以下命令：
-
-```powershell
-powershell -ExecutionPolicy ByPass -c &quot;irm https://astral.sh/uv/install.ps1 | iex&quot;
+</code></pre>
+<h3 id="powershell">使用 PowerShell 脚本安装</h3>
+<p>打开 PowerShell，执行以下命令：</p>
+<pre><code class="language-powershell">powershell -ExecutionPolicy ByPass -c &quot;irm https://astral.sh/uv/install.ps1 | iex&quot;
 </code></pre>
 <h3 id="winget">使用 winget 安装</h3>
 <p>如果已安装 winget，可以使用以下命令：</p>
