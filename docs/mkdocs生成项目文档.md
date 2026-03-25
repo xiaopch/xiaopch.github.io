@@ -7,7 +7,9 @@
 1. 安装Mkdocs：使用pip安装Mkdocs，命令如下：
 
 ```
-pip install mkdocs mkdocs-material
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+pip install mkdocs==1.6.1 
+cmd /k pip install mkdocs-material==9.5.23 
 ```
 
 2. 创建项目文件夹：使用与项目相关的名称创建一个新的文件夹，该文件夹将用作项目文档的文件夹。
