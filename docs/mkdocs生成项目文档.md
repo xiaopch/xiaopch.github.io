@@ -7,8 +7,7 @@
 1. 安装Mkdocs：使用pip安装Mkdocs，命令如下：
 
 ```
-pip install mkdocs
-pip install mkdocs-material
+pip install mkdocs mkdocs-material
 ```
 
 2. 创建项目文件夹：使用与项目相关的名称创建一个新的文件夹，该文件夹将用作项目文档的文件夹。

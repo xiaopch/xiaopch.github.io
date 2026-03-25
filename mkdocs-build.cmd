@@ -1,4 +1,4 @@
 #!/bin/bash
-export PATH="/home/xiaopch/miniconda3/bin:$PATH"
-mkdocs build
+
+cmd /k mkdocs build
 sleep 3
