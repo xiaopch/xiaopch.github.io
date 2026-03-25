@@ -1,5 +1,5 @@
-site_name: 正念AI
-site_description: 正念AI
+site_name: 星际智能
+site_description: 欢迎来到星际智能
 site_author: xiaopch
 theme:
   name: material
@@ -24,7 +24,7 @@ theme:
 #  - pymdownx.caret
 #  - pymdownx.critic
 #  - pymdownx.details
-copyright: copyright@xiaopch 2024
+copyright: copyright@xiaopch 2026
 repo_url: https://github.com/xiaopch/xiaopch.github.io.git
 
 # nav:

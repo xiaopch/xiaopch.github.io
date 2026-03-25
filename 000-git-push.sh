@@ -1,4 +1,4 @@
-rmdir /S /Q site
+
 
 #!/bin/bash
 git config --global color.ui auto
