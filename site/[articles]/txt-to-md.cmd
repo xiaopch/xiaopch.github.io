@@ -1,1 +1,0 @@
-for %i in (*.txt) do ren "%i" "%~ni.md"
