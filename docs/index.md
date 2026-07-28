@@ -1,70 +1,11 @@
-# Welcome to Our Documentation
-
-<div class="grid cards" markdown>
-
-- :material-rocket-launch: **Get Started**
-  
-  ---
-  
-  New here? Learn how to set up and start using this project in minutes.
-  
-  [:octicons-arrow-right-24: Get Started](create-your-site.md)
-
-- :material-book-open-variant: **Usage Guide**
-  
-  ---
-  
-  Explore the full feature set with detailed usage instructions and examples.
-  
-  [:octicons-arrow-right-24: Learn More](opencode-docs-zh.md)
-
-- :material-web-check: **Publish Your Site**
-  
-  ---
-  
-  Deploy your documentation site to GitHub Pages, GitLab Pages, or your own server.
-  
-  [:octicons-arrow-right-24: Publish](publish-your-site.md)
-
-- :material-cog-outline: **Configuration**
-  
-  ---
-  
-  Customize themes, navigation, search, and more to match your brand.
-  
-  [:octicons-arrow-right-24: Configure](opencode-docs-zh.md)
-
-</div>
+## 
 
 ---
 
-## Quick Overview
+## 自律究竟是什么呢？
 
-This documentation site is built with **Zensical** — a powerful static site generator that turns Markdown files into a beautiful, searchable documentation website.
+    自律，大概就是说，一个人能够比一般人更好的控制他的行动与情绪，能够更好的执行他所做的决定，并且能够抑制住自身那些负面和消极的欲望、情绪、和行为。
 
-:material-check-circle:{ .green } **Fast** &nbsp; Instant navigation with zero full-page reloads  
-:material-check-circle:{ .green } **Responsive** &nbsp; Works seamlessly on desktop, tablet, and mobile  
-:material-check-circle:{ .green } **Searchable** &nbsp; Full-text search with highlighting  
-:material-check-circle:{ .green } **Dark Mode** &nbsp; Switch between light and dark themes  
+一个人如果能够对于他自身和现实都有着清醒的认知，他就能够正确的权衡利害关系，就能清醒的认清自己的问题，就会知道自己想要的是什么，所以他会知道自己该做什么。
 
----
-
-## What's Inside
-
-| Section                                               | Description                                                  |
-| ----------------------------------------------------- | ------------------------------------------------------------ |
-| :material-file-document-outline: **Create Your Site** | Step-by-step guide to bootstrap your first project           |
-| :material-book-open-page-variant: **OpenCode Docs**   | Comprehensive documentation for the OpenCode AI coding agent |
-| :material-cloud-upload: **Publish Your Site**         | Deploy your documentation with CI/CD pipelines               |
-
----
-
-## Get in Touch
-
-- :material-github: [GitHub Repository](https://github.com/zensical/zensical)
-- :material-discord: [Discord Community](https://discord.com/invite/hqXRNq9CjT)
-- :material-python: [PyPI Package](https://pypi.org/project/zensical/)
-
----
-
-© 2026 Zensical LLC — Made with [Zensical](https://zensical.org/)
+​    **自律的本质是指一个人对现实的卓越的认知能力。**
